@@ -1,5 +1,9 @@
-import Login from './Login'
+import Login from './Login';
+import Menus from './Menus';
+import Icon from './Icon';
 
 export {
-    Login
+    Login,
+    Menus,
+    Icon
 }
