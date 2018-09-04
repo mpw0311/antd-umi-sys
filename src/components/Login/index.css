@@ -1,0 +1,16 @@
+.login_form {
+  width: 100%;
+  max-width: 400px;
+}
+.login_form_forgot {
+  float: right;
+}
+.login_form_button {
+  width: 100%;
+}
+.color {
+  color: rgba(0, 0, 0, 0.25);
+}
+.login_form_register {
+  float: left;
+}
