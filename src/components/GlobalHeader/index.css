@@ -1,0 +1,44 @@
+.header {
+  position: relative;
+}
+.header .lf {
+  position: absolute;
+  height: 64px;
+  width: 200px;
+}
+.header .center {
+  position: absolute;
+  left: 200px;
+  right: 260px;
+  height: 64px;
+  overflow: hidden;
+}
+.header .rg {
+  position: absolute;
+  width: 260px;
+  height: 64px;
+  right: 0;
+}
+.header .logo {
+  width: 40px;
+  height: 64px;
+  /* background: rgba(255,255,255,.2); */
+  background: url('../../assets/jianlc.png') no-repeat center center;
+  background-size: contain;
+  margin: 0 10px 0 30px;
+  float: left;
+}
+.user {
+  float: right;
+  min-width: 120px;
+}
+.username {
+  color: #ffffff;
+  padding-right: 15px;
+  display: inline-block;
+  cursor: pointer;
+}
+.search {
+  height: 64px;
+  display: block;
+}

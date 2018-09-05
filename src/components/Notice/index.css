@@ -1,0 +1,26 @@
+.popover {
+  width: 360px;
+}
+.popover :global(.ant-popover-inner-content) {
+  padding: 0;
+}
+.noticeButton {
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.3s;
+  color: #ffffff;
+}
+.icon {
+  font-size: 16px;
+  padding: 4px;
+  color: #ffffff;
+}
+.tabs :global .ant-tabs-nav-scroll {
+  text-align: center;
+}
+.tabs :global .ant-tabs-bar {
+  margin-bottom: 4px;
+}
+.tabs .ant-tabs-nav .ant-tabs-tab {
+  margin: 0 !important;
+}

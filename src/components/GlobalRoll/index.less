@@ -1,0 +1,35 @@
+.rollbox {
+    overflow: hidden;
+    width: 100%;
+    .roll {
+        color: #ffffff;
+        margin: 0;
+        padding: 0;
+        white-space: nowrap;
+        float: left; // animation: roll 10s infinite linear;
+        // -webkit-animation: roll 10s infinite linear; // animation-delay:1s;
+        animation-name: roll;
+        -webkit-animation-name: roll;
+        animation-iteration-count: infinite;
+        -webkit-animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        -webkit-animation-timing-function: linear; // animation-delay: 5s;
+        // -webkit-animation-delay: 5s;
+        &:hover {
+            animation-play-state: paused;
+            -webkit-animation-play-state: paused;
+            cursor: progress;
+        }
+    }
+}
+
+@-webkit-keyframes roll {
+    0% {
+        transform: translateX(1200px);
+        -webkit-transform: translateX(1200px);
+    }
+    100% {
+        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+    }
+}

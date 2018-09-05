@@ -3,20 +3,16 @@ import { connect } from 'dva';
 import { LocaleProvider, Layout } from 'antd';
 import _ from 'lodash';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
-import { searchFilter } from './_';
-import MainMenu from '../../components/Menus/Menus';
-import Breadcrumb from '../../components/Breadcrumb';
-import MainHeader from './Header';
+import { Menus, GlobalHeader } from 'components';
 import styles from './index.less';
 
 const { Header, Footer, Sider, Content } = Layout;
 class Index extends Component {
     constructor(props) {
         super(props);
-        const { menusData = [] } = this.props;
         this.state = {
             collapsed: false,
-            searchData: searchFilter('', menusData),
+            searchData: [],
             minHeight: document.body.offsetHeight
         };
         this.handleClick = this.handleClick.bind(this);
@@ -37,7 +33,7 @@ class Index extends Component {
         const { pathname, state: pathstate } = location;
         const { pathtitles } = pathstate || {};
         const { key: defaultKey, pathtitles: defaultPathtitles } = defaultMenu;
-        const names = pathtitles || defaultPathtitles;
+        const names = pathtitles || defaultPathtitles; // eslint-disable-line
         const isFrame = pathname && (pathname === '/sys' || pathname.indexOf('frame') > -1) ? true : false;// eslint-disable-line
         const footer = (
             <Footer className={styles.footer}>
@@ -47,7 +43,7 @@ class Index extends Component {
         const Frame = (
             <Layout>
                 <Content className={styles.content}>
-                    <Breadcrumb pathtitles={names} />
+                    {/* <Breadcrumb pathtitles={names} /> */}
                     <div className={styles.children}>
                         {children}
                     </div>
@@ -69,7 +65,7 @@ class Index extends Component {
             <LocaleProvider locale={zhCN}>
                 <Layout style={{ height: '100%' }}>
                     <Header style={{ padding: 0 }}>
-                        <MainHeader
+                        <GlobalHeader
                             userInfo={userInfo}
                             dispatch={dispatch}
                             message={message}
@@ -85,37 +81,27 @@ class Index extends Component {
                             onCollapse={this.handleClick}
                             className={styles.siderbar}
                         >
-                            <MainMenu
+                            <Menus
                                 location={location}
                                 menusData={menusData}
                                 defaultKey={defaultKey}
                             />
                         </Sider>
                         {isFrame ? Frame : Child}
-                        {/* <Layout>
-                            <Content className={styles.content}>
-                                {isFrame ? <Breadcrumb pathtitles={names} /> : ''}
-                                <div className={styles.children}>
-                                    {children}
-                                    {isFrame ? "" : footer}
-                                </div>
-                            </Content>
-                            {isFrame ? footer : ''}
-                        </Layout> */}
                     </Layout >
                 </Layout>
             </LocaleProvider>
         );
     }
 }
-function mapStateToProps(state) {
-    const { message, userInfo, menusData, defaultMenu, notification } = state.login;
+function mapStateToProps({ global }) {
+    const { message, userInfo, menusData, defaultMenu, notification } = global.state;
     return {
         message,
         userInfo,
         menusData,
         defaultMenu,
-        notification
+        notification,
     };
 }
 export default connect(mapStateToProps)(Index);

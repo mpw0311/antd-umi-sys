@@ -1,4 +1,4 @@
-import _ from 'loadsh';
+import _ from 'lodash';
 
 export const queryKeysByPath = (pathname, menusData) => {
     if (typeof (pathname) !== "string" || (typeof (pathname) === "string" && pathname.indexOf("frame") > -1)) return {};

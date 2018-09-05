@@ -1,22 +1,47 @@
 
+import { apiPrefix } from 'utils';
+import * as api from 'services';
 export default {
     namespace: 'global',
-    state: {},
-    subscriptions: {
-        setup({ dispatch, history }) {
+    state: {
+        state: {
+            status: 0,
+            userInfo: {},
+            message: [],
+            msgSize: 10,
+            notification: undefined,
+            menusData: [],
+            defaultMenu: {
+                title: '交易',
+                pathtitles: ['汇总数据', '交易'],
+                key: 'summryData_transaction',
+                url: `${apiPrefix}/offline/summryData_transaction`
+            },
+            url: undefined
         },
-    },
+        subscriptions: {
+            setup({ dispatch, history }) {//eslint-disable-line
 
-    effects: {
-        *fetch({ payload }, { call, put }) {
-            yield put({ type: 'save' });
+            },
         },
-    },
 
-    reducers: {
-        save(state, action) {
-            return { ...state, ...action.payload };
+        effects: {
+            * logout({ payload }, { call, put }) {
+                yield call(api.logout, { ...payload });
+                yield put({
+                    type: 'save', payload: {
+                        ...payload
+                    }
+                });
+            },
+
         },
-    },
 
+        reducers: {
+            save(state, action) {
+                return { ...state, ...action.payload };
+            },
+        },
+
+    }
 };

@@ -1,0 +1,19 @@
+.nav {
+  padding-left: 40px;
+}
+.nav ul,
+.nav li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.nav ul {
+  overflow: hidden;
+  width: 600px;
+  margin: 0 auto;
+}
+.nav li {
+  float: left;
+  font-size: 11px;
+  width: 14.28571429%;
+}

@@ -1,0 +1,33 @@
+.headerSearch {
+    // display: none;
+    :global(.anticon-search) {
+        cursor: pointer;
+        font-size: 16px;
+    }
+    color: #ffffff;
+    .input {
+        transition: width 0.3s, margin-left 0.3s;
+        width: 0;
+        background: transparent;
+        border-radius: 0;
+        :global(.ant-select-selection) {
+            background: transparent;
+        }
+        input {
+            border: 0;
+            padding-left: 0;
+            padding-right: 0;
+            box-shadow: none !important;
+            color: #ffffff;
+        }
+        &,
+        &:hover,
+        &:focus {
+            border-bottom: 1px solid #d9d9d9;
+        }
+        &.show {
+            width: 160px;
+            margin-left: 8px;
+        }
+    }
+}

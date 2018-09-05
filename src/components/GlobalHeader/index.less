@@ -1,0 +1,49 @@
+@import "../../themes/vars.less";
+
+.header {
+    position: relative;
+    .lf {
+        position: absolute;
+        height: @header-height;
+        width: 200px;
+    }
+    .center {
+        position: absolute;
+        left: 200px;
+        right: 260px;
+        height: @header-height; // border: 1px solid red;
+        overflow: hidden;
+    }
+    .rg {
+        position: absolute;
+        width: 260px;
+        height: @header-height;
+        right: 0;
+    }
+    .logo {
+        width: 40px;
+        height: @header-height;
+        /* background: rgba(255,255,255,.2); */
+        background: url('../../assets/jianlc.png') no-repeat center center;
+        background-size: contain;
+        margin: 0 10px 0 30px;
+        float: left;
+    }
+}
+// user
+.user {
+    float: right;
+    min-width: 120px;
+}
+
+.username {
+    color: #ffffff;
+    padding-right: 15px;
+    display: inline-block;
+    cursor: pointer;
+}
+//search
+.search {
+    height: @header-height;
+    display: block;
+}

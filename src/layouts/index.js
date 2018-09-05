@@ -1,15 +1,13 @@
 import LoginLayout from './login';
-import styles from './index.css';
+import MainLayout from './main';
 
 function BasicLayout(props) {
-  if (props.location.pathname === '/login') {
-    return <LoginLayout>{props.children}</LoginLayout>
+  const { location, children } = props;
+  if (location.pathname === '/login') {
+    return (<LoginLayout>{children}</LoginLayout>);
   }
   return (
-    <div className={styles.normal}>
-      <h1 className={styles.title}>Yay! Welcome to umi!</h1>
-      {props.children}
-    </div>
+    <MainLayout location={location}>{children}</MainLayout>
   );
 }
 

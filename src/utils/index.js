@@ -1,1 +1,5 @@
-export const example = {};
+
+import request from './request'; 
+export {
+    request
+};
