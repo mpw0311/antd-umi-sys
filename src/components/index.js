@@ -3,6 +3,9 @@ import Menus from './Menus';
 import Icon from './Icon';
 import GlobalHeader from './GlobalHeader';
 import DataTable from './dataTable';
+import Breadcrumb from './Breadcrumb';
+import Announcement from './Announcement';
+import PageHeader from './PageHeader';
 
 import Bar from './Chart/Bar';
 import BarWaterfall from './Chart/Bar-waterfall';
@@ -25,5 +28,8 @@ export {
     Icon,
     GlobalHeader,
     Charts,
-    DataTable
+    DataTable,
+    Breadcrumb,
+    Announcement,
+    PageHeader
 };

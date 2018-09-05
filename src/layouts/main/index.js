@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { LocaleProvider, Layout } from 'antd';
 import _ from 'lodash';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
-import { Menus, GlobalHeader } from 'components';
+import { Menus, GlobalHeader, Breadcrumb } from 'components';
 import styles from './index.less';
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -43,7 +43,7 @@ class Index extends Component {
         const Frame = (
             <Layout>
                 <Content className={styles.content}>
-                    {/* <Breadcrumb pathtitles={names} /> */}
+                    <Breadcrumb pathtitles={names} />
                     <div className={styles.children}>
                         {children}
                     </div>

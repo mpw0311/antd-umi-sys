@@ -73,7 +73,7 @@ class Frame extends Component {
     }
 }
 function mapStateToProps({ global }) {
-    const { defaultMenu, url } = global.state;
+    const { defaultMenu, url } = global;
     return {
         defaultMenu,
         url
