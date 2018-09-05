@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Form, Select, DatePicker, Button } from 'antd';
 import moment from 'moment';
-import styles from './index.less';
+import styles from '../index.less';
 
 const { Item: FormItem } = Form;
 const { Option } = Select;

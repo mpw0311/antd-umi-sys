@@ -2,13 +2,15 @@ import Login from './Login';
 import Menus from './Menus';
 import Icon from './Icon';
 import GlobalHeader from './GlobalHeader';
+import DataTable from './dataTable';
+
 import Bar from './Chart/Bar';
 import BarWaterfall from './Chart/Bar-waterfall';
 import CalendarPie from './Chart/Calendar-pie';
 import Sankey from './Chart/Sankey';
 import ScatterAqiColor from './Chart/Scatter-aqi-color';
 import LineChart from './Chart/LineChart';
-const Chart = {
+const Charts = {
     Bar,
     BarWaterfall,
     CalendarPie,
@@ -22,5 +24,6 @@ export {
     Menus,
     Icon,
     GlobalHeader,
-    Chart
+    Charts,
+    DataTable
 };

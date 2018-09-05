@@ -1,8 +1,8 @@
 import moment from 'moment';
-import { Chart } from 'components';
+import { Charts } from 'components';
 import styles from './index.css';
 
-const { Bar } = Chart;
+const { Bar } = Charts;
 export default function () {
   console.log(moment);
   const data = {

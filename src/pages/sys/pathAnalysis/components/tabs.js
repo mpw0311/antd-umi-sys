@@ -1,9 +1,9 @@
 import { Component } from 'react';
 import { Tabs, Radio } from 'antd';
-import { Chart } from 'components';
-import styles from './index.less';
+import { Charts } from 'components';
+import styles from '../index.less';
 
-const { Sankey } = Chart;
+const { Sankey } = Charts;
 const { TabPane } = Tabs;
 const initStyles = {
     height: 900,

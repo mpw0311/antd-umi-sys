@@ -3,8 +3,8 @@ import { connect } from 'dva';
 import { message } from 'antd';
 import moment from 'moment';
 import _ from 'lodash';
-import MyForm from './form';
-import MyTabs from './tabs';
+import MyForm from './components/form';
+import MyTabs from './components/tabs';
 // import PageHeader from '../../components/PageHeader';
 import styles from './index.less';
 

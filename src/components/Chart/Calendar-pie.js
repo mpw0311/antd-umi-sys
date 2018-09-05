@@ -357,7 +357,7 @@ class CalendarPie extends Component {
         });
     }
     getVirtulData(time, data) {// eslint-disable-line
-        const { rows } = data;
+        const { rows = [] } = data;
         const date = +echarts.number.parseDate(time[0]);
         const end = +echarts.number.parseDate(time[time.length - 1]);
         const dayTime = 3600 * 24 * 1000;
