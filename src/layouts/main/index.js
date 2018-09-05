@@ -95,7 +95,7 @@ class Index extends Component {
     }
 }
 function mapStateToProps({ global }) {
-    const { message, userInfo, menusData, defaultMenu, notification } = global.state;
+    const { message, userInfo, menusData, defaultMenu, notification } = global;
     return {
         message,
         userInfo,

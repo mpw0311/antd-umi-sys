@@ -1,13 +1,14 @@
 
 export default {
+    namespace: 'view',
     state: {},
     subscriptions: {
-        setup({ dispatch, history }) {
+        setup({ dispatch, history }) {//eslint-disable-line
         },
     },
 
     effects: {
-        *fetch({ payload }, { call, put }) {
+        *fetch({ payload }, { call, put }) {//eslint-disable-line
             yield put({ type: 'save' });
         },
     },
