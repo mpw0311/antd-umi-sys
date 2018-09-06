@@ -1,6 +1,7 @@
-import { logout, getSysInfo } from './global';
+import { logout, getSysInfo, getMessage } from './global';
 
 export {
   logout,
-  getSysInfo
+  getSysInfo,
+  getMessage
 };

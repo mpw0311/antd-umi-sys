@@ -1,5 +1,6 @@
 import { Row, Col } from 'antd';
 import { SYSTEMNAME } from 'config';
+import { routerRedux } from 'dva/router';
 import User from './userSeting';
 import Download from './Download';
 import Search from './search';
@@ -11,11 +12,28 @@ function Header(props) {
     const { userInfo = {}, dispatch, menusData = [], dataSource = [], message, notification } = props;
     const handleLoadMore = () => {
         dispatch({
-            type: 'login/getMessage',
+            type: 'global/getMessage',
             payload: {
                 size: 10,
             },
         });
+    };
+    const handleSetting = (param) => {
+        const { key, item } = param;
+        const { state } = item.props;
+        if (key === 'logout') {
+            dispatch({
+                type: "global/logout",
+                payload: {
+                    ...state,
+                },
+            });
+        } else {
+            dispatch(routerRedux.push({
+                pathname: key,
+                state,
+            }));
+        }
     };
     return (
         <Row>
@@ -44,7 +62,7 @@ function Header(props) {
                                 <Download message={message} userInfo={userInfo} />
                             </Col>
                             <Col span={12} style={{ textAlign: 'left' }}>
-                                <User userInfo={userInfo} dispatch={dispatch} />
+                                <User userInfo={userInfo} onSetting={handleSetting} />
                             </Col>
                         </Row>
                     </div>

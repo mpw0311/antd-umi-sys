@@ -20,3 +20,11 @@ export function getSysInfo(payload) {
     }
   });
 }
+export function getMessage(payload) {
+  return request('/getMessage', {
+    method: 'POST',
+    body: JSON.stringify({
+      ...payload,
+    }),
+  });
+}

@@ -1,3 +1,4 @@
+import xlightning from './xlightning.config';
 export default {
     columns: [
         {
@@ -71,6 +72,6 @@ export default {
                 },
             ]
         },
-        // ...xlightningMenus
+        ...xlightning
     ]
 };

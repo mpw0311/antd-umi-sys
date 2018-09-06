@@ -3,7 +3,7 @@ import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts';
 import moment from 'moment';
 import _ from 'lodash';
-import { formatNumer } from './_';
+import { formatNumer, showLoading } from './_';
 import chartConfig from './config';
 import styles from './theme/Calendar-pie.less';
 
@@ -271,8 +271,8 @@ class CalendarPie extends Component {
         let pieSeries = [];
         scatterData.map((row, i) => {
             const { data } = row;
-            const pies = echarts.util.map(data, (item, index) => {
-                const center = echartObj.convertToPixel({ calendarIndex: i }, item);
+            const pies = data.map((item, index) => {
+                const center = echartObj.convertToPixel({ calendarIndex: i }, item) || [0, 0];
                 let _match = 0;
                 let _unmatch = 0;
                 for (let v of rows) {
@@ -478,6 +478,17 @@ class CalendarPie extends Component {
             handleClick = () => { },
         } = this.props;
         const { height, ...restStyle } = style;
+        const loading = showLoading(data);
+        if (loading) {
+            return (
+                <ReactEcharts
+                    option={{}}
+                    {...chartConfig}
+                    style={style}
+                    showLoading={loading}
+                />
+            );
+        }
         // 日历月份['2018-08','2018-09']
         const dataRange = this.getDataRange(time);
         const calendarCoords = this.getCalendarCoords(dataRange);
@@ -502,9 +513,12 @@ class CalendarPie extends Component {
             series: seriesData.concat(labels)
         };
         const onChartReadyCallback = (echartObj) => {
-            this.setState({
-                echartObj
-            });
+            const { echartObj: _echartObj } = this.state;
+            if (!_echartObj) {
+                this.setState({
+                    echartObj
+                });
+            }
             this.renderPies(seriesData, echartObj);
         };
         const onEvents = {

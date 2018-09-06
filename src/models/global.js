@@ -1,4 +1,5 @@
 
+import { routerRedux } from 'dva/router';
 import { apiPrefix, menusData, methods } from 'utils';
 import { menuPermission } from 'config';
 import * as api from 'services';
@@ -9,7 +10,7 @@ export default {
         status: 0,
         userInfo: {},
         message: [],
-        msgSize: 10,
+        // msgSize: 10,
         notification: undefined,
         menusData: [],
         defaultMenu: {
@@ -48,11 +49,7 @@ export default {
     effects: {
         * logout({ payload }, { call, put }) {
             yield call(api.logout, { ...payload });
-            yield put({
-                type: 'save', payload: {
-                    ...payload
-                }
-            });
+            yield put(routerRedux.push('/login'));
         },
         * getSysInfo({ payload }, { call, put, select }) {// eslint-disable-line
             let res = yield select(({ global }) => global.result);// eslint-disable-line
@@ -73,6 +70,18 @@ export default {
                 }
             });
         },
+        // 请求消息通知栏数据
+        *getMessage({ payload = {} }, { call, put, select }) {
+            const { size = 0 } = payload;
+            let count = yield select(({ global }) => global.message.length);
+            const { data = [] } = yield call(api.getMessage, { size: count + size });
+            yield put({
+                type: 'save',
+                payload: {
+                    message: data,
+                }
+            });
+        }
     },
 
     reducers: {

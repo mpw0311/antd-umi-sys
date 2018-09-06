@@ -3,8 +3,7 @@ import { connect } from 'dva';
 import { Row, Col, Card } from 'antd';
 import moment from 'moment';
 import MyForm from './components/myForm';
-// import PageHeader from '../../components/PageHeader';
-import { Charts } from 'components';
+import { Charts, PageHeader } from 'components';
 import Card2 from './components/card2';
 import Card3 from './components/card3';
 import Card4 from './components/card4';
@@ -68,11 +67,11 @@ function MatchAnalysis(props) {
     };
     return (
         <div className={styles.content}>
-            {/* <PageHeader
+            <PageHeader
                 pathtitles={['匹配额度分析']}
                 location={location}
                 description={announcement}
-            /> */}
+            />
             <MyForm onSubmit={submit} times={times} />
             <Row gutter={16} style={rowStyle}>
                 <Col span={12}>

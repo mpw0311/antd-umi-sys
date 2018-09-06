@@ -303,19 +303,19 @@ const menus = {
             title: "路径分析",
             key: "pathAnalysis",
         },
-        {
-            title: "大屏分析",
-            children: [
-                {
-                    title: "提现概况分析概览",
-                    key: "analysis2",
-                },
-                {
-                    title: "当前业务状况及趋势",
-                    key: "analysis",
-                },
-            ]
-        },
+        // {
+        //     title: "大屏分析",
+        //     children: [
+        //         {
+        //             title: "提现概况分析概览",
+        //             key: "analysis2",
+        //         },
+        //         {
+        //             title: "当前业务状况及趋势",
+        //             key: "analysis",
+        //         },
+        //     ]
+        // },
         ...xlightningMenus
     ]
 };
@@ -336,9 +336,36 @@ module.exports = {
     [`POST /getSysInfo`](req, res) {
         res.status(200).json(info);
     },
-    [`GET /logout`](req, res) {
+    [`POST /logout`](req, res) {
         res.status(200).json({
             data: {},
+            status: 0
+        });
+    },
+    [`POST /getMessage`](req, res) {
+        res.status(200).json({
+            data: [
+                {
+                  title: 'Ant Design Title 1',
+                  description: "Ant Design, a design language for background applications, is refined by Ant UED Team",
+                  type: 'read'
+                },
+                {
+                  title: 'Ant Design Title 2',
+                  description: "Ant Design, a design language for background applications, is refined by Ant UED Team",
+                  type: 'unread'
+                },
+                {
+                  title: 'Ant Design Title 3',
+                  description: "Ant Design, a design language for background applications, is refined by Ant UED Team",
+                  type: 'unread'
+                },
+                {
+                  title: 'Ant Design Title 4',
+                  description: "Ant Design, a design language for background applications, is refined by Ant UED Team",
+                  type: 'unread'
+                },
+            ],
             status: 0
         });
     }

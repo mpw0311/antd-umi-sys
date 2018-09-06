@@ -1,26 +1,12 @@
 import { Dropdown, Menu, Icon } from 'antd';
-import { routerRedux } from 'dva/router';
 import styles from './index.less';
 
 function User(props) {
-    const { userInfo, dispatch } = props;
+    const { userInfo, onSetting = () => { } } = props;
     const { userName } = userInfo;
     const handleMenuClick = (param) => {
-        const { key, item } = param;
-        const { state } = item.props;
-        if (key === 'logout') {
-            dispatch({
-                type: "login/logout",
-                payload: {
-                    ...state,
-                },
-            });
-        } else {
-            dispatch(routerRedux.push({
-                pathname: key,
-                state,
-            }));
-        }
+        onSetting(param);
+
     };
     const menu = (<Menu onClick={handleMenuClick}>
         <Menu.Item key={"sys/user"} state={{ userName, pathtitles: ["个人中心"] }} disabled>
