@@ -1,5 +1,6 @@
 
-import { apiPrefix, menusData } from 'utils';
+import { apiPrefix, menusData, methods } from 'utils';
+import { menuPermission } from 'config';
 import * as api from 'services';
 const orginalData = menusData;
 export default {
@@ -55,12 +56,20 @@ export default {
         },
         * getSysInfo({ payload }, { call, put, select }) {// eslint-disable-line
             let res = yield select(({ global }) => global.result);// eslint-disable-line
+            if (!res) {
+                res = yield call(api.getSysInfo, {});
+            }
+            const { data } = res;
+            const { menus: menusKeys, userInfo, notification } = data;
+            const { rows: keys } = menusKeys;
             const { rows: orginalRows } = orginalData;
-            const menusData = orginalRows;// MunesFilter(orginalRows, keys);
+            const menusData = menuPermission ? methods.MunesFilter(orginalRows, keys) : orginalRows;
             yield put({
                 type: 'save',
                 payload: {
                     menusData,
+                    userInfo,
+                    notification
                 }
             });
         },

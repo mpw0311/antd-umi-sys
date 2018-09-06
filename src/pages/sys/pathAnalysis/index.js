@@ -5,7 +5,7 @@ import moment from 'moment';
 import _ from 'lodash';
 import MyForm from './components/form';
 import MyTabs from './components/tabs';
-import {PageHeader} from 'components';
+import { PageHeader } from 'components';
 import styles from './index.less';
 
 

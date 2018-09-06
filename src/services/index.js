@@ -1,5 +1,6 @@
-import * as global from './global';
+import { logout, getSysInfo } from './global';
 
 export {
-  global
+  logout,
+  getSysInfo
 };
