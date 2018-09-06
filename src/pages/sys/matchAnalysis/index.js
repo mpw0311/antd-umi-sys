@@ -76,7 +76,7 @@ function MatchAnalysis(props) {
             <Row gutter={16} style={rowStyle}>
                 <Col span={12}>
                     <Card title="7天计划匹配概况一览表" >
-                        {/* <CalendarPie data={CalendarPieData} time={times} style={chartStyle} /> */}
+                        <CalendarPie data={CalendarPieData} time={times} style={chartStyle} />
                     </Card>
                 </Col>
                 <Col span={12}>

@@ -15,9 +15,6 @@ export default {
       title: 'antd-umi-sys',
       dll: false,
       pwa: false,
-      routes: {
-        exclude: [],
-      },
       hardSource: false,
       routes: {
         exclude: [
@@ -44,7 +41,7 @@ export default {
     components: resolve(__dirname, "./src/components"),
     utils: resolve(__dirname, "./src/utils"),
     config: resolve(__dirname, "./src/utils/config"),
-    services: resolve(__dirname,"./src/services"),
-    models: resolve(__dirname,"./src/models"),
+    services: resolve(__dirname, "./src/services"),
+    models: resolve(__dirname, "./src/models"),
   },
 }

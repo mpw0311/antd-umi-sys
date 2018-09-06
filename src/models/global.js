@@ -25,7 +25,7 @@ export default {
         setupHistory({ dispatch, history }) {
             history.listen((location) => {
                 const { pathname, query, state } = location;
-                if (pathname.indexOf("sys") > -1) {
+                if (pathname.indexOf("sys") > -1||pathname.indexOf("resetPassword") > -1) {
                     dispatch({
                         type: 'getSysInfo'
                     });

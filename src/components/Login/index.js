@@ -77,7 +77,7 @@ class Login extends Component {
                         <Button type="primary" htmlType="submit" className={styles.login_form_button} loading={this.state.loading}>
                             登录
                        </Button>
-                        或<a href="#register">注册账户!</a>
+                        或<a href="register">注册账户!</a>
                     </FormItem>
                 </Form>
             </div>
