@@ -18,7 +18,7 @@
     "husky": "^0.14.3",
     "lint-staged": "^7.2.2",
     "mockjs": "^1.0.1-beta3",
-    "umi": "^2.0.0-0",
+    "umi": "^2.0.2",
     "umi-plugin-react": "^1.0.0-0"
   },
   "lint-staged": {
