@@ -8,6 +8,7 @@ import Breadcrumb from './Breadcrumb';
 import Announcement from './Announcement';
 import PageHeader from './PageHeader';
 import ResetPassword from './ResetPassword';
+import Page from './Page';
 
 import Bar from './Chart/Bar';
 import BarWaterfall from './Chart/Bar-waterfall';
@@ -35,5 +36,6 @@ export {
     Announcement,
     PageHeader,
     ResetPassword,
-    Register
+    Register,
+    Page
 };

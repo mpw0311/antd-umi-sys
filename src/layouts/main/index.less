@@ -1,14 +1,36 @@
 @import '../../themes/index.less';
-.content {
+.iframeContent {
     margin: 10px 10px 0 10px;
     display: -webkit-flex;
     display: flex;
     flex-direction: column;
 }
-.children {
+
+.iframeChildren {
     padding: 0;
     background: #fff;
     flex: 1;
+    position: relative;
+    overflow: hidden;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        /*滚动条整体样式*/
+        width: 0px;
+        /*高宽分别对应横竖滚动条的尺寸*/
+        height: 0px;
+    }
+}
+
+.content {
+    margin: 10px 10px 0 10px; 
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+}
+
+.children {
+    padding: 0;
+    background: #fff;
     position: relative;
     overflow: hidden;
     overflow-y: auto;

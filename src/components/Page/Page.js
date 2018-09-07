@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { PageHeader } from 'components';
 import Loader from '../Loader';
 import styles from './Page.less';
 
 export default class Page extends Component {
-  render () {
+  render() {
     const {
-      className, children, loading = false, inner = false,
+      className, children, loading = false, inner = false, location, pathtitles = [], description
     } = this.props;
     const loadingStyle = {
       height: 'calc(100vh - 184px)',
@@ -20,6 +21,11 @@ export default class Page extends Component {
         })}
         style={loading ? loadingStyle : null}
       >
+        <PageHeader
+          pathtitles={pathtitles}
+          location={location}
+          description={description}
+        />
         {loading ? <Loader spinning /> : ''}
         {children}
       </div>

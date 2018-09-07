@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { Charts } from 'components';
+import { Charts, Page } from 'components';
 import styles from './index.css';
 
 const { Bar } = Charts;
@@ -96,9 +96,11 @@ export default function () {
     ],
   };
   return (
-    <div className={styles.normal}>
-      <h1>Page view</h1>
-      <Bar data={data} />
-    </div>
+    <Page loading={false}>
+      <div className={styles.normal}>
+        <h1>Page view</h1>
+        <Bar data={data} />
+      </div>
+    </Page>
   );
 }

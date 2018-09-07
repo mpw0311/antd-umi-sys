@@ -12,7 +12,7 @@ function User(props) {
         <Menu.Item key={"sys/user"} state={{ userName, pathtitles: ["个人中心"] }} disabled>
             <Icon type="user" />  个人中心
         </Menu.Item>
-        <Menu.Item key={"sys/resetPassword"} state={{ userName, pathtitles: ["修改密码"] }} disabled>
+        <Menu.Item key={"/resetPassword"} state={{ userName, pathtitles: ["修改密码"] }}>
             <Icon type="edit" />  修改密码
         </Menu.Item>
         <Menu.Item key={"sys/settings"} state={{ userName, pathtitles: ["设置中心"] }} disabled>

@@ -42,9 +42,9 @@ class Index extends Component {
         );
         const Frame = (
             <Layout>
-                <Content className={styles.content}>
+                <Content className={styles.iframeContent}>
                     <Breadcrumb pathtitles={names} />
-                    <div className={styles.children}>
+                    <div className={styles.iframeChildren}>
                         {children}
                     </div>
                 </Content>
@@ -52,12 +52,10 @@ class Index extends Component {
             </Layout>
         );
         const Child = (
-            <Layout>
-                <Content className={styles.content}>
-                    <div className={styles.children}>
-                        {children}
-                        {footer}
-                    </div>
+            <Layout className={styles.content}>
+                <Content className={styles.children}>
+                    {children}
+                    {footer}
                 </Content>
             </Layout>
         );

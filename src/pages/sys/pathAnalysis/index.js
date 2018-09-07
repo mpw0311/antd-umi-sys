@@ -5,12 +5,12 @@ import moment from 'moment';
 import _ from 'lodash';
 import MyForm from './components/form';
 import MyTabs from './components/tabs';
-import { PageHeader } from 'components';
+import { Page } from 'components';
 import styles from './index.less';
 
 
 function PathAnalysis(props) {
-    const { pageData, dict, events, pages, dispatch, location, eventData, announcement } = props;
+    const { pageData, dict, events, pages, dispatch, eventData, announcement } = props;
     const submit = (values) => {
         const { platformType, pages, time = [], ...rest } = values;
         if (platformType === "all") {
@@ -48,15 +48,12 @@ function PathAnalysis(props) {
         });
     };
     return (
-        <div className={styles.normal}>
-            <PageHeader
-                pathtitles={['路径分析']}
-                location={location}
-                description={announcement}
-            />
-            <MyForm dict={dict} onSubmit={submit} events={events} pages={pages} />
-            <MyTabs pageData={pageData} eventData={eventData} handleClick={handleClick} />
-        </div>
+        <Page loading={false} pathtitles={['路径分析']} description={announcement}>
+            <div className={styles.normal}>
+                <MyForm dict={dict} onSubmit={submit} events={events} pages={pages} />
+                <MyTabs pageData={pageData} eventData={eventData} handleClick={handleClick} />
+            </div>
+        </Page>
     );
 }
 

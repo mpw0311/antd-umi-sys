@@ -1,9 +1,19 @@
-import styles from './index.css';
+import { Page, ResetPassword } from 'components';
+import { Row, Col } from 'antd';
+// import styles from './index.css';
 
-export default function() {
+export default function () {
   return (
-    <div className={styles.normal}>
-      <h1>Page index</h1>
-    </div>
+    <Page
+      pathtitles={['修改密码']}
+      inner={true}
+    >
+      <Row style={{paddingTop:'40px'}}>
+        <Col span={8} offset={7}>
+          <ResetPassword
+          />
+        </Col>
+      </Row>
+    </Page>
   );
 }

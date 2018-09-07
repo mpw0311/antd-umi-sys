@@ -12,7 +12,7 @@ class PwdFrom extends Component {
         };
     }
     render() {
-        const { form, onSubmit, onConfirm } = this.props;
+        const { form, onSubmit = () => { }, onConfirm = () => { } } = this.props;
         const { verification, status } = this.state;
         const { getFieldDecorator, getFieldValue, validateFields } = form;
         const formItemLayout = {
