@@ -16,11 +16,30 @@ class Index extends Component {
             minHeight: document.body.offsetHeight
         };
         this.handleClick = this.handleClick.bind(this);
+        this.resize = this.resize.bind(this);
+    }
+    componentDidMount() {
+        this.resize();
     }
     shouldComponentUpdate(nextProps, nextState) { //eslint-disable-line
         const propsResult = _.isEqual(nextProps, this.props);
         const stateResult = _.isEqual(nextState, this.state);
         return !(propsResult && stateResult);
+    }
+    resize() {
+        window.onresize = () => {
+            const winWidth = document.documentElement.clientWidth;
+            const { collapsed } = this.state;
+            if (winWidth <= 1400 && collapsed === false) {
+                this.setState({
+                    collapsed: true
+                });
+            } else if (winWidth > 1400 && collapsed === true) {
+                this.setState({
+                    collapsed: false
+                });
+            }
+        };
     }
     handleClick() {
         this.setState(prevState => ({
