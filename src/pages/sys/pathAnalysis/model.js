@@ -7,6 +7,10 @@ export default {
 
     state: {
         pageData: undefined,
+        eventData: undefined,
+        pageNode: undefined,
+        eventNode: undefined,
+        clickType: '1',
         dict: {
             eventCountDict: [
                 {
@@ -16,6 +20,10 @@ export default {
                 {
                     name: '>=100',
                     value: '100'
+                },
+                {
+                    name: '>=500',
+                    value: '500'
                 },
                 {
                     name: '>=1000',
@@ -34,6 +42,10 @@ export default {
                 {
                     name: '>=100',
                     value: '100'
+                },
+                {
+                    name: '>=500',
+                    value: '500'
                 },
                 {
                     name: '>=1000',
@@ -79,10 +91,10 @@ export default {
     },
 
     subscriptions: {
-        setup({ dispatch, history }) {
-            return history.listen(({ pathname, query, state }) => { // eslint-disable-line
-                if (pathname.indexOf('/sys/pathAnalysis') > -1) {
-                    dispatch({ type: 'getDict', payload: {} });
+        setupHistory({ dispatch, history }) {
+            history.listen(({ pathname, query, state }) => { // eslint-disable-line
+                if (pathname.indexOf('sys/pathAnalysis') > -1) {
+                    dispatch({ type: 'getDict', payload: { timeType: 'day' } });
                 }
             });
         },
@@ -91,25 +103,23 @@ export default {
     effects: {
         *fetch({ payload }, { call, put }) {
             const { data } = yield call(api.fetch, {
-                ...payload
+                ...payload,
+                clickType: "1"
             });
             const { pathData: pageData, eventData } = data;
             yield put({
                 type: 'save',
                 payload: {
                     pageData,
-                    eventData
-                },
-            });
-            yield put({
-                type: 'save',
-                payload: {
-                    values: payload
+                    eventData,
+                    values: payload,
+                    // pageNode: payload.pages,
+                    // eventNode: payload.events
                 },
             });
         },
-        *getDict({ payload }, { call, put }) {  // eslint-disable-line
-            const { data } = yield call(api.getInfoTypeDict, {});
+        *getDict({ payload }, { call, put }) {
+            const { data } = yield call(api.getInfoTypeDict, { ...payload });
             const { eventDict: events, pageDict: pages } = data;
             yield put({
                 type: 'save',
@@ -120,17 +130,19 @@ export default {
             });
         },
         *_fetch({ payload }, { call, put, select }) {
-            const values = yield select(state => state.pathAnalysis.values);
-            const { data } = yield call(api.fetch, {
-                ...values,
-                ...payload
-            });
+            const { values } = yield select(state => state.pathAnalysis);
+            const { events, pages, ...rest } = values;//eslint-disable-line
+            const param = {
+                ...rest,
+                ...payload,
+            };
+            const { data } = yield call(api.fetch, param);
             const { pathData: pageData, eventData } = data;
             yield put({
                 type: 'save',
                 payload: {
                     pageData,
-                    eventData
+                    eventData,
                 },
             });
         }

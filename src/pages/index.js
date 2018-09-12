@@ -1,3 +1,3 @@
 import Redirect from 'umi/redirect';
 
-export default () => <Redirect to="/sys" />;
+export default () => <Redirect to="/sys/frame" />;

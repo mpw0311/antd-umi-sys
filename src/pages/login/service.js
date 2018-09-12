@@ -6,5 +6,8 @@ export function login(payload) {
     body: JSON.stringify({
       ...payload,
     }),
+    setting: {
+      STATUS: 0
+    }
   });
 }

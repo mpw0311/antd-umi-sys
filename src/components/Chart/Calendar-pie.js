@@ -226,15 +226,15 @@ class CalendarPie extends Component {
         this.getCalendar = this.getCalendar.bind(this);
         this.getCalendarLable = this.getCalendarLable.bind(this);
     }
-    componentWillUpdate(nextProps, nextState) {
-        const { time, data } = nextProps;
-        const { echartObj } = nextState;
-        // // 日历月份['2018-08','2018-09']
-        const dataRange = this.getDataRange(time);
-        const scatterData = this.getVirtulData(time, data);
-        const seriesData = this.getSeries(dataRange, scatterData);
-        this.renderPies(seriesData, echartObj);
-    }
+    // componentWillUpdate(nextProps, nextState) {
+    //     const { time, data } = nextProps;
+    //     const { echartObj } = nextState;
+    //     // // 日历月份['2018-08','2018-09']
+    //     const dataRange = this.getDataRange(time);
+    //     const scatterData = this.getVirtulData(time, data);
+    //     const seriesData = this.getSeries(dataRange, scatterData);
+    //     this.renderPies(seriesData, echartObj);
+    // }
     // 获取时间range
     getDataRange(time) {// eslint-disable-line
         const startTime = moment(time[0]);
@@ -264,9 +264,9 @@ class CalendarPie extends Component {
         return heights;
     }
     // 渲染每个饼图，并带有位置信息
-    getPieSeries(scatterData) {
+    getPieSeries(scatterData,echartObj) {
         const { data } = this.props;
-        const { pieRadius, echartObj } = this.state;
+        const { pieRadius } = this.state;
         const { rows = [] } = data;
         let pieSeries = [];
         scatterData.map((row, i) => {
@@ -458,11 +458,11 @@ class CalendarPie extends Component {
     }
     renderPies(seriesData, chart) {
         setTimeout(() => {
-            const pies = this.getPieSeries(seriesData);
+            const pies = this.getPieSeries(seriesData,chart);
             chart.setOption({
                 series: pies
             });
-            chart.resize();
+            // chart.resize();
             // setTimeout(() => {
             //     echartObj.setOption({
             //         series: getPieSeriesUpdate(scatterData, echartObj)
@@ -475,7 +475,6 @@ class CalendarPie extends Component {
             style,
             time,
             data,
-            handleClick = () => { },
         } = this.props;
         const { height, ...restStyle } = style;
         const loading = showLoading(data);
@@ -513,20 +512,9 @@ class CalendarPie extends Component {
             series: seriesData.concat(labels)
         };
         const onChartReadyCallback = (echartObj) => {
-            const { echartObj: _echartObj } = this.state;
-            if (!_echartObj) {
-                this.setState({
-                    echartObj
-                });
-            }
             this.renderPies(seriesData, echartObj);
         };
         const onEvents = {
-            click: (params) => {
-                if (params.dataType === "node") {
-                    handleClick(params);
-                }
-            }
         };
         return (
             <div>

@@ -7,10 +7,10 @@ export default {
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
       antd: true,
-      dva: true,
-      // dva: {
-      //   immer: true
-      // },
+      // dva: true,
+      dva: {
+        immer: true
+      },
       dynamicImport: true,//true：按需加载
       title: 'antd-umi-sys',
       dll: false,
@@ -44,4 +44,11 @@ export default {
     services: resolve(__dirname, "./src/services"),
     models: resolve(__dirname, "./src/models"),
   },
+  "proxy": {
+    // "/api": {
+    //   "target": "http://jsonplaceholder.typicode.com/",
+    //   "changeOrigin": true,
+    //   "pathRewrite": { "^/api" : "" }
+    // }
+  }
 }

@@ -13,3 +13,45 @@
         text-align: right;
     }
 }
+
+.pop {
+    position: absolute;
+    background-color: rgba(150, 150, 150, 0.6);
+    width: 100px;
+    ul,
+    li {
+        list-style: none;
+        padding: 5px;
+        margin: 0;
+    }
+    ul{
+        margin-top: 4px;
+    }
+    li {
+        height: 25px;
+        line-height: 25px;
+        color: #fefefe;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    border-radius: 6px;
+}
+
+.close {
+    cursor: pointer;
+    margin: 2px;
+    z-index: 10;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 18px;
+    text-align: center;
+    font-size: 18px;
+    color: red;
+    position: absolute;
+    right: 0px;
+    border: 1px solid #eeeeee;
+    background-color: #efefef;
+    border-radius: 50%;
+}

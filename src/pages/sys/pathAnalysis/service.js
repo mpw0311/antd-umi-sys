@@ -1,4 +1,4 @@
-import { request } from 'utils';
+import {request} from 'utils';
 
 export function fetch(payload) {
     return request(`/getPath`, {
@@ -8,8 +8,11 @@ export function fetch(payload) {
         }),
     });
 }
-export function getInfoTypeDict() {
+export function getInfoTypeDict(payload) {
     return request(`/getPathDict`, {
-        method: 'GET',
+        method: 'POST',
+        body: JSON.stringify({
+            ...payload
+        }),
     });
 }

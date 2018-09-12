@@ -10,9 +10,9 @@ import styles from './index.less';
 
 
 function PathAnalysis(props) {
-    const { pageData, dict, events, pages, dispatch, eventData, announcement } = props;
+    const { pageData, dict, events, pages, dispatch, eventData, announcement, loading } = props;
     const submit = (values) => {
-        const { platformType, pages, time = [], ...rest } = values;
+        const { platformType, pages, ...rest } = values;
         if (platformType === "all") {
             values.pages = undefined;
         } else if (pages && pages.length === 0) {
@@ -23,12 +23,39 @@ function PathAnalysis(props) {
             if (_.isArray(values[key]) && values[key].length === 0) {
                 message.error('请填好查询条件后提交！');
                 return false;
-            } else if (values[key] === undefined) {
+            } else if (values[key] === undefined || values[key] === null) {
                 message.error('请填好查询条件后提交！');
                 return false;
             }
         }
-        const d = time.map(d => moment(d).format("YYYY-MM-DD"));
+        const { time, timeType } = rest;
+        let d = null;
+        switch (timeType) {
+            case "day":
+                d = [moment(time).format("YYYY-MM-DD"), moment(time).format("YYYY-MM-DD")];
+                break;
+            case "month": // eslint-disable-line
+                const ys = moment(time).year();
+                const ms = moment(time).month() + 1;
+                const ds = (new Date(ys, ms, 0)).getDate();
+                const tt = moment(time).format("YYYY-MM");
+                d = [`${tt}-01`, `${tt}-${ds}`];
+                break;
+            case "week":// eslint-disable-line
+                const w = moment(time).day();
+                if (w > 0) {
+                    const d1 = moment(time - (w - 1) * 24 * 60 * 60 * 1000).format("YYYY-MM-DD");
+                    const d2 = moment(time + (7 - w) * 24 * 60 * 60 * 1000).format("YYYY-MM-DD");
+                    d = [d1, d2];
+                } else {
+                    const d1 = moment(time - (7 - 1)).format("YYYY-MM-DD");
+                    const d2 = moment(time).format("YYYY-MM-DD");
+                    d = [d1, d2];
+                }
+                break;
+            default:
+                d = [moment(time).format("YYYY-MM-DD"), moment(time).format("YYYY-MM-DD")];
+        }
         dispatch({
             type: 'pathAnalysis/fetch',
             payload: {
@@ -47,11 +74,19 @@ function PathAnalysis(props) {
             },
         });
     };
+    const handleGetDict = (v) => {
+        dispatch({
+            type: 'pathAnalysis/getDict',
+            payload: {
+                timeType: v
+            },
+        });
+    };
     return (
         <Page loading={false} pathtitles={['路径分析']} description={announcement}>
             <div className={styles.normal}>
-                <MyForm dict={dict} onSubmit={submit} events={events} pages={pages} />
-                <MyTabs pageData={pageData} eventData={eventData} handleClick={handleClick} />
+                <MyForm dict={dict} onSubmit={submit} events={events} pages={pages} handleGetDict={handleGetDict} />
+                <MyTabs pageData={pageData} eventData={eventData} handleClick={handleClick} loading={loading} />
             </div>
         </Page>
     );

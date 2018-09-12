@@ -7,33 +7,26 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loading: false,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        const { form, onSubmit = () => { } } = this.props;
+        const { form, onSubmit } = this.props;
         form.validateFields({ force: true }, (errors, values) => {
             onSubmit(errors, values);
-            if (errors === null) {
-                this.setState({
-                    loading: true
-                });
-            }
         });
     }
     render() {
+        const { loading, form } = this.props;
         const {
-            // validateFields,
             getFieldDecorator: fd,
-        } = this.props.form;
+        } = form;
         return (
             <div className={styles.login_form}>
                 <Form onSubmit={this.handleSubmit}>
                     <FormItem>
                         {fd('username', {
-                            // initialValue: "admin",
                             rules: [{
                                 required: true,
                                 message: '请输入用户名!'
@@ -46,7 +39,6 @@ class Login extends Component {
                         <Col span={16}>
                             <FormItem>
                                 {fd('password', {
-                                    // initialValue: "",
                                     rules: [{ required: true, message: '请输入密码!' }],
                                 })(
                                     <Input prefix={<Icon type="lock" className={styles.color} />} type="password" placeholder="密码" />
@@ -56,7 +48,6 @@ class Login extends Component {
                         <Col span={8}>
                             <FormItem>
                                 {fd("googleToken", {
-                                    // initialValue: "",
                                     rules: [{ required: true, message: '请输入口令!' }]
                                 })(
                                     <Input prefix={<Icon type="mobile" className={styles.color} />} placeholder="口令" />
@@ -72,12 +63,11 @@ class Login extends Component {
                         })(
                             <Checkbox>记住密码</Checkbox>
                         )}
-                        {/* <a href="#register" className={styles.login_form_register}>注册账户</a> */}
                         <a className={styles.login_form_forgot} href="">忘记密码</a>
-                        <Button type="primary" htmlType="submit" className={styles.login_form_button} loading={this.state.loading}>
+                        <Button type="primary" htmlType="submit" className={styles.login_form_button} loading={loading}>
                             登录
                        </Button>
-                        或<a href="register">注册账户!</a>
+                        {/* 或<a href="#register">注册账户!</a> */}
                     </FormItem>
                 </Form>
             </div>

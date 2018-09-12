@@ -29,9 +29,9 @@ export default {
                     dispatch({
                         type: 'getSysInfo'
                     });
-                    dispatch({
-                        type: 'getMessage',
-                    });
+                    // dispatch({
+                    //     type: 'getMessage',
+                    // });
                 }
                 if (pathname.indexOf("frame") > -1) {
                     dispatch({

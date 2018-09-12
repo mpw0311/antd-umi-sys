@@ -1,7 +1,7 @@
 import { connect } from 'dva';
 import { Login } from 'components';
 import styles from './index.css';
-function Index({ dispatch }) {
+function Index({ dispatch, loading }) {
   const handleSubmit = (err, values) => {
     dispatch({
       type: 'login/login',
@@ -12,7 +12,7 @@ function Index({ dispatch }) {
   };
   return (
     <div className={styles.normal}>
-      <Login onSubmit={handleSubmit} />
+      <Login onSubmit={handleSubmit} loading={loading} />
     </div>
   );
 }
@@ -20,7 +20,7 @@ function Index({ dispatch }) {
 function mapStateToProps({ login, loading }) {
   return {
     ...login,
-    loading,
+    loading:loading.global,
   };
 }
 

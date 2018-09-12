@@ -1,11 +1,13 @@
 
 import * as api from './service';
+import { message } from 'antd';
 import { routerRedux } from 'dva/router';
 
 export default {
     namespace: 'login',
     state: {
         status: '0',
+        // msg: undefined
     },
     subscriptions: {
         setup({ dispatch, history }) { // eslint-disable-line
@@ -17,15 +19,20 @@ export default {
             yield put({ type: 'save' });
         },
         *login({ payload }, { call, put }) {
-            const { data } = yield call(api.login, { ...payload });
-            yield put({
-                type: 'save',
-                payload: {
-                    ...payload,
-                    ...data,
-                },
-            });
-            yield put(routerRedux.push('/sys'));
+            const res = yield call(api.login, { ...payload });
+            const { status, data } = res;
+            if (status === 0) {
+                yield put(routerRedux.push('/sys'));
+            } else {
+                const { alertDesc } = data;
+                message.error(alertDesc);
+                // yield put({
+                //     type: 'save',
+                //     payload: {
+                //         msg: alertDesc
+                //     }
+                // });
+            }
         },
     },
 

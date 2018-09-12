@@ -9,17 +9,73 @@ const initStyles = {
     height: 900,
     width: "100%"
 };
+const dataStyle = {
+    lineHeight: '400px',
+    textAlign: 'center',
+    height: '100%'
+};
 class MyTabs extends Component {
     constructor(props) {
         super(props);
         this.state = {
             chartStyles: initStyles,
-            radioValue: ""
+            radioValue: "",
+            nodes: undefined,
+            popStyle: {
+                top: 0,
+                left: 0,
+                display: 'none'
+            }
         };
         this.handleSizeChange = this.handleSizeChange.bind(this);
         this.callback = this.callback.bind(this);
-        this.handleEventClick = this.handleEventClick.bind(this);
-        this.handlePageClick = this.handlePageClick.bind(this);
+        this.handleContextmenu = this.handleContextmenu.bind(this);
+        this.onEventClick = this.onEventClick.bind(this);
+        this.onPageClick = this.onPageClick.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+    }
+    componentDidMount() {
+        // const _self = this;
+        // document.onclick = () => {
+        //     _self.setState({
+        //         popStyle: {
+        //             display: 'none'
+        //         }
+        //     });
+        // };
+        // document.onmousewheel = () => {
+        //     _self.setState({
+        //         popStyle: {
+        //             display: 'none'
+        //         }
+        //     });
+        // };
+    }
+    onEventClick(value) {
+        const { handleClick } = this.props;
+        const { nodes } = this.state;
+        handleClick({
+            events: nodes,
+            clickType: value
+        });
+        this.setState({
+            popStyle: {
+                display: 'none'
+            }
+        });
+    }
+    onPageClick(value) {
+        const { handleClick } = this.props;
+        const { nodes } = this.state;
+        handleClick({
+            pages: nodes,
+            clickType: value
+        });
+        this.setState({
+            popStyle: {
+                display: 'none'
+            }
+        });
     }
     handleSizeChange(e) {
         const { chartStyles } = this.state;
@@ -52,21 +108,34 @@ class MyTabs extends Component {
             chartStyles: initStyles
         });
     }
-    handleEventClick(params) { // eslint-disable-line
-        const { handleClick } = this.props;
-        handleClick({
-            events: params.name
+    handleContextmenu(params, e) {
+        const { data } = params;
+        const x = e.offsetX;
+        const y = e.offsetY;
+        const { name } = data;
+        this.setState({
+            nodes: name,
+            popStyle: {
+                top: y,
+                left: x,
+                display: name === undefined ? 'none' : 'block'
+            }
         });
     }
-    handlePageClick(params) {// eslint-disable-line
-        const { handleClick } = this.props;
-
-        handleClick({
-            pages: params.name
+    handleClose() {
+        this.setState({
+            popStyle: {
+                display: 'none'
+            }
         });
     }
     render() {
-        const { pageData = [], eventData = [], } = this.props; // eslint-disable-line
+        const {
+            pageData = [],
+            eventData = [],
+            loading
+        } = this.props;
+        const { nodes, popStyle } = this.state;
         const { width, height } = initStyles;
         const boxStyle = { width, height, overflow: "auto" };
         const { chartStyles, radioValue } = this.state;
@@ -87,20 +156,44 @@ class MyTabs extends Component {
                     const { nodes, links } = item;
                     if (nodes.length > 0 && links.length > 0) {
                         return (
-                            <Sankey key={i} data={item} style={{ height: h, ...rest }} handleClick={callback} />
+                            <Sankey key={i} data={item} style={{ height: h, ...rest }} handleClick={callback} loading={loading} />
                         );
                     } else {
                         return (
-                            <div>无数据</div>
+                            <div style={dataStyle}>无数据</div>
                         );
                     }
                 });
             } else {
                 return (
-                    <div>无数据</div>
+                    <div style={dataStyle}>无数据</div>
                 );
             }
         };
+        const Pop = (onPageClick) => (
+            <span className={styles.pop} style={{ ...popStyle }}>
+                <i className={styles.close} onClick={this.handleClose}>×</i>
+                <ul>
+                    <li>{nodes}</li>
+                    <li>
+                        <a
+                            onClick={(e) => {
+                                e.preventDefault();
+                                onPageClick(2);
+                            }}
+                        >上一级</a>
+                    </li>
+                    <li>
+                        <a
+                            onClick={(e) => {
+                                e.preventDefault();
+                                onPageClick(1);
+                            }}
+                        >下一级</a>
+                    </li>
+                </ul>
+            </span>
+        );
         return (
             <div className={styles.tabContent}>
                 <span className={styles.btn}>
@@ -112,13 +205,15 @@ class MyTabs extends Component {
                 </span>
                 <Tabs defaultActiveKey="1" onChange={this.callback}>
                     <TabPane tab="事件操作分析" key="1">
-                        <div style={boxStyle}>
-                            {sankeyChart(eventData, this.handleEventClick)}
+                        <div style={boxStyle} >
+                            {sankeyChart(eventData, this.handleContextmenu)}
+                            {Pop(this.onEventClick)}
                         </div>
                     </TabPane>
                     <TabPane tab="页面浏览分析" key="2">
                         <div style={boxStyle}>
-                            {sankeyChart(pageData, this.handlePageClick)}
+                            {sankeyChart(pageData, this.handleContextmenu)}
+                            {Pop(this.onPageClick)}
                         </div>
                     </TabPane>
                 </Tabs>

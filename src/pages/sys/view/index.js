@@ -95,11 +95,14 @@ export default function () {
       },
     ],
   };
+  const handleClick = (p) => {
+    console.log(p);
+  };
   return (
     <Page loading={false}>
       <div className={styles.normal}>
         <h1>Page view</h1>
-        <Bar data={data} />
+        <Bar data={data} handleClick={handleClick} />
       </div>
     </Page>
   );
