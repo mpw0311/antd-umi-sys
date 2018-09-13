@@ -1,4 +1,5 @@
-import { request } from 'utils';
+import { ajax } from 'utils';
+const request = ajax;
 export function logout(payload) {
   return request('/logout', {
     method: 'POST',

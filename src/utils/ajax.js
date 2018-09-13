@@ -25,12 +25,19 @@ export default function (api, options = {}) {
                     } else if (status === 0) {
                         resolve({ data });
                     } else {
-                        message.error("网络请求无权限！");
+                        message.error("无权限！");
                         setTimeout(() => {
                             const { origin } = window.location;
                             window.location.href = origin;
                         }, 1000);
                     }
+                }
+                if (xhr.status !== 200 && xhr.status !== 304) {
+                    message.error(xhr.status);
+                    setTimeout(() => {
+                        const { origin } = window.location;
+                        window.location.href = origin;
+                    }, 1000);
                 }
             };
             xhr.send();
@@ -49,12 +56,19 @@ export default function (api, options = {}) {
                     } else if (status === 0) {
                         resolve({ data });
                     } else {
-                        message.error("网络请求无权限！");
+                        message.error("无权限！");
                         setTimeout(() => {
                             const { origin } = window.location;
                             window.location.href = origin;
                         }, 1000);
                     }
+                }
+                if (xhr.status !== 200 && xhr.status !== 304) {
+                    message.error(xhr.status);
+                    setTimeout(() => {
+                        const { origin } = window.location;
+                        window.location.href = origin;
+                    }, 1000);
                 }
             };
             xhr.send(paramdata);

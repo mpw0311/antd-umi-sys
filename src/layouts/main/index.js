@@ -4,12 +4,13 @@ import { LocaleProvider, Layout, Spin } from 'antd';
 import _ from 'lodash';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 import { Menus, GlobalHeader, Breadcrumb } from 'components';
+import { footerText } from 'config';
 import styles from './index.less';
 
 const { Header, Footer, Sider, Content } = Layout;
 const footer = (
     <Footer className={styles.footer}>
-        V2.5.0 2018 © by jlc data center.
+        {footerText}
     </Footer>
 );
 const globalLoading = (

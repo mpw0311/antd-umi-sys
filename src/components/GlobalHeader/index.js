@@ -1,5 +1,5 @@
 import { Row, Col } from 'antd';
-import { SYSTEMNAME } from 'config';
+import { sysName } from 'config';
 import { routerRedux } from 'dva/router';
 import User from './userSeting';
 import Download from './Download';
@@ -7,6 +7,7 @@ import Search from './search';
 import Roll from '../GlobalRoll';
 import Notice from '../Notice';
 import styles from './index.less';
+
 
 function Header(props) {
     const { userInfo = {}, dispatch, menusData = [], dataSource = [], message, notification } = props;
@@ -41,7 +42,7 @@ function Header(props) {
                 <div className={styles.header}>
                     <div className={styles.lf}>
                         <div className={styles.logo} />
-                        <h1 style={{ color: '#fff' }}>{SYSTEMNAME}</h1>
+                        <h1 style={{ color: '#fff' }}>{sysName}</h1>
                     </div>
                     <div className={styles.center}>
                         <Roll notification={notification} />
