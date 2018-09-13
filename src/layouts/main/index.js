@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import { LocaleProvider, Layout } from 'antd';
+import { LocaleProvider, Layout, Spin } from 'antd';
 import _ from 'lodash';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 import { Menus, GlobalHeader, Breadcrumb } from 'components';
 import styles from './index.less';
 
 const { Header, Footer, Sider, Content } = Layout;
+const footer = (
+    <Footer className={styles.footer}>
+        V2.5.0 2018 © by jlc data center.
+    </Footer>
+);
+const globalLoading = (
+    <div className={styles.spin}>
+        <Spin size="large" tip="加载中..." />
+    </div>
+);
 class Index extends Component {
     constructor(props) {
         super(props);
@@ -47,18 +57,16 @@ class Index extends Component {
         }));
     }
     render() {
-        const { location, children, userInfo, message, dispatch, menusData = [], defaultMenu = {}, notification } = this.props;
+        const { location, children, userInfo, message, dispatch, menusData = [], defaultMenu = {}, notification, loading } = this.props;
+        if (loading === true && menusData.length === 0) {
+            return globalLoading;
+        }
         const { searchData } = this.state;
         const { pathname, state: pathstate } = location;
         const { pathtitles } = pathstate || {};
         const { key: defaultKey, pathtitles: defaultPathtitles } = defaultMenu;
         const names = pathtitles || defaultPathtitles; // eslint-disable-line
         const isFrame = pathname && (pathname === '/sys' || pathname.indexOf('frame') > -1) ? true : false;// eslint-disable-line
-        const footer = (
-            <Footer className={styles.footer}>
-                V2.5.0 2018 © by jlc data center.
-            </Footer>
-        );
         const Frame = (
             <Layout>
                 <Content className={styles.iframeContent}>
@@ -111,7 +119,7 @@ class Index extends Component {
         );
     }
 }
-function mapStateToProps({ global }) {
+function mapStateToProps({ global, loading }) {
     const { message, userInfo, menusData, defaultMenu, notification } = global;
     return {
         message,
@@ -119,6 +127,7 @@ function mapStateToProps({ global }) {
         menusData,
         defaultMenu,
         notification,
+        loading: loading.global
     };
 }
 export default connect(mapStateToProps)(Index);

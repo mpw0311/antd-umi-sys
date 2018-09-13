@@ -1,5 +1,7 @@
 import fetch from 'dva/fetch';
-import {apiPrefix} from 'config';
+import { message } from 'antd';
+import { apiPrefix } from 'config';
+
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
@@ -34,7 +36,7 @@ export default async function request(url, options) {
   checkStatus(response);
 
   const result = await response.json();
-  const { data, status } = result;
+  const { data = {}, status } = result;
   if (STATUS === 0) {
     return result;
   }
@@ -46,8 +48,13 @@ export default async function request(url, options) {
     ret.headers['x-total-count'] = response.headers.get('x-total-count');
   }
   if (status !== 0) {
-    const url = window.location.origin;
-    window.location.href = url;
+    const { alertDesc } = data;
+    message.error(alertDesc || '无权限!');
+    setTimeout(() => {
+      const url = window.location.origin;
+      window.location.href = url + "/login";
+    }, 1000);
+  } else {
+    return ret;
   }
-  return ret;
 }

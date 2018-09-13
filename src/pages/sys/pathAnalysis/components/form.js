@@ -106,13 +106,14 @@ class MyForm extends Component {
         };
         const getTime = (t) => {
             let tt = null;
+            const initTime = moment().subtract(1, 'days');
             const day = (
                 <FormItem
                     {...formItemLayout}
                 >
                     {getFieldDecorator('time', {
                         ...dateConfig,
-                        initialValue: moment(),
+                        initialValue: initTime,
                     })(
                         <DatePicker
                             format={dateFormat}
@@ -126,7 +127,7 @@ class MyForm extends Component {
                 >
                     {getFieldDecorator('time', {
                         ...dateConfig,
-                        initialValue: moment(),
+                        initialValue: initTime,
                     })(
                         <WeekPicker />
                     )}
@@ -138,7 +139,7 @@ class MyForm extends Component {
                 >
                     {getFieldDecorator('time', {
                         ...dateConfig,
-                        initialValue: moment(),
+                        initialValue: initTime,
                     })(
                         <MonthPicker format={monthFormat} />
                     )}

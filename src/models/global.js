@@ -1,7 +1,7 @@
 
 import { routerRedux } from 'dva/router';
-import { apiPrefix, menusData, methods } from 'utils';
-import { menuPermission } from 'config';
+import { menusData, methods } from 'utils';
+import { menuPermission, xlightning } from 'config';
 import * as api from 'services';
 const orginalData = menusData;
 export default {
@@ -17,7 +17,7 @@ export default {
             title: '交易',
             pathtitles: ['汇总数据', '交易'],
             key: 'summryData_transaction',
-            url: `${apiPrefix}/offline/summryData_transaction`
+            url: `${xlightning}/offline/summryData_transaction`
         },
         url: undefined
     },
@@ -25,7 +25,7 @@ export default {
         setupHistory({ dispatch, history }) {
             history.listen((location) => {
                 const { pathname, query, state } = location;
-                if (pathname.indexOf("sys") > -1||pathname.indexOf("resetPassword") > -1) {
+                if (pathname.indexOf("sys") > -1 || pathname.indexOf("resetPassword") > -1) {
                     dispatch({
                         type: 'getSysInfo'
                     });

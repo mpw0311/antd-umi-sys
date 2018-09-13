@@ -3,7 +3,8 @@ import MainLayout from './main';
 
 function BasicLayout(props) {
   const { location, children } = props;
-  if (location.pathname === '/login' || location.pathname === '/register') {
+  const { pathname } = location;
+  if (pathname === '/login' || pathname === '/register') {
     return (<LoginLayout>{children}</LoginLayout>);
   }
   return (

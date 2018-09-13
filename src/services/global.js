@@ -1,5 +1,4 @@
 import { request } from 'utils';
-
 export function logout(payload) {
   return request('/logout', {
     method: 'POST',
