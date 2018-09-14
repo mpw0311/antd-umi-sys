@@ -49,20 +49,20 @@ function Header(props) {
                     </div>
                     <div className={styles.rg}>
                         <Row>
-                            <Col span={1} style={{ textAlign: 'right', display: 'none' }}>
+                            <Col span={10} style={{ textAlign: 'right'}}>
                                 <Search
                                     menusData={menusData}
                                     dataSource={dataSource}
                                     dispatch={dispatch}
                                 />
                             </Col>
-                            <Col span={5} style={{ textAlign: 'center' }}>
+                            <Col span={3} style={{ textAlign: 'center' }}>
                                 <Notice message={message} userInfo={userInfo} onLoadMore={handleLoadMore} />
                             </Col>
-                            <Col span={6} style={{ textAlign: 'center' }}>
+                            <Col span={3} style={{ textAlign: 'center' }}>
                                 <Download message={message} userInfo={userInfo} />
                             </Col>
-                            <Col span={12} style={{ textAlign: 'left' }}>
+                            <Col span={8} style={{ textAlign: 'left' }}>
                                 <User userInfo={userInfo} onSetting={handleSetting} />
                             </Col>
                         </Row>

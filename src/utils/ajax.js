@@ -34,10 +34,12 @@ export default function (api, options = {}) {
                 }
                 if (xhr.status !== 200 && xhr.status !== 304) {
                     message.error(xhr.status);
-                    setTimeout(() => {
-                        const { origin } = window.location;
-                        window.location.href = origin;
-                    }, 1000);
+                    if (STATUS !== 0) {
+                        setTimeout(() => {
+                            const { origin } = window.location;
+                            window.location.href = origin;
+                        }, 1000);
+                    }
                 }
             };
             xhr.send();
@@ -65,10 +67,12 @@ export default function (api, options = {}) {
                 }
                 if (xhr.status !== 200 && xhr.status !== 304) {
                     message.error(xhr.status);
-                    setTimeout(() => {
-                        const { origin } = window.location;
-                        window.location.href = origin;
-                    }, 1000);
+                    if (STATUS !== 0) {
+                        setTimeout(() => {
+                            const { origin } = window.location;
+                            window.location.href = origin;
+                        }, 1000);
+                    }
                 }
             };
             xhr.send(paramdata);

@@ -18,13 +18,13 @@
 .header .center {
   position: absolute;
   left: 200px;
-  right: 260px;
+  right: 420px;
   height: 64px;
   overflow: hidden;
 }
 .header .rg {
   position: absolute;
-  width: 260px;
+  width: 420px;
   height: 64px;
   right: 0;
 }

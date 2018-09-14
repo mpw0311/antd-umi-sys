@@ -242,6 +242,10 @@ const xlightningMenus = [
                 title: "金额分析",
                 key: "amount_analysis",
             },
+            {
+                title: "定投分析",
+                key: "dt_analysis",
+            },
         ]
     },
     {

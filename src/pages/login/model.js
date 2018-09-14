@@ -6,8 +6,6 @@ import { routerRedux } from 'dva/router';
 export default {
     namespace: 'login',
     state: {
-        status: '0',
-        // msg: undefined
     },
     subscriptions: {
         setup({ dispatch, history }) { // eslint-disable-line
@@ -15,9 +13,6 @@ export default {
     },
 
     effects: {
-        *fetch({ payload }, { call, put }) { // eslint-disable-line
-            yield put({ type: 'save' });
-        },
         *login({ payload }, { call, put }) {
             const res = yield call(api.login, { ...payload });
             const { status, data } = res;
@@ -26,12 +21,6 @@ export default {
             } else {
                 const { alertDesc } = data;
                 message.error(alertDesc);
-                // yield put({
-                //     type: 'save',
-                //     payload: {
-                //         msg: alertDesc
-                //     }
-                // });
             }
         },
     },

@@ -513,6 +513,20 @@ export default [
                 icon: "book",
                 url: `${xlightning}/offline/amount_analysis`
             },
+            {
+                title: "定投分析",
+                link: "/sys/frame",
+                key: "dt_analysis",
+                icon: "book",
+                url: `${xlightning}/offline/dt_analysis`
+            },
+            {
+                title: "增长分析",
+                link: "/sys/frame",
+                key: "increase_analysis",
+                icon: "book",
+                url: `${xlightning}/offline/increase_analysis`
+            },
         ]
     },
     {
