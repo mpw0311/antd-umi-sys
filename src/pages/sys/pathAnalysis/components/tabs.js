@@ -35,14 +35,17 @@ class MyTabs extends Component {
         this.handleClose = this.handleClose.bind(this);
     }
     componentDidMount() {
-        // const _self = this;
-        // document.onclick = () => {
-        //     _self.setState({
-        //         popStyle: {
-        //             display: 'none'
-        //         }
-        //     });
-        // };
+        const _self = this;
+        document.onclick = () => {
+            const { popStyle } = _self.state;
+            if (popStyle.display !== 'none') {
+                _self.setState({
+                    popStyle: {
+                        display: 'none'
+                    }
+                });
+            }
+        };
         // document.onmousewheel = () => {
         //     _self.setState({
         //         popStyle: {
