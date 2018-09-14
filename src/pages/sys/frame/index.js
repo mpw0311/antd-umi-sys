@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import _ from 'lodash';
 import { connect } from 'dva';
 import { Spin } from 'antd';
 import styles from './index.less';
@@ -7,53 +6,31 @@ import styles from './index.less';
 class Frame extends Component {
     constructor(props) {
         super(props);
-        const { defaultMenu, location } = props;
-        const { state: locationState } = location;
-        const { url: defaultUrl } = defaultMenu;
-        const { url = defaultUrl } = locationState || {};
         this.state = {
             count: 0,
-            url,
-            myFrame: defaultMenu,
+            myFrame: null,
             loading: true
         };
         this.onload = this.onload.bind(this);
     }
     componentDidMount() {
     }
-    componentWillUpdate(nextProps, nextState) { //eslint-disable-line
-        const { location } = nextProps;
-        const { state: locationState } = location;
-        const { url: nextUrl } = locationState || {};
-        const { url } = this.state;
-        if (nextUrl && url !== nextUrl) {
+    shouldComponentUpdate(nextProps, nextState) {
+        const { url } = this.props;
+        const { url: nexturl } = nextProps;
+        const { loading } = this.state;
+        const { loading: nextLoading } = nextState;
+        if (url !== nexturl) {
             this.setState({
-                url: nextUrl,
                 loading: true
             });
         }
+        if (url !== nexturl || loading !== nextLoading) {
+            return true;
+        } else {
+            return false;
+        }
     }
-    // componentDidUpdate(nextProps, nextState) {
-    //     const { loading } = nextState;
-    //     if (loading === true) {
-    //         console.log("up");
-    //         this.setState({
-    //             loading: false
-    //         });
-    //     }
-    // }
-    // shouldComponentUpdate(nextProps, nextState) {
-
-    //     const { location } = this.props;
-    //     const { location: nextlocation } = nextProps;
-    //     const { loading } = this.state;
-    //     const { loading: nextLoading } = nextState;
-    //     if (!_.isEqual(location, nextlocation) || loading !== nextLoading) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
     onload(frame) {
         const self = this;
         const { myFrame: stateFrame } = this.state;
@@ -72,23 +49,21 @@ class Frame extends Component {
         }
     }
     render() {
-        const { loading, url } = this.state;
-        const src = url.indexOf('http') > -1 ? url : `http://${url}`;
+        const { defaultMenu } = this.props;
+        const { url: defaultUrl } = defaultMenu;
+        const { url = defaultUrl } = this.props;
+        const { loading } = this.state;
         return (
             <div className={styles.frame}>
                 <div className={loading === true ? styles.modal : styles.hide}>
                     <Spin spinning={this.state.loading} tip="加载中..." size="large" />
                 </div>
                 <iframe
-                    title='frame'
+                    title='iframe'
                     name="myFrame"
-                    src={src}
+                    src={url}
                     ref={(dom) => {
-                        console.log('onload', dom);
-                        // this.setState({
-                        //     loading: false
-                        // });
-                        // this.onload(dom);
+                        this.onload(dom);
                     }}
                 />
 

@@ -1,6 +1,8 @@
 import { message } from "antd";
+import _ from 'lodash';
 // 后台API URI前端
 const apiPrefix = document.head.dataset.api || '';
+
 
 export default function (api, options = {}) {
     if (!api) return;
@@ -10,15 +12,11 @@ export default function (api, options = {}) {
     const { STATUS } = setting;
     const paramdata = data;
     const promise = new Promise((resolve, reject) => {// eslint-disable-line
-        if (method.toLowerCase() === "get") {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            xhr.onreadystatechange = () => {
-                // readyState == 4说明请求已完成
-                if (xhr.readyState === 4 && xhr.status === 200 || xhr.status === 304) {
-                    // 从服务器获得数据
-                    // fn.call(this, xhr.responseText);
-                    const result = JSON.parse(xhr.responseText);
+        const callBack = (xhr) => {
+            if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 304)) {
+                const { responseText } = xhr;
+                if (_.isString(responseText) && responseText.indexOf('<!DOCTYPE html>') === -1) {
+                    const result = JSON.parse(responseText);
                     const { data, status } = result;
                     if (STATUS === 0) {
                         resolve(result);
@@ -31,16 +29,26 @@ export default function (api, options = {}) {
                             window.location.href = origin;
                         }, 1000);
                     }
+                } else {
+                    return responseText;
                 }
-                if (xhr.status !== 200 && xhr.status !== 304) {
-                    message.error(xhr.status);
-                    if (STATUS !== 0) {
-                        setTimeout(() => {
-                            const { origin } = window.location;
-                            window.location.href = origin;
-                        }, 1000);
-                    }
+            }
+            if (xhr.status !== 200 && xhr.status !== 304) {
+                message.error(`网络请求失败：${xhr.status}`);
+                if (STATUS !== 0) {
+                    setTimeout(() => {
+                        const { origin } = window.location;
+                        window.location.href = origin + '/login';
+                    }, 1000);
                 }
+            }
+        };
+
+        if (method.toLowerCase() === "get") {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.onreadystatechange = () => {
+                callBack(xhr);
             };
             xhr.send();
         } else if (method.toLowerCase() === "post") {
@@ -50,30 +58,7 @@ export default function (api, options = {}) {
             // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
             xhr.onreadystatechange = () => {
-                if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 304)) {
-                    const result = JSON.parse(xhr.responseText);
-                    const { data, status } = result;
-                    if (STATUS === 0) {
-                        resolve(result);
-                    } else if (status === 0) {
-                        resolve({ data });
-                    } else {
-                        message.error("无权限！");
-                        setTimeout(() => {
-                            const { origin } = window.location;
-                            window.location.href = origin;
-                        }, 1000);
-                    }
-                }
-                if (xhr.status !== 200 && xhr.status !== 304) {
-                    message.error(xhr.status);
-                    if (STATUS !== 0) {
-                        setTimeout(() => {
-                            const { origin } = window.location;
-                            window.location.href = origin;
-                        }, 1000);
-                    }
-                }
+                callBack(xhr);
             };
             xhr.send(paramdata);
         } else if (method.toLowerCase() === "jsonp") {

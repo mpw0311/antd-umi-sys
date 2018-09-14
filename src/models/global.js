@@ -25,7 +25,7 @@ export default {
         setupHistory({ dispatch, history }) {
             history.listen((location) => {
                 const { pathname, query, state } = location;
-                if (pathname.indexOf("sys") > -1 || pathname.indexOf("resetPassword") > -1) {
+                if (pathname !== '/login' || pathname !== '/register') {
                     dispatch({
                         type: 'getSysInfo'
                     });
@@ -79,6 +79,17 @@ export default {
                 type: 'save',
                 payload: {
                     message: data,
+                }
+            });
+        },
+        *getFrameUrl({ payload }, { call, put }) {  // eslint-disable-line
+            const { query, state = {} } = payload;
+            const { url } = state;
+            yield put({
+                type: 'save',
+                payload: {
+                    query,
+                    url
                 }
             });
         }
