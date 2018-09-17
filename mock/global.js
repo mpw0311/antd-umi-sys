@@ -3,6 +3,12 @@ const Mock = require('mockjs');
 const { Random } = Mock;
 const xlightningMenus = [
     {
+        title: "view",
+        link: "/sys/view",
+        key: "view",
+        icon: "user"
+    },
+    {
         title: "定期数据",
         children: [
             {

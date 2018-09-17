@@ -40,9 +40,9 @@ export default {
             icon: "home"
         },
         {
-            title: "用户",
-            link: "/sys/users",
-            key: "users",
+            title: "view",
+            link: "/sys/view",
+            key: "view",
             icon: "user"
         },
         {
@@ -50,27 +50,6 @@ export default {
             link: "/sys/charts",
             key: "charts",
             icon: "line-chart"
-        },
-        {
-            title: "大屏分析",
-            key: "dapingfenxi",
-            icon: "icon-analysis",
-            children: [
-                {
-                    title: "提现概况分析概览",
-                    link: "/frame",
-                    key: "analysis2",
-                    url: "http://screen.data.p.jianlc.tp/screen/view/analysis2/",
-                    icon: "icon-analysis"
-                },
-                {
-                    title: "当前业务状况及趋势",
-                    link: "/frame",
-                    key: "analysis",
-                    url: "http://screen.data.p.jianlc.tp/screen/view/analysis/",
-                    icon: "icon-analysis"
-                },
-            ]
         },
         ...xlightning
     ]
