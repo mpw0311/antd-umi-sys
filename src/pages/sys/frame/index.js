@@ -17,22 +17,26 @@ class Frame extends Component {
     }
     componentDidMount() {
     }
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     const { url } = this.props;
-    //     const { url: nexturl } = nextProps;
-    //     const { loading } = this.state;
-    //     const { loading: nextLoading } = nextState;
-    //     if (url !== nexturl) {
-    //         this.setState({
-    //             loading: true
-    //         });
-    //     }
-    //     if (url !== nexturl || loading !== nextLoading) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
+    shouldComponentUpdate(nextProps, nextState) {
+        const { location } = this.props;
+        const { location: nextLocation } = nextProps;
+        const { state } = location;
+        const { state: nextpathState } = nextLocation;
+        const { url } = state;
+        const { url: nexturl } = nextpathState;
+        const { loading } = this.state;
+        const { loading: nextLoading } = nextState;
+        if (nexturl !== undefined && url !== nexturl) {
+            this.setState({
+                loading: true
+            });
+        }
+        if (url !== nexturl || loading !== nextLoading) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     onload(frame) {
         const self = this;
         const { myFrame: stateFrame } = this.state;
@@ -67,7 +71,7 @@ class Frame extends Component {
                     name="myFrame"
                     src={url}
                     ref={(dom) => { //eslint-disable-line
-                        // this.onload(dom);
+                        this.onload(dom);
                     }}
                 />
 
