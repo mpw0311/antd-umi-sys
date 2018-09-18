@@ -52,18 +52,36 @@ export default {
             icon: "line-chart"
         },
         {
-            title: "bing",
-            link: "/sys/frame",
-            key: "bing",
-            icon: "shop",
-            url: `https://cn.bing.com/`,
+            title: "用户行为",
+            key: "yonghuxingwei",
+            icon: "contacts",
+            children: [
+                {
+                    title: "路径分析",
+                    link: "/sys/pathAnalysis",
+                    key: "pathAnalysis",
+                    icon: "link"
+                },]
         },
         {
-            title: "baidu",
-            link: "/sys/frame",
-            key: "baidu",
-            icon: "shop",
-            url: `https://www.baidu.com/`,
+            title: "iframe",
+            key: "iframe",
+            icon: "contacts",
+            children: [
+                {
+                    title: "bing",
+                    link: "/sys/frame",
+                    key: "bing",
+                    icon: "shop",
+                    url: `https://cn.bing.com/`,
+                },
+                {
+                    title: "百度",
+                    link: "/sys/frame",
+                    key: "baidu",
+                    icon: "shop",
+                    url: `https://www.baidu.com/`,
+                },]
         }
         // ...xlightning
     ]
