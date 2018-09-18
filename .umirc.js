@@ -41,7 +41,7 @@ export default {
     themes: resolve(__dirname, './src/themes'),
     components: resolve(__dirname, "./src/components"),
     utils: resolve(__dirname, "./src/utils"),
-    config: resolve(__dirname, "./src/utils/config"),
+    config: resolve(__dirname, "./src/config"),
     services: resolve(__dirname, "./src/services"),
     models: resolve(__dirname, "./src/models"),
   },
