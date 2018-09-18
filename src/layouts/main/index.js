@@ -66,7 +66,7 @@ class Index extends Component {
         const { pathname, state: pathstate } = location;
         const { key, pathtitles } = pathstate || {};
         const defaultKey = key || pathname;
-        const isFrame = pathname && (pathname === '/sys' || pathname.indexOf('frame') > -1) ? true : false;
+        const isFrame = pathname && pathname.indexOf('frame') > -1 ? true : false;
         const Frame = (
             <Layout>
                 <Content className={styles.iframeContent}>

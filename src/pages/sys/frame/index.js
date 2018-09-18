@@ -80,9 +80,8 @@ class Frame extends Component {
     }
 }
 function mapStateToProps({ frame }) {
-    const { defaultMenu, url } = frame;
+    const { url } = frame;
     return {
-        defaultMenu,
         url
     };
 }
