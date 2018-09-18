@@ -1,7 +1,7 @@
 
 import { routerRedux } from 'dva/router';
 import { menusData, methods } from 'utils';
-import { menuPermission, xlightning } from 'config';
+import { menuPermission } from 'config';
 import * as api from 'services';
 const orginalData = menusData;
 export default {
@@ -10,21 +10,13 @@ export default {
         status: 0,
         userInfo: {},
         message: [],
-        // msgSize: 10,
         notification: undefined,
         menusData: [],
-        defaultMenu: {
-            title: '交易',
-            pathtitles: ['汇总数据', '交易'],
-            key: 'summryData_transaction',
-            url: `${xlightning}/offline/summryData_transaction`
-        },
-        url: undefined
     },
     subscriptions: {
         setupHistory({ dispatch, history }) {
             history.listen((location) => {
-                const { pathname, query, state } = location;
+                const { pathname, /*query, state*/ } = location;
                 if (pathname !== '/login' || pathname !== '/register') {
                     dispatch({
                         type: 'getSysInfo'
@@ -32,15 +24,6 @@ export default {
                     // dispatch({
                     //     type: 'getMessage',
                     // });
-                }
-                if (pathname.indexOf("frame") > -1) {
-                    dispatch({
-                        type: 'getFrameUrl',
-                        payload: {
-                            query,
-                            state
-                        }
-                    });
                 }
             });
         },
@@ -82,17 +65,6 @@ export default {
                 }
             });
         },
-        *getFrameUrl({ payload }, { call, put }) {  // eslint-disable-line
-            const { query, state = {} } = payload;
-            const { url } = state;
-            yield put({
-                type: 'save',
-                payload: {
-                    query,
-                    url
-                }
-            });
-        }
     },
 
     reducers: {

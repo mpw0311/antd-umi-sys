@@ -1,4 +1,4 @@
-import xlightning from './xlightning.config';
+// import xlightning from './xlightning.config';
 export default {
     columns: [
         {
@@ -34,10 +34,10 @@ export default {
     ],
     rows: [
         {
-            title: "首页",
-            link: "/sys",
-            key: "home",
-            icon: "home"
+            title: "users",
+            link: "/sys/users",
+            key: "users",
+            icon: "user"
         },
         {
             title: "view",
@@ -51,6 +51,20 @@ export default {
             key: "charts",
             icon: "line-chart"
         },
-        ...xlightning
+        {
+            title: "bing",
+            link: "/sys/frame",
+            key: "bing",
+            icon: "shop",
+            url: `https://cn.bing.com/`,
+        },
+        {
+            title: "baidu",
+            link: "/sys/frame",
+            key: "baidu",
+            icon: "shop",
+            url: `https://www.baidu.com/`,
+        }
+        // ...xlightning
     ]
 };

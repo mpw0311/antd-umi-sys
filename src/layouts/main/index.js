@@ -58,20 +58,19 @@ class Index extends Component {
         }));
     }
     render() {
-        const { location, children, userInfo, message, dispatch, menusData = [], defaultMenu = {}, notification, loading } = this.props;
+        const { location, children, userInfo, message, dispatch, menusData = [], notification, loading } = this.props;
         if (loading === true && menusData.length === 0) {
             return globalLoading;
         }
         const { searchData } = this.state;
         const { pathname, state: pathstate } = location;
-        const { pathtitles } = pathstate || {};
-        const { key: defaultKey, pathtitles: defaultPathtitles } = defaultMenu;
-        const names = pathtitles || defaultPathtitles; // eslint-disable-line
-        const isFrame = pathname && (pathname === '/sys' || pathname.indexOf('frame') > -1) ? true : false;// eslint-disable-line
+        const { key, pathtitles } = pathstate || {};
+        const defaultKey = key || pathname;
+        const isFrame = pathname && (pathname === '/sys' || pathname.indexOf('frame') > -1) ? true : false;
         const Frame = (
             <Layout>
                 <Content className={styles.iframeContent}>
-                    <Breadcrumb pathtitles={names} />
+                    <Breadcrumb pathtitles={pathtitles} />
                     <div className={styles.iframeChildren}>
                         {children}
                     </div>
@@ -121,12 +120,11 @@ class Index extends Component {
     }
 }
 function mapStateToProps({ global, loading }) {
-    const { message, userInfo, menusData, defaultMenu, notification } = global;
+    const { message, userInfo, menusData, notification } = global;
     return {
         message,
         userInfo,
         menusData,
-        defaultMenu,
         notification,
         loading: loading.global
     };

@@ -7,7 +7,7 @@ import { toDataset, getMark, showLoading } from '../_';
 const onChartReadyCallback = (echartObj) => {
     setTimeout(() => {
         echartObj.resize();
-    }, 1000);
+    }, 200);
 };
 class Bar extends Component {
     constructor(props) {
@@ -25,7 +25,6 @@ class Bar extends Component {
         const {
             data = {},
             style,
-            // handleClick = () => { },
             title = '',
             maxShow = false,
             minShow = false,

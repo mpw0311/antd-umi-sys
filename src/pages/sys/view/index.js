@@ -99,7 +99,7 @@ export default function () {
     console.log(p);
   };
   return (
-    <Page loading={false}>
+    <Page loading={false} pathtitles={['view']}>
       <div className={styles.normal}>
         <h1>Page view</h1>
         <Bar data={data} handleClick={handleClick} />
