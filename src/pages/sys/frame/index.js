@@ -20,10 +20,10 @@ class Frame extends Component {
     shouldComponentUpdate(nextProps, nextState) {
         const { location } = this.props;
         const { location: nextLocation } = nextProps;
-        const { state } = location;
+        const { state = {} } = location;
         const { state: nextpathState } = nextLocation;
         const { url } = state;
-        const { url: nexturl } = nextpathState;
+        const { url: nexturl } = nextpathState || {};
         const { loading } = this.state;
         const { loading: nextLoading } = nextState;
         if (nexturl !== undefined && url !== nexturl) {
