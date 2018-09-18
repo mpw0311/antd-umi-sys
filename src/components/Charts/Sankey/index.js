@@ -1,8 +1,7 @@
 import { Component } from 'react';
 import ReactEcharts from 'echarts-for-react';
 import { message } from 'antd';
-// import _ from 'lodash';
-import chartConfig from './config';
+import chartConfig from '../config';
 
 const onChartReadyCallback = (echartObj) => {
     setTimeout(() => {
@@ -113,7 +112,4 @@ class Sankey extends Component {
     }
 
 }
-// function Sankey(props) {
-
-// }
 export default Sankey;

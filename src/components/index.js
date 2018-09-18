@@ -1,3 +1,4 @@
+import * as Charts from './Charts';
 import Login from './Login';
 import Register from './Register';
 import Menus from './Menus';
@@ -9,21 +10,6 @@ import Announcement from './Announcement';
 import PageHeader from './PageHeader';
 import ResetPassword from './ResetPassword';
 import Page from './Page';
-
-import Bar from './Chart/Bar';
-import BarWaterfall from './Chart/Bar-waterfall';
-import CalendarPie from './Chart/Calendar-pie';
-import Sankey from './Chart/Sankey';
-import ScatterAqiColor from './Chart/Scatter-aqi-color';
-import LineChart from './Chart/LineChart';
-const Charts = {
-    Bar,
-    BarWaterfall,
-    CalendarPie,
-    Sankey,
-    ScatterAqiColor,
-    LineChart
-};
 
 export {
     Login,
