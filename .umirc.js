@@ -9,6 +9,7 @@ export default {
     ['umi-plugin-react', {
       antd: true,
       // dva: true,
+      polyfills: ['ie11'],
       dva: {
         immer: true
       },
@@ -47,7 +48,7 @@ export default {
   },
   "proxy": {
     // "/api": {
-    //   "target": "http://jsonplaceholder.typicode.com/",
+    //   "target": "",
     //   "changeOrigin": true,
     //   "pathRewrite": { "^/api" : "" }
     // }

@@ -88,7 +88,7 @@ class Index extends Component {
         );
         return (
             <LocaleProvider locale={zhCN}>
-                <Layout style={{ height: '100%' }}>
+                <Layout className={styles.wrapper}>
                     <Header style={{ padding: 0 }}>
                         <GlobalHeader
                             userInfo={userInfo}
@@ -99,7 +99,7 @@ class Index extends Component {
                             dataSource={searchData}
                         />
                     </Header>
-                    <Layout>
+                    <Layout className={styles.section}>
                         <Sider
                             collapsible
                             collapsed={this.state.collapsed}
