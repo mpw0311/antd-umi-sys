@@ -1,4 +1,13 @@
 @import '../../themes/index.less';
+.wrapper {
+    height: 100%;
+    overflow: hidden;
+}
+
+.section {
+    height: ~'calc(100% - 64px)';
+}
+
 .iframeContent {
     margin: 10px 10px 0 10px;
     display: -webkit-flex;
@@ -13,16 +22,11 @@
     position: relative;
     overflow: hidden;
     overflow-y: auto;
-    &::-webkit-scrollbar {
-        /*滚动条整体样式*/
-        width: 0px;
-        /*高宽分别对应横竖滚动条的尺寸*/
-        height: 0px;
-    }
+    .scrollbar();
 }
 
 .content {
-    margin: 10px 10px 0 10px; 
+    margin: 10px 10px 0 10px;
     display: -webkit-flex;
     display: flex;
     flex-direction: column;
@@ -34,12 +38,7 @@
     position: relative;
     overflow: hidden;
     overflow-y: auto;
-    &::-webkit-scrollbar {
-        /*滚动条整体样式*/
-        width: 0px;
-        /*高宽分别对应横竖滚动条的尺寸*/
-        height: 0px;
-    }
+    .scrollbar();
 }
 
 .footer {
@@ -49,15 +48,12 @@
 }
 
 .siderbar {
-    overflow: auto;
+    overflow: hidden;
+    overflow-y: auto;
     margin-bottom: 42px;
-    &::-webkit-scrollbar {
-        /*滚动条整体样式*/
-        width: 0px;
-        /*高宽分别对应横竖滚动条的尺寸*/
-        height: 0px;
-    }
+    .scrollbar();
 }
+
 .spin {
     height: 100%;
     width: 100%;

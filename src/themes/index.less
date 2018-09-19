@@ -1,1 +1,13 @@
 @import "./vars.less";
+.scrollbar() {
+    &::-webkit-scrollbar {
+        /*滚动条整体样式*/
+        width: 0px;
+        /*高宽分别对应横竖滚动条的尺寸*/
+        height: 0px;
+    }
+    /*隐藏滚动条，当IE下溢出，仍然可以滚动*/
+    -ms-overflow-style:none;
+    /*火狐下隐藏滚动条*/
+    overflow:-moz-scrollbars-none;
+}
