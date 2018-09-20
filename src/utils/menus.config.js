@@ -45,7 +45,7 @@ export default {
             icon: "user"
         },
         {
-            title: "chartView",
+            title: "echarts组件",
             link: "/sys/chartView",
             key: "chartView",
             icon: "line-chart"
