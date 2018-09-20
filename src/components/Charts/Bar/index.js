@@ -4,10 +4,10 @@ import chartConfig from '../config';
 import { toDataset, getMark, showLoading } from '../_';
 
 
-const onChartReadyCallback = (echartObj) => {
-    setTimeout(() => {
-        echartObj.resize();
-    }, 200);
+const onChartReadyCallback = (echartObj) => { //eslint-disable-line
+    // setTimeout(() => {
+    //     echartObj.resize();
+    // }, 200);
 };
 class Bar extends Component {
     constructor(props) {

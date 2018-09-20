@@ -1,4 +1,3 @@
-import xlightning from './xlightning.config';
 export default {
     columns: [
         {
@@ -46,23 +45,23 @@ export default {
             icon: "user"
         },
         {
-            title: "line-chart",
-            link: "/sys/charts",
-            key: "charts",
+            title: "echarts组件",
+            link: "/sys/chartView",
+            key: "chartView",
             icon: "line-chart"
         },
-        // {
-        //     title: "用户行为",
-        //     key: "yonghuxingwei",
-        //     icon: "contacts",
-        //     children: [
-        //         {
-        //             title: "路径分析",
-        //             link: "/sys/pathAnalysis",
-        //             key: "pathAnalysis",
-        //             icon: "link"
-        //         },]
-        // },
+        {
+            title: "用户行为",
+            key: "yonghuxingwei",
+            icon: "contacts",
+            children: [
+                {
+                    title: "路径分析",
+                    link: "/sys/pathAnalysis",
+                    key: "pathAnalysis",
+                    icon: "link"
+                },]
+        },
         {
             title: "iframe",
             key: "iframe",
@@ -83,6 +82,5 @@ export default {
                     url: `https://www.baidu.com/`,
                 },]
         },
-        ...xlightning
     ]
 };

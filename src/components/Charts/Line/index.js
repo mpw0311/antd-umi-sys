@@ -16,10 +16,10 @@ class Line extends Component {
     };
     this.onChartReadyCallback = this.onChartReadyCallback.bind(this);
   }
-  onChartReadyCallback(echartObj) {
-    setTimeout(() => {
-      echartObj.resize();
-    }, 1000);
+  onChartReadyCallback(echartObj) {//eslint-disable-line
+    // setTimeout(() => {
+    //   echartObj.resize();
+    // }, 1000);
   }
   render() {
     const {
