@@ -4,7 +4,7 @@ import styles from './tab.less';
 const { TabPane } = Tabs;
 const { TextArea } = Input;
 export default function (props) {
-    const { data, onBlur = () => { } } = props;// eslint-disable-line
+    const { data, onBlur = () => { }, rows = 14, ...rest } = props;// eslint-disable-line
     const handleBlur = (e) => {
         const { value } = e.target;
         const res = value.replace(/｛/g, "{")
@@ -39,10 +39,10 @@ export default function (props) {
     return (
         <Tabs defaultActiveKey="1">
             <TabPane tab={<span><Icon type="bar-chart" />数据</span>} key="1">
-                <TextArea rows={14} defaultValue={JSON.stringify(data)} onBlur={handleBlur} onKeyDown={tab} className={styles.TextArea} spellCheck="false" />
+                <TextArea rows={rows} defaultValue={JSON.stringify(data)} onBlur={handleBlur} onKeyDown={tab} className={styles.TextArea} spellCheck="false" {...rest} />
             </TabPane>
             <TabPane tab={<span><Icon type="setting" />option</span>} key="2">
-                <TextArea rows={14} defaultValue={'{}'} onKeyDown={tab} onBlur={() => { }} className={styles.TextArea} spellCheck="false" disabled />
+                <TextArea rows={rows} defaultValue={'{}'} onKeyDown={tab} onBlur={() => { }} className={styles.TextArea} spellCheck="false" disabled {...rest} />
             </TabPane>
         </Tabs>
     );

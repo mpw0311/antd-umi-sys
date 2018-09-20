@@ -200,10 +200,10 @@ function scatterAqiColor(props) {
         visualMap: visualMapOpt,
         series
     };
-    const onChartReadyCallback = (echartObj) => {
-        setTimeout(() => {
-            echartObj.resize();
-        }, 1000);
+    const onChartReadyCallback = (echartObj) => { //eslint-disable-line
+        // setTimeout(() => {
+        //     echartObj.resize();
+        // }, 200);
     };
     const onEvents = {
         click: (params) => {

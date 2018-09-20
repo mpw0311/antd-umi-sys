@@ -1,13 +1,11 @@
 import { connect } from 'dva';
-import { Row, Col } from 'antd';
-// import _ from 'lodash';
 import { Charts, Page } from 'components';
-import ChartTab from './components/tab';
+import View from './components/view';
 // import styles from './index.less';
 
-const { Line, Bar, BarWaterfall } = Charts;
+const { Line, Bar, BarWaterfall, ScatterAqiColor } = Charts;
 function Chart(props) {
-    const { dispatch, lineData = [], barData = [], barWaterfallData } = props;// eslint-disable-line
+    const { dispatch, lineData = [], barData = [], barWaterfallData, scatterAqiColorData } = props;// eslint-disable-line
     const handleClick = (p) => {
         console.log(p);
     };
@@ -21,37 +19,44 @@ function Chart(props) {
     };
     return (
         <Page loading={false} pathtitles={['chartView']}>
-            <Row>
-                <Col span={10}>
-                    <ChartTab data={lineData} onBlur={(e) => {
-                        handleBlur(e, 'lineData');
-                    }} />
-                </Col>
-                <Col span={14}>
-                    <Line data={lineData} handleClick={handleClick} />
-                </Col>
-            </Row>
-            <Row>
-                <Col span={10}>
-                    <ChartTab data={barData} onBlur={(e) => {
-                        handleBlur(e, 'barData');
-                    }} />
-                </Col>
-                <Col span={14}>
-                    <Bar data={barData} handleClick={handleClick} />
-                </Col>
-            </Row>
-            <Row>
-                <Col span={10}>
-                    <ChartTab data={barWaterfallData} onBlur={(e) => {
-                        handleBlur(e, 'barWaterfallData');
-                    }} />
-                </Col>
-                <Col span={14}>
-                    <BarWaterfall data={barWaterfallData} handleClick={handleClick} />
-                </Col>
-            </Row>
-        </Page>
+            <View
+                title="折线图"
+                data={lineData}
+                onBlur={(value) => {
+                    handleBlur(value, "lineData");
+                }}
+            >
+                <Line data={lineData} handleClick={handleClick} />
+            </View>
+            <View
+                title="柱状图"
+                data={barData}
+                onBlur={(value) => {
+                    handleBlur(value, "barData");
+                }}
+            >
+                <Bar data={barData} handleClick={handleClick} />
+            </View>
+            <View
+                title="瀑布图"
+                data={barWaterfallData}
+                onBlur={(value) => {
+                    handleBlur(value, "barWaterfallData");
+                }}
+            >
+                <BarWaterfall data={barWaterfallData} handleClick={handleClick} />
+            </View>
+            <View
+                title="散点图"
+                data={scatterAqiColorData}
+                rows={24}
+                onBlur={(value) => {
+                    handleBlur(value, "scatterAqiColorData");
+                }}
+            >
+                <ScatterAqiColor data={scatterAqiColorData} handleClick={handleClick} style={{ height: '400px', marginTop: '50px' }} />
+            </View>
+        </Page >
     );
 }
 function mapStateToProps({ chartView }) {
