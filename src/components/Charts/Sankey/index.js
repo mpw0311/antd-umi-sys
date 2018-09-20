@@ -3,12 +3,6 @@ import ReactEcharts from 'echarts-for-react';
 import { message } from 'antd';
 import chartConfig from '../config';
 
-const onChartReadyCallback = (echartObj) => {
-    setTimeout(() => {
-        echartObj.resize();
-    }, 1000);
-};
-
 class Sankey extends Component {
     constructor(props) {
         super(props);
@@ -103,7 +97,6 @@ class Sankey extends Component {
                 option={option}
                 {...chartConfig}
                 style={style}
-                onChartReady={onChartReadyCallback}
                 onEvents={onEvents}
                 showLoading={loading}
             // opts={{ renderer: 'svg' }}
