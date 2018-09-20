@@ -21,9 +21,9 @@ export default {
                     dispatch({
                         type: 'getSysInfo'
                     });
-                    // dispatch({
-                    //     type: 'getMessage',
-                    // });
+                    dispatch({
+                        type: 'getMessage',
+                    });
                 }
             });
         },
