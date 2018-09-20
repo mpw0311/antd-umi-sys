@@ -45,9 +45,9 @@ export default {
             icon: "user"
         },
         {
-            title: "line-chart",
-            link: "/sys/charts",
-            key: "charts",
+            title: "chartView",
+            link: "/sys/chartView",
+            key: "chartView",
             icon: "line-chart"
         },
         {

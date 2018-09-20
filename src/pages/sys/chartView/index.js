@@ -1,68 +1,58 @@
 import { connect } from 'dva';
-import { Row, Col, Tabs, Icon, Input, message } from 'antd';
+import { Row, Col } from 'antd';
+// import _ from 'lodash';
 import { Charts, Page } from 'components';
+import ChartTab from './components/tab';
 // import styles from './index.less';
 
-const { Line } = Charts;
-const { TabPane } = Tabs;
-const { TextArea } = Input;
+const { Line, Bar, BarWaterfall } = Charts;
 function Chart(props) {
-    const { dispatch, lineData } = props;// eslint-disable-line
+    const { dispatch, lineData = [], barData = [], barWaterfallData } = props;// eslint-disable-line
     const handleClick = (p) => {
         console.log(p);
     };
-    const handleBlur = (e) => {
-        const { value } = e.target;
-        let data = {};
-        try {
-            data = eval(`(${value})`);
-        } catch (err) {
-            console.log("err", err);
-            message.error('数据格式有误！');
-        }
-        console.log(value);
+    const handleBlur = (value, type) => {
         dispatch({
             type: "chartView/save",
             payload: {
-                lineData: data
+                [type]: value
             }
         });
     };
-    const tab = (e) => {
-        const { keyCode, target } = e;
-        const { selectionStart, selectionEnd, value } = target;
-        if (keyCode == 9) {
-            console.log(selectionStart, selectionEnd, value);
-            e.preventDefault();
-        }
-    };
     return (
-        <Page loading={false} pathtitles={['view']}>
+        <Page loading={false} pathtitles={['chartView']}>
             <Row>
                 <Col span={10}>
-                    <Tabs defaultActiveKey="1">
-                        <TabPane tab={<span><Icon type="apple" />数据</span>} key="1">
-                            <TextArea rows={12} defaultValue={JSON.stringify(lineData)} onBlur={handleBlur} onKeyDown={tab} />
-                        </TabPane>
-                        <TabPane tab={<span><Icon type="android" />option</span>} key="2">
-                            <TextArea rows={12} defaultValue={'{Tab:2}'} />
-                        </TabPane>
-                    </Tabs>
+                    <ChartTab data={lineData} onBlur={(e) => {
+                        handleBlur(e, 'lineData');
+                    }} />
                 </Col>
                 <Col span={14}>
                     <Line data={lineData} handleClick={handleClick} />
                 </Col>
             </Row>
+            <Row>
+                <Col span={10}>
+                    <ChartTab data={barData} onBlur={(e) => {
+                        handleBlur(e, 'barData');
+                    }} />
+                </Col>
+                <Col span={14}>
+                    <Bar data={barData} handleClick={handleClick} />
+                </Col>
+            </Row>
+            <Row>
+                <Col span={10}>
+                    <ChartTab data={barWaterfallData} onBlur={(e) => {
+                        handleBlur(e, 'barWaterfallData');
+                    }} />
+                </Col>
+                <Col span={14}>
+                    <BarWaterfall data={barWaterfallData} handleClick={handleClick} />
+                </Col>
+            </Row>
         </Page>
     );
-    // return (
-    //     <Page loading={false} pathtitles={['view']}>
-    //         <div className={styles.normal}>
-    //             <h1>Page view</h1>
-    //             <Line data={data} handleClick={handleClick} />
-    //         </div>
-    //     </Page>
-    // );
 }
 function mapStateToProps({ chartView }) {
     return {
