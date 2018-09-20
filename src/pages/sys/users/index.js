@@ -63,7 +63,7 @@ function Users({ dispatch, list: dataSource, loading, total, page: current }) {
     },
   ];
   return (
-    <Page loading={false} pathtitles={['Test', 'Users']} description=''>
+    <Page loading={false} pathtitles={['Test', 'Users']} description='' inner={true}>
       <div className={styles.create}>
         <UserModal
           record={{}}

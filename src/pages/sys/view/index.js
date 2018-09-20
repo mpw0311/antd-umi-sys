@@ -97,7 +97,7 @@ export default function () {
     console.log(p);
   };
   return (
-    <Page loading={false} pathtitles={['view']}>
+    <Page loading={false} inner={true} pathtitles={['view']}>
       <div className={styles.normal}>
         <h1>Page view</h1>
         <Bar data={data} handleClick={handleClick} />
