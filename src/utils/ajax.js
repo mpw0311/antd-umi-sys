@@ -26,7 +26,7 @@ export default function (api, options = {}) {
                         message.error("无权限！");
                         setTimeout(() => {
                             const { origin } = window.location;
-                            window.location.href = origin;
+                            window.location.href = origin + '/login';
                         }, 1000);
                     }
                 } else {
@@ -35,7 +35,7 @@ export default function (api, options = {}) {
             }
             if (xhr.status !== 200 && xhr.status !== 304) {
                 message.error(`网络请求失败：${xhr.status}`);
-                if (STATUS !== 0) {
+                if (STATUS !== 0) { // 判断是否是登录页
                     setTimeout(() => {
                         const { origin } = window.location;
                         window.location.href = origin + '/login';
