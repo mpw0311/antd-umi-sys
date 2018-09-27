@@ -10,6 +10,7 @@ import Announcement from './Announcement';
 import PageHeader from './PageHeader';
 import ResetPassword from './ResetPassword';
 import Page from './Page';
+import GlobalDrawer from './GlobalDrawer';
 
 export {
     Login,
@@ -23,5 +24,6 @@ export {
     PageHeader,
     ResetPassword,
     Register,
-    Page
+    Page,
+    GlobalDrawer
 };

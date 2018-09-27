@@ -14,12 +14,6 @@ class Line extends Component {
         }
       }
     };
-    this.onChartReadyCallback = this.onChartReadyCallback.bind(this);
-  }
-  onChartReadyCallback(echartObj) {//eslint-disable-line
-    // setTimeout(() => {
-    //   echartObj.resize();
-    // }, 1000);
   }
   render() {
     const {
@@ -75,7 +69,6 @@ class Line extends Component {
         option={option}
         {...chartConfig}
         style={style}
-        onChartReady={this.onChartReadyCallback}
         onEvents={onEvents}
         showLoading={showLoading(data)}
       />

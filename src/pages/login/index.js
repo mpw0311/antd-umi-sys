@@ -1,8 +1,15 @@
 import { connect } from 'dva';
 import { Login } from 'components';
+import { message } from 'antd';
 import styles from './index.css';
 function Index({ dispatch, loading }) {
   const handleSubmit = (err, values) => {
+    for(const name in values){
+      if(values[name]===undefined){
+        message.error('用户名或密码错误！');
+        return false;
+      }
+    }
     dispatch({
       type: 'login/login',
       payload: {

@@ -3,11 +3,7 @@ import ReactEcharts from 'echarts-for-react';
 import _ from 'lodash';
 import chartConfig from '../config';
 import { formatNumer, showLoading } from '../_';
-const onChartReadyCallback = (echartObj) => { //eslint-disable-line
-    // setTimeout(() => {
-    //     echartObj.resize();
-    // }, 200);
-};
+
 class BarWaterfall extends Component {
     constructor(props) {
         super(props);
@@ -124,7 +120,6 @@ class BarWaterfall extends Component {
                 option={option}
                 {...chartConfig}
                 style={style}
-                onChartReady={onChartReadyCallback}
                 onEvents={this.state.onEvents}
                 showLoading={showLoading(data)}
             />
