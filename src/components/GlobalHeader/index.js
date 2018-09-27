@@ -49,7 +49,7 @@ function Header(props) {
                     </div>
                     <div className={styles.rg}>
                         <Row>
-                            <Col span={10} style={{ textAlign: 'right'}}>
+                            <Col span={10} style={{ textAlign: 'right' }}>
                                 <Search
                                     menusData={menusData}
                                     dataSource={dataSource}

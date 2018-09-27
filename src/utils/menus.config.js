@@ -60,7 +60,14 @@ export default {
                     link: "/sys/pathAnalysis",
                     key: "pathAnalysis",
                     icon: "link"
-                },]
+                },
+                {
+                    title: "匹配分析",
+                    link: "/sys/matchAnalysis",
+                    key: "matchAnalysis",
+                    icon: "link"
+                },
+            ]
         },
         {
             title: "iframe",
