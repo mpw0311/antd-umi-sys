@@ -7,7 +7,8 @@ import { formatNumer, showLoading } from '../_';
 import chartConfig from '../config';
 import styles from './index.less';
 
-
+const onEvents = {
+};
 class CalendarPie extends Component {
     constructor(props) {
         super(props);
@@ -25,16 +26,32 @@ class CalendarPie extends Component {
         this.getVirtulData = this.getVirtulData.bind(this);
         this.getCalendar = this.getCalendar.bind(this);
         this.getCalendarLable = this.getCalendarLable.bind(this);
+        this.onChartReadyCallback = this.onChartReadyCallback.bind(this);
     }
-    // componentWillUpdate(nextProps, nextState) {
-    //     const { time, data } = nextProps;
-    //     const { echartObj } = nextState;
-    //     // // 日历月份['2018-08','2018-09']
-    //     const dataRange = this.getDataRange(time);
-    //     const scatterData = this.getVirtulData(time, data);
-    //     const seriesData = this.getSeries(dataRange, scatterData);
-    //     this.renderPies(seriesData, echartObj);
-    // }
+    shouldComponentUpdate(nextProps, nextState) {
+        const { echartObj } = this.state;
+        const { echartObj: nextEchartObj } = nextState;
+        if (echartObj === undefined || nextEchartObj === undefined) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    componentWillUpdate(nextProps, nextState) {
+        const { time, data } = nextProps;
+        const { echartObj } = nextState;
+        // // 日历月份['2018-08','2018-09']
+        const dataRange = this.getDataRange(time);
+        const scatterData = this.getVirtulData(time, data);
+        const seriesData = this.getSeries(dataRange, scatterData);
+        this.renderPies(seriesData, echartObj);
+    }
+    onChartReadyCallback(echartObj, seriesData) {
+        this.setState({
+            echartObj
+        });
+        this.renderPies(seriesData, echartObj);
+    }
     // 获取时间range
     getDataRange(time) {// eslint-disable-line
         const startTime = moment(time[0]);
@@ -52,7 +69,7 @@ class CalendarPie extends Component {
         const { cellSize } = this.state;
         const offsetHeight = 20;
         const size = dataRange.map((item) => {
-            const day = moment(item + "-1").day();
+            const day = moment(item + "-01").day();
             return day > 5 ? 5 : 4;
         });
         let sum = offsetHeight;
@@ -64,7 +81,7 @@ class CalendarPie extends Component {
         return heights;
     }
     // 渲染每个饼图，并带有位置信息
-    getPieSeries(scatterData,echartObj) {
+    getPieSeries(scatterData, echartObj) {
         const { data } = this.props;
         const { pieRadius } = this.state;
         const { rows = [] } = data;
@@ -258,7 +275,7 @@ class CalendarPie extends Component {
     }
     renderPies(seriesData, chart) {
         setTimeout(() => {
-            const pies = this.getPieSeries(seriesData,chart);
+            const pies = this.getPieSeries(seriesData, chart);
             chart.setOption({
                 series: pies
             });
@@ -311,11 +328,7 @@ class CalendarPie extends Component {
             calendar,
             series: seriesData.concat(labels)
         };
-        const onChartReadyCallback = (echartObj) => {
-            this.renderPies(seriesData, echartObj);
-        };
-        const onEvents = {
-        };
+
         return (
             <div>
                 <nav className={styles.nav}>
@@ -334,7 +347,9 @@ class CalendarPie extends Component {
                         option={option}
                         {...chartConfig}
                         style={{ height: 400 * dataRange.length + 80, ...restStyle }}
-                        onChartReady={onChartReadyCallback.bind(this)}
+                        onChartReady={(echartObj) => {
+                            this.onChartReadyCallback(echartObj, seriesData);
+                        }}
                         onEvents={onEvents}
                     />
                 </div>
