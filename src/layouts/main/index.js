@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { LocaleProvider, Layout, Spin } from 'antd';
 import _ from 'lodash';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
-import { Menus, GlobalHeader, Breadcrumb } from 'components';
+import { Menus, GlobalHeader, Breadcrumb, GlobalDrawer } from 'components';
 import { footerText } from 'config';
 import styles from './index.less';
 
@@ -98,6 +98,7 @@ class Index extends Component {
                             menusData={menusData}
                             dataSource={searchData}
                         />
+                        <GlobalDrawer />
                     </Header>
                     <Layout className={styles.section}>
                         <Sider
