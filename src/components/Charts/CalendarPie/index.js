@@ -214,8 +214,12 @@ class CalendarPie extends Component {
                         show: true,
                         formatter: function (params) { // eslint-disable-line
                             const { value } = params;
-                            const percent = (value[1] / value[2] * 100).toFixed(1);
-                            return `{a|${percent}%}`;
+                            if (value[1] == 0) {
+                                return `{a|0%}`;
+                            } else {
+                                const percent = (value[1] / value[2] * 100).toFixed(1);
+                                return `{a|${percent}%}`;
+                            }
                         },
                         offset: [0, -cellSize[1] / 2 + 75],
                         textStyle: {
@@ -279,13 +283,12 @@ class CalendarPie extends Component {
             chart.setOption({
                 series: pies
             });
-            // chart.resize();
             // setTimeout(() => {
             //     echartObj.setOption({
             //         series: getPieSeriesUpdate(scatterData, echartObj)
             //     });
             // }, 500);
-        }, 1000);
+        }, 500);
     }
     render() {
         const {
@@ -342,7 +345,7 @@ class CalendarPie extends Component {
                         <li>星期日</li>
                     </ul>
                 </nav>
-                <div style={{ height, overflowY: 'auto' }}>
+                <div className='scrollbar' style={{ height, overflowY: 'auto' }}>
                     <ReactEcharts
                         option={option}
                         {...chartConfig}
