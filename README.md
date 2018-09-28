@@ -1,9 +1,13 @@
 # antd-umi-sys
-
+## 简介
+    企业级管理平台，主要技术：react、umi、dva、antd、less等。
+![antd-umi-sys](src/assets/demo_login.png)
+![antd-umi-sys](src/assets/demo.png)
 ## 特性
-+ react+radux+dva+antd+es6 
-+ Echarts图形组件；
-+ 按需加载；
++ 单页面应用；
++ 组件化开发；
++ 丰富的Echarts图形组件；
++ 按需加载，首次访问速度快；
 + mock模拟数据请求
 ---
 ## 目录结构

@@ -62,7 +62,7 @@ export default {
                     icon: "link"
                 },
                 {
-                    title: "匹配分析",
+                    title: "匹配额度分析",
                     link: "/sys/matchAnalysis",
                     key: "matchAnalysis",
                     icon: "link"
