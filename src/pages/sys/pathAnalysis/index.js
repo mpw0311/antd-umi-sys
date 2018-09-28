@@ -10,7 +10,7 @@ import styles from './index.less';
 
 
 function PathAnalysis(props) {
-    const { pageData, dict, events, pages, dispatch, eventData, announcement, loading } = props;
+    const { pageData, dict, events, pages, dispatch, eventData, announcement, loading, location } = props;
     const submit = (values) => {
         const { platformType, pages, ...rest } = values;
         if (platformType === "all") {
@@ -83,7 +83,7 @@ function PathAnalysis(props) {
         });
     };
     return (
-        <Page loading={false} pathtitles={['路径分析']} description={announcement}>
+        <Page loading={false} pathtitles={['路径分析']} description={announcement} location={location}>
             <div className={styles.normal}>
                 <MyForm dict={dict} onSubmit={submit} events={events} pages={pages} handleGetDict={handleGetDict} />
                 <MyTabs pageData={pageData} eventData={eventData} handleClick={handleClick} loading={loading} />
