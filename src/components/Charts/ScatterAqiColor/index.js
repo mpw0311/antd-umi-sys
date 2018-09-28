@@ -20,8 +20,6 @@ function scatterAqiColor(props) {
         data = [],
         yAxisName = "",
         style,
-        handleClick = () => { },
-
     } = props;
     const max = getMax(data);
     const { visualMap = [
@@ -200,25 +198,11 @@ function scatterAqiColor(props) {
         visualMap: visualMapOpt,
         series
     };
-    const onChartReadyCallback = (echartObj) => { //eslint-disable-line
-        // setTimeout(() => {
-        //     echartObj.resize();
-        // }, 200);
-    };
-    const onEvents = {
-        click: (params) => {
-            if (params.dataType === "node") {
-                handleClick(params);
-            }
-        }
-    };
     return (
         <ReactEcharts
             option={series && series.length > 0 && option || {}}
             {...chartConfig}
             style={style}
-            onChartReady={onChartReadyCallback}
-            onEvents={onEvents}
             showLoading={showLoading(data)}
         />
     );

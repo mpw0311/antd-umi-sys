@@ -186,27 +186,27 @@ export default {
             {
                 name: "1千至3千",
                 type: "number",
-                data: 89
+                value: 89
             },
             {
                 name: "3千至1万",
                 type: "number",
-                data: 400
+                value: 400
             },
             {
                 name: "1万至3万",
                 type: "number",
-                data: 260
+                value: 260
             },
             {
                 name: "3万至5万",
                 type: "number",
-                data: 100
+                value: 100
             },
             {
                 name: "5万至10万",
                 type: "number",
-                data: 223
+                value: 223
             },
         ],
         scatterAqiColorData:[
@@ -450,7 +450,29 @@ export default {
                     ]
                 }
             },
-        ]
+        ],
+        pieData:[
+            {
+                name: "直接访问",
+                value: 335
+            },
+            {
+                name: "邮件营销",
+                value: 310
+            },
+            {
+                name: "联盟广告",
+                value: 234
+            },
+            {
+                name: "视频广告",
+                value: 135
+            },
+            {
+                name: "搜索引擎",
+                value: 400
+            },
+        ],
     },
     subscriptions: {
         setup({ dispatch, history }) {//eslint-disable-line
