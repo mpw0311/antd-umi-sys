@@ -1,6 +1,7 @@
 # antd-umi-sys
 ## 简介
     企业级管理平台，主要技术：react、umi、dva、antd、less等。
+![antd-umi-sys](src/assets/demo_login.png)
 ![antd-umi-sys](src/assets/demo.png)
 ## 特性
 + 单页面应用；
