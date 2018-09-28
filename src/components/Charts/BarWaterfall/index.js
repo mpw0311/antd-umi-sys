@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import ReactEcharts from 'echarts-for-react';
-import _ from 'lodash';
 import chartConfig from '../config';
 import { formatNumer, showLoading } from '../_';
 
@@ -25,23 +24,27 @@ class BarWaterfall extends Component {
             unit = '', // eslint-disable-line
         } = this.props;
 
-        const dd = _.cloneDeep(data);
-        let sum = 0;
-        for (let i = dd.length - 1; i >= 0; i--) {
-            dd[i].data1 = sum;
-            sum += dd[i].data;
-        }
-        dd.unshift({
-            name: "总计",
-            type: "number",
-            data: sum,
-            data1: 0,
+        const total = data.reduce((total, item) => {
+            return total + item.value;
+        }, 0);
+
+        let residue = total;
+
+        const row0 = data.map(item => {
+            const res = residue - item.value;
+            residue = res;
+            return res;
         });
-        const xAxisData = dd.map(item => item.name);
-        const seriesData = ["data1", "data"].map(index => {
-            return dd.map(item => item[index]);
-        });
-        const setting = [
+        row0.unshift(0);
+
+        const row1 = data.map(item => item.value);
+        row1.unshift(total);
+        const xAxisData = data.map(item => item.name);
+        xAxisData.unshift('总计');
+
+
+
+        const series = [
             {
                 name: '辅助',
                 type: 'bar',
@@ -56,6 +59,7 @@ class BarWaterfall extends Component {
                         color: 'rgba(0,0,0,0)',
                     },
                 },
+                data: row0
             },
             {
                 name: '生活费',
@@ -71,14 +75,9 @@ class BarWaterfall extends Component {
                         },
                     },
                 },
+                data: row1
             },
         ];
-        const series = seriesData.map((row, i) => {
-            return {
-                ...setting[i],
-                data: row,
-            };
-        });
         const option = {
             title: {
                 text: title,
@@ -94,7 +93,7 @@ class BarWaterfall extends Component {
                 },
                 formatter: function (params) { // eslint-disable-line
                     const { name, value } = params[1];
-                    const percent = (value / sum * 100).toFixed(2);
+                    const percent = (value / total * 100).toFixed(2);
                     return `${name}：${formatNumer(value)} <br/>占比：${percent}%`;// + unit;
                 }
             },

@@ -1,4 +1,5 @@
 import { message } from "antd";
+import router from 'umi/router';
 import _ from 'lodash';
 // 后台API URI前端
 const apiPrefix = document.head.dataset.api || '';
@@ -25,8 +26,7 @@ export default function (api, options = {}) {
                     } else {
                         message.error("无权限！");
                         setTimeout(() => {
-                            const { origin } = window.location;
-                            window.location.href = origin + '/login';
+                            router.push('/login');
                         }, 1000);
                     }
                 } else {
@@ -37,8 +37,7 @@ export default function (api, options = {}) {
                 message.error(`网络请求失败：${xhr.status}`);
                 if (STATUS !== 0) { // 判断是否是登录页
                     setTimeout(() => {
-                        const { origin } = window.location;
-                        window.location.href = origin + '/login';
+                        router.push('/login');
                     }, 1000);
                 }
             }

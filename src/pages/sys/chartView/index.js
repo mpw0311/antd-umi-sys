@@ -3,9 +3,9 @@ import { Charts, Page } from 'components';
 import View from './components/view';
 // import styles from './index.less';
 
-const { Line, Bar, BarWaterfall, ScatterAqiColor } = Charts;
+const { Line, Bar, BarWaterfall, ScatterAqiColor, Pie, PieCustom,PieNest ,Area} = Charts;
 function Chart(props) {
-    const { dispatch, lineData = [], barData = [], barWaterfallData, scatterAqiColorData } = props;// eslint-disable-line
+    const { dispatch, lineData = [], barData = [], barWaterfallData, scatterAqiColorData, pieData = [],nestData } = props;// eslint-disable-line
     const handleClick = (p) => {
         console.log(p);
     };
@@ -27,6 +27,15 @@ function Chart(props) {
                 }}
             >
                 <Line data={lineData} handleClick={handleClick} />
+            </View>
+            <View
+                title="面积图"
+                data={barData}
+                onBlur={(value) => {
+                    handleBlur(value, "barData");
+                }}
+            >
+                <Area  data={barData} handleClick={handleClick} />
             </View>
             <View
                 title="柱状图"
@@ -55,6 +64,36 @@ function Chart(props) {
                 }}
             >
                 <ScatterAqiColor data={scatterAqiColorData} handleClick={handleClick} style={{ height: '400px', marginTop: '50px' }} />
+            </View>
+            <View
+                title="饼图"
+                data={pieData}
+                rows={24}
+                onBlur={(value) => {
+                    handleBlur(value, "pieData");
+                }}
+            >
+                <Pie data={pieData} style={{ height: '400px', marginTop: '50px' }} />
+            </View>
+            <View
+                title="饼图"
+                data={pieData}
+                rows={24}
+                onBlur={(value) => {
+                    handleBlur(value, "pieData");
+                }}
+            >
+                <PieCustom data={pieData} style={{ height: '400px', marginTop: '50px' }} />
+            </View>
+            <View
+                title="嵌套图"
+                data={nestData}
+                rows={24}
+                onBlur={(value) => {
+                    handleBlur(value, "nestData");
+                }}
+            >
+                <PieNest data={nestData} style={{ height: '400px', marginTop: '50px' }} />
             </View>
         </Page >
     );

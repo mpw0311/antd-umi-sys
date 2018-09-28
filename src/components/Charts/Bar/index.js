@@ -1,78 +1,22 @@
-import { Component } from 'react';
-import ReactEcharts from 'echarts-for-react';
-import chartConfig from '../config';
-import { toDataset, getMark, showLoading } from '../_';
+import Basic from '../Basic_line_bar';
+export default (props) => {
+    const {
+        type = 'Bar',
+        label = false,
+        ...rest
+    } = props;
 
-class Bar extends Component {
-    constructor(props) {
-        super(props);
-        const { handleClick } = props;
-        this.state = {
-            onEvents: {
-                click: (params) => {
-                    handleClick(params);
-                }
-            }
-        };
-    }
-    render() {
-        const {
-            data = {},
-            style,
-            title = '',
-            maxShow = false,
-            minShow = false,
-            averageShow = false
-        } = this.props;
-        const { onEvents } = this.state;
-        const datasetSource = toDataset(data);
-        const mark = getMark({ maxShow, minShow, averageShow });
-        const series = [];
-        for (let i = 1; i < datasetSource.length; i++) {
-            series.push({
-                type: 'bar',
-                ...mark,
-                seriesLayoutBy: 'row'
-            });
+    const _label = {
+        normal: {
+            show: true,
+            position: 'top'
         }
-        const option = {
-            title: {
-                text: title
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-                }
-            },
-            legend: {
-                bottom: 10
-            },
-            grid: {
-                top: 40,
-                bottom: 70
-            },
-            dataset: {
-                source: datasetSource
-            },
-            xAxis: {
-                type: 'category',
-                // gridIndex: 0
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series
-        };
-        return (
-            <ReactEcharts
-                option={option}
-                {...chartConfig}
-                style={style}
-                onEvents={onEvents}
-                showLoading={showLoading(data)}
-            />
-        );
-    }
-}
-export default Bar;
+    };
+    return (
+        <Basic
+            type={type}
+            label={label === true ? _label : undefined}
+            {...rest}
+        />
+    );
+};

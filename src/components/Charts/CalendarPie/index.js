@@ -28,14 +28,12 @@ class CalendarPie extends Component {
         this.getCalendarLable = this.getCalendarLable.bind(this);
         this.onChartReadyCallback = this.onChartReadyCallback.bind(this);
     }
-    shouldComponentUpdate(nextProps, nextState) {
-        const { echartObj } = this.state;
-        const { echartObj: nextEchartObj } = nextState;
-        if (echartObj === undefined || nextEchartObj === undefined) {
+    shouldComponentUpdate(nextProps) {
+        if (_.isEqual(this.props, nextProps)) {
             return false;
         } else {
             return true;
-        }
+        };
     }
     componentWillUpdate(nextProps, nextState) {
         const { time, data } = nextProps;

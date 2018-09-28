@@ -2,211 +2,215 @@
 export default {
     namespace: 'chartView',
     state: {
-        lineData: {
-            columns: [
+        lineData:{
+            "columns": [
                 {
-                    field: "category",
-                    name: "分类",
-                    type: "string",
+                    "field": "xAxis",
+                    "name": "时间",
+                    "type": "string"
                 },
                 {
-                    field: "amount_1",
-                    name: "1k-3k",
-                    type: "number",
+                    "field": "email",
+                    "name": "邮件营销",
+                    "type": "string"
                 },
                 {
-                    field: "amount_2",
-                    name: "3k-1w",
-                    type: "number",
+                    "field": "union",
+                    "name": "联盟广告",
+                    "type": "string"
                 },
                 {
-                    field: "amount_3",
-                    name: "1w-3w",
-                    type: "number",
+                    "field": "video",
+                    "name": "视频广告",
+                    "type": "string"
                 },
                 {
-                    field: "amount_4",
-                    name: "3w-5w",
-                    type: "number",
+                    "field": "visit",
+                    "name": "直接访问",
+                    "type": "string"
                 },
                 {
-                    field: "amount_4",
-                    name: "5w-10w",
-                    type: "number",
-                },
-                {
-                    field: "amount_5",
-                    name: ">=10w",
-                    type: "number",
-                },
-    
+                    "field": "search",
+                    "name": "搜索引擎",
+                    "type": "string"
+                }
             ],
-            rows: [
+            "rows": [
                 {
-                    category: '低于30%',
-                    amount_1: 24,
-                    amount_2: 53,
-                    amount_3: 23,
-                    amount_4: 73,
-                    amount_5: 93,
+                    "xAxis": "周一",
+                    "email": 120,
+                    "union": 220,
+                    "video": 150,
+                    "visit": 30,
+                    "search": 820
                 },
                 {
-                    category: '30%-50%',
-                    amount_1: 24,
-                    amount_2: 53,
-                    amount_3: 23,
-                    amount_4: 73,
-                    amount_5: 93,
+                    "xAxis": "周二",
+                    "email": 132,
+                    "union": 182,
+                    "video": 232,
+                    "visit": 332,
+                    "search": 932
                 },
                 {
-                    category: '50%-65%',
-                    amount_1: 24,
-                    amount_2: 53,
-                    amount_3: 23,
-                    amount_4: 73,
-                    amount_5: 93,
+                    "xAxis": "周三",
+                    "email": 101,
+                    "union": 192,
+                    "video": 202,
+                    "visit": 302,
+                    "search": 902
                 },
                 {
-                    category: '65%-75%',
-                    amount_1: 24,
-                    amount_2: 53,
-                    amount_3: 23,
-                    amount_4: 73,
-                    amount_5: 93,
+                    "xAxis": "周四",
+                    "email": 134,
+                    "union": 234,
+                    "video": 154,
+                    "visit": 334,
+                    "search": 934
                 },
                 {
-                    category: '75%-85%',
-                    amount_1: 24,
-                    amount_2: 53,
-                    amount_3: 23,
-                    amount_4: 73,
-                    amount_5: 93,
+                    "xAxis": "周五",
+                    "email": 90,
+                    "union": 290,
+                    "video": 190,
+                    "visit": 390,
+                    "search": 1290
                 },
                 {
-                    category: '高于85%',
-                    amount_1: 24,
-                    amount_2: 53,
-                    amount_3: 23,
-                    amount_4: 73,
-                    amount_5: 93,
+                    "xAxis": "周六",
+                    "email": 230,
+                    "union": 330,
+                    "video": 330,
+                    "visit": 330,
+                    "search": 1230
                 },
-            ],
+                {
+                    "xAxis": "周日",
+                    "email": 210,
+                    "union": 310,
+                    "video": 420,
+                    "visit": 320,
+                    "search": 1320
+                }
+            ]
         },
-        barData: {
-            columns: [
+        barData:{
+            "columns": [
                 {
-                    field: "category",
-                    name: "分类",
-                    type: "string",
+                    "field": "xAxis",
+                    "name": "时间",
+                    "type": "string"
                 },
                 {
-                    field: "amount_1",
-                    name: "1k-3k",
-                    type: "number",
+                    "field": "email",
+                    "name": "邮件营销",
+                    "type": "string"
                 },
                 {
-                    field: "amount_2",
-                    name: "3k-1w",
-                    type: "number",
+                    "field": "union",
+                    "name": "联盟广告",
+                    "type": "string"
                 },
                 {
-                    field: "amount_3",
-                    name: "1w-3w",
-                    type: "number",
+                    "field": "video",
+                    "name": "视频广告",
+                    "type": "string"
                 },
                 {
-                    field: "amount_4",
-                    name: "3w-5w",
-                    type: "number",
+                    "field": "visit",
+                    "name": "直接访问",
+                    "type": "string"
                 },
                 {
-                    field: "amount_4",
-                    name: "5w-10w",
-                    type: "number",
-                },
-                {
-                    field: "amount_5",
-                    name: ">=10w",
-                    type: "number",
-                },
-    
+                    "field": "search",
+                    "name": "搜索引擎",
+                    "type": "string"
+                }
             ],
-            rows: [
+            "rows": [
                 {
-                    category: '低于30%',
-                    amount_1: 24,
-                    amount_2: 53,
-                    amount_3: 23,
-                    amount_4: 73,
-                    amount_5: 93,
+                    "xAxis": "周一",
+                    "email": 120,
+                    "union": 220,
+                    "video": 150,
+                    "visit": 30,
+                    "search": 820
                 },
                 {
-                    category: '30%-50%',
-                    amount_1: 24,
-                    amount_2: 53,
-                    amount_3: 23,
-                    amount_4: 73,
-                    amount_5: 93,
+                    "xAxis": "周二",
+                    "email": 132,
+                    "union": 182,
+                    "video": 232,
+                    "visit": 332,
+                    "search": 932
                 },
                 {
-                    category: '50%-65%',
-                    amount_1: 24,
-                    amount_2: 53,
-                    amount_3: 23,
-                    amount_4: 73,
-                    amount_5: 93,
+                    "xAxis": "周三",
+                    "email": 101,
+                    "union": 192,
+                    "video": 202,
+                    "visit": 302,
+                    "search": 902
                 },
                 {
-                    category: '65%-75%',
-                    amount_1: 24,
-                    amount_2: 53,
-                    amount_3: 23,
-                    amount_4: 73,
-                    amount_5: 93,
+                    "xAxis": "周四",
+                    "email": 134,
+                    "union": 234,
+                    "video": 154,
+                    "visit": 334,
+                    "search": 934
                 },
                 {
-                    category: '75%-85%',
-                    amount_1: 24,
-                    amount_2: 53,
-                    amount_3: 23,
-                    amount_4: 73,
-                    amount_5: 93,
+                    "xAxis": "周五",
+                    "email": 90,
+                    "union": 290,
+                    "video": 190,
+                    "visit": 390,
+                    "search": 1290
                 },
                 {
-                    category: '高于85%',
-                    amount_1: 24,
-                    amount_2: 53,
-                    amount_3: 23,
-                    amount_4: 73,
-                    amount_5: 93,
+                    "xAxis": "周六",
+                    "email": 230,
+                    "union": 330,
+                    "video": 330,
+                    "visit": 330,
+                    "search": 1230
                 },
-            ],
+                {
+                    "xAxis": "周日",
+                    "email": 210,
+                    "union": 310,
+                    "video": 420,
+                    "visit": 320,
+                    "search": 1320
+                }
+            ]
         },
         barWaterfallData:[
             {
                 name: "1千至3千",
                 type: "number",
-                data: 89
+                value: 89
             },
             {
                 name: "3千至1万",
                 type: "number",
-                data: 400
+                value: 400
             },
             {
                 name: "1万至3万",
                 type: "number",
-                data: 260
+                value: 260
             },
             {
                 name: "3万至5万",
                 type: "number",
-                data: 100
+                value: 100
             },
             {
                 name: "5万至10万",
                 type: "number",
-                data: 223
+                value: 223
             },
         ],
         scatterAqiColorData:[
@@ -450,6 +454,54 @@ export default {
                     ]
                 }
             },
+        ],
+        pieData:[
+            {
+                name: "直接访问",
+                value: 335
+            },
+            {
+                name: "邮件营销",
+                value: 310
+            },
+            {
+                name: "联盟广告",
+                value: 234
+            },
+            {
+                name: "视频广告",
+                value: 135
+            },
+            {
+                name: "搜索引擎",
+                value: 400
+            },
+        ],
+        nestData:[
+            {
+                name: '直达',
+                children: [
+                    { value: 335, name: '直达' },
+                ]
+            },
+            {
+                name: '营销广告',
+                children: [
+                    { value: 310, name: '邮件营销' },
+                    { value: 234, name: '联盟广告' },
+                    { value: 135, name: '视频广告' },
+                ]
+            },
+            {
+                name: '搜索引擎',
+                children: [
+                    { value: 1048, name: '百度' },
+                    { value: 251, name: '谷歌' },
+                    { value: 147, name: '必应' },
+                    { value: 102, name: '其他' }
+                ]
+            },
+        
         ]
     },
     subscriptions: {
