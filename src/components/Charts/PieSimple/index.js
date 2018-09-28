@@ -6,7 +6,7 @@ import { showLoading } from '../_';
 class Pie extends Component {
     constructor(props) {
         super(props);
-        const { handleClick } = props;
+        const { handleClick = () => { } } = props;
         this.state = {
             onEvents: {
                 click: (params) => {
