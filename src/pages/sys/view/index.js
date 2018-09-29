@@ -2,7 +2,7 @@ import { Charts, Page } from 'components';
 import styles from './index.css';
 
 const { Bar } = Charts;
-export default function () {
+export default function (props) {
   const data = {
     columns: [
       {
@@ -96,8 +96,9 @@ export default function () {
   const handleClick = (p) => {
     console.log(p);
   };
+  const { location } = props;
   return (
-    <Page loading={false} inner={true} pathtitles={['view']}>
+    <Page loading={false} inner={true} pathtitles={['view']} location={location}>
       <div className={styles.normal}>
         <h1>Page view</h1>
         <Bar data={data} handleClick={handleClick} />
