@@ -76,14 +76,14 @@ export default {
             children: [
                 {
                     title: "bing",
-                    link: "/sys/frame",
+                    link: "/frame",
                     key: "bing",
                     icon: "shop",
                     url: `https://cn.bing.com/`,
                 },
                 {
                     title: "百度",
-                    link: "/sys/frame",
+                    link: "/frame",
                     key: "baidu",
                     icon: "shop",
                     url: `https://www.baidu.com/`,

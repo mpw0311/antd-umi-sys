@@ -14,10 +14,10 @@ export const menuPermission = false;
 export const pageSize = 10;
 // 默认首页
 export const defaultMenu = {
-    pathname: '/sys/view',
+    pathname: '/sys/chartView',
     state: {
-        key: 'view',
-        pathtitles: ['汇总数据', '交易'],
+        key: 'chartView',
+        pathtitles: ['echarts组件'],
     }
 };
 // iframe默认地址
