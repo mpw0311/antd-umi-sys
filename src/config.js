@@ -4,6 +4,8 @@ export const apiPrefix = document.head.dataset.api || '';
 export const xlightning = document.head.dataset.xlightning || '';
 // 系统名称
 export const sysName = "TEST";
+// 登录页名称
+export const loginName = "数据平台";
 // 页面脚注版权信息
 export const footerText = " V1.0.0 2018 © by mpw.";
 // 菜单权限

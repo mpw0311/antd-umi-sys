@@ -1,9 +1,13 @@
+import { Page } from 'components';
 import styles from './404.css';
+import img from '../assets/404.png';
 
-export default function() {
+export default function () {
   return (
-    <div className={styles.normal}>
-      <h1>Page 404</h1>
-    </div>
+    <Page
+      inner={true}
+    >
+      <img className={styles.img} src={img} alt="404" />
+    </Page>
   );
 }
