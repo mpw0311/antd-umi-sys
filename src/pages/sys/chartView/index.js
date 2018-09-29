@@ -3,7 +3,7 @@ import { Charts, Page } from 'components';
 import View from './components/view';
 // import styles from './index.less';
 
-const { Line, Bar, BarWaterfall, ScatterAqiColor, Pie, PieCustom, PieNest, Area, Sankey } = Charts;
+const { Line, Bar, BarWaterfall, ScatterAqiColor, Pie, PieCustom, PieNest, Area, Sankey, Radar } = Charts;
 function Chart(props) {
     const {
         dispatch,
@@ -13,7 +13,8 @@ function Chart(props) {
         scatterAqiColorData,
         pieData = [],
         nestData,
-        sankeyData
+        sankeyData,
+        radarData
     } = props;// eslint-disable-line
     const handleClick = (p) => {
         console.log(p);
@@ -113,6 +114,16 @@ function Chart(props) {
                 }}
             >
                 <Sankey data={sankeyData} style={{ height: '400px', marginTop: '50px' }} />
+            </View>
+            <View
+                title="桑基图"
+                data={radarData}
+                rows={24}
+                onBlur={(value) => {
+                    handleBlur(value, "radarData");
+                }}
+            >
+                <Radar data={radarData} style={{ height: '400px', marginTop: '50px' }} />
             </View>
         </Page >
     );

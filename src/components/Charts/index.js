@@ -9,6 +9,7 @@ import Area from './Area';
 import Pie from './PieSimple';
 import PieCustom from './PieCustom';
 import PieNest from './pieNest';
+import Radar from './Radar';
 
 export {
     Bar,
@@ -20,5 +21,6 @@ export {
     Area,
     Pie,
     PieCustom,
-    PieNest
+    PieNest,
+    Radar
 };
