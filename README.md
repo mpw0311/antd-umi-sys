@@ -1,6 +1,7 @@
 # antd-umi-sys
 ## 简介
-    企业级管理平台，主要技术：react、umi、dva、antd、less等。
+    企业管理平台，主要技术：react、antd、umi、dva、es6、less、webpack等。
+    推荐浏览器：Google Chrome
 ![antd-umi-sys](src/assets/demo_login.png)
 ![antd-umi-sys](src/assets/demo.png)
 ## 特性
