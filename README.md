@@ -8,7 +8,7 @@
 + 单页面应用；
 + 组件化开发；
 + 丰富的Echarts图形组件；
-+ 按需加载，首次访问速度快；
++ 按需加载；
 + mock模拟数据请求
 ---
 ## 目录结构
@@ -37,56 +37,103 @@
 ```
 ---
 ## 数据模型
-### 二维表结构
-```js
+### 数据结构
+```json
     {
-        "data": {
-            "columns": [
-                {
-                    "field": "date",
-                    "name": "时间",
-                    "type": "string"
-                },
-                {
-                    "field": "T0",
-                    "name": "T0",
-                    "type": "number"
-                },
-                {
-                    "field": "T1",
-                    "name": "T1",
-                    "type": "number"
-                },
-                {
-                    "field": "T2",
-                    "name": "T2",
-                    "type": "number"
-                }
-            ],
-            "rows": [
-                {
-                    "date": "06-01",
-                    "T0": 123,
-                    "T1": 123,
-                    "T2": 123
-                },
-                {
-                    "date": "06-02",
-                    "T0": 123,
-                    "T1": 123,
-                    "T2": 123
-                }
-            ],
-            "total":2,
-            "current": 1,
-            "pageSize": 5
-
+    "columns": [
+        {
+            "field": "xAxis",
+            "name": "时间",
+            "type": "string"
         },
-        "status": 0
-    }
+        {
+            "field": "email",
+            "name": "邮件营销",
+            "type": "string"
+        },
+        {
+            "field": "union",
+            "name": "联盟广告",
+            "type": "string"
+        },
+        {
+            "field": "video",
+            "name": "视频广告",
+            "type": "string"
+        },
+        {
+            "field": "visit",
+            "name": "直接访问",
+            "type": "string"
+        },
+        {
+            "field": "search",
+            "name": "搜索引擎",
+            "type": "string"
+        }
+    ],
+    "rows": [
+        {
+            "xAxis": "周一",
+            "email": 120,
+            "union": 220,
+            "video": 150,
+            "visit": 30,
+            "search": 820
+        },
+        {
+            "xAxis": "周二",
+            "email": 132,
+            "union": 182,
+            "video": 232,
+            "visit": 332,
+            "search": 932
+        },
+        {
+            "xAxis": "周三",
+            "email": 101,
+            "union": 192,
+            "video": 202,
+            "visit": 302,
+            "search": 902
+        },
+        {
+            "xAxis": "周四",
+            "email": 134,
+            "union": 234,
+            "video": 154,
+            "visit": 334,
+            "search": 934
+        },
+        {
+            "xAxis": "周五",
+            "email": 90,
+            "union": 290,
+            "video": 190,
+            "visit": 390,
+            "search": 1290
+        },
+        {
+            "xAxis": "周六",
+            "email": 230,
+            "union": 330,
+            "video": 330,
+            "visit": 330,
+            "search": 1230
+        },
+        {
+            "xAxis": "周日",
+            "email": 210,
+            "union": 310,
+            "video": 420,
+            "visit": 320,
+            "search": 1320
+        }
+    ]
+}
 ```
 ### 树形结构
-```js
+```json
     {
         "data":{
             "columns": [
