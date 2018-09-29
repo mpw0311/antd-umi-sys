@@ -159,7 +159,7 @@ class MyTabs extends Component {
                     const { nodes, links } = item;
                     if (nodes.length > 0 && links.length > 0) {
                         return (
-                            <Sankey key={i} data={item} style={{ height: h, ...rest }} handleClick={callback} loading={loading} />
+                            <Sankey showDrain key={i} data={item} style={{ height: h, ...rest }} handleClick={callback} loading={loading} />
                         );
                     } else {
                         return (

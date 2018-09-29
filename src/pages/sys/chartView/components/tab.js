@@ -39,10 +39,10 @@ export default function (props) {
     return (
         <Tabs defaultActiveKey="1">
             <TabPane tab={<span><Icon type="bar-chart" />数据</span>} key="1">
-                <TextArea rows={rows} defaultValue={JSON.stringify(data)} onBlur={handleBlur} onKeyDown={tab} className={styles.TextArea} spellCheck="false" {...rest} />
+                <TextArea rows={rows} defaultValue={JSON.stringify(data)} onBlur={handleBlur} onKeyDown={tab} className={`${styles.TextArea} scrollbar`} spellCheck="false" {...rest} />
             </TabPane>
             <TabPane tab={<span><Icon type="setting" />option</span>} key="2">
-                <TextArea rows={rows} defaultValue={'{}'} onKeyDown={tab} onBlur={() => { }} className={styles.TextArea} spellCheck="false" disabled {...rest} />
+                <TextArea rows={rows} defaultValue={'{}'} onKeyDown={tab} onBlur={() => { }} className={`${styles.TextArea} scrollbar`} spellCheck="false" disabled {...rest} />
             </TabPane>
         </Tabs>
     );

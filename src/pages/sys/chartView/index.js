@@ -3,9 +3,18 @@ import { Charts, Page } from 'components';
 import View from './components/view';
 // import styles from './index.less';
 
-const { Line, Bar, BarWaterfall, ScatterAqiColor, Pie, PieCustom, PieNest, Area } = Charts;
+const { Line, Bar, BarWaterfall, ScatterAqiColor, Pie, PieCustom, PieNest, Area, Sankey } = Charts;
 function Chart(props) {
-    const { dispatch, lineData = [], barData = [], barWaterfallData, scatterAqiColorData, pieData = [], nestData } = props;// eslint-disable-line
+    const {
+        dispatch,
+        lineData = [],
+        barData = [],
+        barWaterfallData,
+        scatterAqiColorData,
+        pieData = [],
+        nestData,
+        sankeyData
+    } = props;// eslint-disable-line
     const handleClick = (p) => {
         console.log(p);
     };
@@ -17,9 +26,8 @@ function Chart(props) {
             }
         });
     };
-    const { location } = props;
     return (
-        <Page loading={false} pathtitles={['echarts组件']} location={location}>
+        <Page loading={false} pathtitles={['echarts数据可视化组件']}>
             <View
                 title="折线图"
                 data={lineData}
@@ -95,6 +103,16 @@ function Chart(props) {
                 }}
             >
                 <PieNest data={nestData} style={{ height: '400px', marginTop: '50px' }} />
+            </View>
+            <View
+                title="桑基图"
+                data={sankeyData}
+                rows={24}
+                onBlur={(value) => {
+                    handleBlur(value, "sankeyData");
+                }}
+            >
+                <Sankey data={sankeyData} style={{ height: '400px', marginTop: '50px' }} />
             </View>
         </Page >
     );

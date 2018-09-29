@@ -21,7 +21,12 @@ class Sankey extends Component {
     componentDidUpdate(nextProps, nextState) { //eslint-disable-line
     }
     render() {
-        const { data, style, loading } = this.props;
+        const {
+            data,
+            style,
+            loading,
+            showDrain = false //是否显示流失
+        } = this.props;
         const { onEvents } = this.state;
         let series = [];
         const getDrain = (data = {}, node) => {
@@ -30,13 +35,14 @@ class Sankey extends Component {
             let nodeTarget = 0;
             for (let d of nodes) {
                 if (d.name === node) {
-                    nodeSource = d.value;
+                    nodeSource = parseFloat(d.value);
                     break;
                 }
             }
             for (let d of links) {
-                if (d.source === node) {
-                    nodeTarget += d.value;
+                const { source, value } = d;
+                if (source === node) {
+                    nodeTarget += parseFloat(value);
                 }
             }
             return nodeSource - nodeTarget;
@@ -83,10 +89,14 @@ class Sankey extends Component {
                     if (dataType === 'edge') {
                         return name;
                     }
-                    const drain = getDrain(data, name);
                     // const _name = name.length > 10 ? `${name.slice(0, 10)}...` : name;
-                    const str = parseFloat(value) === drain ? '' : `流失：${drain}`;
-                    return `${name}：${value} <br/> ${str}`;
+                    if (showDrain) {
+                        const drain = getDrain(data, name);
+                        const str = parseFloat(value) === drain ? '' : `流失：${drain}`;
+                        return `${name}：${value} <br/> ${str}`;
+                    } else {
+                        return `${name}：${value}`;
+                    }
                 },
             },
             series
