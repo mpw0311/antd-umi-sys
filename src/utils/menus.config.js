@@ -42,7 +42,7 @@ export default {
             title: "view",
             link: "/sys/view",
             key: "view",
-            icon: "user"
+            icon: "idcard"
         },
         {
             title: "echarts组件",

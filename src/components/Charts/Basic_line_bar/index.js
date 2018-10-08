@@ -1,11 +1,12 @@
 import { Component } from 'react';
 import ReactEcharts from 'echarts-for-react';
+import PropTypes from 'prop-types';
 import chartConfig from '../config';
 import _ from 'lodash';
 import { toDataset, getMark, showLoading } from '../_';
 import { _getType } from './_';
 
-class Line extends Component {
+class Basic extends Component {
   constructor(props) {
     super(props);
     const { handleClick = () => { } } = props;
@@ -88,5 +89,14 @@ class Line extends Component {
     );
   }
 }
+Basic.propTypes = {
+  data: PropTypes.object,
+  stack: PropTypes.object,
+  title: PropTypes.string,
+  children: PropTypes.node,
+  maxShow: PropTypes.bool,
+  minShow: PropTypes.bool,
+  averageShow: PropTypes.bool,
+};
 
-export default Line;
+export default Basic;
