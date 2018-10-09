@@ -1,5 +1,6 @@
 import fetch from 'dva/fetch';
 import { message } from 'antd';
+import router from 'umi/router';
 import { apiPrefix } from 'config';
 
 
@@ -49,11 +50,15 @@ export default async function request(url, options) {
   }
   if (status !== 0) {
     const { alertDesc } = data;
-    message.error(alertDesc || '无权限!');
+    message.error(alertDesc || "无权限！");
     setTimeout(() => {
-      const url = window.location.origin;
-      window.location.href = url + "/login";
+      router.push('/login');
     }, 1000);
+    // message.error(alertDesc || '无权限!');
+    // setTimeout(() => {
+    //   const url = window.location.origin;
+    //   window.location.href = url + "/login";
+    // }, 1000);
   } else {
     return ret;
   }

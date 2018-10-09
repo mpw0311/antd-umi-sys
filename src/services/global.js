@@ -1,10 +1,7 @@
 import { request } from 'utils';
-export function logout(payload) {
+export function logout() {
   return request('/logout', {
-    method: 'POST',
-    body: JSON.stringify({
-      ...payload,
-    }),
+    method: 'GET',
   });
 }
 export function getSysInfo(payload) {
