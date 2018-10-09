@@ -17,7 +17,7 @@ export default {
         setupHistory({ dispatch, history }) {
             history.listen((location) => {
                 const { pathname, /*query, state*/ } = location;
-                if (pathname !== '/login' || pathname !== '/register') {
+                if (pathname !== '/login' && pathname !== '/register') {
                     dispatch({
                         type: 'getSysInfo'
                     });

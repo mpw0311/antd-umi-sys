@@ -21,8 +21,15 @@ const globalLoading = (
 class Index extends Component {
     constructor(props) {
         super(props);
+        let collapsed = false;
+        const winWidth = document.documentElement.clientWidth;
+        if (winWidth <= 1400) {
+            collapsed = true;
+        } else if (winWidth > 1400) {
+            collapsed = false;
+        }
         this.state = {
-            collapsed: false,
+            collapsed: collapsed,
             searchData: [],
             minHeight: document.body.offsetHeight
         };

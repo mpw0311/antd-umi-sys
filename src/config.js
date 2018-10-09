@@ -13,7 +13,12 @@ export const menuPermission = false;
 //分页
 export const pageSize = 10;
 // 默认首页
-export const defaultMenu = {
+export const pageInit = {
+    pathname: '/login',
+    state: {}
+};
+//默认系统首页
+export const sysInit = {
     pathname: '/sys/chartView',
     state: {
         key: 'chartView',
