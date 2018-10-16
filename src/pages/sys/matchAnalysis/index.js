@@ -109,7 +109,6 @@ function MatchAnalysis(props) {
                     loading={loading}
                 />
             </Card>
-
         </div>
     );
 }
