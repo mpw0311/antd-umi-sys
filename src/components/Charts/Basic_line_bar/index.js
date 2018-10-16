@@ -91,7 +91,7 @@ class Basic extends Component {
 }
 Basic.propTypes = {
   data: PropTypes.object,
-  stack: PropTypes.object,
+  stack: PropTypes.string,
   title: PropTypes.string,
   children: PropTypes.node,
   maxShow: PropTypes.bool,
