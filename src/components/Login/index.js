@@ -27,6 +27,7 @@ class Login extends Component {
                 <Form onSubmit={this.handleSubmit}>
                     <FormItem>
                         {fd('username', {
+                            initialValue: 'admin',
                             rules: [{
                                 required: true,
                                 message: '请输入用户名!'
@@ -39,6 +40,7 @@ class Login extends Component {
                         <Col span={16}>
                             <FormItem>
                                 {fd('password', {
+                                    initialValue: 'admin',
                                     rules: [{ required: true, message: '请输入密码!' }],
                                 })(
                                     <Input prefix={<Icon type="lock" className={styles.color} />} type="password" placeholder="密码" />
@@ -48,6 +50,7 @@ class Login extends Component {
                         <Col span={8}>
                             <FormItem>
                                 {fd("googleToken", {
+                                    initialValue: '123',
                                     rules: [{ required: true, message: '请输入口令!' }]
                                 })(
                                     <Input prefix={<Icon type="mobile" className={styles.color} />} placeholder="口令" />
