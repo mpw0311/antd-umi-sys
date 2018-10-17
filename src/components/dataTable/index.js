@@ -1,25 +1,27 @@
 import { Component } from 'react';
 import { Table, Row, Col } from 'antd';
 import { methods } from 'utils';
+import _ from 'lodash';
 import Search from './search';
 import TableSelect from './select';
 
-// const filter = (dataSource, value, selectIndex) => {
-//     return dataSource.filter(item => {
-//         return item[selectIndex] !== value;
-//     });
-// };
 const { toTableData } = methods;
 const compare = (a, b, dataIndex, type) => {
     const _type = type ? type.toLowerCase() : 'string';
     if (_type === "string") {
         if (a[dataIndex] > b[dataIndex]) {
-            return -1;
-        } else {
             return 1;
+        } else {
+            return -1;
         }
     } else if (_type === "number") {
         return parseFloat(a[dataIndex]) - parseFloat(b[dataIndex]);
+    } else if (type === 'date') {
+        if (a[dataIndex] > b[dataIndex]) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 };
 const getSortColumns = (columns, sortIndexs) => {
@@ -49,13 +51,30 @@ const getAllSortColumns = (columns) => {
         };
     });
 };
-
+const searchTable = (dataSource, key) => {
+    if (key === undefined || key === '') {
+        return dataSource;
+    } else {
+        return _.filter(dataSource, item => {
+            for (const name in item) {
+                const v = item[name];
+                if (v === key) {
+                    return true;
+                } else if (_.isString(v) && _.includes(v, key)) {
+                    return true;
+                } else if (_.isNumber(v) && v == key) {
+                    return true;
+                }
+            }
+            return false;
+        });
+    }
+};
 class DataTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataSource: [],
-            columns: [],
+            searchKey: undefined,
             pagination: {
                 // total: 20, // 数据总数量
                 pageSize: 10, // 显示几条一页
@@ -71,11 +90,12 @@ class DataTable extends Component {
         const { onChange = () => { } } = selectProps;
         onChange(value);
     }
-    handleSearch(value) {
-        const { searchProps = {} } = this.props;
-        const { onSearch = () => { } } = searchProps;
-        onSearch(value);
+    handleSearch(searchKey) {
+        this.setState({
+            searchKey
+        });
     }
+
     render() {
         const {
             data = {}, // table 数据
@@ -83,9 +103,11 @@ class DataTable extends Component {
             searchProps = {}, // search属性
             sort, // 全排序
             sortIndexs = [], // 列排序
-            onPageChange = () => { },
+            onPageChange = () => { },//eslint-disable-line
+            columns: defaultColumns,
             ...restProps
         } = this.props;
+        const { columns, dataSource } = toTableData(data);
         const {
             show: selectShow,
             data: optionData,
@@ -94,10 +116,17 @@ class DataTable extends Component {
         const {
             show: searchShow,
         } = searchProps;
-        const { pagination } = this.state;
-        const { columns, dataSource } = toTableData(data);
-        const _columns = sort ? getAllSortColumns(columns) : sortIndexs.length > 0 ? getSortColumns(columns, sortIndexs) : columns;
-        // const _dataSource = filter(dataSource, key, selectIndex);
+        const { pagination, searchKey } = this.state;
+        const initColumns = defaultColumns || columns;
+        const _columns = sort ? getAllSortColumns(initColumns) : sortIndexs.length > 0 ? getSortColumns(initColumns, sortIndexs) : initColumns;
+        const _dataSource = searchTable(dataSource, searchKey);
+        const handlePageChange = (pageSize) => {
+            const { pagination } = this.state;
+            pagination.pageSize = pageSize;
+            this.setState({
+                pagination
+            });
+        };
         return (
             <div>
                 <Row>
@@ -118,15 +147,18 @@ class DataTable extends Component {
                 </Row>
                 <Table
                     columns={_columns}
-                    dataSource={dataSource}
+                    dataSource={_dataSource}
                     bordered
                     pagination={{
                         ...pagination,
-                        onShowSizeChange(current, pageSize) {  // 当几条一页的值改变后调用函数，current：改变显示条数时当前数据所在页；pageSize:改变后的一页显示条数
-                            onPageChange(current, pageSize);
+                        onShowSizeChange(current, pageSize) {  //eslint-disable-line
+                            handlePageChange(pageSize);
+                            // 当几条一页的值改变后调用函数，current：改变显示条数时当前数据所在页；pageSize:改变后的一页显示条数
+                            // onPageChange(current, pageSize);
                         },
-                        onChange(current, pageSize) {  // 点击改变页数的选项时调用函数，current:将要跳转的页数
-                            onPageChange(current, pageSize);
+                        onChange(current, pageSize) { //eslint-disable-line 
+                            // 点击改变页数的选项时调用函数，current:将要跳转的页数
+                            // onPageChange(current, pageSize);
                         },
                     }}
                     {...restProps}
