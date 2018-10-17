@@ -62,7 +62,7 @@ const searchTable = (dataSource, key) => {
                     return true;
                 } else if (_.isString(v) && _.includes(v, key)) {
                     return true;
-                } else if (_.isNumber(v) && v == key) {
+                } else if (_.isNumber(v) && v === parseFloat(key)) {
                     return true;
                 }
             }
@@ -129,7 +129,7 @@ class DataTable extends Component {
         };
         return (
             <div>
-                <Row>
+                <Row style={{ paddingBottom: '5px' }}>
                     <Col span={12}>
                         <TableSelect
                             show={selectShow || false}
