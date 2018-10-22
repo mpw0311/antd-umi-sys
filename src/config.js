@@ -1,7 +1,7 @@
 // 后台API URI前端
 export const apiPrefix = document.head.dataset.api || '';
 // iframe 请求根路径
-export const xlightning = document.head.dataset.xlightning || '';
+export const xlightning = document.head.dataset.iframe || '';
 // 系统名称
 export const sysName = "TEST";
 // 登录页名称
