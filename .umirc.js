@@ -3,7 +3,7 @@
 import { resolve } from "path";
 
 export default {
-  // history: 'hash',//是否启动hash路由，默认是用的 Browser History
+  history: 'hash',//是否启动hash路由，默认是用的 Browser History
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
