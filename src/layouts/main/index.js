@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import { Layout, Spin } from 'antd';
+import { Layout, Spin, BackTop } from 'antd';
 import _ from 'lodash';
 import { Menus, GlobalHeader, Breadcrumb, GlobalDrawer } from 'components';
 import { footerText } from 'config';
@@ -86,7 +86,7 @@ class Index extends Component {
         );
         const Child = (
             <Layout className={styles.content}>
-                <Content className={styles.children}>
+                <Content id='backTop' className={styles.children}>
                     {children}
                     {footer}
                 </Content>
@@ -120,6 +120,7 @@ class Index extends Component {
                     </Sider>
                     {isFrame ? Frame : Child}
                 </Layout >
+                <BackTop target={() => document.getElementById('backTop')} style={{ right: 20, bottom: 25 }} />
             </Layout>
         );
     }
