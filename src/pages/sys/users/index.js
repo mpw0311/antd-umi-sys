@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
+import { Link } from 'dva/router';
 import { Table, Pagination, Popconfirm, Button } from 'antd';
 import { Page } from 'components';
 import styles from './index.css';
@@ -37,7 +38,7 @@ function Users({ dispatch, list: dataSource, loading, total, page: current }) {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
-      render: text => <a href="">{text}</a>,
+      render: text => <Link to={`/sys/users/${text}`}>{text}</Link>,
     }, {
       title: 'Email',
       dataIndex: 'email',

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import { LocaleProvider, Layout, Spin } from 'antd';
+import { Layout, Spin } from 'antd';
 import _ from 'lodash';
-import zhCN from 'antd/lib/locale-provider/zh_CN';
 import { Menus, GlobalHeader, Breadcrumb, GlobalDrawer } from 'components';
 import { footerText } from 'config';
 import styles from './index.less';
@@ -94,36 +93,34 @@ class Index extends Component {
             </Layout>
         );
         return (
-            <LocaleProvider locale={zhCN}>
-                <Layout className={styles.wrapper}>
-                    <Header style={{ padding: 0 }}>
-                        <GlobalHeader
-                            userInfo={userInfo}
-                            dispatch={dispatch}
-                            message={message}
-                            notification={notification}
+            <Layout className={styles.wrapper}>
+                <Header style={{ padding: 0 }}>
+                    <GlobalHeader
+                        userInfo={userInfo}
+                        dispatch={dispatch}
+                        message={message}
+                        notification={notification}
+                        menusData={menusData}
+                        dataSource={searchData}
+                    />
+                    <GlobalDrawer />
+                </Header>
+                <Layout className={styles.section}>
+                    <Sider
+                        collapsible
+                        collapsed={this.state.collapsed}
+                        onCollapse={this.handleClick}
+                        className={styles.siderbar}
+                    >
+                        <Menus
+                            location={location}
                             menusData={menusData}
-                            dataSource={searchData}
+                            defaultKey={defaultKey}
                         />
-                        <GlobalDrawer />
-                    </Header>
-                    <Layout className={styles.section}>
-                        <Sider
-                            collapsible
-                            collapsed={this.state.collapsed}
-                            onCollapse={this.handleClick}
-                            className={styles.siderbar}
-                        >
-                            <Menus
-                                location={location}
-                                menusData={menusData}
-                                defaultKey={defaultKey}
-                            />
-                        </Sider>
-                        {isFrame ? Frame : Child}
-                    </Layout >
-                </Layout>
-            </LocaleProvider>
+                    </Sider>
+                    {isFrame ? Frame : Child}
+                </Layout >
+            </Layout>
         );
     }
 }
