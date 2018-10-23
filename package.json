@@ -34,6 +34,7 @@
     "classnames": "^2.2.6",
     "echarts": "^4.2.0-rc.1",
     "echarts-for-react": "^2.0.14",
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.10",
+    "path-to-regexp": "^2.4.0"
   }
 }

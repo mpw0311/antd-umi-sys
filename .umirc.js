@@ -16,8 +16,9 @@ export default {
       dynamicImport: true,//true：按需加载
       title: 'antd-umi-sys',
       dll: false,
-      pwa: false,
+      pwa: false,//Progressive Web App，即渐进式WEB应用。
       hardSource: false,
+      locale:'zh-CN',// i18n
       routes: {
         exclude: [
           /model\.(j|t)sx?$/,
