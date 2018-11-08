@@ -35,33 +35,46 @@
 ## 目录结构
 
 ```
-.
-├── dist/                          // 默认的 build 输出目录
-├── mock/                          // mock 文件所在目录，基于 express
-├── config/
-    ├── config.js                  // umi 配置，同 .umirc.js，二选一
-└── src/                           // 源码目录，可选
-    ├── components/                // 系统全局公共组件
-    ├── layouts/                   // 全局布局
-        ├── main/index.js          // 系统内部布局
-        ├── login/index.js         // 登录页布局
-    ├── pages/                     // 页面目录，里面的文件即路由
-        ├── .umi/                  // dev 临时目录，需添加到 .gitignore
-        ├── .umi-production/       // build 临时目录，会自动删除
-        ├── document.ejs           // HTML 模板
-        ├── 404.js                 // 404 页面
-        ├── login.js                 // 系统登录页面
-        ├── sys/                   // 系统文件夹
-            ├── page1.js               // 页面 1，任意命名，导出 react 组件
-            ├── page1.test.js          // 用例文件，umi test 会匹配所有 .test.js 和 .e2e.js 结尾的文件
-            └── page2.js               // 页面 2，任意命名
-    ├── global.css                 // 约定的全局样式文件，自动引入，也可以用 global.less
-    ├── global.js                  // 可以在这里加入 polyfill
-    ├── config.js                  // 系统信息配置
-├── .umirc.js                      // umi 配置，同 config/config.js，二选一
-├── .env                           // 环境变量
+├── dist/                               // 默认的 build 输出目录
+├── mock/                               // mock 文件所在目录，基于 express
+├── node_modules                        // 第三方类库和工具
+├── public                              // 公共的文件（此文件夹里的文件不会经过打包工具处理，会原样拷贝过去）
+├── config/ 
+    ├── config.js                       // umi 配置，同 .umirc.js，二选一
+└── src/                                // 源码目录，可选
+    ├── assets                          // 公共的文件（如图片，js等此文件夹里的文件会经过webpack打包处理）
+    ├── components                      // 项目组件
+    ├── layouts/                        // 全局布局
+        ├── main/index.js               // 系统内部布局
+        ├── login/index.js              // 登录页布局
+    ├── pages/                          // 页面目录，里面的文件即路由
+        ├── .umi/                       // dev 临时目录，需添加到 .gitignore
+        ├── document.ejs                // HTML 模板
+        ├── 404.js                      // 404 页面
+        ├── login/                      // 系统登录页面
+            ├── index.js                // 登录页ui组件
+            ├── index.less              // 组件样式
+            ├── components/             
+                ├── component.js        // 页面组件
+            ├── model.js                // 数据模型
+            ├── sevice.js               //  数据接口
+        ├── sys/                        // 系统文件夹
+            ├── page/                   // 页面 1，任意命名，导出 react 组件
+                ├── index.js            // ui组件
+                ├── index.less          // 组件样式
+                ├── components/         
+                    ├── component.js    // 页面组件
+                ├── model.js            // 数据模型
+                ├── sevice.js           //  数据接口
+    ├── global.css                      // 约定的全局样式文件，自动引入，也可以用 global.less
+    ├── global.js                       // 可以在这里加入 polyfill
+    ├── config.js                       // 系统信息配置
+├── .umirc.js                           // umi 配置，同 config/config.js，二选一
+├── .env                                // 环境变量
 └── package.json
 ```
+## 前端架构图
+![antd-umi-sys](src/assets/frame.png)
 ---
 ## 常用数据模型
 ### 1.基础数据结构
