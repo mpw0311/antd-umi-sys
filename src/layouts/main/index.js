@@ -64,8 +64,8 @@ class Index extends Component {
         }));
     }
     render() {
-        const { location, children, userInfo, message, dispatch, menusData = [], notification, loading } = this.props;
-        if (loading === true && menusData.length === 0) {
+        const { location, children, userInfo, message, dispatch, menusData = [], notification } = this.props;
+        if (menusData.length === 0) {
             return globalLoading;
         }
         const { searchData } = this.state;
