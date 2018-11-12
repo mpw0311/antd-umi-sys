@@ -1,13 +1,11 @@
 import _ from 'lodash';
-import { dataSerialize } from './methods/dataSerialize';
+import { dataSerialize, dataSerializeReverse } from './methods/dataSerialize';
 import { formatNumer } from './methods/formatNumer';
 import { showLoading } from './methods/showLoading';
-import { getMark } from './methods/getMark';
 export {
     dataSerialize,
     formatNumer,
-    showLoading,
-    getMark
+    showLoading
 };
 /**
  * @param {array|array} rows
@@ -37,6 +35,83 @@ export const rowsToColumns = (rows, length = rows[0].length) => {
 };
 
 export const getColumnByIndex = (rows, index) => rows.map(row => row[index]);
+/**
+ * @param {*} data
+ * @param {*} yIndex
+ * {
+    columns: [
+        {
+            field: "amount01",
+            name: "1千至3千",
+            type: "number"
+        },
+        {
+            field: "amount02",
+            name: "3千至1万",
+            type: "number"
+        },
+        {
+            field: "amount03",
+            name: "1万至3万",
+            type: "number"
+        },
+        {
+            field: "amount04",
+            name: "3万至5万",
+            type: "number"
+        },
+        {
+            field: "amount05",
+            name: "5万至10万",
+            type: "number"
+        },
+    ],
+    rows: [
+        {
+            amount01: 83,
+            amount02: 123,
+            amount03: 123,
+            amount04: 223,
+            amount05: 323,
+        }
+    ]
+  }
+ * @returns {array|array} values
+ * [
+        {
+            name: "1千至3千",
+            type: "number",
+            data:83
+        },
+        {
+            name: "3千至1万",
+            type: "number",
+            data:123
+        },
+        {
+            name: "1万至3万",
+            type: "number",
+            data:123
+        },
+        {
+            name: "3万至5万",
+            type: "number",
+            data:223
+        },
+        {
+            name: "5万至10万",
+            type: "number",
+            data:323
+        },
+    ]
+*/
+export const dataSerialize01 = (data, yIndex = 0) => {
+    return {
+        data,
+        yIndex
+    };
+};
+
 /**
  * {
     columns: [
@@ -84,6 +159,11 @@ export const getColumnByIndex = (rows, index) => rows.map(row => row[index]);
 export const toDataset = (data) => {
     const { legendData, seriesData } = dataSerialize(data, -1);
     seriesData.map((row, i) => row.unshift(legendData[i]));
+    return seriesData;
+};
+export const toDatasetReverse = (data) => {
+    const { axisData, seriesData } = dataSerializeReverse(data,  -1);
+    seriesData.unshift(axisData);
     return seriesData;
 };
 export const toValuesArry = (data = {}, yIndex = 0) => {
@@ -143,3 +223,57 @@ export const deleteColumnByFields = (dd = {}, fields = []) => {
         rows: drows
     };
 };
+export const getMark = (params) => {
+    // 最大值，最小值，平均值
+    const { maxShow, minShow, averageShow } = params;
+    const markLine = {};
+    const markPoint = {};
+    const maxPoint = {
+        data: [{ type: 'max', name: '最大值' }]
+    };
+    const minPoint = {
+        data: [{ type: 'min', name: '最小值' }]
+    };
+    function customizer(objValue, srcValue) {
+        if (_.isArray(objValue)) {
+            return objValue.concat(srcValue);
+        }
+    }
+    if (maxShow) {
+        _.mergeWith(markPoint, maxPoint, customizer);
+    }
+    if (minShow) {
+        _.mergeWith(markPoint, minPoint, customizer);
+    }
+    if (averageShow) {
+        markLine.data = [
+            { type: 'average', name: '平均值' }
+        ];
+    }
+    return {
+        markPoint,
+        markLine
+    };
+};
+
+//数据模型转换
+export const toArray = (data) => {
+    const { columns = [], rows = [] } = data;
+    const row = rows[0] || {};
+    return columns.map(item => {
+        const { field, name, type } = item;
+        return {
+            name,
+            type,
+            value: row[field]
+        };
+    });
+};
+//数组值交换位置
+export const swap = (arr, startIndex, endIndex = 0) => {
+    const startVal = arr[startIndex];
+    const endVal = arr[endIndex];
+    arr[endIndex] = startVal;
+    arr[startIndex] = endVal;
+    return arr;
+  };

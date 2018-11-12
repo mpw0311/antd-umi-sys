@@ -3,17 +3,6 @@ import { message } from 'antd';
 import router from 'umi/router';
 import { apiPrefix } from 'config';
 
-
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
-
-  const error = new Error(response.statusText);
-  error.response = response;
-  throw error;
-}
-
 /**
  * Requests a URL, returning a promise.
  *
@@ -26,40 +15,37 @@ export default async function request(url, options) {
   const { STATUS } = setting;
   const response = await fetch(apiPrefix + url, {
     headers: {
+      // 'Access-Control-Allow-Origin':"*",
+      // 'Content-Type': 'application/x-www-form-urlencoded',    
       // 'Content-Type': 'application/json',
     },
     ...rest,
-    withCredentials: true,
-    credentials: 'include', // 允许跨域
-    mode: "cors"
-  });
-
-  checkStatus(response);
-
-  const result = await response.json();
-  const { data = {}, status } = result;
+    credentials: 'include', // 允许跨域发送cookies：
+    mode: "cors"//no-cors
+  })
+    .then(response => response.json())
+    .catch(error => {
+      return {
+        data: {
+          alertDesc: error.message
+        },
+        status: -1,
+      };
+    });
+  const { data = {}, status } = response;
   if (STATUS === 0) {
-    return result;
-  }
-  const ret = {
-    data,
-    headers: {},
-  };
-  if (response.headers.get('x-total-count')) {
-    ret.headers['x-total-count'] = response.headers.get('x-total-count');
+    return response;
   }
   if (status !== 0) {
     const { alertDesc } = data;
     message.error(alertDesc || "无权限！");
-    setTimeout(() => {
-      router.push('/login');
-    }, 1000);
-    // message.error(alertDesc || '无权限!');
-    // setTimeout(() => {
-    //   const url = window.location.origin;
-    //   window.location.href = url + "/login";
-    // }, 1000);
-  } else {
-    return ret;
+    const { hash } = window.location;
+    if (hash !== '#/login') {
+      setTimeout(() => {
+        router.push('/login');
+        // window.location.href= window.location.origin;
+      }, 1500);
+    }
   }
-}
+  return response;
+};
