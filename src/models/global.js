@@ -39,9 +39,12 @@ export default {
             if (!res) {
                 res = yield call(api.getSysInfo, {});
             }
-            const { data } = res;
-            const { menus: menusKeys, userInfo, notification } = data;
-            const { rows: keys } = menusKeys;
+            const { data = {}, status } = res || {};
+            if (status !== 0) {
+                return false;
+            }
+            const { menus = {}, userInfo = {}, notification } = data;
+            const { rows: keys } = menus;
             const { rows: orginalRows } = orginalData;
             const menusData = menuPermission ? methods.MunesFilter(orginalRows, keys) : orginalRows;
             yield put({
