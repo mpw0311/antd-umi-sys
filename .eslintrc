@@ -43,5 +43,14 @@
     "react/no-danger": 0,
     "react/jsx-first-prop-new-line": 0,
     "react/jsx-filename-extension": 0
+  },
+  "globals": {
+    "XMLHttpRequest": false,
+    "Promise": false,
+    "document": false,
+    "window": false,
+    "sessionStorage": false,
+    "_": false,
+    "define": false
   }
 }
