@@ -10,6 +10,7 @@ import Pie from './Pie';
 import PieCustom from './PieCustom';
 import PieNest from './pieNest';
 import Radar from './Radar';
+import ChinaMap from './ChinaMap';
 
 export {
     Bar,
@@ -22,5 +23,6 @@ export {
     Pie,
     PieCustom,
     PieNest,
-    Radar
+    Radar,
+    ChinaMap
 };
