@@ -1,12 +1,11 @@
 import { Component } from 'react';
 import ReactEcharts from 'echarts-for-react';
-import PropTypes from 'prop-types';
 import chartConfig from '../config';
 import _ from 'lodash';
-import { toDataset, getMark, showLoading } from '../_';
+import { toDatasetReverse, toDataset, getMark, showLoading, swap } from '../_';
 import { _getType } from './_';
 
-class Basic extends Component {
+class Line extends Component {
   constructor(props) {
     super(props);
     const { handleClick = () => { } } = props;
@@ -28,19 +27,68 @@ class Basic extends Component {
       averageShow = false,
       type = 'Line',
       stack,
-      label
+      label,
+      yIndex = 0,
+      legendDict,
+      legendData,
+      dataReverse = false,
+      YUnit,
+      barWidth
     } = this.props;
+    const loading = showLoading(data);
+    if (loading) {
+      return (
+        <ReactEcharts
+          option={{}}
+          {...chartConfig}
+          style={style}
+          showLoading={loading}
+        />
+      );
+    }
     const { onEvents } = this.state;
-    const datasetSource = toDataset(data);
+    let datasetSource = [];// dataReverse ? toDatasetReverse(data, yIndex) : toDataset(data);
+    let _datasetSource = [];
+
+    if (dataReverse) {
+      datasetSource = toDatasetReverse(data, yIndex);
+      _datasetSource = datasetSource.map(row => {
+        return swap(row, yIndex);
+      });
+    } else {
+      datasetSource = toDataset(data, yIndex);
+      _datasetSource = swap(datasetSource, yIndex);
+    }
+    if (_.isArray(legendData)) {
+      _datasetSource = _datasetSource.map((row, i) => {
+        if (i === 0) {
+          row[0] = "legendType";
+        } else {
+          row[0] = legendData[i - 1];
+        }
+        return row;
+      });
+    } else if (_.isObject(legendDict)) {
+      _datasetSource = _datasetSource.map((row, i) => {
+        if (i === 0) {
+          row[0] = "legendType";
+        } else {
+          const name = row[0];
+          row[0] = legendDict[name];
+        }
+        return row;
+      });
+    }
     const mark = getMark({ maxShow, minShow, averageShow });
     const _type = _getType(type);
     const series = [];
-    for (let i = 1, len = datasetSource.length; i < len; i++) {
+    for (let i = 1, len = _datasetSource.length; i < len; i++) {
       const setting = {
         ..._type,
         ...mark,
         stack,
-        seriesLayoutBy: 'row'
+        seriesLayoutBy: 'row',
+        barWidth
       };
       if (_.isArray(label)) {
         setting.label = label[i];
@@ -67,14 +115,15 @@ class Basic extends Component {
         bottom: 70
       },
       dataset: {
-        source: datasetSource
+        source: _datasetSource
       },
       xAxis: {
         type: 'category',
         // gridIndex: 0
       },
       yAxis: {
-        type: 'value'
+        type: 'value',
+        name: YUnit
       },
       series
     };
@@ -84,19 +133,9 @@ class Basic extends Component {
         {...chartConfig}
         style={style}
         onEvents={onEvents}
-        showLoading={showLoading(data)}
       />
     );
   }
 }
-Basic.propTypes = {
-  data: PropTypes.object,
-  stack: PropTypes.string,
-  title: PropTypes.string,
-  children: PropTypes.node,
-  maxShow: PropTypes.bool,
-  minShow: PropTypes.bool,
-  averageShow: PropTypes.bool,
-};
 
-export default Basic;
+export default Line;
