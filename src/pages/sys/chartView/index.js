@@ -3,7 +3,19 @@ import { Charts, Page } from 'components';
 import View from './components/view';
 // import styles from './index.less';
 
-const { Line, Bar, BarWaterfall, ScatterAqiColor, Pie, PieCustom, PieNest, Area, Sankey, Radar } = Charts;
+const {
+    Line,
+    Bar,
+    BarWaterfall,
+    ScatterAqiColor,
+    Pie,
+    PieCustom,
+    PieNest,
+    Area,
+    Sankey,
+    Radar,
+    ChinaMap
+} = Charts;
 function Chart(props) {
     const {
         dispatch,
@@ -14,7 +26,8 @@ function Chart(props) {
         pieData = [],
         nestData,
         sankeyData,
-        radarData
+        radarData,
+        chinamapdata
     } = props;// eslint-disable-line
     const handleClick = (p) => {
         console.log(p);
@@ -29,6 +42,15 @@ function Chart(props) {
     };
     return (
         <Page loading={false} pathtitles={['echarts数据可视化组件']}>
+            <View
+                title="中国地图"
+                data={chinamapdata}
+                onBlur={(value) => {
+                    handleBlur(value, "chinamapdata");
+                }}
+            >
+                <ChinaMap title={'地域用户分析'} seriesName='地域分析' target={'email'} data={chinamapdata} handleClick={handleClick} />
+            </View>
             <View
                 title="折线图"
                 data={lineData}
