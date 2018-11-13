@@ -45,6 +45,12 @@ export default {
             icon: "idcard"
         },
         {
+            title: "地域分析",
+            link: "/sys/regionalAnalysis",
+            key: "regionalAnalysis",
+            icon: "idcard"
+        },
+        {
             title: "echarts组件",
             link: "/sys/chartView",
             key: "chartView",
