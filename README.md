@@ -4,6 +4,7 @@
     推荐浏览器：Google Chrome
 ![antd-umi-sys](src/assets/demo_login.png)
 ![antd-umi-sys](src/assets/demo.png)
+![antd-umi-sys](src/assets/regionalAnalysis.png)
 
 ## 特性
 + 单页面应用；
