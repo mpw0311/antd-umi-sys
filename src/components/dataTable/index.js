@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, Fragment } from 'react';
 import { Table, Row, Col } from 'antd';
 import { methods } from 'utils';
 import _ from 'lodash';
@@ -128,7 +128,7 @@ class DataTable extends Component {
             });
         };
         return (
-            <div>
+            <Fragment>
                 <Row style={{ paddingBottom: '5px' }}>
                     <Col span={12}>
                         <TableSelect
@@ -163,7 +163,7 @@ class DataTable extends Component {
                     }}
                     {...restProps}
                 />
-            </div>
+            </Fragment>
         );
     }
 }
