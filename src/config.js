@@ -19,10 +19,10 @@ export const pageInit = {
 };
 //默认系统首页
 export const sysInit = {
-    pathname: '/sys/chartView',
+    pathname: '/sys/regionalAnalysis',
     state: {
-        key: 'chartView',
-        pathtitles: ['echarts组件'],
+        key: 'regionalAnalysis',
+        pathtitles: ['地域分析'],
     }
 };
 // iframe默认地址

@@ -318,17 +318,17 @@ export default {
     },
 
     subscriptions: {
-        setupHistory({ dispatch, history }) {
+        setupHistory({ dispatch, history }) {// eslint-disable-line
             history.listen(({ pathname, query, state }) => { // eslint-disable-line
-                if (pathname.indexOf('sys/pathAnalysis') > -1) {
-                    dispatch({ type: 'getDict', payload: { timeType: 'day' } });
+                if (pathname.indexOf('sys/regionalAnalysis') > -1) {
+                    // dispatch({ type: 'getData', payload: { timeType: 'day' } });
                 }
             });
         },
     },
 
     effects: {
-        *getDict({ payload }, { call, put }) {
+        *getData({ payload }, { call, put }) {
             const { data } = yield call(api.getInfoTypeDict, { ...payload });
             const { eventDict: events, pageDict: pages } = data;
             yield put({

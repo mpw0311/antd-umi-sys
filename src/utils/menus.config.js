@@ -33,6 +33,12 @@ export default {
     ],
     rows: [
         {
+            title: "地域分析",
+            link: "/sys/regionalAnalysis",
+            key: "regionalAnalysis",
+            icon: "idcard"
+        },
+        {
             title: "users",
             link: "/sys/users",
             key: "users",
@@ -42,12 +48,6 @@ export default {
             title: "view",
             link: "/sys/view",
             key: "view",
-            icon: "idcard"
-        },
-        {
-            title: "地域分析",
-            link: "/sys/regionalAnalysis",
-            key: "regionalAnalysis",
             icon: "idcard"
         },
         {
