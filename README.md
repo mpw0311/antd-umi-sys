@@ -1,11 +1,21 @@
 # antd-umi-sys
 ## 简介
-    企业管理平台，主要技术：react、antd、umi、dva、es6、less、webpack等。
+    企业管理平台。
     推荐浏览器：Google Chrome
 ![antd-umi-sys](src/assets/demo_login.png)
 ![antd-umi-sys](src/assets/demo.png)
 ![antd-umi-sys](src/assets/regionalAnalysis.png)
-
+## 技术栈
++ 前端展示层：React
++ 前端组件库：antd
++ 前端数据可视化：echarts
++ 前端数据流管理：redux、dva
++ 前端框架：umi
++ 前端样式：less
++ 前后端通信：fetch
++ js语法：es6，用babel编译
++ 包管理：npm
++ 项目打包：webpack
 ## 特性
 + 单页面应用；
 + 模块化、组件化开发；
