@@ -120,7 +120,7 @@ class Index extends Component {
                     </Sider>
                     {isFrame ? Frame : Child}
                 </Layout >
-                <BackTop target={() => document.getElementById('backTop')} style={{ right: 20, bottom: 25 }} />
+                {isFrame ? '' : <BackTop target={() => document.getElementById('backTop')} style={{ right: 20, bottom: 25 }} />}
             </Layout>
         );
     }
