@@ -5,20 +5,6 @@ export default {
         url: undefined
     },
     subscriptions: {
-        // setupHistory({ dispatch, history }) {
-        //     history.listen((location) => {
-        //         const { pathname, query, state } = location;
-        //         if (pathname.indexOf("frame") > -1) {
-        //             dispatch({
-        //                 type: 'getFrameUrl',
-        //                 payload: {
-        //                     query,
-        //                     state
-        //                 }
-        //             });
-        //         }
-        //     });
-        // },
     },
 
     effects: {

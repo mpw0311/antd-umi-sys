@@ -1,5 +1,4 @@
 import { Alert } from 'antd';
-// import styles from './index.less';
 
 function Announcement(props) {
     const {

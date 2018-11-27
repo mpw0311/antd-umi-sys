@@ -1,6 +1,5 @@
 import { Page } from 'components';
 import { Row, Col } from 'antd';
-// import styles from './index.css';
 
 export default function () {
     return (

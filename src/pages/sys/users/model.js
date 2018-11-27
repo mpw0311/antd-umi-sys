@@ -1,8 +1,5 @@
 
 import * as api from './service';
-// import { message } from 'antd';
-// import { routerRedux } from 'dva/router';
-
 export default {
     namespace: 'users',
     state: {
