@@ -1,7 +1,6 @@
 import { Input } from 'antd';
 import _ from 'lodash';
 
-// const Search = Input.Search;
 function TableSearch(props) {
     const { onSearch = () => { }, show } = props;
     const search = (
@@ -12,7 +11,6 @@ function TableSearch(props) {
                 const { value } = target;
                 onSearch(_.trim(value));
             }}
-            // onSearch={value => onSearch(_.trim(value))}
             style={{ width: 200 }}
         />
     );
