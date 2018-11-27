@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { connect } from 'dva';
 import { Spin } from 'antd';
-import { iframeInfo } from 'config';
+import { indexIframe } from 'config';
 import styles from './index.less';
 
 class Frame extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            initmenu: iframeInfo,
+            initmenu: indexIframe,
             count: 0,
             myFrame: null,
             loading: true

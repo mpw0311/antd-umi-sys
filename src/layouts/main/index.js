@@ -3,13 +3,13 @@ import { connect } from 'dva';
 import { Layout, Spin, BackTop } from 'antd';
 import _ from 'lodash';
 import { Menus, GlobalHeader, Breadcrumb, GlobalDrawer } from 'components';
-import { footerText } from 'config';
+import { copyright } from 'config';
 import styles from './index.less';
 
 const { Header, Footer, Sider, Content } = Layout;
 const footer = (
     <Footer className={styles.footer}>
-        {footerText}
+        {copyright}
     </Footer>
 );
 const globalLoading = (
