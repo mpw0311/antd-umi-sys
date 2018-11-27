@@ -1,6 +1,6 @@
 import Redirect from 'umi/redirect';
-import { sysInit } from 'config';
-const { pathname, search, state } = sysInit;
+import { indexSys } from 'config';
+const { pathname, search, state } = indexSys;
 // export default () => <Redirect to={`/sys/${pathname}`} />;
 export default () => <Redirect to={{
     pathname,
