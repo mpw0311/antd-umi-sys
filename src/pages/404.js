@@ -1,13 +1,16 @@
-import { Page } from 'components';
-import styles from './404.css';
-import img from '../assets/404.png';
+import { Page, Exception } from 'components';
 
 export default function () {
   return (
     <Page
       inner={true}
     >
-      <img className={styles.img} src={img} alt="404" />
+      <Exception
+        type={404}
+        backText={'返回首页'}
+        title={'404'}
+        desc={'抱歉，你访问的页面不存在'}
+      />
     </Page>
   );
 }

@@ -11,6 +11,7 @@ import PageHeader from './PageHeader';
 import ResetPassword from './ResetPassword';
 import Page from './Page';
 import GlobalDrawer from './GlobalDrawer';
+import Exception from './Exception';
 
 export {
     Login,
@@ -25,5 +26,6 @@ export {
     ResetPassword,
     Register,
     Page,
-    GlobalDrawer
+    GlobalDrawer,
+    Exception
 };

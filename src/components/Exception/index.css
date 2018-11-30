@@ -1,0 +1,76 @@
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+/* stylelint-disable no-duplicate-selectors */
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors */
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+.exception {
+  display: flex;
+  align-items: center;
+  height: calc(100vh - 110px);
+  min-height: 500px;
+}
+.exception .imgBlock {
+  flex: 0 0 62.5%;
+  width: 62.5%;
+  padding-right: 152px;
+  zoom: 1;
+}
+.exception .imgBlock:before,
+.exception .imgBlock:after {
+  content: ' ';
+  display: table;
+}
+.exception .imgBlock:after {
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+}
+.exception .imgEle {
+  height: 360px;
+  width: 100%;
+  max-width: 430px;
+  float: right;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: contain;
+}
+.exception .content {
+  flex: auto;
+}
+.exception .content h1 {
+  color: #434e59;
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 72px;
+  margin-bottom: 24px;
+}
+.exception .content .desc {
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 20px;
+  line-height: 28px;
+  margin-bottom: 16px;
+}
+.exception .content .actions button:not(:last-child) {
+  margin-right: 8px;
+}
+@media screen and (max-width: 1200px) {
+  .exception .imgBlock {
+    padding-right: 88px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .exception {
+    display: block;
+    text-align: center;
+  }
+  .exception .imgBlock {
+    padding-right: 0;
+    margin: 0 auto 24px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .exception .imgBlock {
+    margin-bottom: -24px;
+    overflow: hidden;
+  }
+}
