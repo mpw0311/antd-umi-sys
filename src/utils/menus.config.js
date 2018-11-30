@@ -45,6 +45,12 @@ export default {
             icon: "user"
         },
         {
+            title: "404",
+            link: "/404",
+            key: "404",
+            icon: "frown"
+        },
+        {
             title: "view",
             link: "/sys/view",
             key: "view",
