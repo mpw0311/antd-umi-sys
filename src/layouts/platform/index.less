@@ -1,0 +1,46 @@
+@import '../../themes/index.less';
+.trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color .3s;
+}
+
+.trigger:hover {
+    color: #1890ff;
+}
+
+.sider {
+    overflow: auto;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    overflow: auto;
+    .hideScrollbar();
+}
+
+.logo {
+    height: 32px;
+    background: rgba(255, 255, 255, .2);
+    margin: 16px;
+}
+
+.contianer {
+    height: 100vh;
+    overflow: auto;
+    .hideScrollbar();
+}
+
+.content {
+    margin: 10px 16px;
+    padding: 10px;
+    padding-top: 0;
+    background: #fff; // min-height: ~'calc(100vh - 140px)';
+}
+
+.footer {
+    text-align: center;
+    font-size: 14px;
+    padding: 10px 50px;
+}

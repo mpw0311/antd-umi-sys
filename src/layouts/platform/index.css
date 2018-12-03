@@ -43,31 +43,45 @@
   border-radius: 10px;
   background: #EDEDED;
 }
-.wrapper {
-  height: 100%;
-  overflow: hidden;
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color .3s;
 }
-.section {
-  height: calc(100% - 64px);
+.trigger:hover {
+  color: #1890ff;
 }
-.iframeContent {
-  margin: 10px 10px 0 10px;
-  display: -webkit-flex;
-  display: flex;
-  flex-direction: column;
-}
-.iframeChildren {
-  padding: 0;
-  background: #fff;
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-  overflow-y: auto;
+.sider {
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  overflow: auto;
   /*隐藏滚动条，当IE下溢出，仍然可以滚动*/
   -ms-overflow-style: none;
   /*火狐下隐藏滚动条*/
 }
-.iframeChildren::-webkit-scrollbar {
+.sider::-webkit-scrollbar {
+  display: none;
+  /*滚动条整体样式*/
+  width: 0px;
+  /*高宽分别对应横竖滚动条的尺寸*/
+  height: 0px;
+}
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+.contianer {
+  height: 100vh;
+  overflow: auto;
+  /*隐藏滚动条，当IE下溢出，仍然可以滚动*/
+  -ms-overflow-style: none;
+  /*火狐下隐藏滚动条*/
+}
+.contianer::-webkit-scrollbar {
   display: none;
   /*滚动条整体样式*/
   width: 0px;
@@ -75,55 +89,13 @@
   height: 0px;
 }
 .content {
-  margin: 10px 10px 0 10px;
-  display: -webkit-flex;
-  display: flex;
-  flex-direction: column;
-}
-.children {
+  margin: 10px 16px;
   padding: 10px;
   padding-top: 0;
-  padding-bottom: 0;
   background: #fff;
-  position: relative;
-  overflow: hidden;
-  overflow-y: auto;
-  /*隐藏滚动条，当IE下溢出，仍然可以滚动*/
-  -ms-overflow-style: none;
-  /*火狐下隐藏滚动条*/
-}
-.children::-webkit-scrollbar {
-  display: none;
-  /*滚动条整体样式*/
-  width: 0px;
-  /*高宽分别对应横竖滚动条的尺寸*/
-  height: 0px;
 }
 .footer {
   text-align: center;
   font-size: 14px;
   padding: 10px 50px;
-  margin-left: -10px;
-  margin-right: -10px;
-}
-.siderbar {
-  overflow: hidden;
-  overflow-y: auto;
-  margin-bottom: 42px;
-  /*隐藏滚动条，当IE下溢出，仍然可以滚动*/
-  -ms-overflow-style: none;
-  /*火狐下隐藏滚动条*/
-}
-.siderbar::-webkit-scrollbar {
-  display: none;
-  /*滚动条整体样式*/
-  width: 0px;
-  /*高宽分别对应横竖滚动条的尺寸*/
-  height: 0px;
-}
-.spin {
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  padding-top: 400px;
 }

@@ -7,19 +7,3 @@
   background-position: center 110px;
   background-size: 100%;
 }
-.content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 368px;
-}
-.logo {
-  min-height: 60px;
-}
-.logo img {
-  width: 100%;
-}
-.title {
-  text-align: center;
-}

@@ -3,11 +3,10 @@ import { connect } from 'dva';
 import { Row, Col, Card } from 'antd';
 import moment from 'moment';
 import MyForm from './components/myForm';
-import { Charts, PageHeader } from 'components';
+import { Charts, PageHeader,Page } from 'components';
 import Card2 from './components/card2';
 import Card3 from './components/card3';
 import Card4 from './components/card4';
-import styles from './index.less';
 
 const { CalendarPie, ScatterAqiColor } = Charts;// eslint-disable-line
 function MatchAnalysis(props) {
@@ -66,7 +65,7 @@ function MatchAnalysis(props) {
         });
     };
     return (
-        <div className={styles.content}>
+        <Page >
             <PageHeader
                 pathtitles={['匹配额度分析']}
                 location={location}
@@ -109,7 +108,7 @@ function MatchAnalysis(props) {
                     loading={loading}
                 />
             </Card>
-        </div>
+        </Page>
     );
 }
 
