@@ -1,0 +1,17 @@
+.content {
+  padding-bottom: 0;
+}
+.content:before,
+.content:after {
+  content: ' ';
+  display: table;
+}
+.content:after {
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+}
+.content > ul > li > ol > li {
+  line-height: 25px;
+}

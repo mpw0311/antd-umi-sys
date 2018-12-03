@@ -12,13 +12,16 @@ function User(props) {
         <Menu.Item key={"sys/user"} state={{ userName, pathtitles: ["个人中心"] }} disabled>
             <Icon type="user" />  个人中心
         </Menu.Item>
-        <Menu.Item key={"/resetPassword"} state={{ userName, pathtitles: ["修改密码"] }}>
+        {/* <Menu.Item key={"/resetPassword"} state={{ userName, pathtitles: ["修改密码"] }}>
             <Icon type="edit" />  修改密码
-        </Menu.Item>
+        </Menu.Item> */}
         <Menu.Item key={"sys/settings"} state={{ userName, pathtitles: ["设置中心"] }} disabled>
             <Icon type="setting" />  设置
         </Menu.Item>
         <Menu.Divider />
+        <Menu.Item key={"/versions"} state={{ userName, pathtitles: ["版本说明"] }}>
+            <Icon type="edit" />  版本说明
+        </Menu.Item>
         <Menu.Item key="logout" state={{ userName }}>
             <Icon type="logout" />  退出登录
         </Menu.Item>
