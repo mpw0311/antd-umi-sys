@@ -5,7 +5,7 @@ import PlatformLayout from './platform';
 function Index(props) {
   const { location, children } = props;
   const { pathname } = location;
-  if (/^\/versions/.test(pathname) || /^\/sys/.test(pathname)||/^\/404/.test(pathname)) {
+  if (/^\/versions/.test(pathname) || /^\/sys/.test(pathname)) {
     return (<PlatformLayout location={location}>{children}</PlatformLayout>);
   }
   if (pathname === '/' || pathname === '/login' || pathname === '/register' || /^\/initialize/.test(pathname)) {
