@@ -10,16 +10,23 @@ export default class Page extends Component {
     const {
       className, children, loading = false, inner = false, location, pathtitles = [], description
     } = this.props;
+    const basicStyle = {
+      marginLeft: "-10px",
+      marginRight: "-10px"
+    };
     const loadingStyle = {
       height: 'calc(100vh - 184px)',
       overflow: 'hidden',
+      ...basicStyle
     };
+
+
     return (
       <div
         className={classnames(className, {
           [styles.contentInner]: inner,
         })}
-        style={loading ? loadingStyle : null}
+        style={loading ? loadingStyle : basicStyle}
       >
         <PageHeader
           pathtitles={pathtitles}
