@@ -38,7 +38,8 @@ class Search extends Component {
         }
     }
     render() {
-        const { searchData } = this.state;
+        const { searchData, } = this.state;
+        const { theme } = this.props;
         return (
             <HeaderSearch
                 className={`${styles.action} ${styles.search}`}
@@ -53,6 +54,7 @@ class Search extends Component {
                 onSelect={value => {
                     this.handleSelect(value);
                 }}
+                theme={theme}
             />
         );
     }

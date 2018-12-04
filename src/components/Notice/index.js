@@ -6,7 +6,7 @@ const { TabPane } = Tabs;
 const { Item: ListItem } = List;
 const { Meta: ListItemMeta } = ListItem;
 function NoticeIcon(props) {
-    const { message = [], loading = false, onLoadMore = () => { } } = props;
+    const { message = [], loading = false, onLoadMore = () => { }, theme = 'dark' } = props;
     const computeData = (data) => {
         const unread = data.filter(item => item.type === 'unread');
         const read = data.filter(item => item.type === 'read');
@@ -21,7 +21,7 @@ function NoticeIcon(props) {
             itemLayout="horizontal"
             dataSource={data}
             loadMore={
-                <div onClick={onLoadMore} style={{ textAlign: 'center', marginTop: 4, height: 28, lineHeight: '28px', cursor: "pointer" }}>
+                <div onClick={onLoadMore} className={styles.more}>
                     加载更多
                 </div>
             }
@@ -66,9 +66,9 @@ function NoticeIcon(props) {
             content={news}
             popupClassName={styles.popover}
         >
-            <span className={styles.noticeButton}>
+            <span className={styles.noticeButton} style={{ color: theme === 'dark' ? "#FFF" : undefined }}>
                 <Badge count={unread.length} offset={[-5, 5]} showZero >
-                    <Icon type="bell" className={styles.icon} />
+                    <Icon type="bell" className={styles.icon}  />
                 </Badge>
             </span>
         </Popover>

@@ -4,8 +4,8 @@
 /* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
 .exception {
   display: flex;
+  flex: auto;
   align-items: center;
-  height: calc(100vh - 110px);
   min-height: 500px;
 }
 .exception .imgBlock {

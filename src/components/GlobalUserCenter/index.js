@@ -2,7 +2,7 @@ import { Dropdown, Menu, Icon } from 'antd';
 import styles from './index.less';
 
 function User(props) {
-    const { userInfo, onSetting = () => { } } = props;
+    const { userInfo, onSetting = () => { }, theme = 'dark' } = props;
     const { userName } = userInfo;
     const handleMenuClick = (param) => {
         onSetting(param);
@@ -28,7 +28,7 @@ function User(props) {
     </Menu>);
     return (
         <Dropdown overlay={menu}>
-            <span className={styles.username}>
+            <span className={styles.username} style={{ color: theme === 'dark' ? "#FFF" : undefined }}>
                 <Icon type="user" style={{ paddingRight: 5, fontSize: 16 }} />
                 {userName}
             </span>

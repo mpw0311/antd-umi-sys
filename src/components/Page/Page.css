@@ -11,12 +11,19 @@
   background: #fff;
   padding: 0;
   box-shadow: 4px 4px 20px 0 rgba(0, 0, 0, 0.01);
-  min-height: calc(100vh - 110px);
+  min-height: calc(100vh - 130px);
   position: relative;
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  margin-left: -10px;
+  margin-right: -10px;
 }
 @media (max-width: 767px) {
   .contentInner {
     padding: 0;
-    min-height: calc(100vh - 110px);
+    min-height: calc(100vh - 130px);
+    display: flex;
+    flex-direction: column;
   }
 }
