@@ -89,8 +89,8 @@ class Index extends Component {
             <Layout className={styles.content}>
                 <Content id='backTop' className={styles.children}>
                     {children}
-                    {footer}
                 </Content>
+                    {footer}
             </Layout>
         );
         return (

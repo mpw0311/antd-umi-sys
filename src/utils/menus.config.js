@@ -101,5 +101,11 @@ export default {
                     url: `https://www.baidu.com/`,
                 },]
         },
+        {
+            title: "请给star",
+            url: "https://github.com/mpw0311/antd-umi-sys",
+            key: "chartView",
+            icon: "heart"
+        },
     ]
 };
