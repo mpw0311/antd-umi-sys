@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'dva';
 import { Layout, Spin, BackTop } from 'antd';
 import _ from 'lodash';
-import { Menus, Breadcrumb, GlobalDrawer } from 'components';
+import { Breadcrumb, GlobalDrawer } from 'components';
 import { copyright } from 'config';
+import Menus from '../components/Menus';
 import MyHeader from './header';
 import styles from './index.less';
 
@@ -90,7 +91,7 @@ class Index extends Component {
                 <Content id='backTop' className={styles.children}>
                     {children}
                 </Content>
-                    {footer}
+                {footer}
             </Layout>
         );
         return (

@@ -2,8 +2,9 @@ import { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Layout, BackTop, Icon, Spin } from 'antd';
 import { copyright } from 'config';
-import { Menus } from 'components';
+import Menus from '../components/Menus';
 import HeaderContent from './header';
+import Logo from './logo';
 import styles from './index.less';
 
 const { Header, Sider, Content, Footer } = Layout;
@@ -72,7 +73,9 @@ class Index extends PureComponent {
                     collapsed={collapsed}
                     className={styles.sider}
                 >
-                    <div className={styles.logo} />
+                    <div className={styles.logo}>
+                        <Logo collapsed={collapsed} />
+                    </div>
                     <Menus
                         location={location}
                         menusData={menusData}
@@ -80,7 +83,7 @@ class Index extends PureComponent {
                     />
                 </Sider>
                 <Layout id="backTop" className={styles.contianer} style={{ marginLeft: collapsed ? 80 : 200 }}>
-                    <Header style={{ background: '#fff',  display: 'flex' }}>
+                    <Header style={{ background: '#fff', padding: 0, display: 'flex' }}>
                         <div style={{ width: 100 }}>
                             <Icon
                                 className={styles.trigger}

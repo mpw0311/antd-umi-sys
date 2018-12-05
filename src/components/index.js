@@ -1,9 +1,7 @@
 import * as Charts from './Charts';
 import Login from './Login';
 import Register from './Register';
-import Menus from './Menus';
 import Icon from './Icon';
-import GlobalHeader from './GlobalHeader';
 import DataTable from './dataTable';
 import Breadcrumb from './Breadcrumb';
 import Announcement from './Announcement';
@@ -12,12 +10,11 @@ import ResetPassword from './ResetPassword';
 import Page from './Page';
 import GlobalDrawer from './GlobalDrawer';
 import Exception from './Exception';
+import HeaderSearch from './HeaderSearch';
 
 export {
     Login,
-    Menus,
     Icon,
-    GlobalHeader,
     Charts,
     DataTable,
     Breadcrumb,
@@ -27,5 +24,6 @@ export {
     Register,
     Page,
     GlobalDrawer,
-    Exception
+    Exception,
+    HeaderSearch
 };

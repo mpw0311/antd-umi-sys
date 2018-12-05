@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { connect } from 'dva';
 import { Spin } from 'antd';
+import { Page } from 'components';
 import { indexIframe } from 'config';
 import styles from './index.less';
 
@@ -62,7 +62,7 @@ class Frame extends Component {
         const { url = defaultUrl } = state;
         const { loading } = this.state;
         return (
-            < div className={styles.frame} >
+            <Page flex>
                 <div className={loading === true ? styles.modal : styles.hide}>
                     <Spin spinning={this.state.loading} tip="加载中..." size="large" />
                 </div>
@@ -70,19 +70,13 @@ class Frame extends Component {
                     title='iframe'
                     name="myFrame"
                     src={url}
-                    ref={(dom) => { //eslint-disable-line
+                    style={{ flex: 'auto', border: 0, marginBottom: '-10px' }}
+                    ref={(dom) => {
                         this.onload(dom);
                     }}
                 />
-
-            </div >
+            </Page>
         );
     }
 }
-function mapStateToProps({ frame }) {
-    const { url } = frame;
-    return {
-        url
-    };
-}
-export default connect(mapStateToProps)(Frame);
+export default Frame;

@@ -21,9 +21,9 @@
 }
 
 .logo {
-    height: 32px;
-    background: rgba(255, 255, 255, .2);
-    margin: 16px;
+    height: 64px;
+    background: #002140;
+    padding: 10px 16px;
 }
 
 .contianer {
@@ -35,7 +35,7 @@
 .content {
     margin: 10px 16px;
     padding: 10px;
-    margin-bottom:0; 
+    margin-bottom: 0;
     padding-top: 0;
     background: #fff;
 }
@@ -44,4 +44,30 @@
     text-align: center;
     font-size: 14px;
     padding: 10px 50px;
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+        /*初始状态 透明度为0*/
+    }
+    50% {
+        opacity: 0.5;
+        /*中间状态 透明度为0*/
+    }
+    100% {
+        opacity: 1;
+        /*结尾状态 透明度为1*/
+    }
+}
+
+.animation {
+    -webkit-animation-name: fadeIn;
+    /*动画名称*/
+    -webkit-animation-duration: 0.6s;
+    /*动画持续时间*/
+    -webkit-animation-iteration-count: 1;
+    /*动画次数*/
+    -webkit-animation-delay: 0s;
+    /*延迟时间*/
 }
