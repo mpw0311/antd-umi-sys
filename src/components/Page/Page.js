@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+// import classnames from 'classnames';
 import { PageHeader } from 'components';
 import Loader from '../Loader';
 import styles from './Page.less';
@@ -8,33 +8,36 @@ import styles from './Page.less';
 export default class Page extends Component {
   render() {
     const {
-      className, children, loading = false, inner = false, location, pathtitles = [], description
+      children,
+      loading = false,
+      location,
+      pathtitles = [],
+      description,
+      flex = false
     } = this.props;
-    const basicStyle = {
-      marginLeft: "-10px",
-      marginRight: "-10px"
-    };
     const loadingStyle = {
-      height: 'calc(100vh - 184px)',
       overflow: 'hidden',
-      ...basicStyle
     };
-
-
+    const childStyle = flex === true ? { display: 'flex' } : {};
     return (
       <div
-        className={classnames(className, {
-          [styles.contentInner]: inner,
-        })}
-        style={loading ? loadingStyle : basicStyle}
+        // className={classnames(className, {
+        //   [styles.contentInner]: inner,
+        // })}
+        className={styles.contentInner}
+        style={loading ? loadingStyle : undefined}
       >
         <PageHeader
           pathtitles={pathtitles}
           location={location}
           description={description}
         />
-        {loading ? <Loader spinning /> : ''}
-        {children}
+        <div style={{ flex: 'auto', width: "100%", display: 'flex' }}>
+          {loading === true ? <Loader spinning /> : ''}
+          <div style={{ flex: 'auto', width: '100%', ...childStyle }}>
+            {children}
+          </div>
+        </div>
       </div>
     );
   }

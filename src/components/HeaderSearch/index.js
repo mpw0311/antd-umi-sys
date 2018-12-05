@@ -79,14 +79,14 @@ class HeaderSearch extends PureComponent {
     //     trailing: false,
     // })
     render() {
-        const { className, placeholder, dataSource, ...restProps } = this.props;
+        const { className, placeholder, dataSource, theme = 'dark', ...restProps } = this.props;
         const { searchMode, value } = this.state;
         delete restProps.defaultOpen; // for rc-select not affected
         const inputClass = classNames(styles.input, {
             [styles.show]: searchMode,
         });
         return (
-            <span className={classNames(className, styles.headerSearch)} onClick={this.enterSearchMode}>
+            <span className={classNames(className, styles.headerSearch)} style={{ color: theme === 'dark' ? "#FFF" : 'rgba(0, 0, 0, 0.65)' }} onClick={this.enterSearchMode}>
                 <Icon type="search" key="Icon" />
                 <AutoComplete
                     key="AutoComplete"
@@ -107,6 +107,7 @@ class HeaderSearch extends PureComponent {
                         );
                     })}
                     className={inputClass}
+                    style={{ color: theme === 'dark' ? "#FFF" : 'rgba(0, 0, 0, 0.65)' }}
                     value={value}
                     onChange={this.onChange}
                     optionLabelProp="text"

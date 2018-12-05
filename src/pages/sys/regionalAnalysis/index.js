@@ -76,7 +76,7 @@ function Index(props) {
                 data={_mapdata}
                 target={defaultKey}
                 loading={loading}
-                style={{ height: "80vh"}}
+                style={{ height: "100%" }}
                 tooltipFormatter={formatter}
             />
             <div className={styles.list}>

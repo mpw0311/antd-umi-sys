@@ -6,7 +6,6 @@ import _ from 'lodash';
 import MyForm from './components/form';
 import MyTabs from './components/tabs';
 import { Page } from 'components';
-import styles from './index.less';
 
 
 function PathAnalysis(props) {
@@ -84,10 +83,8 @@ function PathAnalysis(props) {
     };
     return (
         <Page loading={false} pathtitles={['路径分析']} description={announcement} location={location}>
-            <div className={styles.normal}>
-                <MyForm dict={dict} onSubmit={submit} events={events} pages={pages} handleGetDict={handleGetDict} />
-                <MyTabs pageData={pageData} eventData={eventData} handleClick={handleClick} loading={loading} />
-            </div>
+            <MyForm dict={dict} onSubmit={submit} events={events} pages={pages} handleGetDict={handleGetDict} />
+            <MyTabs pageData={pageData} eventData={eventData} handleClick={handleClick} loading={loading} />
         </Page>
     );
 }

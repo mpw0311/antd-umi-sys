@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'dva';
 import { Layout, Spin, BackTop } from 'antd';
 import _ from 'lodash';
-import { Menus, GlobalHeader, Breadcrumb, GlobalDrawer } from 'components';
+import { Menus, Breadcrumb, GlobalDrawer } from 'components';
 import { copyright } from 'config';
+import MyHeader from './header';
 import styles from './index.less';
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -95,7 +96,7 @@ class Index extends Component {
         return (
             <Layout className={styles.wrapper}>
                 <Header style={{ padding: 0 }}>
-                    <GlobalHeader
+                    <MyHeader
                         userInfo={userInfo}
                         dispatch={dispatch}
                         message={message}

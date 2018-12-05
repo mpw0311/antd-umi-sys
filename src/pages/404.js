@@ -3,7 +3,7 @@ import { Page, Exception } from 'components';
 export default function () {
   return (
     <Page
-      inner={true}
+      flex={true}
     >
       <Exception
         type={404}

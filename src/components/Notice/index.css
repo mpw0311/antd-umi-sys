@@ -8,12 +8,10 @@
   cursor: pointer;
   display: inline-block;
   transition: all 0.3s;
-  color: #ffffff;
 }
 .icon {
   font-size: 16px;
   padding: 4px;
-  color: #ffffff;
 }
 .tabs :global .ant-tabs-nav-scroll {
   text-align: center;
@@ -23,4 +21,11 @@
 }
 .tabs .ant-tabs-nav .ant-tabs-tab {
   margin: 0 !important;
+}
+.more {
+  text-align: center;
+  margin-top: 4px;
+  height: 28;
+  line-height: 28px;
+  cursor: pointer;
 }
