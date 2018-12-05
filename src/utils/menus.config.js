@@ -92,6 +92,9 @@ export default {
                     key: "bing",
                     icon: "shop",
                     url: `https://cn.bing.com/`,
+                    query:{
+                        h:1200
+                    }
                 },
                 {
                     title: "百度",

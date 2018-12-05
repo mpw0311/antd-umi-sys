@@ -58,7 +58,8 @@ class Frame extends Component {
         const { initmenu = {} } = this.state;
         const { url: defaultUrl } = initmenu;
         const { location } = this.props;
-        const { state = {} } = location;
+        const { state = {}, query = {} } = location;
+        const { h } = query;
         const { url = defaultUrl } = state;
         const { loading } = this.state;
         return (
@@ -70,7 +71,7 @@ class Frame extends Component {
                     title='iframe'
                     name="myFrame"
                     src={url}
-                    style={{ flex: 'auto', border: 0, marginBottom: '-10px' }}
+                    style={{ flex: 'auto', border: 0, marginBottom: '-10px', minHeight: h ? parseInt(h) : undefined }}
                     ref={(dom) => {
                         this.onload(dom);
                     }}
