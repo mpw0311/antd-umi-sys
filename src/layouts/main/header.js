@@ -1,7 +1,8 @@
 import { Row, Col } from 'antd';
 import { sysName } from 'config';
 import { routerRedux } from 'dva/router';
-import { GlobalHeader } from 'components';
+// import { GlobalHeader } from 'components';
+import GlobalHeader from '../components/GlobalHeader';
 import styles from './header.less';
 
 
@@ -38,7 +39,7 @@ function Header(props) {
                 <div className={styles.header}>
                     <div className={styles.lf}>
                         <div className={styles.logo} />
-                        <h1 style={{ color: '#fff' }}>{sysName}</h1>
+                        <h2 style={{ color: '#fff', fontSize: '20px' }}>{sysName}</h2>
                     </div>
                     <div className={styles.center}>
                         {/* <Roll notification={notification} /> */}

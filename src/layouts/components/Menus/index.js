@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Menu } from 'antd';
 import { Link } from 'dva/router';
-import Icon from "../Icon";
+import { Icon } from 'components';
 import { queryKeysByPath } from './_';
 
 const { SubMenu, Item } = Menu;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { routerRedux } from 'dva/router';
-import HeaderSearch from '../HeaderSearch';
+import { HeaderSearch } from 'components';
 import { searchFilter, searchEqual } from './_';
 import styles from './index.less';
 

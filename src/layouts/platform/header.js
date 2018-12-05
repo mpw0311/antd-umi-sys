@@ -1,5 +1,6 @@
 import { routerRedux } from 'dva/router';
-import { GlobalHeader } from 'components';
+// import { GlobalHeader } from 'components';
+import GlobalHeader from '../components/GlobalHeader';
 function Index(props) {
     const { searchData, userInfo, message, dispatch, menusData = [], notification } = props;
     const handleLoadMore = () => {
