@@ -80,7 +80,7 @@ class Index extends PureComponent {
                     />
                 </Sider>
                 <Layout id="backTop" className={styles.contianer} style={{ marginLeft: collapsed ? 80 : 200 }}>
-                    <Header style={{ background: '#fff', padding: 0, display: 'flex' }}>
+                    <Header style={{ background: '#fff',  display: 'flex' }}>
                         <div style={{ width: 100 }}>
                             <Icon
                                 className={styles.trigger}

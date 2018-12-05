@@ -54,6 +54,20 @@ class MainMenu extends Component {
           </SubMenu>
         );
       } else {
+        const { url: href } = restState;
+        if (link === '' && href) {
+          return (
+            <Item
+              key={href.slice(-5)}
+              text={name}
+            >
+              <a href={href}>
+                <Icon type={icon} />
+                <span>{name}</span>
+              </a>
+            </Item>
+          );
+        }
         return (
           <Item
             key={key}

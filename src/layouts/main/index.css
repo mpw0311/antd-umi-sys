@@ -44,7 +44,7 @@
   background: #EDEDED;
 }
 .wrapper {
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
 }
 .section {
@@ -75,29 +75,26 @@
   height: 0px;
 }
 .content {
-  margin: 10px 10px 0 10px;
-  display: -webkit-flex;
-  display: flex;
-  flex-direction: column;
-}
-.children {
-  padding: 10px;
-  padding-top: 0;
-  padding-bottom: 10px;
-  background: #fff;
-  position: relative;
   overflow: hidden;
   overflow-y: auto;
   /*隐藏滚动条，当IE下溢出，仍然可以滚动*/
   -ms-overflow-style: none;
   /*火狐下隐藏滚动条*/
 }
-.children::-webkit-scrollbar {
+.content::-webkit-scrollbar {
   display: none;
   /*滚动条整体样式*/
   width: 0px;
   /*高宽分别对应横竖滚动条的尺寸*/
   height: 0px;
+}
+.children {
+  margin: 10px 10px 0 10px;
+  padding: 10px;
+  padding-top: 0;
+  padding-bottom: 10px;
+  background: #fff;
+  position: relative;
 }
 .footer {
   text-align: center;
