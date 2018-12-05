@@ -2,7 +2,7 @@ module.exports = {
     logoPath: '/',
     loginName: '数据平台',
     sysName: 'TEST',
-    copyright: "V1.0.2 2018 © by mpw.",
+    copyright: "V1.0.3 2018 © by mpw0311@163.com.",
     apiPrefix: document.head.dataset.api || '',
     iframePrefix: document.head.dataset.iframe || '',
     menuPermission: false,
