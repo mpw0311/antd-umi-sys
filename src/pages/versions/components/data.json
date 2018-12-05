@@ -75,5 +75,17 @@
                 "地域分析"
             ]
         }
+    },
+    {
+        "version": "v1.0.3",
+        "date": "2018-12-05",
+        "detail": {
+            "framework": [
+                "优化page组件",
+                "优化header组件，支持dark、light两种主题",
+                "新增layout布局"
+            ],
+            "pages": []
+        }
     }
 ]
