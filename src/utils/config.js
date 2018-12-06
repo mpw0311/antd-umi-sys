@@ -19,10 +19,5 @@ module.exports = {
             pathtitles: ['地域分析'],
         }
     },
-    indexIframe: {
-        title: '交易',
-        pathtitles: ['汇总数据', '交易'],
-        key: 'summryData_transaction',
-        url: `http://www.baidu.com`
-    }
+    frameDefultKey:'baidu',
 };

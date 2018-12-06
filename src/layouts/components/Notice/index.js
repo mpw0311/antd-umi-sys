@@ -67,8 +67,8 @@ function NoticeIcon(props) {
             popupClassName={styles.popover}
         >
             <span className={styles.noticeButton} style={{ color: theme === 'dark' ? "#FFF" : undefined }}>
-                <Badge count={unread.length} offset={[-5, 5]} showZero >
-                    <Icon type="bell" className={styles.icon}  />
+                <Badge count={unread.length} offset={[-5, 5]}>
+                    <Icon type="bell" className={styles.icon} />
                 </Badge>
             </span>
         </Popover>

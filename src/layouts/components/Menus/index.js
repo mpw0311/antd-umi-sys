@@ -73,7 +73,7 @@ class MainMenu extends Component {
             key={key}
             text={name}
           >
-            <Link to={{ pathname: link, query: { ...query, key: link.indexOf("frame") > -1 ? key : undefined }, state: { ...restState, key, pathtitles: pathtitles.concat(name) } }}>
+            <Link to={{ pathname: link, query, state: { ...restState, key, pathtitles: pathtitles.concat(name) } }}>
               <Icon type={icon} />
               <span>{name}</span>
             </Link>
