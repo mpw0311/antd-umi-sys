@@ -8,16 +8,18 @@ module.exports = {
     copyright: "V1.0.3 2018 © by mpw0311@163.com.",
     menuPermission: false,
     pageSize: 10,
-    indexPage: {
+    indexDefultPage: {
         pathname: '/login',
         state: {}
     },
-    indexSys: {
+    sysDefultPage: {
         pathname: '/sys/regionalAnalysis',
         state: {
             key: 'regionalAnalysis',
             pathtitles: ['地域分析'],
         }
     },
-    frameDefultKey:'baidu',
+    frameDefultPage: {
+        pathname: '/frame/baidu',
+    },
 };

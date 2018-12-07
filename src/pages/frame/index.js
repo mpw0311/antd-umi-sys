@@ -1,3 +1,3 @@
 import Redirect from 'umi/redirect';
-import { frameDefultKey } from 'config';
-export default () => <Redirect to={`/sys/frame/${frameDefultKey}`} />;
+import { frameDefultPage } from 'config';
+export default () => <Redirect to={{...frameDefultPage}} />;
