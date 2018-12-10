@@ -1,33 +1,45 @@
-import { Fragment } from 'react';
-import { Tag } from 'antd';
 import styles from './version.less';
+
+const replace = (phrase, key, color = '#87d068') => {
+    const r = '0x' + color.slice(1, 3), g = '0x' + color.slice(3, 5), b = '0x' + color.slice(5);
+    const rgb = `${parseInt(r)},${parseInt(g)},${parseInt(b)}`;
+    const reg = new RegExp(key, "gy");
+    return phrase.replace(reg, `<code style="color:${color};background-color:rgba(${rgb},0.2);border-color:rgba(${rgb},0.8)">${key}</code>`);
+};
+const getphrase = (phrase, keys) => {
+    for (const item of keys) {
+        const { key, color } = item;
+        phrase = replace(phrase, key, color);
+    }
+    return phrase;
+};
 export default ({ data }) => {
     const { version, date, detail = [] } = data;
     const { framework = [], pages = [] } = detail;
-    const replace = (phrase, key) => {
-        //    return phrase.replace(/新增/gy,<Tag color="cyan">新增</Tag>);
-        const index = phrase.indexOf(key);
-        const len = key.length;
-        if (index > -1) {
-            const pre = phrase.slice(0, index);
-            const behind = phrase.slice(index + len);
-            return (
-                <Fragment>
-                    {pre}
-                    {/* <span style={{color:"#87d068"}}>{key}</span> */}
-                    <Tag color="cyan">{key}</Tag>
-                    {behind}
-                </Fragment>
-            );
-        } else {
-            return phrase;
+    const keys = [
+        {
+            key: "新增",
+            color: "#87d068"
+        },
+        {
+            key: "优化",
+            color: "#2db7f5"
+        },
+        {
+            key: '修复',
+            color: '#ff5500'
         }
-    };
+    ];
     const P1 = (
         <li >
             <h5>【框架更新】</h5>
             <ol>
-                {framework.map((item, i) => <li key={i}>{replace(item, '新增')}；</li>)}
+                {framework.map((item, i) => <li
+                    key={i}
+                    ref={(dom) => {
+                        if (dom)
+                            dom.innerHTML = getphrase(item, keys);
+                    }} />)}
             </ol>
         </li>
     );
@@ -35,7 +47,12 @@ export default ({ data }) => {
         <li>
             <h5>【页面更新】</h5>
             <ol>
-                {pages.map((item, i) => <li key={i}>{replace(item, '新增')}；</li>)}
+                {pages.map((item, i) => <li
+                    key={i}
+                    ref={(dom) => {
+                        if (dom)
+                            dom.innerHTML = getphrase(item, keys);
+                    }} />)}
             </ol>
         </li>
     );

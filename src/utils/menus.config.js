@@ -88,7 +88,7 @@ export default {
             children: [
                 {
                     title: "bing",
-                    link: "/frame",
+                    link: "/frame/bing",
                     key: "bing",
                     icon: "shop",
                     url: `https://cn.bing.com/`,
@@ -98,7 +98,7 @@ export default {
                 },
                 {
                     title: "百度",
-                    link: "/frame",
+                    link: "/frame/baidu",
                     key: "baidu",
                     icon: "shop",
                     url: `https://www.baidu.com/`,
