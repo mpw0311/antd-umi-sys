@@ -29,6 +29,18 @@ class Index extends Component {
         };
         this.onload = this.onload.bind(this);
     }
+    componentDidUpdate(nextProps) {
+        const { location: nextLocation } = nextProps;
+        const { pathname: nextPathname } = nextLocation;
+        const { location } = this.props;
+        const { pathname } = location;
+        if (pathname !== nextPathname) {
+            this.setState({
+                loading: true
+            });
+            return true;
+        }
+    }
     onload() {
         const { loading } = this.state;
         if (loading) {
@@ -54,7 +66,7 @@ class Index extends Component {
                     name="myFrame"
                     src={url}
                     style={{ flex: 'auto', border: 0, marginBottom: '-10px', minHeight: h ? parseInt(h) : undefined }}
-                    ref={(dom) => {//eslint-disable-line
+                    ref={(dom) => {
                         this.onload(dom);
                     }}
                 />
