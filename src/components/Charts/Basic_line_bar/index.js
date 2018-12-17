@@ -1,10 +1,13 @@
 import { Component } from 'react';
 import ReactEcharts from 'echarts-for-react';
 import chartConfig from '../config';
-import _ from 'lodash';
-import { toDatasetReverse, toDataset, getMark, showLoading, swap } from '../_';
-import { _getType } from './_';
+import Loading from '../Loading';
+import { getMark, showLoading } from '../_';
+import { _getType, _getYAxis, _getSeries, _toDataset, _resetLegend } from './_';
 
+const dataCheck = (data) => {
+  return showLoading(data);
+};
 class Line extends Component {
   constructor(props) {
     super(props);
@@ -33,70 +36,47 @@ class Line extends Component {
       legendData,
       dataReverse = false,
       YUnit,
-      barWidth
+      barWidth,
+      loading,
+      originOption = {}
     } = this.props;
-    const loading = showLoading(data);
-    if (loading) {
-      return (
-        <ReactEcharts
-          option={{}}
-          {...chartConfig}
-          style={style}
-          showLoading={loading}
-        />
-      );
+    const {
+      Y2Type = type,
+      Y2Unit = YUnit,
+      Y2Index = 1,
+      Y2Show = false
+    } = this.props;
+    const yAxis = _getYAxis({ YUnit, Y2Show, Y2Index, Y2Unit, Y2Type });
+    if (loading === true) {
+      return (<Loading loading style={style} />);
+    } else if (dataCheck(data)) {
+      return (<Loading nodata style={style} />);
     }
     const { onEvents } = this.state;
-    let datasetSource = [];// dataReverse ? toDatasetReverse(data, yIndex) : toDataset(data);
-    let _datasetSource = [];
+    //是否倒序
+    const datasetSource = _toDataset({ data, yIndex, dataReverse });
+    //legend重命名
+    const _datasetSource = _resetLegend({ legendData, legendDict, datasetSource });
 
-    if (dataReverse) {
-      datasetSource = toDatasetReverse(data, yIndex);
-      _datasetSource = datasetSource.map(row => {
-        return swap(row, yIndex);
-      });
-    } else {
-      datasetSource = toDataset(data, yIndex);
-      _datasetSource = swap(datasetSource, yIndex);
-    }
-    if (_.isArray(legendData)) {
-      _datasetSource = _datasetSource.map((row, i) => {
-        if (i === 0) {
-          row[0] = "legendType";
-        } else {
-          row[0] = legendData[i - 1];
-        }
-        return row;
-      });
-    } else if (_.isObject(legendDict)) {
-      _datasetSource = _datasetSource.map((row, i) => {
-        if (i === 0) {
-          row[0] = "legendType";
-        } else {
-          const name = row[0];
-          row[0] = legendDict[name];
-        }
-        return row;
-      });
-    }
     const mark = getMark({ maxShow, minShow, averageShow });
     const _type = _getType(type);
-    const series = [];
-    for (let i = 1, len = _datasetSource.length; i < len; i++) {
-      const setting = {
-        ..._type,
-        ...mark,
-        stack,
-        seriesLayoutBy: 'row',
-        barWidth
-      };
-      if (_.isArray(label)) {
-        setting.label = label[i];
-      } else {
-        setting.label = label;
-      }
-      series.push(setting);
-    }
+    const setting = {
+      ..._type,
+      ...mark,
+      stack,
+      seriesLayoutBy: 'row',
+      barWidth
+    };
+    //获取series
+    const series = _getSeries({
+      setting,
+      datasetSource: _datasetSource,
+      label,
+      Y2Show,
+      Y2Type,
+      Y2Index
+    });
+    //设置y2轴
     const option = {
       title: {
         text: title
@@ -121,11 +101,9 @@ class Line extends Component {
         type: 'category',
         // gridIndex: 0
       },
-      yAxis: {
-        type: 'value',
-        name: YUnit
-      },
-      series
+      yAxis,
+      series,
+      ...originOption
     };
     return (
       <ReactEcharts
