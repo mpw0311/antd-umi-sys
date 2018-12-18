@@ -52,9 +52,22 @@ export default {
         },
         {
             title: "view",
-            link: "/sys/view",
             key: "view",
-            icon: "idcard"
+            icon: "idcard",
+            children: [
+                {
+                    title: "view1",
+                    link: "/sys/view/p1",
+                    key: "p1",
+                    icon: "line-chart"
+                },
+                {
+                    title: "view2",
+                    link: "/sys/view/p2",
+                    key: "p2",
+                    icon: "bar-chart"
+                },
+            ]
         },
         {
             title: "echarts组件",
@@ -92,8 +105,8 @@ export default {
                     key: "bing",
                     icon: "shop",
                     url: `https://cn.bing.com/`,
-                    query:{
-                        h:1200
+                    query: {
+                        h: 1200
                     }
                 },
                 {
