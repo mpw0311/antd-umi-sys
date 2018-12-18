@@ -1,5 +1,6 @@
 
 import { routerRedux } from 'dva/router';
+import { message } from 'antd';
 import { menusData, methods } from 'utils';
 import { menuPermission } from 'config';
 import * as api from 'services';
@@ -31,8 +32,12 @@ export default {
 
     effects: {
         * logout({ payload }, { call, put }) {
-            yield call(api.logout, { ...payload });
-            yield put(routerRedux.push('/login'));
+            const { data, status } = yield call(api.logout, { ...payload });
+            const { message: msg } = data;
+            if (status === 0) {
+                message.success(msg || "退出系统");
+                yield put(routerRedux.push('/login'));
+            }
         },
         * getSysInfo({ payload }, { call, put, select }) {// eslint-disable-line
             let res = yield select(({ global }) => global.result);// eslint-disable-line
