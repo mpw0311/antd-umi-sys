@@ -14,7 +14,9 @@ const {
     Area,
     Sankey,
     Radar,
-    ChinaMap
+    ChinaMap,
+    Multipie,
+    LineBar
 } = Charts;
 function Chart(props) {
     const {
@@ -27,7 +29,9 @@ function Chart(props) {
         nestData,
         sankeyData,
         radarData,
-        chinamapdata
+        chinamapdata,
+        multipiedata,
+        lineBardata
     } = props;// eslint-disable-line
     const handleClick = (p) => {
         console.log(p);
@@ -42,6 +46,24 @@ function Chart(props) {
     };
     return (
         <Page loading={false} pathtitles={['echarts数据可视化组件']}>
+            <View
+                title="折线图"
+                data={lineBardata}
+                onBlur={(value) => {
+                    handleBlur(value, "lineBardata");
+                }}
+            >
+                <LineBar data={lineBardata} handleClick={handleClick} Y2Show Y2Index={2} YUnit={'万'} Y2Unit={'万'} />
+            </View>
+            <View
+                title="多饼图"
+                data={multipiedata}
+                onBlur={(value) => {
+                    handleBlur(value, "multipiedata");
+                }}
+            >
+                <Multipie data={multipiedata} handleClick={handleClick} />
+            </View>
             <View
                 title="中国地图"
                 data={chinamapdata}

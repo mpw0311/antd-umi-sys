@@ -58,7 +58,7 @@ export const _getSeries = opts => {
             setting.label = label;
         }
         if (Y2Show && Y2Index === i - 1) {
-            series.push({ ...setting, ...type, yAxisIndex: Y2Index });
+            series.push({ ...setting, ...type, yAxisIndex: 1 });
         } else {
             series.push(setting);
         }
