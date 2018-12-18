@@ -42,9 +42,11 @@ module.exports = {
     [`POST /getSysInfo`](req, res) {
         res.status(200).json(info);
     },
-    [`POST /logout`](req, res) {
+    [`GET /logout`](req, res) {
         res.status(200).json({
-            data: {},
+            data: {
+                message:"退出登录成功！"
+            },
             status: 0
         });
     },

@@ -23,7 +23,13 @@ export default async function request(url, options) {
     credentials: 'include', // 允许跨域发送cookies：
     mode: "cors"//no-cors
   })
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject({ data: {}, status: -1, });
+      }
+    })
     .catch(error => {
       return {
         data: {

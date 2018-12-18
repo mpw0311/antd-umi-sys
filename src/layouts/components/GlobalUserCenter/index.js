@@ -18,10 +18,10 @@ function User(props) {
         <Menu.Item key={"sys/settings"} state={{ userName, pathtitles: ["设置中心"] }} disabled>
             <Icon type="setting" />  设置
         </Menu.Item>
-        <Menu.Divider />
         <Menu.Item key={"/versions"} state={{ userName, pathtitles: ["版本说明"] }}>
             <Icon type="edit" />  版本说明
         </Menu.Item>
+        <Menu.Divider />
         <Menu.Item key="logout" state={{ userName }}>
             <Icon type="logout" />  退出登录
         </Menu.Item>
