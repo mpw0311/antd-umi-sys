@@ -1,191 +1,150 @@
 
+const data = {
+    "columns": [
+        {
+            "field": "xAxis",
+            "name": "时间",
+            "type": "string"
+        },
+        {
+            "field": "email",
+            "name": "邮件营销",
+            "type": "string"
+        },
+        {
+            "field": "union",
+            "name": "联盟广告",
+            "type": "string"
+        },
+        {
+            "field": "video",
+            "name": "视频广告",
+            "type": "string"
+        },
+        {
+            "field": "visit",
+            "name": "直接访问",
+            "type": "string"
+        },
+        {
+            "field": "search",
+            "name": "搜索引擎",
+            "type": "string"
+        }
+    ],
+    "rows": [
+        {
+            "xAxis": "周一",
+            "email": 120,
+            "union": 220,
+            "video": 150,
+            "visit": 30,
+            "search": 820
+        },
+        {
+            "xAxis": "周二",
+            "email": 132,
+            "union": 182,
+            "video": 232,
+            "visit": 332,
+            "search": 932
+        },
+        {
+            "xAxis": "周三",
+            "email": 101,
+            "union": 192,
+            "video": 202,
+            "visit": 302,
+            "search": 902
+        },
+        {
+            "xAxis": "周四",
+            "email": 134,
+            "union": 234,
+            "video": 154,
+            "visit": 334,
+            "search": 934
+        },
+        {
+            "xAxis": "周五",
+            "email": 90,
+            "union": 290,
+            "video": 190,
+            "visit": 390,
+            "search": 1290
+        },
+        {
+            "xAxis": "周六",
+            "email": 230,
+            "union": 330,
+            "video": 330,
+            "visit": 330,
+            "search": 1230
+        },
+        {
+            "xAxis": "周日",
+            "email": 210,
+            "union": 310,
+            "video": 420,
+            "visit": 320,
+            "search": 1320
+        }
+    ]
+};
 export default {
     namespace: 'chartView',
     state: {
-        lineData: {
-            "columns": [
+        lineBardata: data,
+        multipiedata: {
+            columns: [
                 {
-                    "field": "xAxis",
-                    "name": "时间",
-                    "type": "string"
+                    field: 'date',
+                    name: '日期',
                 },
                 {
-                    "field": "email",
-                    "name": "邮件营销",
-                    "type": "string"
+                    field: 'range1',
+                    name: '0~30',
                 },
                 {
-                    "field": "union",
-                    "name": "联盟广告",
-                    "type": "string"
+                    field: 'range2',
+                    name: '30~60',
                 },
                 {
-                    "field": "video",
-                    "name": "视频广告",
-                    "type": "string"
+                    field: 'range3',
+                    name: '60~90',
                 },
                 {
-                    "field": "visit",
-                    "name": "直接访问",
-                    "type": "string"
+                    field: 'range4',
+                    name: '90~120',
                 },
                 {
-                    "field": "search",
-                    "name": "搜索引擎",
-                    "type": "string"
-                }
+                    field: 'range5',
+                    name: '>=120',
+                },
             ],
-            "rows": [
+            rows: [
                 {
-                    "xAxis": "周一",
-                    "email": 120,
-                    "union": 220,
-                    "video": 150,
-                    "visit": 30,
-                    "search": 820
+                    date: '20181212',
+                    range1: "123",
+                    range2: "223",
+                    range3: "323",
+                    range4: "423",
+                    range5: "523",
+
                 },
                 {
-                    "xAxis": "周二",
-                    "email": 132,
-                    "union": 182,
-                    "video": 232,
-                    "visit": 332,
-                    "search": 932
+                    date: '20181213',
+                    range1: "101",
+                    range2: "201",
+                    range3: "301",
+                    range4: "401",
+                    range5: "501",
+
                 },
-                {
-                    "xAxis": "周三",
-                    "email": 101,
-                    "union": 192,
-                    "video": 202,
-                    "visit": 302,
-                    "search": 902
-                },
-                {
-                    "xAxis": "周四",
-                    "email": 134,
-                    "union": 234,
-                    "video": 154,
-                    "visit": 334,
-                    "search": 934
-                },
-                {
-                    "xAxis": "周五",
-                    "email": 90,
-                    "union": 290,
-                    "video": 190,
-                    "visit": 390,
-                    "search": 1290
-                },
-                {
-                    "xAxis": "周六",
-                    "email": 230,
-                    "union": 330,
-                    "video": 330,
-                    "visit": 330,
-                    "search": 1230
-                },
-                {
-                    "xAxis": "周日",
-                    "email": 210,
-                    "union": 310,
-                    "video": 420,
-                    "visit": 320,
-                    "search": 1320
-                }
             ]
         },
-        barData: {
-            "columns": [
-                {
-                    "field": "xAxis",
-                    "name": "时间",
-                    "type": "string"
-                },
-                {
-                    "field": "email",
-                    "name": "邮件营销",
-                    "type": "string"
-                },
-                {
-                    "field": "union",
-                    "name": "联盟广告",
-                    "type": "string"
-                },
-                {
-                    "field": "video",
-                    "name": "视频广告",
-                    "type": "string"
-                },
-                {
-                    "field": "visit",
-                    "name": "直接访问",
-                    "type": "string"
-                },
-                {
-                    "field": "search",
-                    "name": "搜索引擎",
-                    "type": "string"
-                }
-            ],
-            "rows": [
-                {
-                    "xAxis": "周一",
-                    "email": 120,
-                    "union": 220,
-                    "video": 150,
-                    "visit": 30,
-                    "search": 820
-                },
-                {
-                    "xAxis": "周二",
-                    "email": 132,
-                    "union": 182,
-                    "video": 232,
-                    "visit": 332,
-                    "search": 932
-                },
-                {
-                    "xAxis": "周三",
-                    "email": 101,
-                    "union": 192,
-                    "video": 202,
-                    "visit": 302,
-                    "search": 902
-                },
-                {
-                    "xAxis": "周四",
-                    "email": 134,
-                    "union": 234,
-                    "video": 154,
-                    "visit": 334,
-                    "search": 934
-                },
-                {
-                    "xAxis": "周五",
-                    "email": 90,
-                    "union": 290,
-                    "video": 190,
-                    "visit": 390,
-                    "search": 1290
-                },
-                {
-                    "xAxis": "周六",
-                    "email": 230,
-                    "union": 330,
-                    "video": 330,
-                    "visit": 330,
-                    "search": 1230
-                },
-                {
-                    "xAxis": "周日",
-                    "email": 210,
-                    "union": 310,
-                    "video": 420,
-                    "visit": 320,
-                    "search": 1320
-                }
-            ]
-        },
+        lineData: data,
+        barData: data,
         barWaterfallData: [
             {
                 name: "1千至3千",
@@ -1133,7 +1092,7 @@ export default {
                 }
             ]
         },
-        radarData:{
+        radarData: {
             "columns": [
                 {
                     "field": "name",
@@ -1196,10 +1155,10 @@ export default {
                     "Chemistry": 80,
                     "Biology": 86
                 },
-        
+
             ]
         },
-        chinamapdata:{
+        chinamapdata: {
             "columns": [
                 {
                     "field": "province",
