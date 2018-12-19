@@ -2,7 +2,7 @@ import { Component } from 'react';
 import ReactEcharts from 'echarts-for-react';
 import chartConfig from '../config';
 import Loading from '../Loading';
-import { _getCoord, _getSeries, _getLegendData } from './_';
+import { _getCoord, _getSeries, _getLegendData, _getGraphic } from './_';
 import { showLoading } from '../_';
 
 const dataCheck = (data) => {
@@ -24,8 +24,6 @@ class Pie extends Component {
         const {
             data = [],
             style,
-            title,
-            subtitle,
             loading
         } = this.props;
         if (loading === true) {
@@ -34,7 +32,7 @@ class Pie extends Component {
             return (<Loading nodata style={style} />);
         }
         const { onEvents } = this.state;
-        const legendData = _getLegendData;
+        const legendData = _getLegendData(data);
         const seriesSettings = {
             type: 'pie',
             label: {
@@ -64,25 +62,22 @@ class Pie extends Component {
                 }
             }
         };
-        const coords=_getCoord(data);
+        const coords = _getCoord(data);
         const series = _getSeries(data, seriesSettings, coords);
+        const graphic = _getGraphic(data);
         const option = {
-            title: {
-                text: title,
-                subtext: subtitle,
-                x: 'center'
-            },
             tooltip: {
                 trigger: 'item',
                 formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
             legend: {
-                orient: 'vertical',
                 left: 'left',
                 data: legendData
             },
+            graphic,
             series
         };
+        console.log(JSON.stringify(option));
         return (
             <ReactEcharts
                 option={option}
