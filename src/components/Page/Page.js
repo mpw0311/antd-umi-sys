@@ -34,7 +34,7 @@ export default class Page extends Component {
         />
         <div style={{ flex: 'auto', width: "100%", display: 'flex' }}>
           {loading === true ? <Loader spinning /> : ''}
-          <div style={{ flex: 'auto', width: '100%', ...childStyle }}>
+          <div style={{ flex: 'auto', width: '100%', padding: 10, ...childStyle }}>
             {children}
           </div>
         </div>

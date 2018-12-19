@@ -80,3 +80,26 @@ export const _getLegendData = (data) => {
     const [, ...indexs] = columns;
     return indexs.map(item => item.name);
 };
+export const _getGraphic = (data = {}) => {
+    const { columns = [], rows = [] } = data;
+    const [xAxisColumn] = columns;
+    const { field } = xAxisColumn;
+    const xAxisNames = rows.map(row => row[field]);
+    const n = xAxisNames.length;
+    if (n === 1) return;
+    const _setval = (v, i) => {
+        return {
+            type: 'text',
+            z: 100,
+            left: `${(100 / n / 2) * (2 * i + 1) - 2}%`,
+            bottom: 10,
+            style: {
+                fill: '#555',
+                transform: [-100, 0],
+                text: v,
+                font: '14px Microsoft YaHei'
+            }
+        };
+    };
+    return xAxisNames.map((v, i) => _setval(v, i));
+};

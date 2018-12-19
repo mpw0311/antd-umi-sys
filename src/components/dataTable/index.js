@@ -1,5 +1,5 @@
-import { Component, Fragment } from 'react';
-import { Table, Row, Col } from 'antd';
+import { Component } from 'react';
+import { Table, Row, Col, Button } from 'antd';
 import { methods } from 'utils';
 import _ from 'lodash';
 import Search from './search';
@@ -104,7 +104,9 @@ class DataTable extends Component {
             sort, // 全排序
             sortIndexs = [], // 列排序
             onPageChange = () => { },//eslint-disable-line
+            download = {},
             columns: defaultColumns,
+            headerStyle = {},
             ...restProps
         } = this.props;
         const { columns, dataSource } = toTableData(data);
@@ -116,6 +118,10 @@ class DataTable extends Component {
         const {
             show: searchShow,
         } = searchProps;
+        const {
+            show: downloadShow,
+            handleClick = () => { }
+        } = download;
         const { pagination, searchKey } = this.state;
         const initColumns = defaultColumns || columns;
         const _columns = sort ? getAllSortColumns(initColumns) : sortIndexs.length > 0 ? getSortColumns(initColumns, sortIndexs) : initColumns;
@@ -127,24 +133,36 @@ class DataTable extends Component {
                 pagination
             });
         };
+        const tableSelect = <TableSelect
+            show={selectShow || false}
+            data={optionData}
+            defaultValue={defaultValue}
+            onChange={this.handleSelectChange}
+        />;
+        const search = <Search
+            show={searchShow || false}
+            onSearch={this.handleSearch}
+        />;
+        const down = <Button onClick={handleClick}>导出数据</Button>;
+        const layout1 = <Row style={{ margin: '5px 0 2px 0', ...headerStyle }}>
+            <Col span={12}>
+                {tableSelect}
+            </Col>
+            <Col span={12} style={{ textAlign: 'right', paddingRight: '15px' }}>
+                {search}
+            </Col>
+        </Row>;
+        const layout2 = <Row style={{ margin: '5px 0 2px 0', ...headerStyle }}>
+            <Col span={12}>
+                {search}
+            </Col>
+            <Col span={12} style={{ textAlign: 'right', paddingRight: '15px' }}>
+                {down}
+            </Col>
+        </Row>;
         return (
-            <Fragment>
-                <Row style={{ paddingBottom: '5px' }}>
-                    <Col span={12}>
-                        <TableSelect
-                            show={selectShow || false}
-                            data={optionData}
-                            defaultValue={defaultValue}
-                            onChange={this.handleSelectChange}
-                        />
-                    </Col>
-                    <Col span={12} style={{ textAlign: 'right', paddingRight: '15px' }}>
-                        <Search
-                            show={searchShow || false}
-                            onSearch={this.handleSearch}
-                        />
-                    </Col>
-                </Row>
+            <div>
+                {downloadShow ? layout2 : layout1}
                 <Table
                     columns={_columns}
                     dataSource={_dataSource}
@@ -163,7 +181,7 @@ class DataTable extends Component {
                     }}
                     {...restProps}
                 />
-            </Fragment>
+            </div>
         );
     }
 }
