@@ -18,6 +18,16 @@ const globalLoading = (
         <Spin size="large" tip="加载中..." />
     </div>
 );
+const _getKey = (pathname) => {
+    if (typeof pathname === 'string' && pathname !== '') {
+        const arr = pathname.split('').reverse();
+        const index = arr.indexOf('/');
+        if (index > -1) {
+            return arr.slice(0, index).reverse().join('');
+        }
+    }
+    return pathname;
+};
 class Index extends PureComponent {
     constructor(props) {
         super(props);
@@ -64,7 +74,7 @@ class Index extends PureComponent {
         }
         const { pathname, state: pathstate } = location;
         const { key, /*pathtitles*/ } = pathstate || {};
-        const defaultKey = key || pathname;
+        const defaultKey = key || _getKey(pathname);
         return (
             <Layout>
                 <Sider
