@@ -1,9 +1,8 @@
-import { Component } from 'react';
-import { Table, Row, Col, Button } from 'antd';
+import { PureComponent } from 'react';
+import { Table } from 'antd';
 import { methods } from 'utils';
 import _ from 'lodash';
-import Search from './search';
-import TableSelect from './select';
+import TableHeader from './tableHeader';
 
 const { toTableData } = methods;
 const compare = (a, b, dataIndex, type) => {
@@ -70,7 +69,7 @@ const searchTable = (dataSource, key) => {
         });
     }
 };
-class DataTable extends Component {
+class DataTable extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -82,13 +81,7 @@ class DataTable extends Component {
                 showSizeChanger: true, // 是否显示可以设置几条一页的选项
             }
         };
-        this.handleSelectChange = this.handleSelectChange.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
-    }
-    handleSelectChange(value) {
-        const { selectProps = {} } = this.props;
-        const { onChange = () => { } } = selectProps;
-        onChange(value);
     }
     handleSearch(searchKey) {
         this.setState({
@@ -110,18 +103,6 @@ class DataTable extends Component {
             ...restProps
         } = this.props;
         const { columns, dataSource } = toTableData(data);
-        const {
-            show: selectShow,
-            data: optionData,
-            defaultValue
-        } = selectProps;
-        const {
-            show: searchShow,
-        } = searchProps;
-        const {
-            show: downloadShow,
-            handleClick = () => { }
-        } = download;
         const { pagination, searchKey } = this.state;
         const initColumns = defaultColumns || columns;
         const _columns = sort ? getAllSortColumns(initColumns) : sortIndexs.length > 0 ? getSortColumns(initColumns, sortIndexs) : initColumns;
@@ -133,36 +114,15 @@ class DataTable extends Component {
                 pagination
             });
         };
-        const tableSelect = <TableSelect
-            show={selectShow || false}
-            data={optionData}
-            defaultValue={defaultValue}
-            onChange={this.handleSelectChange}
-        />;
-        const search = <Search
-            show={searchShow || false}
-            onSearch={this.handleSearch}
-        />;
-        const down = <Button onClick={handleClick}>导出数据</Button>;
-        const layout1 = <Row style={{ margin: '5px 0 2px 0', ...headerStyle }}>
-            <Col span={12}>
-                {tableSelect}
-            </Col>
-            <Col span={12} style={{ textAlign: 'right', paddingRight: '15px' }}>
-                {search}
-            </Col>
-        </Row>;
-        const layout2 = <Row style={{ margin: '5px 0 2px 0', ...headerStyle }}>
-            <Col span={12}>
-                {search}
-            </Col>
-            <Col span={12} style={{ textAlign: 'right', paddingRight: '15px' }}>
-                {down}
-            </Col>
-        </Row>;
         return (
             <div>
-                {downloadShow ? layout2 : layout1}
+                <TableHeader
+                    selectProps={selectProps}
+                    searchProps={searchProps}
+                    download={download}
+                    headerStyle={headerStyle}
+                    handleSearch={this.handleSearch}
+                />
                 <Table
                     columns={_columns}
                     dataSource={_dataSource}
