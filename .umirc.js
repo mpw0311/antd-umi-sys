@@ -4,6 +4,8 @@ import { resolve } from "path";
 
 export default {
   history: 'hash',//是否启动hash路由，默认是用的 Browser History
+  hash: true,//生成带有hash值文件名，避免本地缓存
+  // devtool: 'source-map',//生成map文件
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
@@ -18,7 +20,7 @@ export default {
       dll: false,
       pwa: false,//Progressive Web App，即渐进式WEB应用。
       hardSource: false,
-      locale:'zh-CN',// i18n
+      locale: 'zh-CN',// i18n
       routes: {
         exclude: [
           /model\.(j|t)sx?$/,
