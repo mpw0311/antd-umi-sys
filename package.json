@@ -18,8 +18,8 @@
     "husky": "^0.14.3",
     "lint-staged": "^7.2.2",
     "mockjs": "^1.0.1-beta3",
-    "umi": "^2.0.2",
-    "umi-plugin-react": "^1.0.0-0"
+    "umi": "^2.1.2",
+    "umi-plugin-react": "^1.1.1"
   },
   "lint-staged": {
     "*.{js,jsx}": [
@@ -32,9 +32,8 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "echarts": "^4.2.0-rc.1",
-    "echarts-for-react": "^2.0.14",
-    "lodash": "^4.17.10",
+    "echarts": "^4.2.0-rc.2",
+    "echarts-for-react": "^2.0.15-beta.0",
     "path-to-regexp": "^2.4.0"
   }
 }
