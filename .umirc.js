@@ -1,47 +1,44 @@
 
-// ref: https://umijs.org/config/
 import { resolve } from "path";
-
+// ref: https://umijs.org/config/
 export default {
-  history: 'hash',//是否启动hash路由，默认是用的 Browser History
-  hash: true,//生成带有hash值文件名，避免本地缓存
-  // devtool: 'source-map',//生成map文件
+  history: 'hash',//hash路由
+  hash: true,//生成hash文件名
+  devtool: 'source-map',//生成map文件
+  targets: {//兼容浏览器版本
+    ie: 11,
+  },
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
       antd: true,
-      // dva: true,
-      polyfills: ['ie11'],
-      dva: {
-        immer: true
+      dva: true,
+      dynamicImport: {
+        webpackChunkName: true,
+        loadingComponent: './components/PageLoading/index.js',
       },
-      dynamicImport: true,//true：按需加载
-      title: 'antd-umi-sys',
+      locale: {
+        default: 'zh-CN', //默认语言 zh-CN
+        baseNavigator: true, // 为true时，用navigator.language的值作为默认语言
+        antd: true // 是否启用antd的<LocaleProvider />
+      },
+      title: 'umi-2.3',
       dll: false,
-      pwa: false,//Progressive Web App，即渐进式WEB应用。
       hardSource: false,
-      locale: 'zh-CN',// i18n
       routes: {
         exclude: [
+          /components/,
           /model\.(j|t)sx?$/,
           /service\.(j|t)sx?$/,
           /models\//,
-          /components\//,
           /services\//,
-          /chart\/Container\.js$/,
-          /chart\/ECharts\/.+Component\.js$/,
-          /chart\/ECharts\/.+ComPonent\.js$/,
-          /chart\/ECharts\/theme\/.+\.js$/,
-          /chart\/highCharts\/.+Component\.js$/,
-          /chart\/highCharts\/mapdata\/.+\.js$/,
-          /chart\/Recharts\/.+Component\.js$/,
-          /chart\/Recharts\/Container\.js$/,
         ],
       },
     }],
   ],
   theme: './theme.config.js',
   alias: {
+    "@": resolve(__dirname, "./src"),
     themes: resolve(__dirname, './src/themes'),
     components: resolve(__dirname, "./src/components"),
     utils: resolve(__dirname, "./src/utils"),

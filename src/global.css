@@ -1,8 +1,43 @@
-
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
-
 body {
   margin: 0;
+}
+.ant-menu-inline-collapsed > .ant-menu-item .iconfont + span,
+.ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-item .iconfont + span,
+.ant-menu-inline-collapsed > .ant-menu-item-group > .ant-menu-item-group-list > .ant-menu-submenu > .ant-menu-submenu-title .iconfont + span,
+.ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title .iconfont + span {
+  max-width: 0px;
+  display: inline-block;
+  opacity: 0;
+}
+.hideScrollbar {
+  /*隐藏滚动条，当IE下溢出，仍然可以滚动*/
+  -ms-overflow-style: none;
+  /*火狐下隐藏滚动条*/
+}
+.hideScrollbar::-webkit-scrollbar {
+  display: none;
+  /*滚动条整体样式*/
+  width: 0px;
+  /*高宽分别对应横竖滚动条的尺寸*/
+  height: 0px;
+}
+.progressbar::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 4px;
+  /*高宽分别对应横竖滚动条的尺寸*/
+  height: 4px;
+}
+.progressbar::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 10px;
+  -webkit-box-shadow: inset -1px 0 5px rgba(0, 33, 64, 0.7);
+  background-color: rgba(240, 242, 245, 0.9);
+}
+.progressbar::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
 }

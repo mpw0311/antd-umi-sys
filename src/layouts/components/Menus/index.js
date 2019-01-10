@@ -92,6 +92,8 @@ class MainMenu extends Component {
         selectedKeys={[key || defaultKey]}
         mode={mode}
         theme={theme}
+        style={{ overflowY: 'auto', height: "calc(100vh - 70px)" }}
+        className="progressbar"
       >
         {menusData}
       </Menu>
