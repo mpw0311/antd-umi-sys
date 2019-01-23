@@ -118,6 +118,12 @@ export default {
                 },]
         },
         {
+            title: "d3路径图",
+            link: "/sys/tree",
+            key: "treeView",
+            icon: "star"
+        },
+        {
             title: "请给star",
             url: "https://github.com/mpw0311/antd-umi-sys",
             key: "chartView",

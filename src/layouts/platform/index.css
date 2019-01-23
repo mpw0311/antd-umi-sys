@@ -83,6 +83,7 @@
   margin-bottom: 0;
   padding-top: 0;
   background: #fff;
+  flex: 0 0 auto;
 }
 .footer {
   text-align: center;
