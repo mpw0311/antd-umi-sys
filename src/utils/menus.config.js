@@ -118,10 +118,23 @@ export default {
                 },]
         },
         {
-            title: "d3路径图",
-            link: "/sys/tree",
-            key: "treeView",
-            icon: "star"
+            title: "d3Chart",
+            key: "d3Chart",
+            icon: "contacts",
+            children: [
+                {
+                    title: "树图",
+                    link: "/sys/treePage",
+                    key: "treePage",
+                    icon: "icon-tree"
+                },
+                {
+                    title: "桑基图",
+                    link: "/sys/sankeyPage",
+                    key: "sankeyPage",
+                    icon: "icon-mapsankey"
+                },
+            ]
         },
         {
             title: "请给star",

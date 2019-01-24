@@ -2,7 +2,7 @@ import { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Page } from 'components';
 
-import Tree from '@/components/Charts/D3Tree';
+import Tree from '@/components/D3Chart/Tree';
 
 class Sankey extends PureComponent {
 
