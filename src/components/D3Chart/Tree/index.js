@@ -1,6 +1,6 @@
 import { PureComponent } from 'react';
-import { select, tree, hierarchy, zoom,  event } from 'd3';
-//que:1.文字超界处理
+import { select, tree, hierarchy, zoom, event } from 'd3';
+//1.文字超界处理
 export default class Sankey extends PureComponent {
     constructor(props) {
         super(props);
@@ -82,21 +82,13 @@ export default class Sankey extends PureComponent {
         const { nodes, links } = this.getTreeData();
         /*eslint-disable-next-line */
         const link = this.renderLink(contentGroup, links);
-        /*eslint-disable-next-line */
         const node = this.renderNode(contentGroup, nodes);
         const siderbar = this.renderSiderbar(node);
         this.renderRouter(routeGroup);
         this.renderModel(node);
         this.bindEvent(node);
         this.bindSiderbarEvent(siderbar);
-        const Zoom = zoom()
-            .scaleExtent([0.1, 100])
-            .on('zoom', function () {
-                const { x, y, k } = event.transform;
-                contentGroup
-                    .attr('transform', `translate(${x},${y}) scale(${k})`);
-            });
-            svg.call(Zoom);
+        this.bindScaleAndDrag(svg, contentGroup);
     }
     getTreeData() {
         const {
@@ -462,6 +454,16 @@ export default class Sankey extends PureComponent {
         siderbar.on('click', function (d) {
             typeof siderbarClick === 'function' && siderbarClick(d);
         });
+    }
+    bindScaleAndDrag(svg, group) {
+        const Zoom = zoom()
+            .scaleExtent([0.1, 100])
+            .on('zoom', function () {
+                const { x, y, k } = event.transform;
+                group
+                    .attr('transform', `translate(${x},${y}) scale(${k})`);
+            });
+        svg.call(Zoom);
     }
     componentDidMount() {
         this.drawInit(this.dom);

@@ -1,17 +1,20 @@
-import { Icon as MyIcon } from 'antd';
-import styles from "./index.less";
+import { Icon } from 'antd';
+import { iconUrl } from 'config';
 
-function Icon(props) {
+function Index(props) {
     const { type = "bars", style = {}, spin = false } = props;
-    const classNames = ["icon", styles.icon, type];
     if (type.indexOf("icon") > -1) {
+        const MyIcon = Icon.createFromIconfontCN({
+            scriptUrl: iconUrl, // 在 iconfont.cn 上生成
+        });
         return (
-            <i className={classNames.join(" ")} style={style} />
+            <MyIcon type={type} style={style} />
         );
     } else {
+
         return (
-            <MyIcon type={type} style={style} spin={spin} />
+            <Icon type={type} style={style} spin={spin} />
         );
     }
 }
-export default Icon;
+export default Index;
