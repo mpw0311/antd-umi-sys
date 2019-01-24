@@ -70,12 +70,6 @@ export default {
             ]
         },
         {
-            title: "echarts组件",
-            link: "/sys/chartView",
-            key: "chartView",
-            icon: "line-chart"
-        },
-        {
             title: "用户行为",
             key: "yonghuxingwei",
             icon: "contacts",
@@ -95,9 +89,34 @@ export default {
             ]
         },
         {
+            title: "echarts组件",
+            link: "/sys/chartView",
+            key: "chartView",
+            icon: "line-chart"
+        },
+        {
+            title: "d3.js组件",
+            key: "d3Chart",
+            icon: "icon-baobiaofenxi",
+            children: [
+                {
+                    title: "树图",
+                    link: "/sys/treePage",
+                    key: "treePage",
+                    icon: "icon-tree"
+                },
+                {
+                    title: "桑基图",
+                    link: "/sys/sankeyPage",
+                    key: "sankeyPage",
+                    icon: "icon-mapsankey"
+                },
+            ]
+        },
+        {
             title: "iframe",
             key: "iframe",
-            icon: "contacts",
+            icon: "icon-chuangkouwindow30",
             children: [
                 {
                     title: "bing",
@@ -116,25 +135,6 @@ export default {
                     icon: "shop",
                     url: `https://www.baidu.com/`,
                 },]
-        },
-        {
-            title: "d3Chart",
-            key: "d3Chart",
-            icon: "contacts",
-            children: [
-                {
-                    title: "树图",
-                    link: "/sys/treePage",
-                    key: "treePage",
-                    icon: "icon-tree"
-                },
-                {
-                    title: "桑基图",
-                    link: "/sys/sankeyPage",
-                    key: "sankeyPage",
-                    icon: "icon-mapsankey"
-                },
-            ]
         },
         {
             title: "请给star",
