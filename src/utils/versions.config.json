@@ -87,5 +87,17 @@
             ],
             "pages": []
         }
+    },
+    {
+        "version": "v1.1.0",
+        "date": "2019-01-24",
+        "detail": {
+            "framework": [
+                "通过createFromIconfontCN创建MyIcon",
+                "新增d3.v4.js图形库",
+                "新增d3树图、桑基图"
+            ],
+            "pages": []
+        }
     }
 ]
