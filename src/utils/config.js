@@ -22,5 +22,5 @@ module.exports = {
     frameDefultPage: {
         pathname: '/frame/baidu',
     },
-    iconUrl:'//at.alicdn.com/t/font_1030595_2d9qlte41lb.js'
+    iconUrl:'//at.alicdn.com/t/font_1030595_j1ec1up2zyi.js'
 };
