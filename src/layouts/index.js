@@ -13,7 +13,7 @@ function Index(props) {
   if (pathname === '/' || pathname === '/login' || pathname === '/register' || /^\/initialize/.test(pathname)) {
     return (<BasicLayout>{children}</BasicLayout>);
   }
-  return (<PlatformLayout location={location}>{children}</PlatformLayout>);
+  return (<PlatformLayout {...props}>{children}</PlatformLayout>);
 }
 
 export default Index;

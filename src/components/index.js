@@ -25,5 +25,5 @@ export {
     Page,
     GlobalDrawer,
     Exception,
-    HeaderSearch
+    HeaderSearch,
 };

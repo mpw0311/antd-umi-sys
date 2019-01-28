@@ -135,12 +135,13 @@ export default {
 
     effects: {
         *getData({ payload }, { call, put, select }) {
+            const { name } = payload;
             const { dataset } = yield select(state => state.dimensional);
             const { data = {} } = yield call(api.fetch, { ...payload });
             yield put({
                 type: 'updated',
                 payload: {
-                    dataset: data,
+                    dataset: { name, ...data },
                     dataSource: dataset
                 },
             });

@@ -1,33 +1,8 @@
 const Mock = require('mockjs');
 
 const { Random } = Mock;
-const menus = {
-    columns: [
-        {
-            field: "title",
-            name: "标题名",
-            type: "string"
-        },
-        {
-            field: "key",
-            name: "菜单id",
-            type: "string"
-        },
-    ],
-    rows: [
-        {
-            title: "首页",
-            key: "home",
-        },
-        {
-            title: "路径分析",
-            key: "pathAnalysis",
-        },
-    ]
-};
 const info = Mock.mock({
     data: {
-        menus,
         userInfo: {
             userName: Random.name(),
         },
@@ -45,7 +20,7 @@ module.exports = {
     [`GET /logout`](req, res) {
         res.status(200).json({
             data: {
-                message:"退出登录成功！"
+                message: "退出登录成功！"
             },
             status: 0
         });
