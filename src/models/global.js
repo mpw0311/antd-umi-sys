@@ -29,7 +29,7 @@ export default {
                 yield put(routerRedux.push('/login'));
             }
         },
-        * getSysInfo(_, { call, put }) {// eslint-disable-line
+        * getSysInfo(_, { call, put }) {
             const { data = {}, status } = yield call(api.getSysInfo, {});
             if (status === 0) {
                 const { userInfo = {}, notification } = data;
