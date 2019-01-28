@@ -64,6 +64,15 @@ class Index extends PureComponent {
             type: 'menu/getMenuData',
         });
     }
+    componentWillUnmount() {
+        const { dispatch } = this.props;
+        dispatch({
+            type: 'global/clear',
+        });
+        dispatch({
+            type: 'menu/clear',
+        });
+    }
     toggle = () => {
         this.setState({
             collapsed: !this.state.collapsed,
