@@ -1,5 +1,4 @@
 
-// import { routerRedux } from 'dva/router';
 import * as api from '../services';
 import orginalData from 'utils/menus.config';
 import { munesFilter, flattenMenu } from 'utils/_';
@@ -39,6 +38,14 @@ export default {
         save(state, action) {
             return { ...state, ...action.payload };
         },
+        clear(state) {
+            return {
+                ...state,
+                menusData: [],
+                flattenMenuData: [],
+                diffMenuData: [],
+            };
+        }
     },
 
 };

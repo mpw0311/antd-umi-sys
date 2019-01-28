@@ -5,12 +5,19 @@ import * as api from 'services';
 export default {
     namespace: 'global',
     state: {
-        status: 0,
         userInfo: {},
         message: [],
         notification: undefined,
     },
     subscriptions: {
+        // setupHistory({ dispatch, history }) {
+        //     history.listen((location) => {
+        //         const { pathname, query, state } = location;
+        //         if (/^\/sys/.test(pathname)) {
+        //         } else if (/^\/login/.test(pathname)) {
+        //         }
+        //     });
+        // },
     },
 
     effects: {
@@ -54,5 +61,13 @@ export default {
         save(state, action) {
             return { ...state, ...action.payload };
         },
+        clear(state) {
+            return {
+                ...state,
+                userInfo: {},
+                message: [],
+                notification: undefined,
+            };
+        }
     },
 };

@@ -1,6 +1,6 @@
 import { PureComponent } from 'react';
 import { connect } from 'dva';
-import { Layout, BackTop, Icon, Spin } from 'antd';
+import { Layout, BackTop, Icon } from 'antd';
 import { copyright } from 'config';
 import { Exception } from 'components';
 import Menus from '../components/Menus';
@@ -14,11 +14,6 @@ const footer = (
     <Footer className={styles.footer}>
         {copyright}
     </Footer>
-);
-const globalLoading = (
-    <div className={styles.spin}>
-        <Spin size="large" tip="加载中..." />
-    </div>
 );
 const _getKey = (pathname) => {
     if (typeof pathname === 'string' && pathname !== '') {
@@ -64,6 +59,15 @@ class Index extends PureComponent {
             type: 'menu/getMenuData',
         });
     }
+    componentWillUnmount() {
+        const { dispatch } = this.props;
+        dispatch({
+            type: 'global/clear',
+        });
+        dispatch({
+            type: 'menu/clear',
+        });
+    }
     toggle = () => {
         this.setState({
             collapsed: !this.state.collapsed,
@@ -95,9 +99,6 @@ class Index extends PureComponent {
             menusData = [],
             notification,
         } = this.props;
-        if (menusData.length === 0) {
-            return globalLoading;
-        }
         const { pathname, state: pathstate } = location;
         const { key, /*pathtitles*/ } = pathstate || {};
         const defaultKey = key || _getKey(pathname);
