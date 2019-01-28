@@ -7,6 +7,7 @@ import Menus from '../components/Menus';
 import Authorized from '../components/Authorized';
 import HeaderContent from './header';
 import Logo from './logo';
+import Context from '@/layouts/Context';
 import styles from './index.less';
 
 const { Header, Sider, Content, Footer } = Layout;
@@ -43,7 +44,7 @@ class Index extends PureComponent {
         }
         this.state = {
             collapsed: collapsed,
-            searchData: [],
+            theme: 'light'
         };
     };
     componentDidMount() {
@@ -88,21 +89,25 @@ class Index extends PureComponent {
             }
         };
     }
+    getContext() {
+        const { location } = this.props;
+        const { theme } = this.state;
+        return {
+            location,
+            theme
+        };
+    }
     render() {
-        const { collapsed, searchData } = this.state;
+        const { collapsed } = this.state;
         const {
             location,
             children,
-            userInfo,
-            message,
-            dispatch,
             menusData = [],
-            notification,
         } = this.props;
         const { pathname, state: pathstate } = location;
         const { key, /*pathtitles*/ } = pathstate || {};
         const defaultKey = key || _getKey(pathname);
-        return (
+        const layout = (
             <Layout>
                 <Sider
                     trigger={null}
@@ -129,14 +134,7 @@ class Index extends PureComponent {
                             />
                         </div>
                         <div style={{ flex: 'auto', display: 'flex', justifyContent: 'flex-end', }}>
-                            <HeaderContent
-                                userInfo={userInfo}
-                                dispatch={dispatch}
-                                message={message}
-                                notification={notification}
-                                menusData={menusData}
-                                dataSource={searchData}
-                            />
+                            <HeaderContent />
                         </div>
                     </Header>
                     <Content className={styles.content} >
@@ -148,6 +146,11 @@ class Index extends PureComponent {
                 </Layout>
                 <BackTop target={() => document.getElementById('backTop')} style={{ right: 20, bottom: 25 }} />
             </Layout>
+        );
+        return (
+            <Context.Provider value={this.getContext()}>
+                {layout}
+            </Context.Provider>
         );
     }
 }

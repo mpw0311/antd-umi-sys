@@ -1,17 +1,19 @@
 import { routerRedux } from 'dva/router';
-// import { GlobalHeader } from 'components';
+import { connect } from 'dva';
+import { PureComponent } from 'react';
 import GlobalHeader from '../components/GlobalHeader';
-function Index(props) {
-    const { searchData, userInfo, message, dispatch, menusData = [], notification } = props;
-    const handleLoadMore = () => {
+class Index extends PureComponent {
+    handleLoadMore = () => {
+        const { dispatch } = this.props;
         dispatch({
             type: 'global/getMessage',
             payload: {
                 size: 10,
             },
         });
-    };
-    const handleSetting = (param) => {
+    }
+    handleSetting = (param) => {
+        const { dispatch } = this.props;
         const { key, item } = param;
         const { state } = item.props;
         if (key === 'logout') {
@@ -27,21 +29,26 @@ function Index(props) {
                 state,
             }));
         }
-    };
-    return (
-        <div style={{ width: '460px' }}>
-            <GlobalHeader
-                userInfo={userInfo}
-                dispatch={dispatch}
-                message={message}
-                notification={notification}
-                menusData={menusData}
-                dataSource={searchData}
-                theme={'light'}
-                handleLoadMore={handleLoadMore}
-                handleSetting={handleSetting}
-            />
-        </div>
-    );
+    }
+    render() {
+        const { userInfo, message, notification } = this.props;
+        return (
+            <div style={{ width: '460px' }}>
+                <GlobalHeader
+                    userInfo={userInfo}
+                    message={message}
+                    notification={notification}
+                    handleLoadMore={this.handleLoadMore}
+                    handleSetting={this.handleSetting}
+                />
+            </div>
+        );
+    }
 }
-export default Index;
+export default connect(({ global: { userInfo, message, notification } }) => {
+    return {
+        userInfo,
+        message,
+        notification
+    };
+})(Index);

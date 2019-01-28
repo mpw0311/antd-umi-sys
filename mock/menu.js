@@ -1,32 +1,68 @@
 const Mock = require('mockjs');
-const menuData = {
-    columns: [
-        {
-            field: "title",
-            name: "标题名",
-            type: "string"
-        },
-        {
-            field: "key",
-            name: "菜单id",
-            type: "string"
-        },
-    ],
-    rows: [
-        {
-            title: "首页",
-            key: "regionalAnalysis",
-        },
-        {
-            title: "用户",
-            key: "users",
-        },
-        {
-            title: "路径分析",
-            key: "pathAnalysis",
-        },
-    ]
-};
+const menuData = [
+    {
+        title: "地域分析",
+        key: "regionalAnalysis",
+    },
+    {
+        title: "users",
+        key: "users",
+    },
+    {
+        title: "404",
+        key: "404",
+    },
+    {
+        title: "用户行为",
+        key: "yonghuxingwei",
+        children: [
+            {
+                title: "路径分析",
+                key: "pathAnalysis",
+            },
+            {
+                title: "view1",
+                key: "p1",
+            },
+            {
+                title: "view2",
+                key: "p2",
+            },
+        ]
+    },
+    {
+        title: "echarts组件",
+        key: "chartView",
+    },
+    {
+        title: "d3.js组件",
+        key: "d3Chart",
+        children: [
+            {
+                title: "树图",
+                key: "treePage",
+            },
+        ]
+    },
+    {
+        title: "iframe",
+        key: "iframe",
+        children: [
+            {
+                title: "bing",
+                key: "bing",
+            },
+            {
+                title: "百度",
+                link: "/frame/baidu",
+            }
+        ]
+    },
+    {
+        title: "请给star",
+        key: "chartView",
+    },
+];
 const data = Mock.mock({
     data: menuData,
     status: 0

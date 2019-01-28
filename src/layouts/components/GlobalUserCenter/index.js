@@ -1,12 +1,12 @@
 import { Dropdown, Menu, Icon } from 'antd';
+import Context from '@/layouts/Context';
 import styles from './index.less';
 
 function User(props) {
-    const { userInfo, onSetting = () => { }, theme = 'dark' } = props;
+    const { userInfo, onSetting = () => { } } = props;
     const { userName } = userInfo;
     const handleMenuClick = (param) => {
         onSetting(param);
-
     };
     const menu = (<Menu onClick={handleMenuClick}>
         <Menu.Item key={"sys/user"} state={{ userName, pathtitles: ["个人中心"] }} disabled>
@@ -27,12 +27,17 @@ function User(props) {
         </Menu.Item>
     </Menu>);
     return (
-        <Dropdown overlay={menu}>
-            <span className={styles.username} style={{ color: theme === 'dark' ? "#FFF" : undefined }}>
-                <Icon type="user" style={{ paddingRight: 5, fontSize: 16 }} />
-                {userName}
-            </span>
-        </Dropdown>
+        <Context.Consumer>
+            {({ theme }) => (
+                <Dropdown overlay={menu}>
+                    <span className={styles.username} style={{ color: theme === 'dark' ? "#FFF" : undefined }}>
+                        <Icon type="user" style={{ paddingRight: 5, fontSize: 16 }} />
+                        {userName}
+                    </span>
+                </Dropdown>
+            )}
+        </Context.Consumer>
+
     );
 }
 export default User;

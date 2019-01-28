@@ -8,32 +8,23 @@ import Notice from '../Notice';
 function Header(props) {
     const {
         userInfo = {},
-        dispatch,
-        menusData = [],
-        dataSource = [],
         message,
-        theme,
         handleLoadMore = () => { },
         handleSetting = () => { }
     } = props;
     return (
         <Row>
             <Col span={10} style={{ textAlign: 'right' }}>
-                <Search
-                    menusData={menusData}
-                    dataSource={dataSource}
-                    dispatch={dispatch}
-                    theme={theme}
-                />
+                <Search />
             </Col>
             <Col span={3} style={{ textAlign: 'center' }}>
-                <Notice message={message} userInfo={userInfo} onLoadMore={handleLoadMore} theme={theme} />
+                <Notice message={message} userInfo={userInfo} onLoadMore={handleLoadMore} />
             </Col>
             <Col span={3} style={{ textAlign: 'center' }}>
-                <Download message={message} userInfo={userInfo} theme={theme} />
+                <Download message={message} userInfo={userInfo} />
             </Col>
             <Col span={8} style={{ textAlign: 'left' }}>
-                <User userInfo={userInfo} onSetting={handleSetting} theme={theme} />
+                <User userInfo={userInfo} onSetting={handleSetting} />
             </Col>
         </Row>
     );

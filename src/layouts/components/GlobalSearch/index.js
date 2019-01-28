@@ -1,22 +1,36 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { routerRedux } from 'dva/router';
+import { connect } from 'dva';
 import { HeaderSearch } from 'components';
-import { searchFilter, searchEqual } from './_';
+import memoizeOne from 'memoize-one';
+import Context from '@/layouts/Context';
+import { searchEqual } from './_';
 import styles from './index.less';
 
-class Search extends Component {
+class Search extends PureComponent {
     constructor(props) {
         super(props);
-        const { dataSource } = this.props;
         this.state = {
-            searchData: dataSource,
+            initStatus: 0,
+            searchData: [],
         };
-        this.handleSearch = this.handleSearch.bind(this);
-        this.handleSelect = this.handleSelect.bind(this);
+        this.handleSearch = memoizeOne(this.handleSearch);
+        this.handleSelect = memoizeOne(this.handleSelect);
+    }
+    static getDerivedStateFromProps(nextProps, prevState) {
+        const { flattenMenuData } = nextProps;
+        const { initStatus } = prevState;
+        if (Array.isArray(flattenMenuData) && flattenMenuData.length > 0 && initStatus === 0) {
+            return {
+                searchData: flattenMenuData,
+                initStatus: 1
+            };
+        }
+        return prevState;
     }
     handleSearch(value) {
-        const { menusData } = this.props;
-        const dataSource = searchFilter(value, menusData);
+        const { flattenMenuData } = this.props;
+        const dataSource = flattenMenuData.filter(item => item.title.indexOf(value) > -1);
         this.setState({
             searchData: dataSource,
         });
@@ -39,24 +53,33 @@ class Search extends Component {
     }
     render() {
         const { searchData, } = this.state;
-        const { theme } = this.props;
         return (
-            <HeaderSearch
-                className={`${styles.action} ${styles.search}`}
-                placeholder="站内搜索"
-                dataSource={searchData}
-                onSearch={value => {
-                    this.handleSearch(value);
-                }}
-                onPressEnter={value => {
-                    console.log('enter', value); // eslint-disable-line
-                }}
-                onSelect={value => {
-                    this.handleSelect(value);
-                }}
-                theme={theme}
-            />
+            <Context.Consumer>
+                {({ theme }) => (
+                    <HeaderSearch
+                        className={`${styles.action} ${styles.search}`}
+                        placeholder="站内搜索"
+                        dataSource={searchData}
+                        onSearch={value => {
+                            this.handleSearch(value);
+                        }}
+                        onPressEnter={value => {
+                            console.log('enter', value); // eslint-disable-line
+                        }}
+                        onSelect={value => {
+                            this.handleSelect(value);
+                        }}
+                        theme={theme}
+                    />
+                )}
+            </Context.Consumer>
+
         );
     }
 }
-export default Search;
+function mapStateToProps({ menu: { flattenMenuData } }) {
+    return {
+        flattenMenuData
+    };
+}
+export default connect(mapStateToProps)(Search);
