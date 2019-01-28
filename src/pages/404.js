@@ -4,6 +4,7 @@ export default function () {
   return (
     <Page
       flex={true}
+      showHeader={false}
     >
       <Exception
         type={404}

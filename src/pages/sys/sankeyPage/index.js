@@ -7,7 +7,8 @@ import Sankey from '@/components/D3Chart/Sankey';
 class SankeyChart extends PureComponent {
 
     render() {
-        const { dataset, dispatch, loading, location } = this.props;
+        const { dataset, dispatch, loading } = this.props;
+        //eslint-disable-next-line
         const handleClick = (name) => {
             dispatch({
                 type: 'dimensional/getData',
@@ -34,7 +35,7 @@ class SankeyChart extends PureComponent {
             };
         };
         return (
-            <Page pathtitles={['sankey']} loading={loading} location={location}>
+            <Page pathtitles={['sankey']} loading={loading}>
                 <Sankey
                     width={1200}
                     height={800}
@@ -45,7 +46,7 @@ class SankeyChart extends PureComponent {
     }
 }
 
-export default connect(({ sankeyModel })=>{
+export default connect(({ sankeyModel }) => {
     return {
         ...sankeyModel
     };

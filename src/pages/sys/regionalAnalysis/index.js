@@ -8,7 +8,7 @@ const { ChinaMap } = Charts;
 const { formatNumer } = methods;
 const Option = Select.Option;
 function Index(props) {
-    const { announcement, loading, location, mapdata, checkes, dispatch, defaultKey } = props;
+    const { announcement, loading, mapdata, checkes, dispatch, defaultKey } = props;
     const formatter = (params) => {
         const { name, data = {}, marker } = params;
         const { email, union, video, visit, search, rank } = data;
@@ -69,7 +69,7 @@ function Index(props) {
         </span>
     );
     return (
-        <Page loading={false} pathtitles={['地域性分析']} inner description={announcement} location={location}>
+        <Page loading={false} pathtitles={['地域性分析']} inner description={announcement}>
             <ChinaMap
                 title={'地域分析'}
                 seriesName={'地域分析'}

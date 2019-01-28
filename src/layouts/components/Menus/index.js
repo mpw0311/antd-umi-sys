@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Menu } from 'antd';
 import { Link } from 'dva/router';
 import { Icon } from 'components';
+import memoizeOne from 'memoize-one';
 import { queryKeysByPath } from './_';
 
 const { SubMenu, Item } = Menu;
@@ -15,7 +16,7 @@ class MainMenu extends Component {
       theme,
       menusData: []
     };
-    this.renderMenu = this.renderMenu.bind(this);
+    this.renderMenu = memoizeOne(this.renderMenu);
   }
   componentWillMount() {
     const { menusData: originalData = [], location } = this.props;

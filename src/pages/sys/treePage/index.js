@@ -7,7 +7,7 @@ import Tree from '@/components/D3Chart/Tree';
 class Sankey extends PureComponent {
 
     render() {
-        const { dataset, dispatch,loading,location } = this.props;
+        const { dataset, dispatch, loading } = this.props;
         const handleClick = (name) => {
             dispatch({
                 type: 'dimensional/getData',
@@ -17,7 +17,7 @@ class Sankey extends PureComponent {
             });
         };
         return (
-            <Page pathtitles={['tree']} loading={loading} location={location}>
+            <Page pathtitles={['tree']} loading={loading}>
                 <Tree
                     data={dataset}
                     nodeClick={(d) => {

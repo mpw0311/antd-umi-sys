@@ -12,7 +12,6 @@ const { CalendarPie, ScatterAqiColor } = Charts;// eslint-disable-line
 function MatchAnalysis(props) {
     const {
         times,
-        location,// eslint-disable-line
         dispatch,
         announcement,// eslint-disable-line
         tableData01,
@@ -68,7 +67,6 @@ function MatchAnalysis(props) {
         <Page >
             <PageHeader
                 pathtitles={['匹配额度分析']}
-                location={location}
                 description={announcement}
             />
             <MyForm onSubmit={submit} times={times} />

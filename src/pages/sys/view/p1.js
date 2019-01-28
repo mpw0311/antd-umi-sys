@@ -5,7 +5,7 @@ import View from './components/view1.js';
 
 class Index extends PureComponent {
     render() {
-        const { loading, p1, dispatch, location } = this.props;
+        const { loading, p1, dispatch } = this.props;
         const onSubmit = (times) => {
             console.log("submit ok", times);
             dispatch({
@@ -17,7 +17,7 @@ class Index extends PureComponent {
             });
         };
         return (
-            <Page pathtitles={['view1']} loading={loading} location={location}>
+            <Page pathtitles={['view1']} loading={loading}>
                 <View data={p1} handleSubmit={onSubmit} loading={loading} />
             </Page>
         );
