@@ -1,10 +1,7 @@
 
 import { routerRedux } from 'dva/router';
 import { message } from 'antd';
-import { menusData, methods } from 'utils';
-import { menuPermission } from 'config';
 import * as api from 'services';
-const orginalData = menusData;
 export default {
     namespace: 'global',
     state: {
@@ -12,22 +9,8 @@ export default {
         userInfo: {},
         message: [],
         notification: undefined,
-        menusData: [],
     },
     subscriptions: {
-        setupHistory({ dispatch, history }) {
-            history.listen((location) => {
-                const { pathname, /*query, state*/ } = location;
-                if (pathname !== '/login' && pathname !== '/register') {
-                    dispatch({
-                        type: 'getSysInfo'
-                    });
-                    dispatch({
-                        type: 'getMessage',
-                    });
-                }
-            });
-        },
     },
 
     effects: {
@@ -39,27 +22,19 @@ export default {
                 yield put(routerRedux.push('/login'));
             }
         },
-        * getSysInfo({ payload }, { call, put, select }) {// eslint-disable-line
-            let res = yield select(({ global }) => global.result);// eslint-disable-line
-            if (!res) {
-                res = yield call(api.getSysInfo, {});
+        * getSysInfo(_, { call, put }) {// eslint-disable-line
+            const { data = {}, status } = yield call(api.getSysInfo, {});
+            if (status === 0) {
+                const { userInfo = {}, notification } = data;
+                yield put({
+                    type: 'save',
+                    payload: {
+                        userInfo,
+                        notification
+                    }
+                });
             }
-            const { data = {}, status } = res || {};
-            if (status !== 0) {
-                return false;
-            }
-            const { menus = {}, userInfo = {}, notification } = data;
-            const { rows: keys } = menus;
-            const { rows: orginalRows } = orginalData;
-            const menusData = menuPermission ? methods.MunesFilter(orginalRows, keys) : orginalRows;
-            yield put({
-                type: 'save',
-                payload: {
-                    menusData,
-                    userInfo,
-                    notification
-                }
-            });
+
         },
         // 请求消息通知栏数据
         *getMessage({ payload = {} }, { call, put, select }) {

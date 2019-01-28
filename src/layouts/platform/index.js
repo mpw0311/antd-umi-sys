@@ -2,7 +2,9 @@ import { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Layout, BackTop, Icon, Spin } from 'antd';
 import { copyright } from 'config';
+import { Exception } from 'components';
 import Menus from '../components/Menus';
+import Authorized from '../components/Authorized';
 import HeaderContent from './header';
 import Logo from './logo';
 import styles from './index.less';
@@ -28,6 +30,12 @@ const _getKey = (pathname) => {
     }
     return pathname;
 };
+const Exception403 = <Exception
+    type={403}
+    backText={'返回首页'}
+    title={'403'}
+    desc={'抱歉，你访问的页面没有权限'}
+/>;
 class Index extends PureComponent {
     constructor(props) {
         super(props);
@@ -44,7 +52,17 @@ class Index extends PureComponent {
         };
     };
     componentDidMount() {
+        const { dispatch } = this.props;
         this.resize();
+        dispatch({
+            type: 'global/getSysInfo',
+        });
+        dispatch({
+            type: 'global/getMessage',
+        });
+        dispatch({
+            type: 'menu/getMenuData',
+        });
     }
     toggle = () => {
         this.setState({
@@ -68,7 +86,15 @@ class Index extends PureComponent {
     }
     render() {
         const { collapsed, searchData } = this.state;
-        const { location, children, userInfo, message, dispatch, menusData = [], notification } = this.props;
+        const {
+            location,
+            children,
+            userInfo,
+            message,
+            dispatch,
+            menusData = [],
+            notification,
+        } = this.props;
         if (menusData.length === 0) {
             return globalLoading;
         }
@@ -113,7 +139,9 @@ class Index extends PureComponent {
                         </div>
                     </Header>
                     <Content className={styles.content} >
-                        {children}
+                        <Authorized noMatch={Exception403} {...this.props}>
+                            {children}
+                        </Authorized>
                     </Content>
                     {footer}
                 </Layout>
@@ -122,9 +150,10 @@ class Index extends PureComponent {
         );
     }
 }
-function mapStateToProps({ global, loading }) {
+function mapStateToProps({ global, menu, loading }) {
     return {
         ...global,
+        ...menu,
         loading: loading.global
     };
 }
