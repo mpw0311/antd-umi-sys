@@ -1,6 +1,7 @@
 
 import _ from 'lodash';
 import memoizeOne from 'memoize-one';
+import isEqual from 'lodash/isEqual';
 /**
  * 打散菜单树结构，转化为一维数组
  * @param {array||object} menuData 
@@ -23,7 +24,7 @@ const _flattenMenu = (menuData = [], pathtitles = []) => {
     }
     return routes;
 };
-export const flattenMenu = memoizeOne(_flattenMenu);
+export const flattenMenu = memoizeOne(_flattenMenu, isEqual);
 /**
  * 菜单权限,过滤没有权限的菜单，生成最终菜单和无权限菜单
  * @param {array||object} orginalData |全部菜单配置数据
@@ -76,7 +77,7 @@ const _munesFilter = (orginalData, data, menuPermission) => {
         diffMenuData: flattenMenuData.filter(item => !keys.includes(item.key))
     };
 };
-export const munesFilter = memoizeOne(_munesFilter);
+export const munesFilter = memoizeOne(_munesFilter, isEqual);
 const _searchMenu = (value, data, pathtitles = []) => {
     if (value === undefined || value === null) return {};
     data = _.cloneDeep(data);
@@ -112,7 +113,7 @@ const _toTableData = (data = {}) => {
         dataSource
     };
 };
-export const toTableData = memoizeOne(_toTableData);
+export const toTableData = memoizeOne(_toTableData, isEqual);
 /**
 * 数字加逗号显示
 * @param {number} number
@@ -189,7 +190,7 @@ const _tabledataFilter = (data = {}, indexs = [], match) => {
         rows: rows.map(row => _getObj(row))
     };
 };
-export const tabledataFilter = memoizeOne(_tabledataFilter);
+export const tabledataFilter = memoizeOne(_tabledataFilter, isEqual);
 /**
  * 删除数据中某个字段值
  * @param {*} data 
@@ -205,7 +206,7 @@ const _tabledataDelete = (data = {}, indexs = []) => {
         .map(item => item.field);
     return tabledataFilter(data, _indexs);
 };
-export const tabledataDelete = memoizeOne(_tabledataDelete);
+export const tabledataDelete = memoizeOne(_tabledataDelete, isEqual);
 //sort排序
 /**
  * 指定指标行排序
@@ -230,4 +231,4 @@ const _sortRows = (option) => {
     }
     return data;
 };
-export const sortRows = memoizeOne(_sortRows);
+export const sortRows = memoizeOne(_sortRows, isEqual);

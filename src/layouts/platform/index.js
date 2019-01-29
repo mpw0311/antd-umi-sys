@@ -95,7 +95,7 @@ class Index extends PureComponent {
         const { theme } = this.state;
         return {
             location,
-            theme
+            theme,
         };
     }
     render() {
@@ -123,6 +123,7 @@ class Index extends PureComponent {
                         location={location}
                         menusData={menusData}
                         defaultKey={defaultKey}
+                        collapsed={collapsed}
                     />
                 </Sider>
                 <Layout id="backTop" className={styles.contianer} style={{ marginLeft: collapsed ? 80 : 200 }}>
