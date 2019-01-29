@@ -1,18 +1,25 @@
 import { Icon } from 'antd';
 import { Link } from 'dva/router';
-import Context from '@context';
+import { Consumer } from '@components';
 
+const themeConfig = {
+    dark: {
+        color: '#fff'
+    },
+    light: {
+        color: 'rgba(0, 0, 0, 0.65)'
+    },
+};
 function Download(props) {
-    const { userInfo } = props;
+    const { userInfo, theme = 'dark' } = props;
     const { userName } = userInfo;
     return (
-        <Context.Consumer>
-            {({ theme }) => (
-                <Link to={{ pathname: "/download", state: { userName, key: 'down', pathtitles: ["下载任务列表"], } }} style={{ color: theme === 'dark' ? "#fff" : "rgba(0, 0, 0, 0.65)" }}>
-                    <Icon type="download" /> 下载
-               </Link>
-            )}
-        </Context.Consumer>
+        <Link
+            to={{ pathname: "/download", state: { userName, key: 'down', pathtitles: ["下载任务列表"], } }}
+            style={{ color: themeConfig[theme].color }
+            }>
+            <Icon type="download" /> 下载
+        </Link>
     );
 }
-export default Download;
+export default Consumer(Download);

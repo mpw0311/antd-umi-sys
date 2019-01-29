@@ -1,9 +1,9 @@
 import { Dropdown, Menu, Icon } from 'antd';
-import Context from '@context';
+import { Consumer } from '@components';
 import styles from './index.less';
 
 function User(props) {
-    const { userInfo, onSetting = () => { } } = props;
+    const { userInfo, onSetting = () => { }, theme } = props;
     const { userName } = userInfo;
     const handleMenuClick = (param) => {
         onSetting(param);
@@ -27,17 +27,13 @@ function User(props) {
         </Menu.Item>
     </Menu>);
     return (
-        <Context.Consumer>
-            {({ theme }) => (
-                <Dropdown overlay={menu}>
-                    <span className={styles.username} style={{ color: theme === 'dark' ? "#FFF" : undefined }}>
-                        <Icon type="user" style={{ paddingRight: 5, fontSize: 16 }} />
-                        {userName}
-                    </span>
-                </Dropdown>
-            )}
-        </Context.Consumer>
+        <Dropdown overlay={menu}>
+            <span className={styles.username} style={{ color: theme === 'dark' ? "#FFF" : undefined }}>
+                <Icon type="user" style={{ paddingRight: 5, fontSize: 16 }} />
+                {userName}
+            </span>
+        </Dropdown>
 
     );
 }
-export default User;
+export default Consumer(User);

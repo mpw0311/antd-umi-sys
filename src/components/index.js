@@ -11,6 +11,7 @@ import Page from './PageWrapper';
 import GlobalDrawer from './GlobalDrawer';
 import Exception from './Exception';
 import HeaderSearch from './HeaderSearch';
+import Consumer from './Consumer';
 
 export {
     Login,
@@ -26,4 +27,5 @@ export {
     GlobalDrawer,
     Exception,
     HeaderSearch,
+    Consumer,
 };

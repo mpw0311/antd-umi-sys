@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 // import classnames from 'classnames';
 import { PageHeader } from '@components';
@@ -6,7 +6,7 @@ import Context from '@context';
 import Loader from '../Loader';
 import styles from './Page.less';
 
-export default class Page extends Component {
+export default class Page extends PureComponent {
   render() {
     const {
       children,

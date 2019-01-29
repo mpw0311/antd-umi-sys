@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
-import { HeaderSearch } from '@components';
+import { HeaderSearch, Consumer } from '@components';
 import memoizeOne from 'memoize-one';
-import Context from '@context';
 import { searchEqual } from './_';
 import styles from './index.less';
 
@@ -54,26 +53,21 @@ class Search extends PureComponent {
     render() {
         const { searchData, } = this.state;
         return (
-            <Context.Consumer>
-                {({ theme }) => (
-                    <HeaderSearch
-                        className={`${styles.action} ${styles.search}`}
-                        placeholder="站内搜索"
-                        dataSource={searchData}
-                        onSearch={value => {
-                            this.handleSearch(value);
-                        }}
-                        onPressEnter={value => {
-                            console.log('enter', value); // eslint-disable-line
-                        }}
-                        onSelect={value => {
-                            this.handleSelect(value);
-                        }}
-                        theme={theme}
-                    />
-                )}
-            </Context.Consumer>
-
+            <HeaderSearch
+                className={`${styles.action} ${styles.search}`}
+                placeholder="站内搜索"
+                dataSource={searchData}
+                onSearch={value => {
+                    this.handleSearch(value);
+                }}
+                onPressEnter={value => {
+                    console.log('enter', value); // eslint-disable-line
+                }}
+                onSelect={value => {
+                    this.handleSelect(value);
+                }}
+                theme={this.props.theme}
+            />
         );
     }
 }
@@ -82,4 +76,4 @@ function mapStateToProps({ menu: { flattenMenuData } }) {
         flattenMenuData
     };
 }
-export default connect(mapStateToProps)(Search);
+export default connect(mapStateToProps)(Consumer(Search));
