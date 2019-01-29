@@ -1,5 +1,5 @@
 import { Dropdown, Menu, Icon } from 'antd';
-import Context from '@/layouts/Context';
+import Context from '@context';
 import styles from './index.less';
 
 function User(props) {

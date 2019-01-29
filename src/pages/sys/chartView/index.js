@@ -1,5 +1,5 @@
 import { connect } from 'dva';
-import { Charts, Page } from 'components';
+import { Charts, Page } from '@components';
 import View from './components/view';
 // import styles from './index.less';
 

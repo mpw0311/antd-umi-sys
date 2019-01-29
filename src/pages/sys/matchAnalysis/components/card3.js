@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Row, Col, Card, DatePicker, Tabs } from 'antd';
 import moment from 'moment';
-import { Charts } from 'components';
+import { Charts } from '@components';
 
 const { Bar } = Charts;
 const { TabPane } = Tabs;

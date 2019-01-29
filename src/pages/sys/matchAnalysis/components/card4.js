@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { Tabs } from 'antd';
-import { DataTable } from 'components';
+import { DataTable } from '@components';
 
 const { TabPane } = Tabs;
 class Card4 extends Component {
@@ -18,7 +18,6 @@ class Card4 extends Component {
                 pageSize
             },
         });
-        console.log("page11", current, pageSize);
     }
     handleChange2(current, pageSize) {// eslint-disable-line
         const { dispatch } = this.props;
@@ -29,7 +28,6 @@ class Card4 extends Component {
                 pageSize
             },
         });
-        console.log("page11", current, pageSize);
     }
     render() {
         const {
@@ -81,7 +79,6 @@ class Card4 extends Component {
                             defaultValue: ['all'],
                             data: category,
                             onChange: (value) => {
-                                console.log("selectProps", value);
                                 dispatch({
                                     type: 'matchAnalysis/fechTable1',
                                     payload: {
@@ -93,7 +90,6 @@ class Card4 extends Component {
                         searchProps={{
                             show: true,
                             onSearch: (value) => {
-                                console.log("searchProps", value);
                                 dispatch({
                                     type: 'matchAnalysis/fechTable1',
                                     payload: {
@@ -119,7 +115,6 @@ class Card4 extends Component {
                             defaultValue: ['all'],
                             data: category,
                             onChange: (value) => {
-                                console.log("selectProps", value);
                                 dispatch({
                                     type: 'matchAnalysis/fechTable2',
                                     payload: {
@@ -131,7 +126,6 @@ class Card4 extends Component {
                         searchProps={{
                             show: true,
                             onSearch: (value) => {
-                                console.log("searchProps", value);
                                 dispatch({
                                     type: 'matchAnalysis/fechTable2',
                                     payload: {

@@ -1,7 +1,7 @@
 import { connect } from 'dva';
-import { Login } from 'components';
+import { Login } from '@components';
 import { message, Row, Col } from 'antd';
-import { loginName } from 'config';
+import { loginName } from '@config';
 import logo from '../../assets/logo_blue_1024.png';
 import styles from './index.less';
 function Index({ dispatch, loading }) {

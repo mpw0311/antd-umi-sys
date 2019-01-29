@@ -1,5 +1,5 @@
 import { Fragment, PureComponent } from 'react';
-import { DataTable, Charts } from 'components';
+import { DataTable, Charts } from '@components';
 import { Icon, Tabs } from 'antd';
 import DatePickers from './DateDickers';
 

@@ -1,7 +1,6 @@
 import { Row, Col } from 'antd';
-import { sysName } from 'config';
+import { sysName } from '@config';
 import { routerRedux } from 'dva/router';
-// import { GlobalHeader } from 'components';
 import GlobalHeader from '../components/GlobalHeader';
 import styles from './header.less';
 

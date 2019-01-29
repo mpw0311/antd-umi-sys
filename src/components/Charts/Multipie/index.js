@@ -77,7 +77,6 @@ class Pie extends Component {
             graphic,
             series
         };
-        console.log(JSON.stringify(option));
         return (
             <ReactEcharts
                 option={option}
