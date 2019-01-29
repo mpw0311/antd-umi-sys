@@ -44,7 +44,8 @@ class Index extends PureComponent {
         }
         this.state = {
             collapsed: collapsed,
-            theme: 'light'
+            theme: 'light',
+            menuTheme: 'dark'
         };
     };
     componentDidMount() {

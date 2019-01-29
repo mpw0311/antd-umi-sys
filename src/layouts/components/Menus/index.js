@@ -1,45 +1,27 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Menu } from 'antd';
 import { Link } from 'dva/router';
-import { Icon } from '@components';
+import { connect } from 'dva';
+import isEqual from 'lodash/isEqual';
+import { Icon, Consumer } from '@components';
 import memoizeOne from 'memoize-one';
 import { queryKeysByPath } from './_';
 
 const { SubMenu, Item } = Menu;
 
-class MainMenu extends Component {
+class MainMenu extends PureComponent {
   constructor(props) {
     super(props);
-    const { mode = "inline", theme = "dark" } = props;
-    this.state = {
-      mode,
-      theme,
-      menusData: []
-    };
-    this.renderMenu = memoizeOne(this.renderMenu);
+    this.renderMenu = memoizeOne(this.renderMenu, isEqual);
   }
-  componentWillMount() {
-    const { menusData: originalData = [], location } = this.props;
-    const { pathname } = location;
-    const data = this.renderMenu(originalData);
-    this.setState({
-      menusData: data,
-      pathname: [pathname],
-      originalData,
-    });
-  }
-  componentWillReceiveProps(nextProps) {
-    const { menusData: originalData = [], location } = nextProps;
-    const { pathname } = location;
-    const data = this.renderMenu(originalData);
-    this.setState({
-      menusData: data,
-      pathname: [pathname],
-    });
-  }
-  renderMenu(rows, pathtitles = []) {
+  static defaultProps = {
+    mode: "inline",
+    menuTheme: 'dark'
+  };
+  renderMenu(data = [], pathtitles = []) {
+    const rows = Array.isArray(data) ? data : data.rows;
     const self = this;
-    const { mode } = this.state;
+    const { mode } = this.props;
     return rows.map((row) => {
       if (row === undefined) return false;
       const { title: name, link = "", key = link, query, icon = "bars", children, ...restState } = row;
@@ -84,21 +66,21 @@ class MainMenu extends Component {
     });
   }
   render() {
-    const { location, defaultKey } = this.props;
+    const { location, defaultKey, menuTheme, menusData, mode } = this.props;
     const { pathname, state: pathState } = location;
-    const { menusData, originalData, mode, theme } = this.state;
-    const { key } = pathState || queryKeysByPath(pathname, originalData);
+    const menus = this.renderMenu(menusData);
+    const { key } = pathState || queryKeysByPath(pathname, menusData);
     return (
       <Menu
         selectedKeys={[key || defaultKey]}
         mode={mode}
-        theme={theme}
+        theme={menuTheme}
         style={{ overflowY: 'auto', height: "calc(100vh - 70px)" }}
         className="progressbar"
       >
-        {menusData}
+        {menus}
       </Menu>
     );
   }
 }
-export default MainMenu;
+export default connect(({ menu: { menusData } }) => ({ menusData }))(Consumer(MainMenu));
