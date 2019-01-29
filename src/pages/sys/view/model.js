@@ -167,7 +167,6 @@ export default {
                     const keys = pathToRegexp('/sys/view/:key').exec(pathname) || [];
                     const [, key] = keys;
                     if (key) {
-                        console.log("model", key);
                         dispatch({
                             type: 'getData', payload: {
                                 time: [moment().subtract(7, 'days'), moment().subtract(1, 'days')],
@@ -184,7 +183,6 @@ export default {
         *getData({ payload }, { call, put }) {//eslint-disable-line
             const { key } = payload;
             // const { data = {} } = yield call(api.fetch, { ...payload });
-            console.log(payload);
             yield put({
                 type: 'save',
                 payload: {

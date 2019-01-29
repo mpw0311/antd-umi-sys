@@ -1,7 +1,7 @@
 import { connect } from 'dva';
 import { List, Checkbox, Select } from 'antd';
-import { Page, Charts } from 'components';
-import { methods } from 'utils';
+import { Page, Charts } from '@components';
+import { methods } from '@utils';
 import styles from './index.less';
 
 const { ChinaMap } = Charts;

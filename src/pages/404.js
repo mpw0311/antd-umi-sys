@@ -1,4 +1,4 @@
-import { Page, Exception } from 'components';
+import { Page, Exception } from '@components';
 
 export default function () {
   return (

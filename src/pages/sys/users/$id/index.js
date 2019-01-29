@@ -1,4 +1,4 @@
-import { Page } from 'components';
+import { Page } from '@components';
 import pathToRegexp from 'path-to-regexp';
 import styles from './index.css';
 

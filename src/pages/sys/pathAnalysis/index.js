@@ -5,7 +5,7 @@ import moment from 'moment';
 import _ from 'lodash';
 import MyForm from './components/form';
 import MyTabs from './components/tabs';
-import { Page } from 'components';
+import { Page } from '@components';
 
 
 function PathAnalysis(props) {

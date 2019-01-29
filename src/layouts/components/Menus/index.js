@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Menu } from 'antd';
 import { Link } from 'dva/router';
-import { Icon } from 'components';
+import { Icon } from '@components';
 import memoizeOne from 'memoize-one';
 import { queryKeysByPath } from './_';
 

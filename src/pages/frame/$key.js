@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'dva';
-import { Page } from 'components';
+import { Page } from '@components';
 import { Spin } from 'antd';
 import pathToRegexp from 'path-to-regexp';
 import styles from './index.less';
@@ -74,9 +74,9 @@ class Index extends Component {
         );
     }
 }
-function mapStateToProps({ global, loading }) {
+function mapStateToProps({ menu: { menusData }, loading }) {
     return {
-        ...global,
+        menusData,
         loading: loading.global
     };
 }

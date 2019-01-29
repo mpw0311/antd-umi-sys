@@ -1,4 +1,4 @@
-import { Page, ResetPassword } from 'components';
+import { Page, ResetPassword } from '@components';
 import { Row, Col } from 'antd';
 // import styles from './index.css';
 

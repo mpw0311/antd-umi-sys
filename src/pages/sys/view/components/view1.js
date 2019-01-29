@@ -1,5 +1,5 @@
 import { Fragment, PureComponent } from 'react';
-import { DataTable, Charts } from 'components';
+import { DataTable, Charts } from '@components';
 import { Row, Col, DatePicker, Button, Card } from 'antd';
 import moment from 'moment';
 
@@ -26,7 +26,6 @@ class Index extends PureComponent {
         const { date } = this.state;
         const times = date.map(time => moment(time).format(dateFormat));
         handleSubmit(times);
-        // console.log('submit', times);
     }
     render() {
         const { data, Y2Show, YUnit, Y2Unit, loading,

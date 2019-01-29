@@ -1,6 +1,6 @@
 import { Icon } from 'antd';
 import { Link } from 'dva/router';
-import Context from '@/layouts/Context';
+import Context from '@context';
 
 function Download(props) {
     const { userInfo } = props;

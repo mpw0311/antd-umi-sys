@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Row, Col, Card, DatePicker } from 'antd';
 import moment from 'moment';
-import { Charts } from 'components';
+import { Charts } from '@components';
 
 const { BarWaterfall } = Charts;
 class Card2 extends Component {

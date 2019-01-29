@@ -1,4 +1,4 @@
-import { request } from 'utils';
+import { request } from '@utils';
 
 export function fetch({ page }) {
   return request(`/api/users?_page=${page}&_limit=${10}`, {

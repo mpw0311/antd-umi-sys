@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
-import { HeaderSearch } from 'components';
+import { HeaderSearch } from '@components';
 import memoizeOne from 'memoize-one';
-import Context from '@/layouts/Context';
+import Context from '@context';
 import { searchEqual } from './_';
 import styles from './index.less';
 

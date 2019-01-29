@@ -1,13 +1,12 @@
 import React, { PureComponent } from "react";
 import { connect } from 'dva';
-import { Page } from 'components';
+import { Page } from '@components';
 import View from './components/view.js';
 
 class Index extends PureComponent {
     render() {
-        const { location, p2, dispatch, loading } = this.props;
+        const { p2, dispatch, loading } = this.props;
         const onSubmit = (times) => {
-            console.log("submit ok", times);
             dispatch({
                 type: 'viewModel/getData',
                 payload: {

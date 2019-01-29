@@ -1,6 +1,6 @@
 import { PureComponent } from 'react';
 import { connect } from 'dva';
-import { Page } from 'components';
+import { Page } from '@components';
 
 import Sankey from '@/components/D3Chart/Sankey';
 

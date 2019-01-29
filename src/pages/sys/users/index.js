@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Table, Pagination, Popconfirm, Button } from 'antd';
-import { Page } from 'components';
+import { Page } from '@components';
 import styles from './index.css';
 import UserModal from './Modal';
 
