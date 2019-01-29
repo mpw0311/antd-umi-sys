@@ -1,6 +1,6 @@
 /* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
 /* stylelint-disable no-duplicate-selectors */
-/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors */
+/* stylelint-disable */
 /* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
 .text-overflow {
   white-space: nowrap;
@@ -11,13 +11,19 @@
   background: #fff;
   padding: 0;
   box-shadow: 4px 4px 20px 0 rgba(0, 0, 0, 0.01);
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 140px);
   position: relative;
   flex: auto;
   display: flex;
   flex-direction: column;
   margin-left: -10px;
   margin-right: -10px;
+}
+.noHeader {
+  min-height: calc(100vh - 120px);
+}
+.loading {
+  overflow: 'hidden';
 }
 @media (max-width: 767px) {
   .contentInner {
