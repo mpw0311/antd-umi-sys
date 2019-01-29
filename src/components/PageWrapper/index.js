@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-// import classnames from 'classnames';
+import classnames from 'classnames';
 import { PageHeader } from '@components';
 import Context from '@context';
 import Loader from '../Loader';
@@ -9,6 +9,7 @@ import styles from './Page.less';
 export default class Page extends PureComponent {
   render() {
     const {
+      className,
       children,
       loading = false,
       pathtitles = [],
@@ -16,19 +17,15 @@ export default class Page extends PureComponent {
       showHeader = true,
       flex = false
     } = this.props;
-    const loadingStyle = {
-      overflow: 'hidden',
-    };
     const childStyle = flex === true ? { display: 'flex' } : {};
     return (
       <Context.Consumer>
         {({ location }) => (
           <div
-            // className={classnames(className, {
-            //   [styles.contentInner]: inner,
-            // })}
-            className={styles.contentInner}
-            style={loading ? loadingStyle : undefined}
+            className={classnames(className, styles.contentInner, {
+              [styles.noHeader]: !showHeader,
+              [styles.loading]: loading,
+            })}
           >
             {showHeader && <PageHeader pathtitles={pathtitles} location={location} description={description} />}
             <div style={{ flex: 'auto', width: "100%", display: 'flex' }}>

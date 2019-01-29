@@ -3,7 +3,7 @@
     background: #fff;
     padding: 0;
     box-shadow: @shadow-1;
-    min-height: ~"calc(100vh - 120px)";
+    min-height: ~"calc(100vh - 140px)";
     position: relative;
     flex: auto;
     display: flex;
@@ -12,6 +12,12 @@
     margin-right: -10px;
 }
 
+.noHeader {
+    min-height: ~"calc(100vh - 120px)";
+}
+.loading{
+    overflow: 'hidden'
+}
 @media (max-width: 767px) {
     .contentInner {
         padding: 0;
