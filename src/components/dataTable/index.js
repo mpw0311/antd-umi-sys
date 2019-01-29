@@ -1,6 +1,6 @@
 import { PureComponent } from 'react';
 import { Table } from 'antd';
-import { methods } from 'utils';
+import { methods } from '@utils';
 import _ from 'lodash';
 import TableHeader from './tableHeader';
 

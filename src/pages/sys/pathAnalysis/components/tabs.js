@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { Tabs, Radio } from 'antd';
-import { Charts } from 'components';
+import { Charts } from '@components';
 import styles from '../index.less';
 
 const { Sankey } = Charts;

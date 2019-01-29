@@ -1,5 +1,5 @@
 import { Icon } from 'antd';
-import { iconUrl } from 'config';
+import { iconUrl } from '@config';
 
 function Index(props) {
     const { type = "bars", style = {}, spin = false } = props;

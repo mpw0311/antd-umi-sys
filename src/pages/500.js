@@ -7,10 +7,10 @@ export default function () {
       showHeader={false}
     >
       <Exception
-        type={404}
+        type={500}
         backText={'返回首页'}
-        title={'404'}
-        desc={'抱歉，你访问的页面不存在'}
+        title={'500'}
+        desc={'抱歉，服务器出错了'}
       />
     </Page>
   );

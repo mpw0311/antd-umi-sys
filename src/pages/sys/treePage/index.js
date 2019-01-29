@@ -1,6 +1,6 @@
 import { PureComponent } from 'react';
 import { connect } from 'dva';
-import { Page } from 'components';
+import { Page } from '@components';
 
 import Tree from '@/components/D3Chart/Tree';
 
@@ -22,7 +22,6 @@ class Sankey extends PureComponent {
                     data={dataset}
                     nodeClick={(d) => {
                         const { data: { name } } = d;
-                        console.log(d);
                         handleClick(name);
                     }}
                     maxDepth={5}

@@ -1,8 +1,8 @@
 
 import * as api from '../services';
-import orginalData from 'utils/menus.config';
-import { munesFilter, flattenMenu } from 'utils/_';
-import { menuPermission } from 'config';
+import orginalData from '@utils/menus.config';
+import { munesFilter, flattenMenu } from '@utils/_';
+import { menuPermission } from '@config';
 export default {
     namespace: 'menu',
     state: {

@@ -1,4 +1,4 @@
-import { request } from 'utils';
+import { request } from '@utils';
 // import { mock } from 'mockjs';
 // const getdata = () => {
 //     return mock({

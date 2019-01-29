@@ -39,12 +39,13 @@ export default {
   theme: './theme.config.js',
   alias: {
     "@": resolve(__dirname, "./src"),
-    themes: resolve(__dirname, './src/themes'),
-    components: resolve(__dirname, "./src/components"),
-    utils: resolve(__dirname, "./src/utils"),
-    config: resolve(__dirname, "./src/utils/config"),
-    services: resolve(__dirname, "./src/services"),
-    models: resolve(__dirname, "./src/models"),
+    '@themes': resolve(__dirname, './src/themes'),
+    '@components': resolve(__dirname, "./src/components"),
+    '@utils': resolve(__dirname, "./src/utils"),
+    '@config': resolve(__dirname, "./src/utils/config"),
+    '@context':resolve(__dirname, "./src/layouts/Context"),
+    '@services': resolve(__dirname, "./src/services"),
+    '@models': resolve(__dirname, "./src/models"),
   },
   "proxy": {
     // "/api": {

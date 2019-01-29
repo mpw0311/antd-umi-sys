@@ -1,4 +1,4 @@
-import { Breadcrumb, Announcement } from 'components';
+import { Breadcrumb, Announcement } from '@components';
 
 function PageHeader(props) {
     const {

@@ -1,13 +1,13 @@
 import { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Layout, BackTop, Icon } from 'antd';
-import { copyright } from 'config';
-import { Exception } from 'components';
+import { copyright } from '@config';
+import { Exception } from '@components';
+import Context from '@context';
 import Menus from '../components/Menus';
 import Authorized from '../components/Authorized';
 import HeaderContent from './header';
 import Logo from './logo';
-import Context from '@/layouts/Context';
 import styles from './index.less';
 
 const { Header, Sider, Content, Footer } = Layout;
@@ -44,7 +44,8 @@ class Index extends PureComponent {
         }
         this.state = {
             collapsed: collapsed,
-            theme: 'light'
+            theme: 'light',
+            menuTheme: 'dark'
         };
     };
     componentDidMount() {
