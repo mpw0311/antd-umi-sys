@@ -26,11 +26,12 @@ class Index extends Component {
         const { pathname: nextPathname } = nextLocation;
         const { location } = this.props;
         const { pathname } = location;
+        const backTopDom = document.getElementById('backTop');
+        backTopDom && (backTopDom.scrollTop = 0);
         if (pathname !== nextPathname) {
             this.setState({
                 loading: true
             });
-            return true;
         }
     }
     onload() {
@@ -45,7 +46,6 @@ class Index extends Component {
         const { location, flattenMenuData } = this.props;
         const { pathname, state = {}, query = {} } = location;
         // const key = pathToRegexp('/frame/:key').exec(pathname)[1];
-        document.getElementById('backTop').scrollTop = 0;
         const { h } = query;
         const { pathtitles, title = '', url } = state && state.url ? state : _filter(flattenMenuData, pathname);
         const { loading } = this.state;
