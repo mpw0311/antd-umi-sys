@@ -1,13 +1,13 @@
 import { Popover, Badge, Icon, Tabs, Spin, List, Avatar } from 'antd';
 import { Link } from 'dva/router';
-import Context from '@context';
+import { Consumer } from '@components';
 import styles from './index.less';
 
 const { TabPane } = Tabs;
 const { Item: ListItem } = List;
 const { Meta: ListItemMeta } = ListItem;
 function NoticeIcon(props) {
-    const { message = [], loading = false, onLoadMore = () => { } } = props;
+    const { message = [], loading = false, onLoadMore = () => { }, theme } = props;
     const computeData = (data) => {
         const unread = data.filter(item => item.type === 'unread');
         const read = data.filter(item => item.type === 'read');
@@ -61,22 +61,18 @@ function NoticeIcon(props) {
     };
     const news = getNoticeIcon();
     return (
-        <Context.Consumer>
-            {({ theme }) => (
-                <Popover
-                    placement="bottomRight"
-                    trigger="click"
-                    content={news}
-                    popupClassName={styles.popover}
-                >
-                    <span className={styles.noticeButton} style={{ color: theme === 'dark' ? "#FFF" : undefined }}>
-                        <Badge count={unread.length} offset={[-5, 5]}>
-                            <Icon type="bell" className={styles.icon} />
-                        </Badge>
-                    </span>
-                </Popover>
-            )}
-        </Context.Consumer>
+        <Popover
+            placement="bottomRight"
+            trigger="click"
+            content={news}
+            popupClassName={styles.popover}
+        >
+            <span className={styles.noticeButton} style={{ color: theme === 'dark' ? "#FFF" : undefined }}>
+                <Badge count={unread.length} offset={[-5, 5]}>
+                    <Icon type="bell" className={styles.icon} />
+                </Badge>
+            </span>
+        </Popover>
     );
 }
-export default NoticeIcon;
+export default Consumer(NoticeIcon);

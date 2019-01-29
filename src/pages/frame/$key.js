@@ -1,25 +1,17 @@
 import React, { Component } from "react";
 import { connect } from 'dva';
+import Redirect from 'umi/redirect';
 import { Page } from '@components';
 import { Spin } from 'antd';
-import pathToRegexp from 'path-to-regexp';
+// import pathToRegexp from 'path-to-regexp';
 import styles from './index.less';
-const _filter = (menus, _key, pathtitles = []) => {
+const _filter = (menus, pathname) => {
     for (const item of menus) {
-        const { children, key, title, ...rest } = item;
-        if (key === _key) {
-            return {
-                key,
-                pathtitles: [...pathtitles, title],
-                ...rest
-            };
-        } else if (children && children.length > 0) {
-            const target = _filter(children, _key, pathtitles = [title]);
-            if (target) {
-                return target;
-            }
+        if (item.link === pathname) {
+            return item;
         }
     };
+    return {};
 };
 class Index extends Component {
     constructor(props) {
@@ -34,11 +26,12 @@ class Index extends Component {
         const { pathname: nextPathname } = nextLocation;
         const { location } = this.props;
         const { pathname } = location;
+        const backTopDom = document.getElementById('backTop');
+        backTopDom && (backTopDom.scrollTop = 0);
         if (pathname !== nextPathname) {
             this.setState({
                 loading: true
             });
-            return true;
         }
     }
     onload() {
@@ -50,15 +43,13 @@ class Index extends Component {
         }
     }
     render() {
-        const { location, menusData } = this.props;
-        const { pathname, state, query = {} } = location;
-        const key = pathToRegexp('/frame/:key').exec(pathname)[1];
-        document.getElementById('backTop').scrollTop = 0;
+        const { location, flattenMenuData } = this.props;
+        const { pathname, state = {}, query = {} } = location;
+        // const key = pathToRegexp('/frame/:key').exec(pathname)[1];
         const { h } = query;
-        const frameState = state && state.url ? state : _filter(menusData, key);
-        let { pathtitles, title = '', url } = frameState || {};
+        const { pathtitles, title = '', url } = state && state.url ? state : _filter(flattenMenuData, pathname);
         const { loading } = this.state;
-        return (
+        const frame = (
             <Page flex pathtitles={pathtitles || [title]}>
                 <Spin className={styles.modal} spinning={loading} tip="Loading..." />
                 <iframe
@@ -72,11 +63,12 @@ class Index extends Component {
                 />
             </Page>
         );
+        return url ? frame : <Redirect to={'/404'} />;
     }
 }
-function mapStateToProps({ menu: { menusData }, loading }) {
+function mapStateToProps({ menu: { flattenMenuData }, loading }) {
     return {
-        menusData,
+        flattenMenuData,
         loading: loading.global
     };
 }
