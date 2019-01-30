@@ -6,6 +6,12 @@ export default [
         icon: "idcard"
     },
     {
+        title: "test",
+        link: "/sys/test",
+        key: "test",
+        icon: "user"
+    },
+    {
         title: "用户分析",
         link: "/sys/users",
         key: "users",
