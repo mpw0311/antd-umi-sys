@@ -1,21 +1,16 @@
 import { PureComponent } from 'react';
 import { connect } from 'dva';
 import { Layout, BackTop, Icon } from 'antd';
-import { copyright } from '@config';
 import { Exception } from '@components';
 import Context from '@context';
 import Menus from '../components/Menus';
+import Footer from '../components/Footer';
 import Authorized from '../components/Authorized';
 import HeaderContent from './header';
 import Logo from './logo';
 import styles from './index.less';
 
-const { Header, Sider, Content, Footer } = Layout;
-const footer = (
-    <Footer className={styles.footer}>
-        {copyright}
-    </Footer>
-);
+const { Header, Sider, Content } = Layout;
 const _getKey = (pathname) => {
     if (typeof pathname === 'string' && pathname !== '') {
         const arr = pathname.split('').reverse();
@@ -144,7 +139,7 @@ class Index extends PureComponent {
                             {children}
                         </Authorized>
                     </Content>
-                    {footer}
+                    <Footer />
                 </Layout>
                 <BackTop target={() => document.getElementById('backTop')} style={{ right: 20, bottom: 25 }} />
             </Layout>

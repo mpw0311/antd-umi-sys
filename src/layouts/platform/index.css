@@ -82,11 +82,6 @@
   margin-bottom: 0;
   flex: 0 0 auto;
 }
-.footer {
-  text-align: center;
-  font-size: 14px;
-  padding: 10px 50px;
-}
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;

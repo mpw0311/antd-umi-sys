@@ -977,7 +977,6 @@ const table2 = {
     }]
 };
 export function fetch(payload) { // eslint-disable-line
-    console.log("fetch", payload);
     return { data };
     // return request(`/matchAnalysis`, {
     //     method: 'POST',
@@ -987,7 +986,6 @@ export function fetch(payload) { // eslint-disable-line
     // });
 }
 export function fetchCard2(payload) { // eslint-disable-line
-    console.log("fetchCard2", payload);
     return { data };
     // return request(`/matchAnalysis`, {
     //     method: 'POST',
@@ -997,7 +995,6 @@ export function fetchCard2(payload) { // eslint-disable-line
     // });
 }
 export function fetchCard3(payload) { // eslint-disable-line
-    console.log("fetchCard3", payload);
     return { data };
     // return request(`/matchAnalysis`, {
     //     method: 'POST',
@@ -1007,7 +1004,6 @@ export function fetchCard3(payload) { // eslint-disable-line
     // });
 }
 export function fechTable1(payload) { // eslint-disable-line
-    console.log("fechTable1", payload);
     return {
         data: {
             ...table1,
@@ -1022,7 +1018,6 @@ export function fechTable1(payload) { // eslint-disable-line
     // });
 }
 export function fechTable2(payload) { // eslint-disable-line
-    console.log("fechTable2", payload);
     return {
         data: {
             ...table2,
