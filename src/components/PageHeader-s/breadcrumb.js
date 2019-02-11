@@ -10,7 +10,7 @@ class BreadcrumbView extends PureComponent {
     };
     static defaultProps = {
         breadcrumbList: [],
-        linkElement: 'a',
+        // linkElement: 'a',
         breadcrumbSeparator: '/'
     };
     componentDidMount() {

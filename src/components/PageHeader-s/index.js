@@ -1,9 +1,9 @@
 import { PureComponent } from 'react';
 // import { Consumer } from '@components';
-import { connect } from 'dva';
 import Breadcrumb from './breadcrumb';
-import styles from './index.less';
+import isEqual from 'lodash/isEqual';
 
+// import styles from './index.less';
 // const breadcrumbList = ['首页', '一级面包屑', '当前页面'];
 // const routes = [{
 //     path: 'index',
@@ -31,12 +31,12 @@ class PageHeader extends PureComponent {
         this.getBreadcrumbList();
     }
     componentDidUpdate(preProps) {
-        const { location } = this.props;
+        const { location, flattenMenuData } = this.props;
         if (!location || !preProps.location) {
             return;
         }
         const prePathname = preProps.location.pathname;
-        if (prePathname !== location.pathname) {
+        if (prePathname !== location.pathname || !isEqual(flattenMenuData, preProps.flattenMenuData)) {
             this.getBreadcrumbList();
         }
     }
