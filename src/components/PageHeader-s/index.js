@@ -3,6 +3,7 @@ import { Icon } from 'antd';
 import Breadcrumb from './breadcrumb';
 import isEqual from 'lodash/isEqual';
 import classnames from 'classnames';
+import { sysDefultPage } from '@config';
 import styles from './index.less';
 /*eslint-disable-next-line*/
 const unique = (origin) => origin.filter(function (item, index, array) {
@@ -14,7 +15,7 @@ class PageHeader extends PureComponent {
     }
     static defaultProps = {
         isShow: true,
-        // breadcrumbList: []
+        homePage: { title: '首页', icon: 'home', link: sysDefultPage.pathname }
     };
     componentDidMount() {
         this.getBreadcrumbList();
@@ -30,14 +31,14 @@ class PageHeader extends PureComponent {
         }
     }
     getBreadcrumbList = () => {
-        const { location: { pathname }, breadcrumbList, flattenMenuData } = this.props;
+        const { location: { pathname }, breadcrumbList, flattenMenuData, homePage } = this.props;
         const [menu = {}] = flattenMenuData.filter(item => item.link === pathname);
         const { pathtitles = [] } = menu;
         // const _pathtitles = this.filterPathtitles(pathtitles, breadcrumbList);
         // const breadcrumbData = unique([..._pathtitles, ...breadcrumbList]);
         const breadcrumbData = breadcrumbList || pathtitles;
         this.setState({
-            breadcrumbData
+            breadcrumbData: [homePage, ...breadcrumbData]
         });
     }
     filterPathtitles = (pathtitles, breadcrumbList) => {
