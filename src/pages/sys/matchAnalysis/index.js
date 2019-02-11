@@ -65,10 +65,6 @@ function MatchAnalysis(props) {
     };
     return (
         <Page >
-            <PageHeader
-                pathtitles={['匹配额度分析']}
-                description={announcement}
-            />
             <MyForm onSubmit={submit} times={times} />
             <Row gutter={16} style={rowStyle}>
                 <Col span={12}>

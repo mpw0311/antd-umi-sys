@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import memoizeOne from 'memoize-one';
+import isEqual from 'lodash/isEqual';
 export const _queryKeysByPath = (pathname, menusData) => {
     if (typeof (pathname) !== "string" || (typeof (pathname) === "string" && pathname.indexOf("frame") > -1)) return {};
     const reg = /(^\/*)|(\/*$)/g;// 匹配字符串首尾斜杠
@@ -19,4 +20,4 @@ export const _queryKeysByPath = (pathname, menusData) => {
     const result = searchMenu(path, menusData);
     return { key: undefined, ...result };
 };
-export const queryKeysByPath = memoizeOne(_queryKeysByPath);
+export const queryKeysByPath = memoizeOne(_queryKeysByPath, isEqual);

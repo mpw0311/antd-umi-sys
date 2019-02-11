@@ -7,7 +7,7 @@ export default function (props) {
     const { pathname } = location;
     const match = pathToRegexp('/sys/users/:id').exec(pathname);
     return (
-        <Page loading={false} inner={true} pathtitles={['info']} location={location}>
+        <Page loading={false} title={'info'}>
             <div className={styles.normal}>
                 <h1>{match[1]}</h1>
             </div>

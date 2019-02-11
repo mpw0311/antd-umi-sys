@@ -5,7 +5,7 @@ module.exports = {
     sysLogo: 'jianlc.png',
     loginName: '数据平台',
     sysName: 'TEST-Pro',
-    copyright: "V1.0.3 2018 © by mpw0311@163.com.",
+    copyright: "V1.0.0 2019 © by mpw0311@163.com.",
     menuPermission: true,
     pageSize: 10,
     indexDefultPage: {

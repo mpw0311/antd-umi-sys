@@ -21,9 +21,7 @@ const dataCheck = (data) => {
     return showLoading(data);
 };
 class Index extends Component {
-    constructor(props) {
-        super(props);
-    }
+   
     render() {
         const {
             data = {},

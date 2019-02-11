@@ -1,0 +1,22 @@
+@import "../../themes/vars.less";
+.contentInner {
+    padding: 0;
+    box-shadow: @shadow-1;
+    min-height: @content-height;
+    position: relative;
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.loading{
+    overflow: 'hidden'
+}
+@media (max-width: 767px) {
+    .contentInner {
+        padding: 0;
+        min-height: ~"calc(100vh - 130px)";
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -45,7 +45,7 @@ function Chart(props) {
         });
     };
     return (
-        <Page loading={false} pathtitles={['echarts数据可视化组件']}>
+        <Page loading={false} title={'echarts数据可视化组件'}>
             <View
                 title="折线图"
                 data={lineBardata}

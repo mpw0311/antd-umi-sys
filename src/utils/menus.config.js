@@ -17,6 +17,12 @@ export default [
         icon: "contacts",
         children: [
             {
+                title: "test",
+                link: "/sys/test",
+                key: "test",
+                icon: "user"
+            },
+            {
                 title: "路径分析",
                 link: "/sys/pathAnalysis",
                 key: "pathAnalysis",

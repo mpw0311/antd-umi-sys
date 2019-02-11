@@ -12,13 +12,13 @@ const _flattenMenu = (menuData = [], pathtitles = []) => {
     const rows = _.cloneDeep(Array.isArray(menuData) ? menuData : menuData.rows);
     let routes = [];
     for (const item of rows) {
-        const { title, link, children } = item;
+        const { title, link, icon, children } = item;
         if (children && children.length > 0) {
-            routes = routes.concat(flattenMenu(children, pathtitles.concat(title)));
+            routes = routes.concat(flattenMenu(children, pathtitles.concat({ title, icon,link })));
         } else if (link) {
             routes.push({
                 ...item,
-                pathtitles: pathtitles.concat(title)
+                pathtitles: pathtitles.concat({ title, icon,link })
             });
         }
     }
