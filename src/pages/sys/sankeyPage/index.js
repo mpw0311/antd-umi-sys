@@ -35,7 +35,7 @@ class SankeyChart extends PureComponent {
             };
         };
         return (
-            <Page pathtitles={['sankey']} loading={loading}>
+            <Page title={'sankey'} loading={loading}>
                 <Sankey
                     width={1200}
                     height={800}

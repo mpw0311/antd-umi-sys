@@ -1,4 +1,23 @@
+.wrapper {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: -7px;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding-left: 24px;
+  background-color: #ffffff;
+}
 .breadcrumb {
-  padding-top: 5px;
-  padding-left: 10px;
+  line-height: 22px;
+  font-size: 14px;
+}
+.title {
+  margin: 15px 0;
+  font-weight: normal;
+}
+.describe {
+  font-size: 12px;
+}
+.hide {
+  display: none;
 }

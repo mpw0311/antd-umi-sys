@@ -1,21 +1,10 @@
 import { PureComponent } from 'react';
-// import { Consumer } from '@components';
+import { Icon } from 'antd';
 import Breadcrumb from './breadcrumb';
 import isEqual from 'lodash/isEqual';
-
-// import styles from './index.less';
-// const breadcrumbList = ['首页', '一级面包屑', '当前页面'];
-// const routes = [{
-//     path: 'index',
-//     name: '首页',
-//     // icon: 'home'
-// }, {
-//     path: 'first',
-//     name: '一级面包屑'
-// }, {
-//     path: 'second',
-//     name: '当前页面'
-// }];
+import classnames from 'classnames';
+import styles from './index.less';
+/*eslint-disable-next-line*/
 const unique = (origin) => origin.filter(function (item, index, array) {
     return array.indexOf(item) === index;
 });
@@ -25,7 +14,7 @@ class PageHeader extends PureComponent {
     }
     static defaultProps = {
         isShow: true,
-        breadcrumbList: []
+        // breadcrumbList: []
     };
     componentDidMount() {
         this.getBreadcrumbList();
@@ -44,19 +33,39 @@ class PageHeader extends PureComponent {
         const { location: { pathname }, breadcrumbList, flattenMenuData } = this.props;
         const [menu = {}] = flattenMenuData.filter(item => item.link === pathname);
         const { pathtitles = [] } = menu;
-        const _pathtitles = pathtitles.map(title => {
-            const [res] = breadcrumbList.filter(item => typeof item === 'object' ? (item.title === title) : (item === title));
-            return res || title;
-        });
-        const breadcrumbData = unique([..._pathtitles, ...breadcrumbList]);
+        // const _pathtitles = this.filterPathtitles(pathtitles, breadcrumbList);
+        // const breadcrumbData = unique([..._pathtitles, ...breadcrumbList]);
+        const breadcrumbData = breadcrumbList || pathtitles;
         this.setState({
             breadcrumbData
         });
     }
+    filterPathtitles = (pathtitles, breadcrumbList) => {
+        if (!breadcrumbList && breadcrumbList.length > 0) return pathtitles;
+        return pathtitles.map(title => {
+            const [res] = breadcrumbList.filter(item => typeof item === 'object' ? (item.title === title) : (item === title));
+            return res || title;
+        });
+    }
     render() {
-        const { isShow } = this.props;
+        const { isShow, title, description } = this.props;
         const { breadcrumbData } = this.state;
-        return (isShow ? <Breadcrumb breadcrumbList={breadcrumbData} /> : '');
+        return (
+            <div className={classnames(styles.wrapper, {
+                [styles.hide]: !isShow,
+            })}
+            >
+                <Breadcrumb breadcrumbList={breadcrumbData} />
+                <h2 className={classnames(styles.title, {
+                    [styles.hide]: !title,
+                })}
+                >{title}</h2>
+                <p className={classnames(styles.describe, {
+                    [styles.hide]: !description,
+                })}
+                ><Icon type="info-circle" />&nbsp;{description}</p>
+            </div>
+        );
     }
 }
 export default PageHeader;

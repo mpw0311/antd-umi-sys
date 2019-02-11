@@ -16,7 +16,7 @@ class Index extends PureComponent {
             });
         };
         return (
-            <Page pathtitles={["view2"]}>
+            <Page title={'view1'}>
                 <View data={p2} handleSubmit={onSubmit} loading={loading} />
             </Page>
         );

@@ -17,7 +17,7 @@ class Sankey extends PureComponent {
             });
         };
         return (
-            <Page pathtitles={['tree']} loading={loading}>
+            <Page title={'tree'} loading={loading}>
                 <Tree
                     data={dataset}
                     nodeClick={(d) => {

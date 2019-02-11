@@ -8,14 +8,21 @@ import Loader from '../Loader';
 import styles from './index.less';
 
 class Page extends PureComponent {
+    static defaultProps  = {
+        loading: false,
+        showHeader: true,
+        flex: false,
+    }
     render() {
         const {
             className,
             children,
-            loading = false,
-            pathtitles = [],
-            showHeader = true,
-            flex = false,
+            loading,
+            pathtitles,
+            title,
+            description,
+            showHeader,
+            flex,
             flattenMenuData
         } = this.props;
         const childStyle = flex === true ? { display: 'flex' } : {};
@@ -24,21 +31,27 @@ class Page extends PureComponent {
                 {({ location }) => (
                     <div
                         className={classnames(className, styles.contentInner, {
-                            [styles.noHeader]: !showHeader,
                             [styles.loading]: loading,
                         })}
                     >
                         <PageHeader
                             breadcrumbList={pathtitles}
+                            title={title}
+                            description={description}
                             location={location}
                             isShow={showHeader}
                             flattenMenuData={flattenMenuData}
                         />
-                        <div style={{ flex: 'auto', width: "100%", display: 'flex' }}>
-                            {loading && <Loader spinning />}
-                            <div style={{ flex: 'auto', width: '100%', padding: 10, ...childStyle }}>
-                                {children}
-                            </div>
+                        <div style={{
+                            flex: 'auto',
+                            display: flex && 'flex',
+                            width: "100%",
+                            marginTop: '20px',
+                            backgroundColor: '#fff',
+                            padding: 10,
+                            ...childStyle
+                        }}>
+                            {loading ? <Loader spinning /> : children}
                         </div>
                     </div>
                 )}
