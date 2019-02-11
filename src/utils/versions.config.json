@@ -106,7 +106,8 @@
         "detail": {
             "framework": [
                 "重构pageHeader组件",
-                "重构pageWrapper组件"
+                "重构pageWrapper组件",
+                "新增Footer组件"
             ],
             "pages": []
         }
