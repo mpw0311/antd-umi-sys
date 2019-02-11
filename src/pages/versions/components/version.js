@@ -1,15 +1,15 @@
 import styles from './version.less';
 
-const replace = (phrase, key, color = '#87d068') => {
+const replace = (phrase, key, color = '#87d068', icon) => {
     const r = '0x' + color.slice(1, 3), g = '0x' + color.slice(3, 5), b = '0x' + color.slice(5);
     const rgb = `${parseInt(r)},${parseInt(g)},${parseInt(b)}`;
     const reg = new RegExp(key, "gy");
-    return phrase.replace(reg, `<code style="color:${color};background-color:rgba(${rgb},0.2);border-color:rgba(${rgb},0.8)">${key}</code>`);
+    return phrase.replace(reg, `<code style="color:${color};background-color:rgba(${rgb},0.2);border-color:rgba(${rgb},0.8)">${icon}${key}</code>`);
 };
 const getphrase = (phrase, keys) => {
     for (const item of keys) {
-        const { key, color } = item;
-        phrase = replace(phrase, key, color);
+        const { key, color, icon } = item;
+        phrase = replace(phrase, key, color, icon);
     }
     return phrase;
 };
@@ -19,15 +19,38 @@ export default ({ data }) => {
     const keys = [
         {
             key: "新增",
-            color: "#87d068"
+            color: "#87d068",
+            icon: '🎉'
+        },
+        {
+            key: "添加",
+            color: "#87d068",
+            icon: '🎉'
         },
         {
             key: "优化",
-            color: "#2db7f5"
+            color: "#2db7f5",
+            icon: '💄'
+        },
+        {
+            key: "升级",
+            color: "#2db7f5",
+            icon: '💄'
+        },
+        {
+            key: "兼容",
+            color: "#2db7f5",
+            icon: '💄'
         },
         {
             key: '修复',
-            color: '#ff5500'
+            color: '#ff5500',
+            icon: '🐞'
+        },
+        {
+            key: '重构',
+            color: '#108ee9',
+            icon: '📝'
         }
     ];
     const P1 = (
