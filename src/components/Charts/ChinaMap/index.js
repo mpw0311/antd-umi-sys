@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Chart from '../basic';
 import _ from 'lodash';
 import Loading from '../Loading';
@@ -18,7 +18,7 @@ const sort = (rows, target) => rows.sort(function (a, b) { return b[target] - a[
 const dataCheck = (data) => {
     return showLoading(data);
 };
-class Index extends Component {
+class Index extends PureComponent {
 
     render() {
         const {
