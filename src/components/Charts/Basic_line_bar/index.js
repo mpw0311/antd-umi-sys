@@ -1,6 +1,5 @@
 import { Component } from 'react';
-import ReactEcharts from 'echarts-for-react';
-import chartConfig from '../config';
+import Chart from '../basic';
 import Loading from '../Loading';
 import { getMark, showLoading } from '../_';
 import { _getType, _getYAxis, _getSeries, _toDataset, _resetLegend } from './_';
@@ -106,9 +105,8 @@ class Line extends Component {
       ...originOption
     };
     return (
-      <ReactEcharts
+      <Chart
         option={option}
-        {...chartConfig}
         style={style}
         onEvents={onEvents}
       />

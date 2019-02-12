@@ -1,7 +1,6 @@
 import { Component } from 'react';
-import ReactEcharts from 'echarts-for-react';
+import Chart from '../basic';
 import _ from 'lodash';
-import chartConfig from '../config';
 import { showLoading } from '../_';
 class PieNest extends Component {
     constructor(props) {
@@ -123,9 +122,8 @@ class PieNest extends Component {
             series
         };
         return (
-            <ReactEcharts
+            <Chart
                 option={option}
-                {...chartConfig}
                 style={style}
                 onEvents={onEvents}
                 showLoading={showLoading(data)}

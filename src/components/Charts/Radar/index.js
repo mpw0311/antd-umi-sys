@@ -1,7 +1,6 @@
 import { Component } from 'react';
-import ReactEcharts from 'echarts-for-react';
+import Chart from '../basic';
 import _ from "lodash";
-import chartConfig from '../config';
 import { showLoading, dataSerialize, rowsToColumns } from '../_';
 
 class Radar extends Component {
@@ -75,9 +74,8 @@ class Radar extends Component {
             }]
         };
         return (
-            <ReactEcharts
+            <Chart
                 option={option}
-                {...chartConfig}
                 style={style}
                 onEvents={onEvents}
                 showLoading={showLoading(data)}

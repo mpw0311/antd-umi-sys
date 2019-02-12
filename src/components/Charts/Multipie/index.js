@@ -1,6 +1,5 @@
 import { Component } from 'react';
-import ReactEcharts from 'echarts-for-react';
-import chartConfig from '../config';
+import Chart from '../basic';
 import Loading from '../Loading';
 import { _getCoord, _getSeries, _getLegendData, _getGraphic } from './_';
 import { showLoading } from '../_';
@@ -78,9 +77,8 @@ class Pie extends Component {
             series
         };
         return (
-            <ReactEcharts
+            <Chart
                 option={option}
-                {...chartConfig}
                 style={style}
                 onEvents={onEvents}
             />

@@ -8,7 +8,7 @@ import Loader from '../Loader';
 import styles from './index.less';
 
 class Page extends PureComponent {
-    static defaultProps  = {
+    static defaultProps = {
         loading: false,
         showHeader: true,
         flex: false,
@@ -45,7 +45,6 @@ class Page extends PureComponent {
                         <div style={{
                             flex: 'auto',
                             display: flex && 'flex',
-                            width: "100%",
                             marginTop: '20px',
                             backgroundColor: '#fff',
                             padding: 10,

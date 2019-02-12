@@ -1,6 +1,5 @@
 import { Component } from 'react';
-import ReactEcharts from 'echarts-for-react';
-import chartConfig from '../config';
+import Chart from '../basic';
 import { showLoading } from '../_';
 
 class PieCustom extends Component {
@@ -83,9 +82,8 @@ class PieCustom extends Component {
             series
         };
         return (
-            <ReactEcharts
+            <Chart
                 option={option}
-                {...chartConfig}
                 style={style}
                 onEvents={onEvents}
                 showLoading={showLoading(data)}

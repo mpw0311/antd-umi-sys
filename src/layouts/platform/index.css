@@ -43,6 +43,10 @@
   border-radius: 10px;
   background: #EDEDED;
 }
+.screen {
+  height: 100%;
+  display: flex;
+}
 .trigger {
   font-size: 18px;
   line-height: 64px;
@@ -82,6 +86,20 @@
   margin-bottom: 0;
   flex: 0 0 auto;
 }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    /*初始状态 透明度为0*/
+  }
+  50% {
+    opacity: 0.5;
+    /*中间状态 透明度为0*/
+  }
+  100% {
+    opacity: 1;
+    /*结尾状态 透明度为1*/
+  }
+}
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
@@ -97,12 +115,16 @@
   }
 }
 .animation {
-  -webkit-animation-name: fadeIn;
   /*动画名称*/
-  -webkit-animation-duration: 0.6s;
+  animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
   /*动画持续时间*/
-  -webkit-animation-iteration-count: 1;
+  animation-duration: 0.6s;
+  -webkit-animation-duration: 0.6s;
   /*动画次数*/
-  -webkit-animation-delay: 0s;
+  animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
   /*延迟时间*/
+  animation-delay: 0s;
+  -webkit-animation-delay: 0s;
 }

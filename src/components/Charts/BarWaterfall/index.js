@@ -1,6 +1,5 @@
 import { Component } from 'react';
-import ReactEcharts from 'echarts-for-react';
-import chartConfig from '../config';
+import Chart from '../basic';
 import { formatNumer, showLoading } from '../_';
 
 class BarWaterfall extends Component {
@@ -115,9 +114,8 @@ class BarWaterfall extends Component {
         };
 
         return (
-            <ReactEcharts
+            <Chart
                 option={option}
-                {...chartConfig}
                 style={style}
                 onEvents={this.state.onEvents}
                 showLoading={showLoading(data)}

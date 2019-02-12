@@ -1,11 +1,14 @@
 import { PureComponent } from 'react';
 import { connect } from 'dva';
+import { ContainerQuery } from 'react-container-query';
 import { Layout, BackTop, Icon } from 'antd';
+import classNames from 'classNames';
 import { Exception } from '@components';
 import Context from '@context';
 import Menus from '../components/Menus';
 import Footer from '../components/Footer';
 import Authorized from '../components/Authorized';
+import { query } from '../constant';
 import HeaderContent from './header';
 import Logo from './logo';
 import styles from './index.less';
@@ -71,7 +74,7 @@ class Index extends PureComponent {
         });
     }
     resize() {
-        window.onresize = () => {
+        window.addEventListener('resize', () => {
             const winWidth = document.documentElement.clientWidth;
             const { collapsed } = this.state;
             if (winWidth <= 1400 && collapsed === false) {
@@ -83,14 +86,15 @@ class Index extends PureComponent {
                     collapsed: false
                 });
             }
-        };
+        });
     }
-    getContext() {
+    getContext(screen) {
         const { location } = this.props;
         const { theme } = this.state;
         return {
             location,
             theme,
+            screen
         };
     }
     render() {
@@ -101,7 +105,7 @@ class Index extends PureComponent {
             menusData = [],
         } = this.props;
         const { pathname, state: pathstate } = location;
-        const { key, /*pathtitles*/ } = pathstate || {};
+        const { key } = pathstate || {};
         const defaultKey = key || _getKey(pathname);
         const layout = (
             <Layout>
@@ -145,9 +149,13 @@ class Index extends PureComponent {
             </Layout>
         );
         return (
-            <Context.Provider value={this.getContext()}>
-                {layout}
-            </Context.Provider>
+            <ContainerQuery query={query}>
+                {params => (
+                    <Context.Provider value={this.getContext(params)}>
+                        <div className={classNames(styles.screen, params)}>{layout}</div>
+                    </Context.Provider>
+                )}
+            </ContainerQuery>
         );
     }
 }
