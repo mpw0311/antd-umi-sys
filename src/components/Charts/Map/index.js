@@ -1,7 +1,6 @@
 import { Component } from 'react';
-import ReactEcharts from 'echarts-for-react';
+import Chart from '../basic';
 import _ from 'lodash';
-import chartConfig from '../config';
 import '../mapData/china';
 //替换值
 const replace = (rows, target) => {
@@ -92,9 +91,8 @@ class Index extends Component {
             }
         };
         return (
-            <ReactEcharts
+            <Chart
                 option={option}
-                {...chartConfig}
                 style={style}
             />
         );

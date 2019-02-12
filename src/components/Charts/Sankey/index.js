@@ -1,7 +1,6 @@
 import { Component } from 'react';
-import ReactEcharts from 'echarts-for-react';
+import Chart from '../basic';
 import { message } from 'antd';
-import chartConfig from '../config';
 
 class Sankey extends Component {
     constructor(props) {
@@ -103,9 +102,8 @@ class Sankey extends Component {
         };
 
         return (
-            <ReactEcharts
+            <Chart
                 option={option}
-                {...chartConfig}
                 style={style}
                 onEvents={onEvents}
                 showLoading={loading}

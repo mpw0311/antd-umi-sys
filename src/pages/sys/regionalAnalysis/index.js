@@ -70,26 +70,27 @@ function Index(props) {
     );
     return (
         <Page loading={false} title={'地域性分析'} flex>
-            <ChinaMap
-                title={'地域分析'}
-                seriesName={'地域分析'}
-                data={_mapdata}
-                target={defaultKey}
-                loading={loading}
-                style={{ flex: '1 1 auto',height:'calc(100vm - 140px)'}}
-                tooltipFormatter={formatter}
-            />
-            <div className={styles.list}>
-                <List
-                    header={<div>分析值：（以下可多选）</div>}
-                    footer={footer}
-                    bordered
-                    dataSource={columns.slice(1)}
-                    renderItem={(item, i) => {
-                        const { field, name } = item;
-                        return (<List.Item key={i}><Checkbox value={field} checked={checkes[field] ? true : false} onChange={onChange}>{name} </Checkbox></List.Item>);
-                    }}
+            <div style={{ width: '100%',/* height: 'calc(100vh - 240px)' */ }}>
+                <ChinaMap
+                    title={'地域分析'}
+                    seriesName={'地域分析'}
+                    data={_mapdata}
+                    target={defaultKey}
+                    loading={loading}
+                    tooltipFormatter={formatter}
                 />
+                <div className={styles.list}>
+                    <List
+                        header={<div>分析值：（以下可多选）</div>}
+                        footer={footer}
+                        bordered
+                        dataSource={columns.slice(1)}
+                        renderItem={(item, i) => {
+                            const { field, name } = item;
+                            return (<List.Item key={i}><Checkbox value={field} checked={checkes[field] ? true : false} onChange={onChange}>{name} </Checkbox></List.Item>);
+                        }}
+                    />
+                </div>
             </div>
         </Page>
     );

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import ReactEcharts from 'echarts-for-react';
+import Chart from '../basic';
 import _ from 'lodash';
-import chartConfig from '../config';
 import Loading from '../Loading';
-// import '../mapData/china';
 import { showLoading } from '../_';
 //替换值
 const replace = (rows, target) => {
@@ -21,7 +19,7 @@ const dataCheck = (data) => {
     return showLoading(data);
 };
 class Index extends Component {
-   
+
     render() {
         const {
             data = {},
@@ -78,7 +76,7 @@ class Index extends Component {
                 calculable: true,
                 // color: ['#002766','#bae7ff']
                 inRange: {
-                    color: ['#e3fbfb', '#b7d6f3', '#40a9ed', '#3598c1', '#215096', ]
+                    color: ['#e3fbfb', '#b7d6f3', '#40a9ed', '#3598c1', '#215096',]
                 },
                 // color: ['orangered', 'yellow', 'lightskyblue']
             },
@@ -141,8 +139,8 @@ class Index extends Component {
                 name: seriesName,
                 type: 'map',
                 geoIndex: 0,
-                left:'20%',
-                right:'25%',
+                left: '20%',
+                right: '25%',
                 mapType: 'china',
                 roam,//鼠标放大缩小
                 label: {
@@ -197,9 +195,8 @@ class Index extends Component {
             ]
         };
         return (
-            <ReactEcharts
+            <Chart
                 option={option}
-                {...chartConfig}
                 style={style}
             />
         );

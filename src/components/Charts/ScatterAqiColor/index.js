@@ -1,6 +1,5 @@
-import ReactEcharts from 'echarts-for-react';
+import Chart from '../basic';
 import _ from 'lodash';
-import chartConfig from '../config';
 import { dataSerialize, rowsToColumns, formatNumer, toValuesArry, deleteColumnByIndexs, showLoading } from '../_';
 
 
@@ -199,11 +198,11 @@ function scatterAqiColor(props) {
         series
     };
     return (
-        <ReactEcharts
+        <Chart
             option={series && series.length > 0 && option || {}}
-            {...chartConfig}
             style={style}
             showLoading={showLoading(data)}
+        // opts={{ renderer: 'svg' }}
         />
     );
 }

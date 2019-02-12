@@ -1,7 +1,6 @@
 import { Component } from 'react';
-import ReactEcharts from 'echarts-for-react';
+import Chart from '../basic';
 import _ from 'lodash';
-import chartConfig from '../config';
 import { showLoading } from '../_';
 const transformdata = (data = {}) => {
     const { columns = [], rows = [] } = data;
@@ -90,9 +89,8 @@ class Pie extends Component {
             series
         };
         return (
-            <ReactEcharts
+            <Chart
                 option={option}
-                {...chartConfig}
                 style={style}
                 onEvents={onEvents}
                 showLoading={showLoading(data)}
