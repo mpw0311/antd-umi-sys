@@ -139,8 +139,8 @@ class Index extends PureComponent {
                 name: seriesName,
                 type: 'map',
                 geoIndex: 0,
-                left: '20%',
-                right: '25%',
+                left: '22%',
+                right: '26%',
                 mapType: 'china',
                 roam,//鼠标放大缩小
                 label: {

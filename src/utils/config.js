@@ -5,7 +5,7 @@ module.exports = {
     sysLogo: 'jianlc.png',
     loginName: '数据平台',
     sysName: 'TEST-Pro',
-    copyright: "V1.0.0 2019 © by mpw0311@163.com.",
+    copyright: "2019 mpw0311@163.com.",
     menuPermission: false,
     pageSize: 10,
     indexDefultPage: {
@@ -22,5 +22,5 @@ module.exports = {
     frameDefultPage: {
         pathname: '/frame/baidu',
     },
-    iconUrl:'//at.alicdn.com/t/font_1030595_j1ec1up2zyi.js'
+    iconUrl: '//at.alicdn.com/t/font_1030595_j1ec1up2zyi.js'
 };

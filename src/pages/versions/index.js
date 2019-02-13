@@ -5,7 +5,7 @@ import styles from './index.less';
 import data from '@utils/versions.config.json';
 function Index() {
     return (
-        <Page inner pathtitles={['版本说明']}>
+        <Page inner pathtitles={['更新日志']} title={'更新日志'}>
             <div className={styles.wrapper}>
                 <Timeline reverse>
                     {

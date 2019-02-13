@@ -6,7 +6,7 @@ import classNames from 'classNames';
 import { Exception } from '@components';
 import Context from '@context';
 import Menus from '../components/Menus';
-import Footer from '../components/Footer';
+import Footer from './Footer';
 import Authorized from '../components/Authorized';
 import { query } from '../constant';
 import HeaderContent from './header';
