@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { PureComponent } from 'react';
 import Chart from '../basic';
 import Loading from '../Loading';
 import { getMark, showLoading } from '../_';
@@ -7,7 +7,7 @@ import { _getType, _getYAxis, _getSeries, _toDataset, _resetLegend } from './_';
 const dataCheck = (data) => {
   return showLoading(data);
 };
-class Line extends Component {
+class Line extends PureComponent {
   constructor(props) {
     super(props);
     const { handleClick = () => { } } = props;

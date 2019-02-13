@@ -89,7 +89,7 @@
         }
     },
     {
-        "version": "v1.1.0",
+        "version": "v2.0.0",
         "date": "2019-01-24",
         "detail": {
             "framework": [
@@ -101,13 +101,28 @@
         }
     },
     {
-        "version": "v1.2.0",
+        "version": "v2.1.0",
         "date": "2019-02-11",
         "detail": {
             "framework": [
                 "重构pageHeader组件",
                 "重构pageWrapper组件",
                 "新增Footer组件"
+            ],
+            "pages": []
+        }
+    },
+    {
+        "version": "v2.2.0",
+        "date": "2019-02-11",
+        "detail": {
+            "framework": [
+                "重构pageHeader组件",
+                "重构pageWrapper组件",
+                "新增Footer组件",
+                "新增GlobalFooter组件",
+                "更新basicLayout",
+                "更新Login组件"
             ],
             "pages": []
         }
