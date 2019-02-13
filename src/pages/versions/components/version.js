@@ -33,6 +33,11 @@ export default ({ data }) => {
             icon: '💄'
         },
         {
+            key: "更新",
+            color: "#2db7f5",
+            icon: '💄'
+        },
+        {
             key: "升级",
             color: "#2db7f5",
             icon: '💄'

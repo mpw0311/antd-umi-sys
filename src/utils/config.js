@@ -6,7 +6,7 @@ module.exports = {
     loginName: '数据平台',
     sysName: 'TEST-Pro',
     copyright: "2019 mpw0311@163.com.",
-    menuPermission: false,
+    menuPermission: true,
     pageSize: 10,
     indexDefultPage: {
         pathname: '/login',
