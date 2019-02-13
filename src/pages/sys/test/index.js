@@ -1,5 +1,5 @@
 import { PureComponent } from 'react';
-import PageWrapper from '@components/PageWrapper-s';
+import PageWrapper from '@components/PageWrapper';
 
 class Index extends PureComponent {
 
