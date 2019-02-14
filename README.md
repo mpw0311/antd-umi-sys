@@ -6,17 +6,17 @@
 ![antd-umi-sys](src/assets/demo_login.png)
 ![antd-umi-sys](src/assets/demo.png)
 ![antd-umi-sys](src/assets/regionalAnalysis.png)
+![antd-umi-sys](src/assets/vew1.png)
 ![antd-umi-sys](src/assets/d3tree.png)
+
 ## 技术栈
-+ 前端展示层：React
++ 前端框架：React、umi
 + 前端组件库：antd
-+ 前端数据可视化：echarts
++ 前端数据可视化：echarts、d3.js
 + 前端数据流管理：redux、dva
-+ 前端框架：umi
++ 语法：es6/7
 + 前端样式：less
 + 前后端通信：fetch
-+ js语法：es6，用babel编译
-+ 包管理：npm
 + 项目打包：webpack
 ## 特性
 + 单页面应用；
@@ -29,7 +29,7 @@
 + mock模拟数据请求
 ---
 ## 环境准备
-    1.首先得有 node，并确保 node 版本是 8 或以上。（mac 下推荐使用 nvm 来管理 node 版本）
+    1.首先安装 node，并确保 node 版本是 8 或以上。（mac 下推荐使用 nvm 来管理 node 版本）
         $ node -v
         8.x
     2.然后全局安装 umi，并确保版本是 2.0.0 或以上。
@@ -295,12 +295,5 @@
     }
 ```
 
-## 响应式栅格
-```
-xs	<576px 响应式栅格，可为栅格数或一个包含其他属性的对象
-sm	≥576px 响应式栅格，可为栅格数或一个包含其他属性的对象
-md	≥768px 响应式栅格，可为栅格数或一个包含其他属性的对象
-lg	≥992px 响应式栅格，可为栅格数或一个包含其他属性的对象
-xl	≥1200px 响应式栅格，可为栅格数或一个包含其他属性的对象
-xxl	≥1600px 响应式栅格，可为栅格数或一个包含其他属性的对象
-```
+## page
+![antd-umi-sys](src/assets/echarts.png)

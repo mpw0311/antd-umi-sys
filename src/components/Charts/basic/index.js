@@ -14,9 +14,6 @@ export default class Chart extends PureComponent {
             }, 200);
         });
     }
-    onChartReadyCallback = (e) => {
-        console.log('onChartReadyCallback', e, e.resize);
-    }
     render() {
         const { style, ...rest } = this.props;
         return (
@@ -26,11 +23,9 @@ export default class Chart extends PureComponent {
                         {...chartConfig}
                         {...rest}
                         style={{ width: '100%', height: '100%', minHeight: '300px', overflow: 'hidden', ...style }}
-                        // onChartReady={this.onChartReadyCallback}
                         theme={theme}
                         ref={(e) => {
                             this.echarts_react = e;
-                            console.log(e);
                         }}
                     />
                 )}
