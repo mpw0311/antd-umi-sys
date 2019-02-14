@@ -1,4 +1,4 @@
-import { isArray } from 'lodash';
+import { isArray, isObject } from 'lodash';
 import { toDatasetReverse, toDataset, swap } from '../_';
 export const _getType = (type) => {
     const _type = type.toLowerCase();
@@ -67,7 +67,7 @@ export const _getSeries = opts => {
 };
 export const _resetLegend = opts => {
     const { legendData, legendDict, datasetSource = [] } = opts;
-    if (_.isArray(legendData)) {
+    if (isArray(legendData)) {
         return datasetSource.map((row, i) => {
             if (i === 0) {
                 row[0] = "legendType";
@@ -76,7 +76,7 @@ export const _resetLegend = opts => {
             }
             return row;
         });
-    } else if (_.isObject(legendDict)) {
+    } else if (isObject(legendDict)) {
         return datasetSource.map((row, i) => {
             if (i === 0) {
                 row[0] = "legendType";
