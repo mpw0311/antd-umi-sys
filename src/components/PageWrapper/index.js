@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import PageHeader from '../PageHeader';
 import Context from '@context';
 import Loader from '../Loader';
@@ -30,7 +30,7 @@ class Page extends PureComponent {
             <Context.Consumer>
                 {({ location }) => (
                     <div
-                        className={classnames(className, styles.contentInner, {
+                        className={classNames(className, styles.contentInner, {
                             [styles.loading]: loading,
                         })}
                     >

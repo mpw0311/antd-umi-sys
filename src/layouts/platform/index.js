@@ -2,7 +2,7 @@ import { PureComponent } from 'react';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import { Layout, BackTop, Icon } from 'antd';
-import classNames from 'classNames';
+import classNames from 'classnames';
 import { Exception } from '@components';
 import Context from '@context';
 import Menus from '../components/Menus';
