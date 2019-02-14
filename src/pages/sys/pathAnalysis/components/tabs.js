@@ -179,7 +179,7 @@ class MyTabs extends Component {
                 <ul>
                     <li>{nodes}</li>
                     <li>
-                        <a
+                        <a href='/'
                             onClick={(e) => {
                                 e.preventDefault();
                                 onPageClick(2);
@@ -187,7 +187,7 @@ class MyTabs extends Component {
                         >上一级</a>
                     </li>
                     <li>
-                        <a
+                        <a href='/'
                             onClick={(e) => {
                                 e.preventDefault();
                                 onPageClick(1);

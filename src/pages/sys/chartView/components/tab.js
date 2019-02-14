@@ -28,7 +28,7 @@ export default function (props) {
     const tab = (e) => {
         const { keyCode, target } = e;
         const { selectionStart, selectionEnd, value } = target;
-        if (keyCode == 9) {
+        if (keyCode === 9) {
             const postion = selectionStart + 4;
             target.value = `${value.substr(0, selectionStart)}    ${value.substr(selectionEnd)}`;
             target.selectionStart = postion;

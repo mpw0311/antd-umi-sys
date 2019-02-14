@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { Row, Col, Card } from 'antd';
 import moment from 'moment';
 import MyForm from './components/myForm';
-import { Charts, PageHeader, Page } from '@components';
+import { Charts, Page } from '@components';
 import Card2 from './components/card2';
 import Card3 from './components/card3';
 import Card4 from './components/card4';

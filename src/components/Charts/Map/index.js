@@ -15,9 +15,6 @@ const replace = (rows, target) => {
 //倒序排序
 const sort = (rows, target) => rows.sort(function (a, b) { return b[target] - a[target]; });
 class Index extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         const {
             data = {},

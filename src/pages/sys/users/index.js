@@ -54,10 +54,10 @@ function Users({ dispatch, list: dataSource, loading, total, page: current }) {
       render: (text, record) => (
         <span className={styles.operation}>
           <UserModal record={record} onOk={editHandler.bind(null, record.id)}>
-            <a>Edit</a>
+            <a href="/">Edit</a>
           </UserModal>
           <Popconfirm title="Confirm to delete?" onConfirm={deleteHandler.bind(null, record.id)}>
-            <a href="">Delete</a>
+            <a href="/">Delete</a>
           </Popconfirm>
         </span>
       ),

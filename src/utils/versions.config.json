@@ -89,7 +89,7 @@
         }
     },
     {
-        "version": "v2.0.0",
+        "version": "v2.2.0",
         "date": "2019-01-24",
         "detail": {
             "framework": [
@@ -101,7 +101,7 @@
         }
     },
     {
-        "version": "v2.1.0",
+        "version": "v2.2.1",
         "date": "2019-02-11",
         "detail": {
             "framework": [
@@ -113,7 +113,7 @@
         }
     },
     {
-        "version": "v2.2.0",
+        "version": "v2.3.0",
         "date": "2019-02-11",
         "detail": {
             "framework": [
@@ -123,6 +123,18 @@
                 "新增GlobalFooter组件",
                 "更新basicLayout",
                 "更新Login组件"
+            ],
+            "pages": []
+        }
+    },
+    {
+        "version": "v2.4.0",
+        "date": "2019-02-14",
+        "detail": {
+            "framework": [
+                "升级umi@2.4、react、react-dom等技术栈",
+                "新增react-test-renderer插件组件测试",
+                "修复升级后系统bug"
             ],
             "pages": []
         }
