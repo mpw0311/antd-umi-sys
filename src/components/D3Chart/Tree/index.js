@@ -391,7 +391,12 @@ export default class Sankey extends PureComponent {
             return pathData.map((item, i) => {
                 const n = (/[A-Za-z0-9\s]/g).test(item) ? item.length / 2 : item.length;
                 const L = n * 12 + baseWidth;
-                (_x + L) > width ? (_x = gap + L, _y += arrowHeight + paddingTop) : (_x += L);
+                if ((_x + L) > width) {
+                    _x = gap + L;
+                    _y += arrowHeight + paddingTop;
+                } else {
+                    _x += L
+                };
                 return {
                     value: item,
                     x: _x - L,

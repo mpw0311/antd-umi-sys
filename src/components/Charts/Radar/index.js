@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import Chart from '../basic';
-import _ from "lodash";
+import { remove } from "lodash";
 import { showLoading, dataSerialize, rowsToColumns } from '../_';
 
 class Radar extends Component {
@@ -28,7 +28,7 @@ class Radar extends Component {
         const { axisData, seriesData } = res;
         const _seriesData = rowsToColumns(seriesData);
         const legendData = axisData;
-        const indicator = _.remove(columns.map((item, i) => {
+        const indicator = remove(columns.map((item, i) => {
             if (i !== colIndex) {
                 const { name, max } = item;
                 return {
@@ -36,6 +36,7 @@ class Radar extends Component {
                     max
                 };
             }
+            return undefined;
         }), (v) => {
             return v !== undefined;
         });

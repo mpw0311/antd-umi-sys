@@ -5,7 +5,7 @@ export default {
     namespace: 'regionalAnalysis',
 
     state: {
-        checkes: { email: true, union: true,video:true },
+        checkes: { email: true, union: true, video: true },
         defaultKey: 'email',
         mapdata: {
             "columns": [
@@ -329,13 +329,11 @@ export default {
 
     effects: {
         *getData({ payload }, { call, put }) {
-            const { data } = yield call(api.getInfoTypeDict, { ...payload });
-            const { eventDict: events, pageDict: pages } = data;
+            const { data: { mapdata } } = yield call(api.fetch, { ...payload });
             yield put({
                 type: 'save',
                 payload: {
-                    events,
-                    pages
+                    mapdata
                 },
             });
         },

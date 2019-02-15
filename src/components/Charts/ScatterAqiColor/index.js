@@ -58,7 +58,7 @@ function scatterAqiColor(props) {
     };
     const getSeries = (data) => {
         const series = [];
-        data.map(item => {
+        data.forEach(item => {
             const { name, data } = item;
             series[series.length] = getSeriesI(name, data);
         });

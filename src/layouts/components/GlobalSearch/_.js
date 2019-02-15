@@ -2,12 +2,12 @@ import _ from 'lodash';
 export const searchFilter = (value, data, names = [], pathtitles = []) => {
     if (value === undefined || value === null) return [];
     data = _.cloneDeep(data);
-    data.map((item) => {
+    data.forEach((item) => {
         const { title, children } = item;
         if (children && children.length > 0) {
-            return searchFilter(value, children, names, pathtitles.concat(title));
+            searchFilter(value, children, names, pathtitles.concat(title));
         } else if (title.indexOf(value) > -1) {
-            return names.push({ ...item, pathtitles: pathtitles.concat(title) });
+            names.push({ ...item, pathtitles: pathtitles.concat(title) });
         }
     });
     return names;
