@@ -18,6 +18,7 @@ export default function (props) {
             .replace(/’/g, "\"");
         let data = {};
         try {
+            /*eslint-disable-next-line*/
             data = eval(`(${res})`);
         } catch (err) {
             console.log("err", err);
