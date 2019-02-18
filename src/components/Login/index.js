@@ -66,11 +66,11 @@ class Login extends Component {
                         })(
                             <Checkbox>记住密码</Checkbox>
                         )}
-                        <a className={styles.login_form_forgot} href="">忘记密码</a>
+                        <a className={styles.login_form_forgot} href="/">忘记密码</a>
                         <Button type="primary" htmlType="submit" className={styles.login_form_button} loading={loading}>
                             登录
                        </Button>
-                        或<a href="/register">注册账户!</a>
+                        或<a href="/#register">注册账户!</a>
                     </FormItem>
                 </Form>
             </div>

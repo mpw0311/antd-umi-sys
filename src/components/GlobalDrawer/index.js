@@ -20,7 +20,7 @@ class GlobalDrawer extends Component {
             <Drawer
                 title="Basic Drawer"
                 placement="right"
-                closable={true} visible
+                closable={true}
                 onClose={this.onClose}
                 visible={this.state.visible}
             >

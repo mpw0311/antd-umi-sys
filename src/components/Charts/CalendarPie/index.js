@@ -84,7 +84,7 @@ class CalendarPie extends Component {
         const { pieRadius } = this.state;
         const { rows = [] } = data;
         let pieSeries = [];
-        scatterData.map((row, i) => {
+        scatterData.forEach((row, i) => {
             const { data } = row;
             const pies = data.map((item, index) => {
                 const center = echartObj.convertToPixel({ calendarIndex: i }, item) || [0, 0];
@@ -196,7 +196,7 @@ class CalendarPie extends Component {
     getSeries(dataRange, scatterData) {
         const { cellSize } = this.state;
         const series = [];
-        dataRange.map((item, i) => {
+        dataRange.forEach((item, i) => {
             const d = _.cloneDeep(scatterData);
             const dd = _.remove(d, (values) => {
                 return values[0].indexOf(item) > -1;
@@ -212,7 +212,7 @@ class CalendarPie extends Component {
                         show: true,
                         formatter: function (params) { // eslint-disable-line
                             const { value } = params;
-                            if (value[1] == 0) {
+                            if (parseFloat(value[1]) === 0) {
                                 return `{a|0%}`;
                             } else {
                                 const percent = (value[1] / value[2] * 100).toFixed(1);
@@ -238,7 +238,7 @@ class CalendarPie extends Component {
         });
         return series;
     }
-    getPieSeriesUpdate(scatterData) { // eslint-disable-line
+    getPieSeriesUpdate(scatterData) {
         const { echartObj } = this.state;
         return echarts.util.map(scatterData, (item, index) => {
             const center = echartObj.convertToPixel('calendar', item);
@@ -281,11 +281,6 @@ class CalendarPie extends Component {
             chart.setOption({
                 series: pies
             });
-            // setTimeout(() => {
-            //     echartObj.setOption({
-            //         series: getPieSeriesUpdate(scatterData, echartObj)
-            //     });
-            // }, 500);
         }, 500);
     }
     render() {

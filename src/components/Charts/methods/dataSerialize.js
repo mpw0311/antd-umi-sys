@@ -90,3 +90,40 @@ export function dataSerialize(data, yIndex = 0) {
         seriesData
     };
 }
+export const dataSerializeReverse = (data, yIndex = 0) => {
+    let { columns = [] } = data;
+    const { rows = [] } = data;
+    if (typeof (columns) === "string") {
+        columns = JSON.parse(columns);
+    }
+    const axisData = [];
+    const legendData = [];
+    const seriesData = [];
+    rows.forEach(row => {
+        const _row = [];
+        columns.forEach((col, i) => {
+            const { field } = col;
+            let value = row[field];
+            if (i === yIndex) {
+                legendData.push(value);
+            } else {
+                if (value === undefined || value === null || value === "") {
+                    value = 0;
+                }
+                _row.push(value + "");
+            }
+        });
+        seriesData.push(_row);
+    });
+    columns.forEach((col, i) => {
+        const { name } = col;
+        if (i !== yIndex) {
+            axisData.push(name);
+        }
+    });
+    return {
+        axisData,
+        legendData,
+        seriesData
+    };
+};

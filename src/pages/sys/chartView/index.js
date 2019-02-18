@@ -160,7 +160,7 @@ function Chart(props) {
                 <Sankey data={sankeyData} style={{ height: '400px', marginTop: '50px' }} />
             </View>
             <View
-                title="桑基图"
+                title="雷达图"
                 data={radarData}
                 rows={24}
                 onBlur={(value) => {

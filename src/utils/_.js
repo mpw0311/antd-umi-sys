@@ -14,11 +14,11 @@ const _flattenMenu = (menuData = [], pathtitles = []) => {
     for (const item of rows) {
         const { title, link, icon, children } = item;
         if (children && children.length > 0) {
-            routes = routes.concat(flattenMenu(children, pathtitles.concat({ title, icon,link })));
+            routes = routes.concat(flattenMenu(children, pathtitles.concat({ title, icon, link })));
         } else if (link) {
             routes.push({
                 ...item,
-                pathtitles: pathtitles.concat({ title, icon,link })
+                pathtitles: pathtitles.concat({ title, icon, link })
             });
         }
     }
@@ -50,13 +50,16 @@ const _munesFilter = (orginalData, data, menuPermission) => {
                 return _dimensionalityReduction(children, names);
             } else if (key) {
                 return names.push(key);
+            } else {
+                console.warn('The key attribute requires a valid value to be accessible');
+                return undefined;
             }
         });
         return names;
     };
     const flattenMenuData = flattenMenu(menusData);
     const keys = _dimensionalityReduction(option);
-    // 菜单过滤
+    // 菜单过滤 (***)
     const _filter = (menus, keys) => {
         const data = menus.map((item) => {
             const { key, children } = item;
@@ -68,6 +71,7 @@ const _munesFilter = (orginalData, data, menuPermission) => {
             } else if (keys.indexOf(key) > -1) {
                 return item;
             }
+            return undefined;
         });
         _.remove(data, item => item === undefined || item === null || item.children && item.children.length === 0);
         return data;
