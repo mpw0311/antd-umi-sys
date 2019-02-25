@@ -15,7 +15,7 @@ export default {
       dva: true,
       dynamicImport: { webpackChunkName: true },
       title: 'antd-umi-2.4',
-      dll: true,
+      dll: false,
       routes: {
         exclude: [
           /models\//,
