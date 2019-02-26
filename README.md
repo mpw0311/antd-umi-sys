@@ -33,7 +33,7 @@
         $ node -v
         8.x
     2.然后全局安装 umi，并确保版本是 2.0.0 或以上。
-        $ yarn global add umi
+        $ npm install -g umi (或yarn global add umi)
         $ umi -v
         2.0.0
     3.git地址下载脚手架代码：

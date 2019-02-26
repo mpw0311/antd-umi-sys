@@ -38,10 +38,10 @@ export default {
     '@models': resolve(__dirname, "./src/models"),
   },
   "proxy": {
-    // "/api": {
-    //   "target": "",
-    //   "changeOrigin": true,
-    //   "pathRewrite": { "^/api" : "" }
-    // }
+    "/api": {
+      "target": "",
+      "changeOrigin": true,
+      "pathRewrite": { "^/api" : "" }
+    }
   },
 }
