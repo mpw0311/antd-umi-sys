@@ -9,6 +9,15 @@ const logout = () => {
         type: 'global/logout',
     });
 };
+const checkIsLogin = (url) => {
+    const isLogin = sessionStorage.getItem('isLogin');
+    const href = window.location.href;
+    if (isLogin !== 'true' && url.indexOf('/login') === -1 && href.indexOf('/login') === -1) {
+        message.warning('请在登录后操作!');
+        router.push('/login');
+        return;
+    }
+};
 const codeMessage = {
     200: '服务器成功返回请求的数据。',
     201: '新建或修改数据成功。',
@@ -42,6 +51,7 @@ const checkStatus = response => {
     throw error;
 };
 export default async (url, options) => {
+    checkIsLogin(url);
     const defaultOptions = {
         //发送cookies
         credentials: 'include',

@@ -21,6 +21,7 @@ module.exports = {
     },
 
     [`POST /api/users`](req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
         let user = req.body;
         if (typeof user === 'string') {
             user = JSON.parse(user)
@@ -31,6 +32,7 @@ module.exports = {
     },
 
     [`PATCH /api/users/:id`](req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
         const { params: { id }, query, body } = req;
         console.log(id, query, body);
         // db.data = db.data.map(item => item.id === id ? user : item);
@@ -38,6 +40,7 @@ module.exports = {
     },
 
     [`DELETE /api/users/:id`](req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
         const { params: { id } } = req;
         db.data = db.data.filter(item => item.id !== id);
         res.status(200).json(db);
