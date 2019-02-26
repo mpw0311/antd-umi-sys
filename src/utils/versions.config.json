@@ -134,7 +134,8 @@
             "framework": [
                 "升级umi@2.4、react、react-dom等技术栈",
                 "新增react-test-renderer插件组件测试",
-                "修复升级后系统bug"
+                "修复升级后系统bug",
+                "优化fetch请求"
             ],
             "pages": []
         }

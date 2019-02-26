@@ -26,6 +26,7 @@ export default {
             const { message: msg } = data;
             if (status === 0) {
                 message.success(msg || "退出系统");
+                sessionStorage.setItem('isLogin', false);
                 yield put(routerRedux.push('/login'));
             }
         },
