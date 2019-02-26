@@ -6,14 +6,13 @@ import { encrypt } from '@utils/CryptoJS';
 
 export default {
     namespace: 'login',
-    state: {
-    },
+    state: {},
     effects: {
         *login({ payload }, { call, put }) {
             const { password, ...rest } = payload;
-            const res = yield call(api.login, { password: encrypt(password), ...rest });
-            const { status, data } = res;
+            const { status, data } = yield call(api.login, { password: encrypt(password), ...rest });
             if (status === 0) {
+                sessionStorage.setItem("isLogin", true);
                 yield put(routerRedux.push('/sys'));
             } else {
                 const { alertDesc } = data;

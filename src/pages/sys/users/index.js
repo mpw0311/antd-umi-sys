@@ -4,7 +4,7 @@ import { Link } from 'dva/router';
 import { Table, Pagination, Popconfirm, Button } from 'antd';
 import { Page } from '@components';
 import styles from './index.css';
-import UserModal from './Modal';
+import UserModal from './components/Modal';
 
 
 function Users({ dispatch, list: dataSource, loading, total, page: current }) {

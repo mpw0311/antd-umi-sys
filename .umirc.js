@@ -15,7 +15,7 @@ export default {
       dva: true,
       dynamicImport: { webpackChunkName: true },
       title: 'antd-umi-2.4',
-      dll: true,
+      dll: false,
       routes: {
         exclude: [
           /models\//,
@@ -38,10 +38,10 @@ export default {
     '@models': resolve(__dirname, "./src/models"),
   },
   "proxy": {
-    // "/api": {
-    //   "target": "",
-    //   "changeOrigin": true,
-    //   "pathRewrite": { "^/api" : "" }
-    // }
+    "/api": {
+      "target": "",
+      "changeOrigin": true,
+      "pathRewrite": { "^/api" : "" }
+    }
   },
 }

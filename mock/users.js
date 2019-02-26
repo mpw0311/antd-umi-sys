@@ -15,15 +15,34 @@ let db = Mock.mock({
 
 module.exports = {
     [`GET /api/users`](req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(200).json(db);
-        
+
     },
 
     [`POST /api/users`](req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
         let user = req.body;
-        console.log(req);
+        if (typeof user === 'string') {
+            user = JSON.parse(user)
+        }
         user.id = Mock.mock('@id');
         db.data.push(user);
-        res.status(200).json(user);
+        res.status(200).json(db);
+    },
+
+    [`PATCH /api/users/:id`](req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        const { params: { id }, query, body } = req;
+        console.log(id, query, body);
+        // db.data = db.data.map(item => item.id === id ? user : item);
+        res.status(200).json(db);
+    },
+
+    [`DELETE /api/users/:id`](req, res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        const { params: { id } } = req;
+        db.data = db.data.filter(item => item.id !== id);
+        res.status(200).json(db);
     }
 };
