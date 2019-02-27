@@ -10,7 +10,7 @@
 .contentInner {
   padding: 0;
   box-shadow: 4px 4px 20px 0 rgba(0, 0, 0, 0.01);
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 154px);
   position: relative;
   flex: auto;
   display: flex;

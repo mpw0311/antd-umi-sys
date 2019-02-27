@@ -17,6 +17,7 @@ class Index extends PureComponent {
             <Fragment>
                 <DatePickers limit={3} handleSubmit={(times) => { handleSubmit(times); }} />
                 <Tabs
+                    animated={false}
                     style={{ textAlign: 'right' }}
                 >
                     <TabPane tab={<Icon type="bar-chart" />} key="1" style={{ textAlign: 'left' }}>
