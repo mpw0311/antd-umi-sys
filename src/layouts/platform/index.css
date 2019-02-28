@@ -67,7 +67,6 @@
   padding: 10px 16px;
 }
 .contianer {
-  height: 100vh;
   overflow: auto;
   /*隐藏滚动条，当IE下溢出，仍然可以滚动*/
   -ms-overflow-style: none;
