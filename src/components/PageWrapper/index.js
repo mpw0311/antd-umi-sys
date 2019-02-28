@@ -42,14 +42,12 @@ class Page extends PureComponent {
                             isShow={showHeader}
                             flattenMenuData={flattenMenuData}
                         />
-                        <div style={{
-                            flex: 'auto',
-                            display: flex && 'flex',
-                            marginTop: '20px',
-                            backgroundColor: '#fff',
-                            padding: 10,
-                            ...childStyle
-                        }}>
+                        <div
+                            className={styles.children}
+                            style={{
+                                display: flex && 'flex',
+                                ...childStyle
+                            }}>
                             {loading ? <Loader spinning /> : children}
                         </div>
                     </div>

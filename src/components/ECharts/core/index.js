@@ -2,7 +2,7 @@ import { PureComponent } from 'react';
 import ReactEcharts from 'echarts-for-react';
 import PropTypes from 'prop-types';
 import Context from '@context';
-import chartConfig from '../config';
+import chartConfig from '../config/settings';
 
 let timer = null;
 export default class Chart extends PureComponent {

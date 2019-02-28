@@ -45,7 +45,6 @@
 }
 .screen {
   height: 100%;
-  display: flex;
 }
 .trigger {
   font-size: 18px;
@@ -68,7 +67,6 @@
   padding: 10px 16px;
 }
 .contianer {
-  height: 100vh;
   overflow: auto;
   /*隐藏滚动条，当IE下溢出，仍然可以滚动*/
   -ms-overflow-style: none;
@@ -84,7 +82,7 @@
 .content {
   margin: 10px 16px;
   margin-bottom: 0;
-  flex: 0 0 auto;
+  flex: auto;
 }
 @keyframes fadeIn {
   0% {
