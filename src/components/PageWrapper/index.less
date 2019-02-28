@@ -1,17 +1,27 @@
 @import "../../themes/vars.less";
 .contentInner {
+    width: 100%;
     padding: 0;
     box-shadow: @shadow-1;
     min-height: @content-height;
-    position: relative;
     flex: auto;
     display: flex;
     flex-direction: column;
 }
 
-.loading{
+.children {
+    flex: auto;
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+}
+
+.loading {
     overflow: 'hidden'
 }
+
 // @media (max-width: 767px) {
 //     .contentInner {
 //         padding: 0;
