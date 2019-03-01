@@ -108,7 +108,7 @@ class Index extends PureComponent {
         const { key } = pathstate || {};
         const defaultKey = key || _getKey(pathname);
         const layout = (
-            <Layout>
+            <Layout className={styles.warapper}>
                 <Sider
                     trigger={null}
                     collapsible
@@ -139,9 +139,9 @@ class Index extends PureComponent {
                         </div>
                     </Header>
                     <Content className={styles.content} >
-                        <Authorized noMatch={Exception403} {...this.props}>
-                            {children}
-                        </Authorized>
+                        <Authorized noMatch={Exception403} {...this.props} />
+                        {/* {children} */}
+                        {/* </Authorized> */}
                     </Content>
                     <Footer />
                 </Layout>
