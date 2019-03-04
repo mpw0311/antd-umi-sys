@@ -1,5 +1,6 @@
 import Area from './charts/Area';
 import Bar from './charts/Bar';
+import YBar from './charts/Bar-y';
 // import BarWaterfall from './charts/Bar-waterfall';
 import Line from './charts/Line';
 // import Map from './charts/Map';
@@ -13,6 +14,7 @@ import Line from './charts/Line';
 export {
     Area,
     Bar,
+    YBar,
     // BarWaterfall,
     Line,
     // Map,
