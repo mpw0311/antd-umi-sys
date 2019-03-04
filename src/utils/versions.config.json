@@ -89,7 +89,7 @@
         }
     },
     {
-        "version": "v2.2.0",
+        "version": "v1.1.0",
         "date": "2019-01-24",
         "detail": {
             "framework": [
@@ -101,7 +101,7 @@
         }
     },
     {
-        "version": "v2.2.1",
+        "version": "v1.1.1",
         "date": "2019-02-11",
         "detail": {
             "framework": [
@@ -113,7 +113,7 @@
         }
     },
     {
-        "version": "v2.3.0",
+        "version": "v1.1.2",
         "date": "2019-02-11",
         "detail": {
             "framework": [
@@ -128,7 +128,7 @@
         }
     },
     {
-        "version": "v2.4.0",
+        "version": "v1.2.0",
         "date": "2019-02-14",
         "detail": {
             "framework": [
@@ -136,6 +136,16 @@
                 "新增react-test-renderer插件组件测试",
                 "修复升级后系统bug",
                 "优化fetch请求"
+            ],
+            "pages": []
+        }
+    },
+    {
+        "version": "v1.2.1",
+        "date": "2019-02-14",
+        "detail": {
+            "framework": [
+                "新增国际化多语言配置"
             ],
             "pages": []
         }

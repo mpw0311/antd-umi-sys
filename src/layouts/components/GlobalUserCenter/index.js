@@ -1,39 +1,46 @@
-import { Dropdown, Menu, Icon } from 'antd';
-import { Consumer } from '@components';
+import React, { PureComponent } from 'react';
+import { formatMessage } from 'umi/locale';
+import { Menu, Icon, Spin } from 'antd';
+import classNames from 'classnames';
+import HeaderDropdown from '../HeaderDropdown';
 import styles from './index.less';
 
-function User(props) {
-    const { userInfo, onSetting = () => { }, theme } = props;
-    const { userName } = userInfo;
-    const handleMenuClick = (param) => {
-        onSetting(param);
-    };
-    const menu = (<Menu onClick={handleMenuClick}>
-        <Menu.Item key={"sys/user"} state={{ userName, pathtitles: ["个人中心"] }} disabled>
-            <Icon type="user" />  个人中心
-        </Menu.Item>
-        {/* <Menu.Item key={"/resetPassword"} state={{ userName, pathtitles: ["修改密码"] }}>
+export default class SelectLang extends PureComponent {
+
+
+    render() {
+        const { userInfo = {}, onSetting = () => { }, theme, className } = this.props;
+        const { userName } = userInfo;
+        const handleMenuClick = (param) => {
+            onSetting(param);
+        };
+        const menu = (<Menu onClick={handleMenuClick}>
+            <Menu.Item key={"sys/user"} state={{ userName, pathtitles: ["个人中心"] }} disabled>
+                <Icon type="user" />  {formatMessage({ id: 'platform.userCenter' })}
+            </Menu.Item>
+            {/* <Menu.Item key={"/resetPassword"} state={{ userName, pathtitles: ["修改密码"] }}>
             <Icon type="edit" />  修改密码
         </Menu.Item> */}
-        <Menu.Item key={"sys/settings"} state={{ userName, pathtitles: ["设置中心"] }} disabled>
-            <Icon type="setting" />  设置
-        </Menu.Item>
-        <Menu.Item key={"/versions"} state={{ userName, pathtitles: ["版本说明"] }}>
-            <Icon type="edit" />  版本说明
-        </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item key="logout" state={{ userName }}>
-            <Icon type="logout" />  退出登录
-        </Menu.Item>
-    </Menu>);
-    return (
-        <Dropdown overlay={menu}>
-            <span className={styles.username} style={{ color: theme === 'dark' ? "#FFF" : undefined }}>
-                <Icon type="user" style={{ paddingRight: 5, fontSize: 16 }} />
-                {userName}
-            </span>
-        </Dropdown>
+            <Menu.Item key={"sys/settings"} state={{ userName, pathtitles: ["设置中心"] }} disabled>
+                <Icon type="setting" />  {formatMessage({ id: 'platform.settings' })}
+            </Menu.Item>
+            <Menu.Item key={"/versions"} state={{ userName, pathtitles: ["更新日志"] }}>
+                <Icon type="edit" />   {formatMessage({ id: 'platform.log' })}
+            </Menu.Item>
+            <Menu.Divider />
+            <Menu.Item key="logout" state={{ userName }}>
+                <Icon type="logout" />   {formatMessage({ id: 'platform.logout' })}
+            </Menu.Item>
+        </Menu>);
 
-    );
+        return userName ? (
+            <HeaderDropdown overlay={menu} placement="bottomRight">
+                <span className={classNames(styles.dropDown, className,
+                    { [styles.dark]: theme === 'dark' })} >
+                    <Icon type="user" />{userName}
+                </span>
+            </HeaderDropdown>)
+            :
+            (<Spin size="small" style={{ marginLeft: 8, marginRight: 8 }} />);
+    }
 }
-export default Consumer(User);

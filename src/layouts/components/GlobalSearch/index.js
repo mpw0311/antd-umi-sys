@@ -3,6 +3,7 @@ import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { HeaderSearch, Consumer } from '@components';
 import memoizeOne from 'memoize-one';
+import classNames from 'classnames';
 import { searchEqual } from './_';
 import styles from './index.less';
 
@@ -51,10 +52,11 @@ class Search extends PureComponent {
         }
     }
     render() {
+        const { className } = this.props;
         const { searchData, } = this.state;
         return (
             <HeaderSearch
-                className={`${styles.action} ${styles.search}`}
+                className={classNames(className, styles.headerSearch)}
                 placeholder="站内搜索"
                 dataSource={searchData}
                 onSearch={value => {

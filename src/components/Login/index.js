@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { Form, Icon, Input, Button, Row, Col, Checkbox } from 'antd';
+import { formatMessage } from 'umi/locale';
 import styles from "./index.less";
 
 const FormItem = Form.Item;
@@ -33,7 +34,7 @@ class Login extends Component {
                                 message: '请输入用户名!'
                             }]
                         })(
-                            <Input prefix={<Icon type="user" className={styles.color} />} placeholder="用户名" />
+                            <Input prefix={<Icon type="user" className={styles.color} />} placeholder={formatMessage({ id: 'login.userName' })} />
                         )}
                     </FormItem>
                     <Row gutter={8}>
@@ -43,7 +44,7 @@ class Login extends Component {
                                     initialValue: 'admin',
                                     rules: [{ required: true, message: '请输入密码!' }],
                                 })(
-                                    <Input prefix={<Icon type="lock" className={styles.color} />} type="password" placeholder="密码" />
+                                    <Input prefix={<Icon type="lock" className={styles.color} />} type="password" placeholder={formatMessage({ id: 'login.password' })} />
                                 )}
                             </FormItem>
                         </Col>
@@ -64,13 +65,13 @@ class Login extends Component {
                             valuePropName: 'checked',
                             initialValue: true,
                         })(
-                            <Checkbox>记住密码</Checkbox>
+                            <Checkbox>{formatMessage({ id: 'login.remember-me' })}</Checkbox>
                         )}
-                        <a className={styles.login_form_forgot} href="/">忘记密码</a>
+                        <a className={styles.login_form_forgot} href="/">{formatMessage({ id: 'login.forgot-password' })}</a>
                         <Button type="primary" htmlType="submit" className={styles.login_form_button} loading={loading}>
-                            登录
-                       </Button>
-                        或<a href="/#register">注册账户!</a>
+                            {formatMessage({ id: 'login.login' })}
+                        </Button>
+                        <a href="/#register">   {formatMessage({ id: 'login.signup' })}!</a>
                     </FormItem>
                 </Form>
             </div>

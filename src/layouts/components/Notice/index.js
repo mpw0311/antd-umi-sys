@@ -1,13 +1,14 @@
 import { Popover, Badge, Icon, Tabs, Spin, List, Avatar } from 'antd';
 import { Link } from 'dva/router';
 import { Consumer } from '@components';
+import classNames from 'classnames';
 import styles from './index.less';
 
 const { TabPane } = Tabs;
 const { Item: ListItem } = List;
 const { Meta: ListItemMeta } = ListItem;
 function NoticeIcon(props) {
-    const { message = [], loading = false, onLoadMore = () => { }, theme } = props;
+    const { message = [], loading = false, onLoadMore = () => { }, className, theme } = props;
     const computeData = (data) => {
         const unread = data.filter(item => item.type === 'unread');
         const read = data.filter(item => item.type === 'read');
@@ -65,6 +66,7 @@ function NoticeIcon(props) {
             placement="bottomRight"
             trigger="click"
             content={news}
+            className={classNames(className)}
             popupClassName={styles.popover}
         >
             <span className={styles.noticeButton} style={{ color: theme === 'dark' ? "#FFF" : undefined }}>
