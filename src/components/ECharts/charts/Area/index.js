@@ -1,3 +1,7 @@
+/**
+ * author：M
+ * E-mail: mpw0311@163.com
+ */
 import { PureComponent } from 'react';
 import Chart from '../../A_basic';
 class Index extends PureComponent {
@@ -5,6 +9,7 @@ class Index extends PureComponent {
         data: {},
         type: 'area',
         loading: false,
+        stack:true
     }
     render() {
 

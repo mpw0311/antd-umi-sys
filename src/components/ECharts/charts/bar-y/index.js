@@ -7,11 +7,16 @@ import Chart from '../../A_basic';
 class Index extends PureComponent {
     static defaultProps = {
         data: {},
-        type: 'bar',
+        type: 'bar-y',
         loading: false,
+        xAxis: {
+            type: 'value',
+        },
+        yAxis: {
+            type: 'category',
+        },
     }
     render() {
-
         return (
             <Chart
                 {...this.props}
