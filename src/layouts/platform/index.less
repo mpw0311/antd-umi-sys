@@ -1,8 +1,20 @@
 @import '../../themes/index.less';
-.screen{
+.screen,
+.warapper {
     height: 100%;
-    display: flex;
 }
+
+.contianer {
+    overflow: auto;
+    .hideScrollbar();
+}
+
+.content {
+    flex: 1 0 auto;
+    margin: 10px 16px;
+    margin-bottom: 0;
+}
+
 .trigger {
     font-size: 18px;
     line-height: 64px;
@@ -18,25 +30,13 @@
 .sider {
     height: 100vh;
     position: fixed;
-    left: 0; 
+    left: 0;
 }
 
 .logo {
     height: 64px;
     background: #002140;
     padding: 10px 16px;
-}
-
-.contianer {
-    height: 100vh;
-    overflow: auto;
-    .hideScrollbar();
-}
-
-.content {
-    margin: 10px 16px;
-    margin-bottom: 0; 
-    flex: 0 0 auto;
 }
 
 @keyframes fadeIn {

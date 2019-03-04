@@ -206,7 +206,7 @@ class MyTabs extends Component {
                         <Radio.Button value="default">还原</Radio.Button>
                     </Radio.Group>
                 </span>
-                <Tabs defaultActiveKey="1" onChange={this.callback}>
+                <Tabs defaultActiveKey="1" onChange={this.callback} animated={false}>
                     <TabPane tab="事件操作分析" key="1">
                         <div style={boxStyle} >
                             {sankeyChart(eventData, this.handleContextmenu)}
