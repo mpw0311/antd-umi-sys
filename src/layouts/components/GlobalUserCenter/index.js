@@ -24,7 +24,7 @@ export default class SelectLang extends PureComponent {
             <Menu.Item key={"sys/settings"} state={{ userName, pathtitles: ["设置中心"] }} disabled>
                 <Icon type="setting" />  {formatMessage({ id: 'platform.settings' })}
             </Menu.Item>
-            <Menu.Item key={"/versions"} state={{ userName, pathtitles: ["版本说明"] }}>
+            <Menu.Item key={"/versions"} state={{ userName, pathtitles: ["更新日志"] }}>
                 <Icon type="edit" />   {formatMessage({ id: 'platform.log' })}
             </Menu.Item>
             <Menu.Divider />

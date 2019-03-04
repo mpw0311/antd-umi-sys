@@ -89,9 +89,6 @@
 ├── .env                                // 环境变量
 └── package.json
 ```
-## 前端架构图
-![antd-umi-sys](src/assets/frame.png)
----
 ## 常用数据模型
 ### 1.基础数据结构
 ```json
