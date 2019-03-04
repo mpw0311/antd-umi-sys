@@ -13,7 +13,10 @@ export default {
     ['umi-plugin-react', {
       antd: true,
       dva: true,
-      dynamicImport: { webpackChunkName: true },
+      dynamicImport: {
+         webpackChunkName: true ,
+         loadingComponent: './components/PageLoading/index.js'
+        },
       title: 'antd-umi-2.4',
       dll: false,
       routes: {
