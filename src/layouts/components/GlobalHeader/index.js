@@ -1,8 +1,8 @@
-import { Row, Col } from 'antd';
 import User from '../GlobalUserCenter';
-import Download from '../GlobalDownload';
 import Search from '../GlobalSearch';
 import Notice from '../Notice';
+import SelectLang from '../SelectLang';
+import styles from './index.less';
 
 
 function Header(props) {
@@ -13,20 +13,21 @@ function Header(props) {
         handleSetting = () => { }
     } = props;
     return (
-        <Row>
-            <Col span={10} style={{ textAlign: 'right' }}>
-                <Search />
-            </Col>
-            <Col span={3} style={{ textAlign: 'center' }}>
-                <Notice message={message} userInfo={userInfo} onLoadMore={handleLoadMore} />
-            </Col>
-            <Col span={3} style={{ textAlign: 'center' }}>
-                <Download message={message} userInfo={userInfo} />
-            </Col>
-            <Col span={8} style={{ textAlign: 'left' }}>
-                <User userInfo={userInfo} onSetting={handleSetting} />
-            </Col>
-        </Row>
+        <div className={styles.rightCenter}>
+            <Search className={`${styles.action} ${styles.search}`} />
+            <Notice
+                className={styles.action}
+                message={message}
+                userInfo={userInfo}
+                onLoadMore={handleLoadMore}
+            />
+            <User
+                className={styles.action}
+                userInfo={userInfo}
+                onSetting={handleSetting}
+            />
+            <SelectLang className={styles.action} />
+        </div>
     );
 }
 export default Header;

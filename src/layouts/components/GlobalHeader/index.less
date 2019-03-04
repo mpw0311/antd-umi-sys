@@ -1,0 +1,41 @@
+@import '~antd/lib/style/themes/default.less';
+@pro-header-hover-bg: rgba(0, 0, 0, 0.025);
+.rightCenter {
+    text-align: right;
+    height: 100%;
+}
+
+.action {
+    display: inline-block;
+    height: 100%;
+    padding: 0 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    >i {
+        color: @text-color;
+        vertical-align: middle;
+    }
+    &:hover {
+        background: @pro-header-hover-bg;
+    }
+    &:global(.opened) {
+        background: @pro-header-hover-bg;
+    }
+}
+
+.search {
+    padding: 0 12px;
+    &:hover {
+        background: transparent;
+    }
+}
+
+.account {
+    .avatar {
+        margin:~'calc((@{layout-header-height} - 24px) / 2)' 0;
+        margin-right: 8px;
+        color: @primary-color;
+        vertical-align: top;
+        background: rgba(255, 255, 255, 0.85);
+    }
+}

@@ -1,17 +1,17 @@
 {
   "private": true,
   "scripts": {
-    "start": "set PORT=8088 && umi dev",
+    "start": "umi dev",
     "build": "umi build",
     "test": "umi test",
     "lint": "eslint --ext .js src mock tests",
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "antd": "^3.13.6",
+    "antd": "^3.12.1",
     "crypto-js": "^3.1.9-1",
     "d3": "^5.9.1",
-    "d3-sankey": "^0.7.1",
+    "d3-sankey": "^0.10.4",
     "dva": "^2.5.0-beta.2",
     "echarts": "^4.1.0",
     "echarts-for-react": "^2.0.15-beta.0",

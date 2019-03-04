@@ -1,3 +1,4 @@
+
 import { resolve } from "path";
 // ref: https://umijs.org/config/
 export default {
@@ -14,11 +15,15 @@ export default {
       antd: true,
       dva: true,
       dynamicImport: {
-         webpackChunkName: true ,
-         loadingComponent: './components/PageLoading/index.js'
-        },
-      title: 'antd-umi-2.4',
-      dll: false,
+        webpackChunkName: true,
+        loadingComponent: './components/PageLoading/index.js'
+      },
+      title: 'antd-umi-2.5',
+      dll: true,
+      locale: {
+        enable: true,
+        default: 'en-US',
+      },
       routes: {
         exclude: [
           /models\//,
@@ -36,7 +41,7 @@ export default {
     '@components': resolve(__dirname, "./src/components"),
     '@utils': resolve(__dirname, "./src/utils"),
     '@config': resolve(__dirname, "./src/utils/config"),
-    '@context':resolve(__dirname, "./src/layouts/Context"),
+    '@context': resolve(__dirname, "./src/layouts/Context"),
     '@services': resolve(__dirname, "./src/services"),
     '@models': resolve(__dirname, "./src/models"),
   },
@@ -44,7 +49,7 @@ export default {
     "/api": {
       "target": "",
       "changeOrigin": true,
-      "pathRewrite": { "^/api" : "" }
+      "pathRewrite": { "^/api": "" }
     }
   },
 }

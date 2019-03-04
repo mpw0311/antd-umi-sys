@@ -101,7 +101,6 @@ class Index extends PureComponent {
         const { collapsed } = this.state;
         const {
             location,
-            children,
             menusData = [],
         } = this.props;
         const { pathname, state: pathstate } = location;
