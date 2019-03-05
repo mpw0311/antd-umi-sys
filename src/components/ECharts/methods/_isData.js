@@ -7,7 +7,7 @@ export default (data) => {
         return false;
     }
     if (data.columns.length === 0 || data.rows.length === 0) {
-        return false
+        return false;
     }
     return true;
 }

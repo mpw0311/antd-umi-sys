@@ -22,7 +22,7 @@ export default {
       dll: true,
       locale: {
         enable: true,
-        default: 'en-US',
+        default: 'zh-CN',//'en-US',
       },
       routes: {
         exclude: [

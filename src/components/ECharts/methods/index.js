@@ -1,6 +1,14 @@
-import _formatNumer from './_formatNumer';
-import _toDataset from './_toDataset_A';
-import _isData from './_isData';
+import memoizeOne from 'memoize-one';
+import isEqual from 'lodash/isEqual';
+
+import formatNumer from './_formatNumer';
+import toDataset from './_toDataset_A';
+import isData from './_isData';
+
+const _formatNumer = memoizeOne(formatNumer);
+const _toDataset = memoizeOne(toDataset, isEqual);
+const _isData = memoizeOne(isData, isEqual);
+
 export {
     _formatNumer,
     _toDataset,

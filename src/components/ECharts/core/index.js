@@ -11,7 +11,8 @@ import chartConfig from '../config/settings';
 let timer = null;
 export default class Chart extends PureComponent {
     static defaultProps = {
-        isBindResize: false
+        isBindResize: false,
+        height: '100%'
     };
     componentDidMount() {
         const { isBindResize } = this.props;
@@ -27,7 +28,7 @@ export default class Chart extends PureComponent {
         });
     }
     render() {
-        const { style, ...rest } = this.props;
+        const { style, height, ...rest } = this.props;
         return (
             <Context.Consumer>
                 {({ theme }) => (
@@ -37,7 +38,7 @@ export default class Chart extends PureComponent {
                         style={{
                             width: '100%',
                             textAlign: 'left',
-                            height: '100%',
+                            height,
                             minHeight: '300px',
                             overflow: 'hidden',
                             ...style
