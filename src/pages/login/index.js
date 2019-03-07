@@ -1,3 +1,9 @@
+/**
+ * @author M
+ * @E-mail mpw0311@163.com
+ * @version  1.0.0
+ * @description  登录页面
+ */
 import { connect } from 'dva';
 import { Login } from '@components';
 import { message, Row, Col } from 'antd';

@@ -1,3 +1,9 @@
+/**
+ * @author M
+ * @E-mail mpw0311@163.com
+ * @version  1.0.0
+ * @description  
+ */
 import styles from './version.less';
 
 const replace = (phrase, key, color = '#87d068', icon) => {

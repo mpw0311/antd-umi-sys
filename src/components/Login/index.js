@@ -1,3 +1,9 @@
+/**
+ * @author M
+ * @E-mail mpw0311@163.com
+ * @version  1.0.0
+ * @description  用户登录组件
+ */
 import { Component } from 'react';
 import { Form, Icon, Input, Button, Row, Col, Checkbox } from 'antd';
 import { formatMessage } from 'umi/locale';

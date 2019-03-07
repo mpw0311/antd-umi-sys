@@ -1,6 +1,8 @@
 /**
- * author：M
- * E-mail: mpw0311@163.com
+ * @author M
+ * @E-mail  mpw0311@163.com
+ * @version  1.0.0
+ * @description 
  */
 import { _toDataset } from '../methods';
 export default (props) => {
@@ -9,4 +11,4 @@ export default (props) => {
     return {
         source
     };
-}
+};

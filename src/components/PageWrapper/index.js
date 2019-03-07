@@ -1,3 +1,9 @@
+/**
+ * @author M
+ * @E-mail mpw0311@163.com
+ * @version  1.0.0
+ * @description  页面wrapper组件
+ */
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import PropTypes from 'prop-types';

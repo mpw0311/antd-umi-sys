@@ -1,3 +1,9 @@
+/**
+ * @author M
+ * @E-mail mpw0311@163.com
+ * @version  1.0.0
+ * @description  系统通用fetch数据请求
+ */
 import fetch from 'dva/fetch';
 import { message, notification } from 'antd';
 import router from 'umi/router';

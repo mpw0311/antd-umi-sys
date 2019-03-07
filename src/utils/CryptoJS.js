@@ -1,3 +1,9 @@
+/**
+ * @author M
+ * @E-mail mpw0311@163.com
+ * @version  1.0.0
+ * @description  AES加密解密
+ */
 import { AES, enc, mode, pad } from 'crypto-js';
 /**
  * 初始化秘钥

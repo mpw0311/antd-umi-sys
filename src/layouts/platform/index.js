@@ -1,3 +1,9 @@
+/**
+ * @author M
+ * @E-mail mpw0311@163.com
+ * @version  1.0.0
+ * @description  layout布局
+ */
 import { PureComponent } from 'react';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';

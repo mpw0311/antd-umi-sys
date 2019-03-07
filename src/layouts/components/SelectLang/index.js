@@ -1,3 +1,9 @@
+/**
+ * @author M
+ * @E-mail mpw0311@163.com
+ * @version  1.0.0
+ * @description  语言选择组件
+ */
 import React, { PureComponent } from 'react';
 import { formatMessage, setLocale, getLocale } from 'umi/locale';
 import { Menu, Icon } from 'antd';

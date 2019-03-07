@@ -1,3 +1,9 @@
+/**
+ * @author：M
+ * @E-mail: mpw0311@163.com
+ * @version: 1.0.0
+ * @description： d3 tree图
+ */
 import { PureComponent } from 'react';
 import { select, tree, hierarchy, zoom, event } from 'd3';
 //1.文字超界处理

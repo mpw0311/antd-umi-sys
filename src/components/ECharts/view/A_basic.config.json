@@ -1,0 +1,177 @@
+{
+    "name": "A_basic",
+    "props": [
+        {
+            "prop": "type",
+            "component": "Select",
+            "type": "array",
+            "value": [
+                "line",
+                "area",
+                "bar"
+            ],
+            "des": "支持的图形类型"
+        },
+        {
+            "prop": "loading",
+            "component": "Checkbox",
+            "type": "bool",
+            "value": false,
+            "des": "是否显示正在加载中"
+        },
+        {
+            "prop": "title",
+            "component": "Input",
+            "type": "string",
+            "value": "",
+            "des": "图形标题"
+        },
+        {
+            "prop": "tooltip",
+            "component": "TextArea",
+            "type": "object",
+            "value": {},
+            "des": "可以传入tooltip配置"
+        },
+        {
+            "prop": "showTooltip",
+            "component": "Checkbox",
+            "type": "bool",
+            "value": true,
+            "des": "是否显示tootip"
+        },
+        {
+            "prop": "axisPointer",
+            "component": "Select",
+            "type": "array",
+            "value": [
+                "shadow",
+                "cross"
+            ],
+            "des": "axisPointer类型"
+        },
+        {
+            "prop": "legend",
+            "component": "TextArea",
+            "type": "object",
+            "value": {},
+            "des": "图形图例配置项"
+        },
+        {
+            "prop": "showLegend",
+            "component": "Checkbox",
+            "type": "bool",
+            "value": true,
+            "des": "是否显示图例"
+        },
+        {
+            "prop": "xAxis",
+            "component": "TextArea",
+            "type": "object",
+            "value": {},
+            "des": "x轴配置"
+        },
+        {
+            "prop": "yAxis",
+            "component": "TextArea",
+            "type": "object",
+            "value": {},
+            "des": "y轴配置"
+        },
+        {
+            "prop": "series",
+            "component": "TextArea",
+            "type": "object",
+            "value": {},
+            "des": "图形系列(series)配置项"
+        },
+        {
+            "prop": "seriesLayoutBy",
+            "component": "Select",
+            "type": "array",
+            "value": [
+                "column",
+                "row"
+            ],
+            "des": "指定 dataset 的列（column）还是行（row）映射为图形系列（series）"
+        },
+        {
+            "prop": "YUnit",
+            "component": "Input",
+            "type": "string",
+            "value": "",
+            "des": "y轴单位"
+        },
+        {
+            "prop": "showY2",
+            "component": "Checkbox",
+            "type": "bool",
+            "value": false,
+            "des": "是否显示y2轴"
+        },
+        {
+            "prop": "Y2Unit",
+            "component": "Input",
+            "type": "string",
+            "value": "",
+            "des": "y2轴单位"
+        },
+      
+        {
+            "prop": "toolbox",
+            "component": "TextArea",
+            "type": "object",
+            "value": {},
+            "des": "工具栏配置项"
+        },
+        {
+            "prop": "showToolbox",
+            "component": "Checkbox",
+            "type": "bool",
+            "value": false,
+            "des": "是否显示工具栏"
+        },
+        {
+            "prop": "showToolboxDataZoom",
+            "component": "Checkbox",
+            "type": "bool",
+            "value": false,
+            "des": "区域缩放"
+        },
+        {
+            "prop": "showToolboxDataView",
+            "component": "Checkbox",
+            "type": "bool",
+            "value": false,
+            "des": "数据视图"
+        },
+        {
+            "prop": "showToolboxMagicType",
+            "component": "Checkbox",
+            "type": "bool",
+            "value": false,
+            "des": "是否图形切换"
+        },
+        {
+            "prop": "toolboxMagicType",
+            "component": "TextArea",
+            "type": "array",
+            "value": [],
+            "des": "图形切换类型"
+        },
+        {
+            "prop": "showToolboxRestore",
+            "component": "Checkbox",
+            "type": "bool",
+            "value": true,
+            "des": "刷新还原"
+        },
+        {
+            "prop": "showToolboxSaveAsImage",
+            "component": "Checkbox",
+            "type": "bool",
+            "value": false,
+            "des": "保存为图片"
+        }
+    ]
+}
