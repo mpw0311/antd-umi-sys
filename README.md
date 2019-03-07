@@ -1,5 +1,9 @@
 # antd-umi-sys
-***下载前请点个star好吗！！！谢谢！！！***
+
+***如果你喜欢这个项目请给一个⭐，谢谢!***
+
+***Please give me a Star if you like this project.Thank you so much.***
+
 ## 简介
     企业管理平台。
     推荐浏览器：Google Chrome
