@@ -1,3 +1,9 @@
+/**
+ * @author M
+ * @E-mail mpw0311@163.com
+ * @version  1.0.0
+ * @description  菜单组件
+ */
 import React, { PureComponent } from 'react';
 import { Menu } from 'antd';
 import { Link } from 'dva/router';

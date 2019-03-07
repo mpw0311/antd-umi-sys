@@ -1,3 +1,9 @@
+/**
+ * @author M
+ * @E-mail mpw0311@163.com
+ * @version  1.0.0
+ * @description  全局loading，用于页面加载时
+ */
 import React from 'react';
 import { Spin } from 'antd';
 import styles from './index.less';

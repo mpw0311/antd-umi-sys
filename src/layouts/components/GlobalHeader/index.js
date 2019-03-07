@@ -1,3 +1,9 @@
+/**
+ * @author M
+ * @E-mail mpw0311@163.com
+ * @version  1.0.0
+ * @description  layout header组件
+ */
 import User from '../GlobalUserCenter';
 import Search from '../GlobalSearch';
 import Notice from '../Notice';
