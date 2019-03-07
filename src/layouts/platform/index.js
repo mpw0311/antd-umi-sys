@@ -2,7 +2,7 @@
  * @author M
  * @E-mail mpw0311@163.com
  * @version  1.0.0
- * @description  layout布局
+ * @description  Platform Layout
  */
 import { PureComponent } from 'react';
 import { connect } from 'dva';
@@ -17,6 +17,7 @@ import Authorized from '../components/Authorized';
 import { query } from '../constant';
 import HeaderContent from './header';
 import Logo from './logo';
+import StartedModal from './startedModal';
 import styles from './index.less';
 
 const { Header, Sider, Content } = Layout;
@@ -49,7 +50,7 @@ class Index extends PureComponent {
         this.state = {
             collapsed: collapsed,
             theme: 'light',
-            menuTheme: 'dark'
+            menuTheme: 'dark',
         };
     };
     componentDidMount() {
@@ -158,6 +159,7 @@ class Index extends PureComponent {
                 {params => (
                     <Context.Provider value={this.getContext(params)}>
                         <div className={classNames(styles.screen, params)}>{layout}</div>
+                        <StartedModal />
                     </Context.Provider>
                 )}
             </ContainerQuery>
