@@ -33,6 +33,7 @@ class Index extends PureComponent {
                     searchProps={{ show: true }}
                     download={{ show: true, handleClick }}
                     headerStyle={{ marginTop: 15 }}
+                    
                 />
             </Fragment>
         );
