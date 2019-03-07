@@ -1,7 +1,7 @@
-import { _formatNumer, _isData, _toDataset } from '..';
-// import renderer from 'react-test-renderer';
-
-describe('methods', () => {
+import Basic from './index';
+import renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
+describe('Basic', () => {
     const data = {
         columns: [
             {
@@ -52,24 +52,16 @@ describe('methods', () => {
             },
         ]
     };
-    it('_formatNumer', () => {
-        expect(_formatNumer(10000000000)).toBe('10,000,000,000');
-        expect(_formatNumer(10000000)).toBe('10,000,000');
-        expect(_formatNumer(10000)).toBe('10,000');
-        expect(_formatNumer(1000)).toBe('1,000');
-        expect(_formatNumer(1000.12)).toBe('1,000.12');
-        expect(_formatNumer(100)).toBe('100');
-        expect(_formatNumer([])).toEqual([]);
-    });
-    it('_isData', () => {
-        expect(_isData(data)).toBe(true);
-        expect(_isData({
-            columns: [],
-            rows: []
-        })).toBe(false);
-        expect(_isData({})).toBe(false);
-    });
-    it('_toDataset', () => {
-        expect(_toDataset(data)).toEqual([["分类", "2015", "2016", "2017"], ["Matcha Latte", 43.3, 85.8, 93.7], ["Milk Tea", 83.1, 73.4, 55.1], ["Cheese Cocoa", 86.4, 65.2, 82.5], ["Walnut Brownie", 72.4, 53.9, 39.1]]);
+    test('Render B_basic', () => {
+        const setttings = {
+            radius: '55%',
+            center: ['40%', '50%'],
+        };
+        const component = mount(<Basic type={'pie'} data={data} height={300} seriesSettings={setttings} />);
+        expect(component.exists()).toBe(true);
+        expect(component.find('.echarts-for-react').length).toBe(1);
+        expect(component.getDOMNode().style.height).toBe('300px');
+        expect(component.props().loading).toBe(false);
+        expect(component.props().type.toLowerCase()).toBe('pie');
     });
 });

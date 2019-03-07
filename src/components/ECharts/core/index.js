@@ -1,12 +1,14 @@
 /**
- * author：M
- * E-mail: mpw0311@163.com
+ * @author M
+ * @E-mail  mpw0311@163.com
+ * @version  1.0.0
+ * @description 
  */
 import { PureComponent } from 'react';
 import ReactEcharts from 'echarts-for-react';
 import PropTypes from 'prop-types';
-import Context from '@context';
-import chartConfig from '../config/settings';
+// import Context from '@context';
+import chartConfig from '../config';
 
 let timer = null;
 export default class Chart extends PureComponent {
@@ -30,26 +32,25 @@ export default class Chart extends PureComponent {
     render() {
         const { style, height, ...rest } = this.props;
         return (
-            <Context.Consumer>
-                {({ theme }) => (
-                    <ReactEcharts
-                        {...chartConfig}
-                        {...rest}
-                        style={{
-                            width: '100%',
-                            textAlign: 'left',
-                            height,
-                            minHeight: '300px',
-                            overflow: 'hidden',
-                            ...style
-                        }}
-                        theme={theme}
-                        ref={(e) => {
-                            this.echarts_react = e;
-                        }}
-                    />
-                )}
-            </Context.Consumer>
+            // <Context.Consumer>
+            //     {({ theme }) => (
+            <ReactEcharts
+                {...chartConfig}
+                {...rest}
+                style={{
+                    width: '100%',
+                    textAlign: 'left',
+                    height,
+                    minHeight: '300px',
+                    ...style
+                }}
+                // theme={theme}
+                ref={(e) => {
+                    this.echarts_react = e;
+                }}
+            />
+            //     )}
+            // </Context.Consumer>
         );
     }
 }
@@ -78,4 +79,4 @@ Chart.propTypes = {
     onEvents: PropTypes.object,
     //the opts of echarts. object, will be used when initial echarts instance by echarts.init. Document here.
     opts: PropTypes.object,
-}
+};

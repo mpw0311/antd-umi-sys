@@ -1,17 +1,21 @@
 import { connect } from 'dva';
 import { Charts, Page } from '@components';
 import View from './components/view';
-// import styles from './index.less';
-
-const {
+import {
     Line,
     Bar,
+    Area,
+ } from '@components/Echarts';
+
+const {
+    // Line,
+    // Bar,
+    // Area,
+    Pie,
     BarWaterfall,
     ScatterAqiColor,
-    Pie,
     PieCustom,
     PieNest,
-    Area,
     Sankey,
     Radar,
     ChinaMap,

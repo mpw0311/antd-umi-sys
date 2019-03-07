@@ -1,6 +1,8 @@
 /**
- * author：M
- * E-mail: mpw0311@163.com
+ * @author M
+ * @E-mail  mpw0311@163.com
+ * @version  1.0.0
+ * @description 
  */
 export default (type) => {
     const _type = type.toLowerCase();
@@ -10,4 +12,4 @@ export default (type) => {
         default:
             return type;
     }
-}
+};

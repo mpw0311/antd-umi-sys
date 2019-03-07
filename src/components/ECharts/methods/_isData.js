@@ -1,7 +1,10 @@
 import { isObject, isArray } from 'lodash';
-export default (data) => {
+export default (data, dataType) => {
     if (!isObject(data)) {
         return false;
+    }
+    if (dataType === 'special') {
+        return true;
     }
     if (!isArray(data.columns) || !isArray(data.rows)) {
         return false;
@@ -10,4 +13,4 @@ export default (data) => {
         return false;
     }
     return true;
-}
+};
