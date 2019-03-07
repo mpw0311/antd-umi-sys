@@ -1,7 +1,7 @@
 /**
  * @author M
  * @email mpw0311@163.com
- * @version 1.0.0
+ * @version 1.1.0
  * @description datatable组件
  */
 import { PureComponent } from 'react';
