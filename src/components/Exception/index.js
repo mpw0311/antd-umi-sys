@@ -1,6 +1,6 @@
 /**
  * @author M
- * @E-mail mpw0311@163.com
+ * @email mpw0311@163.com
  * @version  1.0.0
  * @description  异常处理页面403、404、500
  */

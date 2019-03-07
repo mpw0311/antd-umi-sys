@@ -36,6 +36,7 @@ export default class Started extends PureComponent {
                 onOk={this.giveStar}
                 onCancel={this.handleCancel}
             >
+                {/* eslint-disable-next-line */}
                 <p>如果你喜欢这个项目请给一个⭐，谢谢!</p>
                 <p>Please&nbsp;give&nbsp;me a Star if you like this&nbsp;project.Thank you so much.</p>
             </Modal>

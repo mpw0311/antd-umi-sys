@@ -1,6 +1,6 @@
 /**
  * @author M
- * @E-mail mpw0311@163.com
+ * @email mpw0311@163.com
  * @version  1.0.0
  * @description  icon组件，兼容iconfont.cn/提供的标签
  * @link https://www.iconfont.cn
