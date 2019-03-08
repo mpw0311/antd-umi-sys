@@ -56,7 +56,7 @@ const menuData = [
     },
     {
         title: "请给star",
-        key: "chartView",
+        key: "github",
     },
 ];
 const data = Mock.mock({

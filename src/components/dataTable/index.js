@@ -71,7 +71,7 @@ export default class DataTable extends PureComponent {
                         total,
                         ...pagination
                     }}
-                    footer={showFooter && (() => (<TableFooter data={data} />))}
+                    footer={showFooter === true ? (() => (<TableFooter data={data} />)) : undefined}
                     {...rest}
                 />
             </div>
