@@ -57,9 +57,12 @@ export default class Exception extends PureComponent {
 }
 Exception.propTypes = {
     backText: PropTypes.string,
-    type: PropTypes.string,
+    type: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]),
     title: PropTypes.string,
     desc: PropTypes.string,
-    redirect: PropTypes.string,
+    redirect: PropTypes.object,
     img: PropTypes.string
 };
