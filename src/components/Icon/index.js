@@ -7,7 +7,7 @@
  */
 import { Icon } from 'antd';
 import { iconUrl } from '@config';
-
+import PropTypes from 'prop-types';
 function Index(props) {
     const { type = "bars", style = {}, spin = false } = props;
     if (type.indexOf("icon") > -1) {
@@ -25,3 +25,11 @@ function Index(props) {
     }
 }
 export default Index;
+Index.propTypes = {
+    //icon类型
+    type: PropTypes.string,
+    //icon 样式
+    style: PropTypes.object,
+    //是否加载中
+    spin: PropTypes.bool,
+};

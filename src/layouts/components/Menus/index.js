@@ -1,7 +1,7 @@
 /**
  * @author M
  * @email mpw0311@163.com
- * @version  1.0.0
+ * @version  1.1.0
  * @description  菜单组件
  */
 import React, { PureComponent } from 'react';
@@ -9,9 +9,10 @@ import { Menu } from 'antd';
 import { Link } from 'dva/router';
 import { connect } from 'dva';
 import isEqual from 'lodash/isEqual';
+import PropTypes from 'prop-types';
 import { Icon, Consumer } from '@components';
 import memoizeOne from 'memoize-one';
-import { queryKeysByPath } from './_';
+import { queryKeysByPath, testMenusData } from './_';
 
 const { SubMenu, Item } = Menu;
 
@@ -30,7 +31,7 @@ class MainMenu extends PureComponent {
     const { mode } = this.props;
     return rows.map((row) => {
       if (row === undefined) return false;
-      const { title: name, link = "", key = link, query, icon = "bars", children, ...restState } = row;
+      const { title: name, link = "", key = link, query, icon = "bars", children, target = '_blank', ...restState } = row;
       if (children && children.length > 0) {
         const subMenu = self.renderMenu(children, pathtitles.concat(name));
         return (
@@ -50,7 +51,7 @@ class MainMenu extends PureComponent {
               key={href.slice(-5)}
               text={name}
             >
-              <a href={href}>
+              <a href={href} target={target}>
                 <Icon type={icon} />
                 <span>{name}</span>
               </a>
@@ -91,3 +92,13 @@ class MainMenu extends PureComponent {
   }
 }
 export default connect(({ menu: { menusData } }) => ({ menusData }))(Consumer(MainMenu));
+
+MainMenu.propTypes = {
+  menusData: PropTypes.arrayOf(function (propValue, key, componentName, location, propFullName) {
+    const err = () => new Error(
+      'Invalid prop `' + propFullName + '` supplied to' +
+      ' `' + componentName + '`. Validation failed.'
+    );
+    testMenusData(propValue[key], err);
+  })
+}
