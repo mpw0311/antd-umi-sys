@@ -7,7 +7,7 @@
 export default (props) => {
     const { tooltip, showTooltip } = props;
     return {
-        shadow: showTooltip,
+        show: showTooltip,
         ...tooltip
     };
 };

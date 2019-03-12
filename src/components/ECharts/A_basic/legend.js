@@ -5,10 +5,15 @@
  * @description 
  */
 export default (props) => {
-    const { legend, showLegend } = props;
+    const { legend, legendOrient, showLegend, legendLeft, legendRight, legendTop, legendBottom } = props;
 
     return {
         show: showLegend,
+        left: legendLeft,
+        right: legendRight,
+        top: legendTop,
+        bottom: legendBottom,
+        orient: legendOrient,
         ...legend
     };
 };

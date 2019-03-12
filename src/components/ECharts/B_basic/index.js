@@ -13,6 +13,7 @@ import getToolbox from './toolbox';
 import getLegend from './legend';
 import getDataset from './dataset';
 import getSeries from './series';
+import getTitle from './title';
 class BasicChart extends PureComponent {
     static defaultProps = {
         height: '100%',
@@ -51,6 +52,7 @@ class BasicChart extends PureComponent {
             );
         }
         const option = {
+            title: getTitle(this.props),
             tooltip: getTooltip(this.props),
             toolbox: getToolbox(this.props),
             legend: getLegend(this.props),
@@ -72,6 +74,10 @@ class BasicChart extends PureComponent {
 export default BasicChart;
 
 BasicChart.propTypes = {
+    //组件标题配置项
+    title: PropTypes.object,
+    //组件标题
+    titleText: PropTypes.string,
     //支持的图形类型
     type: PropTypes.oneOf(['funnel', 'pie', 'sankey']),
     //数据格式校验
@@ -84,14 +90,22 @@ BasicChart.propTypes = {
     style: PropTypes.object,
     //是否显示正在加载中
     loading: PropTypes.bool,
-    //图形标题
-    title: PropTypes.string,
     //可以传入tooltip配置，校验
     tooltip: PropTypes.object,
     //是否显示tootip
     showTooltip: PropTypes.bool,
     //图形图例配置项
     legend: PropTypes.object,
+    //图例列表的布局朝向。
+    legendOrient: PropTypes.oneOf(['horizontal', 'vertical']),
+    //图例组件离容器左侧的距离。
+    legendLeft: PropTypes.oneOf(['left', 'right', 'center']),
+    //图例组件离容器右侧的距离。
+    legendRight: PropTypes.oneOf(['left', 'right', 'center']),
+    //图例组件离容器上侧的距离。
+    legendTop: PropTypes.oneOf(['top', 'bootom', 'middle']),
+    //图例组件离容器底侧的距离。
+    legendBottom: PropTypes.oneOf(['top', 'bootom', 'middle']),
     //是否显示图例
     showLegend: PropTypes.bool,
     //工具栏配置项

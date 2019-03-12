@@ -7,7 +7,7 @@
 import { PureComponent } from 'react';
 import ReactEcharts from 'echarts-for-react';
 import PropTypes from 'prop-types';
-// import Context from '@context';
+import Context from '@context';
 import chartConfig from '../config';
 
 let timer = null;
@@ -32,25 +32,25 @@ export default class Chart extends PureComponent {
     render() {
         const { style, height, ...rest } = this.props;
         return (
-            // <Context.Consumer>
-            //     {({ theme }) => (
-            <ReactEcharts
-                {...chartConfig}
-                {...rest}
-                style={{
-                    width: '100%',
-                    textAlign: 'left',
-                    height,
-                    minHeight: '300px',
-                    ...style
-                }}
-                // theme={theme}
-                ref={(e) => {
-                    this.echarts_react = e;
-                }}
-            />
-            //     )}
-            // </Context.Consumer>
+            <Context.Consumer>
+                {({ theme }) => (
+                    <ReactEcharts
+                        {...chartConfig}
+                        {...rest}
+                        style={{
+                            width: '100%',
+                            textAlign: 'left',
+                            height,
+                            minHeight: '300px',
+                            ...style
+                        }}
+                        theme={theme}
+                        ref={(e) => {
+                            this.echarts_react = e;
+                        }}
+                    />
+                )}
+            </Context.Consumer>
         );
     }
 }
