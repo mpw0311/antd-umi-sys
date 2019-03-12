@@ -16,7 +16,7 @@ export default (props) => {
         type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
     };
     return {
-        shadow: showTooltip,
+        show:showTooltip,
         trigger: 'axis',
         axisPointer: axisPointer === 'cross' ? cross : axisPointer === 'shadow' ? shadow : undefined,
         ...tooltip

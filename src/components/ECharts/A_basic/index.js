@@ -16,6 +16,7 @@ import getXAxis from './xAxis';
 import getYAxis from './yAxis';
 import getSeries from './series';
 import getGrid from './grid';
+import getTitle from './title';
 class BasicChart extends PureComponent {
     static defaultProps = {
         height: '100%',
@@ -25,6 +26,7 @@ class BasicChart extends PureComponent {
         showTooltip: true,
         axisPointer: 'shadow',
         showLegend: true,
+        legendOrient: 'horizontal',
         seriesLayoutBy: 'row',
         seriesSettings: {},
         showY2: false,
@@ -65,6 +67,7 @@ class BasicChart extends PureComponent {
             );
         }
         const option = {
+            title: getTitle(this.props),
             tooltip: getTooltip(this.props),
             toolbox: getToolbox(this.props),
             legend: getLegend(this.props),
@@ -89,6 +92,10 @@ class BasicChart extends PureComponent {
 export default BasicChart;
 
 BasicChart.propTypes = {
+    //组件标题配置项
+    title: PropTypes.object,
+    //组件标题
+    titleText: PropTypes.string,
     //调色盘颜色列表
     color: PropTypes.array,
     //支持的图形类型
@@ -100,10 +107,9 @@ BasicChart.propTypes = {
     }),
     //echart组件div样式
     style: PropTypes.object,
+
     //是否显示正在加载中
     loading: PropTypes.bool,
-    //图形标题
-    title: PropTypes.string,
     //可以传入tooltip配置，校验
     tooltip: PropTypes.object,
     //是否显示tootip
@@ -114,6 +120,16 @@ BasicChart.propTypes = {
     legend: PropTypes.object,
     //是否显示图例
     showLegend: PropTypes.bool,
+    //图例列表的布局朝向。
+    legendOrient: PropTypes.oneOf(['horizontal', 'vertical']),
+    //图例组件离容器左侧的距离。
+    legendLeft: PropTypes.oneOf(['left', 'right', 'center']),
+    //图例组件离容器右侧的距离。
+    legendRight: PropTypes.oneOf(['left', 'right', 'center']),
+    //图例组件离容器上侧的距离。
+    legendTop: PropTypes.oneOf(['top', 'bootom', 'middle']),
+    //图例组件离容器底侧的距离。
+    legendBottom: PropTypes.oneOf(['top', 'bootom', 'middle']),
     //直角坐标系内绘图网格配置
     grid: PropTypes.object,
     //x轴配置
@@ -129,6 +145,10 @@ BasicChart.propTypes = {
     seriesSettings: PropTypes.object,
     //指定 dataset 的列（column）还是行（row）映射为图形系列（series）
     seriesLayoutBy: PropTypes.oneOf(['column', 'row']),
+    //y轴name
+    YName: PropTypes.string,
+    //y2轴name
+    Y2Name: PropTypes.string,
     //y轴单位
     YUnit: PropTypes.string,
     //是否显示y2轴

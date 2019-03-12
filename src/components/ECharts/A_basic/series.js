@@ -8,25 +8,20 @@ import getType from './type';
 export default (props) => {
     const { series, data: { rows }, type, seriesLayoutBy, seriesSettings, showY2, Y2Series, stack, showLabel, labelPosition } = props;
     const _geySeries = () => {
-        const _series = rows.map((item, i) => {
-            if (i === 0) {
-                return undefined;
-            } else {
-                return {
-                    type: getType(type),
-                    stack: stack === true ? '总量' : null,
-                    ...seriesSettings,
-                    seriesLayoutBy,
-                    label: {
-                        normal: {
-                            show: showLabel,
-                            position: labelPosition
-                        }
+        const _series = rows.map(() => {
+            return {
+                type: getType(type),
+                stack: stack === true ? '总量' : null,
+                ...seriesSettings,
+                seriesLayoutBy,
+                label: {
+                    normal: {
+                        show: showLabel,
+                        position: labelPosition
                     }
-                };
-            }
-        })
-            .filter(item => item !== undefined);
+                }
+            };
+        });
         if (showY2 === true) {
             Y2Series.forEach(item => {
                 const { type, index } = item;
