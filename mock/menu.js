@@ -32,7 +32,7 @@ const menuData = [
     },
     {
         title: "echarts组件",
-        key: "chartView",
+        key: "echarts",
     },
     {
         title: "d3.js组件",

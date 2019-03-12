@@ -29,7 +29,8 @@ class Page extends PureComponent {
             description,
             showHeader,
             flex,
-            flattenMenuData
+            flattenMenuData,
+            style
         } = this.props;
         const childStyle = flex === true ? { display: 'flex' } : {};
         return (
@@ -52,7 +53,8 @@ class Page extends PureComponent {
                             className={styles.children}
                             style={{
                                 display: flex && 'flex',
-                                ...childStyle
+                                ...childStyle,
+                                ...style
                             }}>
                             {loading ? <Loader spinning /> : children}
                         </div>
