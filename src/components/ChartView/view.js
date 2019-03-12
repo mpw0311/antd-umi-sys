@@ -20,7 +20,7 @@ export default class PageMenu extends PureComponent {
         }
     }
     render() {
-        const { children, type, name } = this.props;
+        const { children, type } = this.props;
         const { data } = this.state;
         const handleBlur = (data) => {
             this.setState({
