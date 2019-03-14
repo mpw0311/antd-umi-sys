@@ -20,14 +20,14 @@ class Index extends PureComponent {
             sm: 24,
             md: 12,
             lg: 12,
-            xl: 6
+            xl: 5
         };
         return (
             <Card>
                 <Account value={account} onSubmit={this.handleSubmit} />
                 <Divider />
-                <Row gutter={16} justify={'center'} style={{ textAlign: 'center', padding: '10px 20px', }}>
-                    <Col {...layout} >
+                <Row type={'flex'} justify={'space-between'} style={{ textAlign: 'center', padding: '10px 20px', }}>
+                    <Col {...layout} xl={7}>
                         <Card style={{ textAlign: 'left', minHeight: 140 }}>
                             <Meta
                                 avatar={<Avatar size={64} src={avatar_url} />}
