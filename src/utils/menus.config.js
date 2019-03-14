@@ -1,15 +1,15 @@
 export default [
     {
+        title: "gitDataV",
+        link: "/sys/github",
+        key: "gitDataV",
+        icon: "github"
+    },
+    {
         title: "地域分析",
         link: "/sys/regionalAnalysis",
         key: "regionalAnalysis",
         icon: "idcard"
-    },
-    {
-        title: "github",
-        link: "/sys/github",
-        key: "github",
-        icon: "github"
     },
     {
         title: "用户分析",

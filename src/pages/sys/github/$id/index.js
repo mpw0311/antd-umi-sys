@@ -17,7 +17,7 @@ class Index extends PureComponent {
         return (
             <Page
                 loading={false}
-                pathtitles={[{ title: 'github', link: '/sys/github', icon: 'github' }, userName]}
+                pathtitles={[{ title: 'gitDataV', link: '/sys/github', icon: 'github' }, userName]}
                 title={`${userName}详情`}
             >
                 <div className={styles.normal}>

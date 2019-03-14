@@ -11,7 +11,7 @@ class Index extends PureComponent {
         return (
             <Page
                 pathtitles={[{
-                    title: 'github',
+                    title: 'gitDataV',
                     icon: 'github'
                 }]}
                 style={{
