@@ -13,10 +13,10 @@ module.exports = {
         state: {}
     },
     sysDefultPage: {
-        pathname: '/sys/regionalAnalysis',
+        pathname: '/sys/github',
         state: {
-            key: 'regionalAnalysis',
-            pathtitles: ['地域分析'],
+            key: 'gitDataV',
+            pathtitles: [{ title: 'gitDataV', icon: 'github' }],
         }
     },
     frameDefultPage: {
