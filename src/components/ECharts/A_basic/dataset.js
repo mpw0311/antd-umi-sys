@@ -4,10 +4,9 @@
  * @version  1.0.0
  * @description 
  */
-import { _toDataset } from '../methods';
 export default (props) => {
-    const { data } = props;
-    const source = _toDataset(data);
+    const { source } = props;
+    console.log(JSON.stringify(source, null, 2));
     return {
         source
     };

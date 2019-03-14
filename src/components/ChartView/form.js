@@ -81,7 +81,8 @@ function MyForm(props) {
             'grid',
             'tooltip',
             'toolbox',
-            'axis',
+            'xAxis',
+            'yAxis',
             'series'
         ],
         "B": [

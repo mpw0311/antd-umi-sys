@@ -72,9 +72,7 @@
             "des": "图例组件离容器上侧的距离"
         }
     ],
-    "grid": [
-        
-    ],
+    "grid": [],
     "tooltip": [
         {
             "name": "showTooltip",
@@ -82,6 +80,16 @@
             "type": "bool",
             "value": true,
             "des": "是否显示tootip"
+        },
+        {
+            "name": "axisPointer",
+            "component": "Select",
+            "type": "array",
+            "value": [
+                "shadow",
+                "cross"
+            ],
+            "des": "axisPointer类型"
         }
     ],
     "toolbox": [
@@ -142,17 +150,7 @@
             "des": "保存为图片"
         }
     ],
-    "axis": [
-        {
-            "name": "axisPointer",
-            "component": "Select",
-            "type": "array",
-            "value": [
-                "shadow",
-                "cross"
-            ],
-            "des": "axisPointer类型"
-        },
+    "xAxis": [
         {
             "name": "xAxis",
             "component": "TextArea",
@@ -160,6 +158,22 @@
             "value": {},
             "des": "x轴配置"
         },
+        {
+            "name": "interval",
+            "component": "Input",
+            "type": "text",
+            "value": "auto",
+            "des": "强制设置坐标轴分割间隔"
+        },
+        {
+            "name": "xAxisRotate",
+            "component": "Input",
+            "type": "number",
+            "value": "0",
+            "des": "刻度标签旋转的角度"
+        }
+    ],
+    "yAxis": [
         {
             "name": "yAxis",
             "component": "TextArea",
@@ -169,13 +183,6 @@
         },
         {
             "name": "YName",
-            "component": "Input",
-            "type": "string",
-            "value": "",
-            "des": "y轴name"
-        },
-        {
-            "name": "Y2Name",
             "component": "Input",
             "type": "string",
             "value": "",
@@ -194,6 +201,13 @@
             "type": "bool",
             "value": false,
             "des": "是否显示y2轴"
+        },
+        {
+            "name": "Y2Name",
+            "component": "Input",
+            "type": "string",
+            "value": "",
+            "des": "y轴name"
         },
         {
             "name": "Y2Unit",

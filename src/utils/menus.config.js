@@ -6,6 +6,12 @@ export default [
         icon: "idcard"
     },
     {
+        title: "github",
+        link: "/sys/github",
+        key: "github",
+        icon: "github"
+    },
+    {
         title: "用户分析",
         link: "/sys/users",
         key: "users",
