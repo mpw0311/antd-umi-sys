@@ -1,0 +1,32 @@
+{
+    "columns": [
+        {
+            "field": "name",
+            "name": "分类",
+            "type": "string"
+        },
+        {
+            "field": "value",
+            "name": "2015",
+            "type": "number"
+        }
+    ],
+    "rows": [
+        {
+            "name": "Matcha Latte",
+            "value": 43.3
+        },
+        {
+            "name": "Milk Tea",
+            "value": 83.1
+        },
+        {
+            "name": "Cheese Cocoa",
+            "value": 86.4
+        },
+        {
+            "name": "Walnut Brownie",
+            "value": 72.4
+        }
+    ]
+}

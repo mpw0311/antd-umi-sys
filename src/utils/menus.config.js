@@ -6,6 +6,12 @@ export default [
         icon: "idcard"
     },
     {
+        title: "github",
+        link: "/sys/github",
+        key: "github",
+        icon: "github"
+    },
+    {
         title: "用户分析",
         link: "/sys/users",
         key: "users",
@@ -16,12 +22,6 @@ export default [
         key: "yonghuxingwei",
         icon: "contacts",
         children: [
-            {
-                title: "test",
-                link: "/sys/test",
-                key: "test",
-                icon: "user"
-            },
             {
                 title: "路径分析",
                 link: "/sys/pathAnalysis",
@@ -56,8 +56,8 @@ export default [
     },
     {
         title: "echarts组件",
-        link: "/sys/chartView",
-        key: "chartView",
+        link: "/sys/echarts",
+        key: "echarts",
         icon: "line-chart"
     },
     {

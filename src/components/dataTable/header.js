@@ -56,7 +56,7 @@ export default class DataTable extends PureComponent {
             onSearch={onSearch}
         />;
         const down = <Button onClick={handleClick}>导出数据</Button>;
-        const layout1 = <Row style={{ margin: '5px 0 2px 0', ...headerStyle }}>
+        const layout1 = <Row style={{ margin: '5px 0 4px 0', ...headerStyle }}>
             <Col span={12}>
                 {selectShow ? tableSelect : ''}
             </Col>
@@ -64,7 +64,7 @@ export default class DataTable extends PureComponent {
                 {searchShow ? search : ''}
             </Col>
         </Row>;
-        const layout2 = <Row style={{ margin: '5px 0 2px 0', ...headerStyle }}>
+        const layout2 = <Row style={{ margin: '5px 0 4px 0', ...headerStyle }}>
             <Col span={12}>
                 {searchShow ? search : ''}
             </Col>

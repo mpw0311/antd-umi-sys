@@ -5,10 +5,16 @@
  * @description 
  */
 export default (props) => {
-    const { xAxis } = props;
-
+    const { xAxis, xAxisRotate, interval } = props;
     return {
         type: 'category',
+        axisLabel: {
+            interval,
+            rotate: xAxisRotate,
+            // formatter: function (value, index) {
+            //     return value.length > 10 ? value.slice(0, 10) + '…' : value;
+            // }
+        },
         ...xAxis
     };
 };
