@@ -1,10 +1,10 @@
 import { Fragment } from 'react';
 import { Card } from 'antd';
 import { Link } from 'dva/router';
-import { Line, Bar } from '@components/Echarts';
+import { Bar } from '@components/Echarts';
 import { DataTable } from '@components';
 
-export default ({ repos }) => {
+export default ({ repos, account }) => {
     const data = {
         columns: [
             {
@@ -38,7 +38,7 @@ export default ({ repos }) => {
                 "field": "name",
                 "name": "repos",
                 "type": "number",
-                render: text => <Link to={`/sys/github/${text}`}>{text}</Link>,
+                render: text => <Link to={{ pathname: `/sys/github/${account}`, query: { _n: text } }}>{text}</Link>,
             },
             {
                 "field": "stargazers_count",
@@ -115,7 +115,10 @@ export default ({ repos }) => {
                     xAxisRotate={-30}
                 />
             </Card>
-            <Card style={{ marginTop: 20 }}>
+            <Card
+                title="仓库列表"
+                style={{ marginTop: 20 }}
+            >
                 <DataTable
                     data={dataTable}
                     searchProps={{ show: true }}

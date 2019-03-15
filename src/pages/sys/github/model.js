@@ -3,17 +3,17 @@ import * as api from './service';
 export default {
     namespace: 'github',
     state: {
-        account: 'mpw0311',
+        account: undefined,
         accountInfo: {},
         repos: [],
-
     },
     subscriptions: {
         setupHistory({ dispatch, history }) {
             history.listen(({ pathname }) => {
-                if (pathname === '/sys/github') {
+                if (/^\/sys\/github$/.test(pathname)) {
                     dispatch({
-                        type: 'getAccountInfo', payload: {
+                        type: 'getAccountInfo',
+                        payload: {
                             account: 'mpw0311'
                         }
                     });
@@ -22,19 +22,22 @@ export default {
         },
     },
     effects: {
-        *getAccountInfo({ payload }, { call, put }) {
+        *getAccountInfo({ payload }, { call, put, select }) {
             const { account } = payload;
-            const accountInfo = yield call(api.getAccountInfo, payload);
-            const { repos_url } = accountInfo;
-            const repos = yield call(api.getData, { url: repos_url });
-            yield put({
-                type: 'save',
-                payload: {
-                    accountInfo,
-                    repos,
-                    account
-                },
-            });
+            let preAccount = yield select(({ github }) => github.account);
+            if (preAccount !== account) {
+                const accountInfo = yield call(api.getAccountInfo, payload);
+                const { repos_url } = accountInfo;
+                const repos = yield call(api.getData, { url: repos_url });
+                yield put({
+                    type: 'save',
+                    payload: {
+                        accountInfo,
+                        repos,
+                        account
+                    },
+                });
+            }
         }
     },
 

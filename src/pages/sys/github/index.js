@@ -1,5 +1,6 @@
 import { PureComponent } from 'react';
 import { connect } from 'dva';
+import { formatMessage } from 'umi/locale';
 import { Page } from '@components';
 import Header from './components/header';
 import Content from './components/content';
@@ -7,7 +8,7 @@ import Content from './components/content';
 class Index extends PureComponent {
 
     render() {
-        const { repos, loading } = this.props;
+        const { loading } = this.props;
         return (
             <Page
                 pathtitles={[{
@@ -19,11 +20,11 @@ class Index extends PureComponent {
                 }}
                 title={'GitDataV'}
                 loading={loading}
-                description={'一个用react+umi构建的Github"可视化大数据平台"。通过它，您可以更加直观看到您在Github里的一些数据情况'}
+                description={formatMessage({ id: 'gitDataV.desc' })}
             >
 
                 <Header />
-                <Content repos={repos} />
+                <Content {...this.props} />
             </Page>
         );
     }

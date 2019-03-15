@@ -14,7 +14,12 @@ class Index extends PureComponent {
     }
     render() {
         const { form, value: defaultValue } = this.props;
-        const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched, } = form;
+        const {
+            getFieldDecorator,
+            //  getFieldsError,
+            //   getFieldError, 
+            //   isFieldTouched, 
+        } = form;
         return (
             <Form layout="inline" onSubmit={this.handleSubmit}>
                 <Form.Item
