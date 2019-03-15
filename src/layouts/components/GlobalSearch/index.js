@@ -5,7 +5,7 @@
  * @description  全局菜单搜索组件
  */
 import React, { PureComponent } from 'react';
-import { routerRedux } from 'umi';
+import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { HeaderSearch, Consumer } from '@components';
 import memoizeOne from 'memoize-one';
