@@ -5,7 +5,7 @@
  * @version  1.0.0
  * @description  全局model
  */
-import { routerRedux } from 'umi';
+import { routerRedux } from 'dva/router';
 import { message } from 'antd';
 import * as api from '@services';
 export default {

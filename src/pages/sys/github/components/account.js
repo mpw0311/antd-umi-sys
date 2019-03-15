@@ -17,15 +17,10 @@ class Index extends PureComponent {
         const { form, value: defaultValue } = this.props;
         const {
             getFieldDecorator,
-            //  getFieldsError,
-            //   getFieldError, 
-            //   isFieldTouched, 
         } = form;
         return (
             <Form layout="inline" onSubmit={this.handleSubmit}>
                 <Form.Item
-                // validateStatus={userNameError ? 'error' : ''}
-                // help={userNameError || ''}
                 >
                     {getFieldDecorator('account', {
                         initialValue: defaultValue,
