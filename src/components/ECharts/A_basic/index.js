@@ -1,6 +1,6 @@
 /**
  * @author M
- * @E-mail  mpw0311@163.com
+ * @email mpw0311@163.com
  * @version  1.0.0
  * @description 
  */
@@ -16,6 +16,8 @@ import getXAxis from './xAxis';
 import getYAxis from './yAxis';
 import getSeries from './series';
 import getGrid from './grid';
+import getTitle from './title';
+import { _toDataset } from '../methods';
 class BasicChart extends PureComponent {
     static defaultProps = {
         height: '100%',
@@ -23,8 +25,12 @@ class BasicChart extends PureComponent {
         type: 'line',
         loading: false,
         showTooltip: true,
+        interval: 'auto',
+        xAxisRotate: 0,
         axisPointer: 'shadow',
         showLegend: true,
+        legendOrient: 'horizontal',
+        legendLeft:'center',
         seriesLayoutBy: 'row',
         seriesSettings: {},
         showY2: false,
@@ -48,6 +54,7 @@ class BasicChart extends PureComponent {
     }
     render() {
         const { data, loading, height, style, onChartReady, onEvents } = this.props;
+        const source = _toDataset(data);
         if (!_isData(data)) {
             return (
                 <div style={{
@@ -65,14 +72,15 @@ class BasicChart extends PureComponent {
             );
         }
         const option = {
+            title: getTitle(this.props),
             tooltip: getTooltip(this.props),
             toolbox: getToolbox(this.props),
             legend: getLegend(this.props),
-            dataset: getDataset(this.props),
+            dataset: getDataset({ source, ...this.props }),
             xAxis: getXAxis(this.props),
             yAxis: getYAxis(this.props),
             grid: getGrid(this.props),
-            series: getSeries(this.props)
+            series: getSeries({ source, ...this.props })
         };
         return (
             <Chart
@@ -89,6 +97,10 @@ class BasicChart extends PureComponent {
 export default BasicChart;
 
 BasicChart.propTypes = {
+    //组件标题配置项
+    title: PropTypes.object,
+    //组件标题
+    titleText: PropTypes.string,
     //调色盘颜色列表
     color: PropTypes.array,
     //支持的图形类型
@@ -100,10 +112,9 @@ BasicChart.propTypes = {
     }),
     //echart组件div样式
     style: PropTypes.object,
+
     //是否显示正在加载中
     loading: PropTypes.bool,
-    //图形标题
-    title: PropTypes.string,
     //可以传入tooltip配置，校验
     tooltip: PropTypes.object,
     //是否显示tootip
@@ -114,10 +125,31 @@ BasicChart.propTypes = {
     legend: PropTypes.object,
     //是否显示图例
     showLegend: PropTypes.bool,
+    //图例列表的布局朝向。
+    legendOrient: PropTypes.oneOf(['horizontal', 'vertical']),
+    //图例组件离容器左侧的距离。
+    legendLeft: PropTypes.oneOf(['left', 'right', 'center']),
+    //图例组件离容器右侧的距离。
+    legendRight: PropTypes.oneOf(['left', 'right', 'center']),
+    //图例组件离容器上侧的距离。
+    legendTop: PropTypes.oneOf(['top', 'bootom', 'middle']),
+    //图例组件离容器底侧的距离。
+    legendBottom: PropTypes.oneOf(['top', 'bootom', 'middle']),
     //直角坐标系内绘图网格配置
     grid: PropTypes.object,
     //x轴配置
     xAxis: PropTypes.object,
+    //坐标轴刻度标签的显示间隔，在类目轴中有效。
+    interval: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]),
+    //刻度标签旋转的角度，在类目轴的类目标签显示不下的时候可以通过旋转防止标签之间重叠。
+    //旋转的角度从 -90 度到 90 度。
+    xAxisRotate: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]),
     //y轴配置
     yAxis: PropTypes.object,
     //图形系列(series)配置项
@@ -129,6 +161,10 @@ BasicChart.propTypes = {
     seriesSettings: PropTypes.object,
     //指定 dataset 的列（column）还是行（row）映射为图形系列（series）
     seriesLayoutBy: PropTypes.oneOf(['column', 'row']),
+    //y轴name
+    YName: PropTypes.string,
+    //y2轴name
+    Y2Name: PropTypes.string,
     //y轴单位
     YUnit: PropTypes.string,
     //是否显示y2轴

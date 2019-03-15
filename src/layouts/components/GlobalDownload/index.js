@@ -1,11 +1,11 @@
 /**
  * @author M
- * @E-mail mpw0311@163.com
+ * @email mpw0311@163.com
  * @version  1.0.0
  * @description  
  */
 import { Icon } from 'antd';
-import { Link } from 'dva/router';
+import { Link } from 'umi';
 import { Consumer } from '@components';
 
 const themeConfig = {

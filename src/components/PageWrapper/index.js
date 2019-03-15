@@ -1,6 +1,6 @@
 /**
  * @author M
- * @E-mail mpw0311@163.com
+ * @email mpw0311@163.com
  * @version  1.0.0
  * @description  页面wrapper组件
  */
@@ -29,7 +29,8 @@ class Page extends PureComponent {
             description,
             showHeader,
             flex,
-            flattenMenuData
+            flattenMenuData,
+            style
         } = this.props;
         const childStyle = flex === true ? { display: 'flex' } : {};
         return (
@@ -52,7 +53,8 @@ class Page extends PureComponent {
                             className={styles.children}
                             style={{
                                 display: flex && 'flex',
-                                ...childStyle
+                                ...childStyle,
+                                ...style
                             }}>
                             {loading ? <Loader spinning /> : children}
                         </div>

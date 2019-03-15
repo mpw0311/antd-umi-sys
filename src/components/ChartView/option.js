@@ -1,19 +1,18 @@
 import { PureComponent } from 'react';
-import { Tabs, Icon, Input, message, Checkbox } from 'antd';
-import MyFrom from './form';
+import { Tabs, Icon, Input, message } from 'antd';
+import Form from './form';
 import styles from './tab.less';
 
 const { TabPane } = Tabs;
 const { TextArea } = Input;
 export default class MyTabs extends PureComponent {
     static defaultProps = {
-        config: [],
-        rows: 14,
+        rows: 24,
         onBlur: () => { },
-        handleChange: () => { }
+        onChange: () => { },
     }
     render() {
-        const { data, config, onBlur, handleChange, rows, ...rest } = this.props;
+        const { data, onBlur, onChange, rows, type, ...rest } = this.props;
         const handleBlur = (e) => {
             const { value } = e.target;
             const res = value.replace(/｛/g, "{")
@@ -35,6 +34,7 @@ export default class MyTabs extends PureComponent {
             }
             onBlur(data);
         };
+
         const tab = (e) => {
             const { keyCode, target } = e;
             const { selectionStart, selectionEnd, value } = target;
@@ -50,12 +50,11 @@ export default class MyTabs extends PureComponent {
 
         return (
             <Tabs defaultActiveKey="1">
-                <TabPane tab={<span><Icon type="bar-chart" />数据</span>} key="1">
-                    <TextArea rows={rows} defaultValue={JSON.stringify(data)} onBlur={handleBlur} onKeyDown={tab} className={`${styles.TextArea} scrollbar`} spellCheck="false" {...rest} />
+                <TabPane tab={<span><Icon type="setting" />option</span>} key="1">
+                    <Form onChange={onChange} type={type} />
                 </TabPane>
-                <TabPane tab={<span><Icon type="setting" />option</span>} key="2">
-                    <MyFrom config={config} />
-                    {/* <TextArea rows={rows} defaultValue={'{}'} onKeyDown={tab} onBlur={() => { }} className={`${styles.TextArea} scrollbar`} spellCheck="false" disabled {...rest} /> */}
+                <TabPane tab={<span><Icon type="bar-chart" />数据</span>} key="2">
+                    <TextArea rows={rows} defaultValue={JSON.stringify(data, null, 4)} onBlur={handleBlur} onKeyDown={tab} className={`${styles.TextArea} scrollbar`} spellCheck="false" {...rest} />
                 </TabPane>
             </Tabs>
         );

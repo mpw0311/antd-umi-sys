@@ -1,11 +1,11 @@
 
 /**
  * @author M
- * @E-mail mpw0311@163.com
+ * @email mpw0311@163.com
  * @version  1.0.0
  * @description  全局model
  */
-import { routerRedux } from 'dva/router';
+import { routerRedux } from 'umi';
 import { message } from 'antd';
 import * as api from '@services';
 export default {

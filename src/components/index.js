@@ -2,7 +2,7 @@ import * as Charts from './Charts';
 import Login from './Login';
 import Register from './Register';
 import Icon from './Icon';
-import DataTable from './dataTable';
+import DataTable from './DataTable';
 import Breadcrumb from './Breadcrumb';
 import Announcement from './Announcement';
 import PageHeader from './PageHeader';

@@ -1,81 +1,16 @@
 /**
  * @author M
- * @E-mail mpw0311@163.com
- * @version  1.0.0
- * @description  表格封装组
+ * @email mpw0311@163.com
+ * @version 1.1.0
+ * @description datatable组件
  */
 import { PureComponent } from 'react';
 import { Table } from 'antd';
-import { methods } from '@utils';
-import _ from 'lodash';
-import TableHeader from './tableHeader';
-
-const { toTableData } = methods;
-const compare = (a, b, dataIndex, type) => {
-    const _type = type ? type.toLowerCase() : 'string';
-    if (_type === "string") {
-        if (a[dataIndex] > b[dataIndex]) {
-            return 1;
-        } else {
-            return -1;
-        }
-    } else if (_type === "number") {
-        return parseFloat(a[dataIndex]) - parseFloat(b[dataIndex]);
-    } else if (type === 'date') {
-        if (a[dataIndex] > b[dataIndex]) {
-            return 1;
-        } else {
-            return -1;
-        }
-    }
-};
-const getSortColumns = (columns, sortIndexs) => {
-    return columns.map(item => {
-        const { dataIndex, type } = item;
-        const res = sortIndexs.includes(dataIndex);
-        if (res === true) {
-            return {
-                ...item,
-                sorter: (a, b) => {
-                    return compare(a, b, dataIndex, type);
-                },
-            };
-        } else {
-            return item;
-        }
-    });
-};
-const getAllSortColumns = (columns) => {
-    return columns.map(item => {
-        const { dataIndex, type } = item;
-        return {
-            ...item,
-            sorter: (a, b) => {
-                return compare(a, b, dataIndex, type);
-            },
-        };
-    });
-};
-const searchTable = (dataSource, key) => {
-    if (key === undefined || key === '') {
-        return dataSource;
-    } else {
-        return _.filter(dataSource, item => {
-            for (const name in item) {
-                const v = item[name];
-                if (v === key) {
-                    return true;
-                } else if (_.isString(v) && _.includes(v, key)) {
-                    return true;
-                } else if (_.isNumber(v) && v === parseFloat(key)) {
-                    return true;
-                }
-            }
-            return false;
-        });
-    }
-};
-class DataTable extends PureComponent {
+import PropTypes from 'prop-types';
+import Header from './header';
+import TableFooter from './tableFooter';
+import { _getData } from './_';
+export default class DataTable extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -88,67 +23,68 @@ class DataTable extends PureComponent {
             }
         };
         this.handleSearch = this.handleSearch.bind(this);
+        this.handlePageChange = this.handlePageChange.bind(this);
     }
+
+    static defaultProps = {
+        data: {}, // table 数据
+        bordered: true,
+        showFooter: false,
+        sort: true, // 全排序
+        sortIndexs: [], // 列排序
+        onPageChange: () => { },//eslint-disable-line
+        columnSetting: [
+            // { width: 110 }
+        ],//配置列属性
+
+    }
+    handlePageChange = (pageSize) => {
+        const { pagination } = this.state;
+        pagination.pageSize = pageSize;
+        this.setState({
+            pagination
+        });
+    };
     handleSearch(searchKey) {
         this.setState({
             searchKey
         });
     }
-
     render() {
-        const {
-            data = {}, // table 数据
-            selectProps = {}, // select属性
-            searchProps = {}, // search属性
-            sort, // 全排序
-            sortIndexs = [], // 列排序
-            onPageChange = () => { },//eslint-disable-line
-            download = {},
-            columns: defaultColumns,
-            headerStyle = {},
-            ...restProps
-        } = this.props;
-        const { columns, dataSource } = toTableData(data);
-        const { pagination, searchKey } = this.state;
-        const initColumns = defaultColumns || columns;
-        const _columns = sort ? getAllSortColumns(initColumns) : sortIndexs.length > 0 ? getSortColumns(initColumns, sortIndexs) : initColumns;
-        const _dataSource = searchTable(dataSource, searchKey);
-        const handlePageChange = (pageSize) => {
-            const { pagination } = this.state;
-            pagination.pageSize = pageSize;
-            this.setState({
-                pagination
-            });
-        };
+        const { data, total, showFooter, ...rest } = this.props;
+        const { searchKey, pagination } = this.state;
+        const { columns, dataSource } = _getData(this.props, searchKey);
+        const onPageChange = this.handlePageChange;
         return (
             <div>
-                <TableHeader
-                    selectProps={selectProps}
-                    searchProps={searchProps}
-                    download={download}
-                    headerStyle={headerStyle}
+                <Header
+                    {...this.props}
                     handleSearch={this.handleSearch}
                 />
                 <Table
-                    columns={_columns}
-                    dataSource={_dataSource}
-                    bordered
+                    columns={columns}
+                    dataSource={dataSource}
                     pagination={{
-                        ...pagination,
                         onShowSizeChange(current, pageSize) {  //eslint-disable-line
-                            handlePageChange(pageSize);
-                            // 当几条一页的值改变后调用函数，current：改变显示条数时当前数据所在页；pageSize:改变后的一页显示条数
-                            // onPageChange(current, pageSize);
+                            onPageChange(pageSize);
                         },
-                        onChange(current, pageSize) { //eslint-disable-line 
-                            // 点击改变页数的选项时调用函数，current:将要跳转的页数
-                            // onPageChange(current, pageSize);
-                        },
+                        total,
+                        ...pagination
                     }}
-                    {...restProps}
+                    footer={showFooter === true ? (() => (<TableFooter data={data} />)) : undefined}
+                    {...rest}
                 />
             </div>
         );
     }
 }
-export default DataTable;
+DataTable.propTypes = {
+    data: PropTypes.object,
+    sort: PropTypes.bool,
+    showFooter: PropTypes.bool,
+    bordered: PropTypes.bool,
+    total: PropTypes.number,
+    sortIndexs: PropTypes.array,
+    onPageChange: PropTypes.func,
+    columnSetting: PropTypes.array,
+};

@@ -1,5 +1,11 @@
 export default [
     {
+        title: "gitDataV",
+        link: "/sys/github",
+        key: "gitDataV",
+        icon: "github"
+    },
+    {
         title: "地域分析",
         link: "/sys/regionalAnalysis",
         key: "regionalAnalysis",
@@ -16,12 +22,6 @@ export default [
         key: "yonghuxingwei",
         icon: "contacts",
         children: [
-            {
-                title: "test",
-                link: "/sys/test",
-                key: "test",
-                icon: "user"
-            },
             {
                 title: "路径分析",
                 link: "/sys/pathAnalysis",
@@ -56,8 +56,8 @@ export default [
     },
     {
         title: "echarts组件",
-        link: "/sys/chartView",
-        key: "chartView",
+        link: "/sys/echarts",
+        key: "echarts",
         icon: "line-chart"
     },
     {
@@ -105,7 +105,7 @@ export default [
     {
         title: "请给star",
         url: "https://github.com/mpw0311/antd-umi-sys",
-        key: "chartView",
+        key: "github",
         icon: "star"
     },
 ];

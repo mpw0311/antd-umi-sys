@@ -98,12 +98,12 @@ export const searchMenu = memoizeOne(_searchMenu);
 const _toTableData = (data = {}) => {
     const { columns = [], rows = [] } = data;
     const headData = columns.map(item => {
-        const { name, field, type } = item;
+        const { name, field, ...rest } = item;
         return {
             title: name,
             dataIndex: field,
             key: field,
-            type
+            ...rest
         };
     });
     const dataSource = rows.map((item, i) => {

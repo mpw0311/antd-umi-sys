@@ -1,6 +1,10 @@
 const Mock = require('mockjs');
 const menuData = [
     {
+        title: "gitDataV",
+        key: "gitDataV",
+    },
+    {
         title: "地域分析",
         key: "regionalAnalysis",
     },
@@ -32,7 +36,7 @@ const menuData = [
     },
     {
         title: "echarts组件",
-        key: "chartView",
+        key: "echarts",
     },
     {
         title: "d3.js组件",
@@ -56,7 +60,7 @@ const menuData = [
     },
     {
         title: "请给star",
-        key: "chartView",
+        key: "github",
     },
 ];
 const data = Mock.mock({

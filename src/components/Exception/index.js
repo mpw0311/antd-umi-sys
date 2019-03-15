@@ -1,16 +1,17 @@
 /**
  * @author M
- * @E-mail mpw0311@163.com
+ * @email mpw0311@163.com
  * @version  1.0.0
  * @description  异常处理页面403、404、500
  */
 import React, { PureComponent } from 'react';
-import { Link } from 'dva/router';
+import { Link } from 'umi';
 import { Button } from 'antd';
+import PropTypes from 'prop-types';
 import config from './typeConfig';
 import styles from './index.less';
 
-export default class index extends PureComponent {
+export default class Exception extends PureComponent {
     static defaultProps = {
         backText: 'back to home',
         redirect: {
@@ -54,3 +55,14 @@ export default class index extends PureComponent {
         );
     }
 }
+Exception.propTypes = {
+    backText: PropTypes.string,
+    type: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]),
+    title: PropTypes.string,
+    desc: PropTypes.string,
+    redirect: PropTypes.object,
+    img: PropTypes.string
+};

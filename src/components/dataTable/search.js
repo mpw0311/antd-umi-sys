@@ -1,5 +1,5 @@
 import { Input } from 'antd';
-import _ from 'lodash';
+import { trim } from 'lodash';
 
 function TableSearch(props) {
     const { onSearch = () => { } } = props;
@@ -9,7 +9,7 @@ function TableSearch(props) {
             onChange={e => {
                 const { target } = e;
                 const { value } = target;
-                onSearch(_.trim(value));
+                onSearch(trim(value));
             }}
             style={{ width: 200 }}
         />

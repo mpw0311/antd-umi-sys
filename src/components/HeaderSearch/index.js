@@ -1,13 +1,13 @@
 /**
  * @author M
- * @E-mail mpw0311@163.com
+ * @email mpw0311@163.com
  * @version  1.0.0
  * @description  
  */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Input, Icon, AutoComplete } from 'antd';
-import { Link } from 'dva/router';
+import { Link } from 'umi';
 import classNames from 'classnames';
 // import Debounce from 'lodash-decorators/debounce';
 // import Bind from 'lodash-decorators/bind';

@@ -1,14 +1,15 @@
 /**
  * @author M
- * @E-mail mpw0311@163.com
+ * @email mpw0311@163.com
  * @version  1.0.0
- * @description  layout布局
+ * @description  Platform Layout
  */
 import { PureComponent } from 'react';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import { Layout, BackTop, Icon } from 'antd';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import { Exception } from '@components';
 import Context from '@context';
 import Menus from '../components/Menus';
@@ -17,6 +18,7 @@ import Authorized from '../components/Authorized';
 import { query } from '../constant';
 import HeaderContent from './header';
 import Logo from './logo';
+import StartedModal from './startedModal';
 import styles from './index.less';
 
 const { Header, Sider, Content } = Layout;
@@ -36,7 +38,7 @@ const Exception403 = <Exception
     title={'403'}
     desc={'抱歉，你访问的页面没有权限'}
 />;
-class Index extends PureComponent {
+class Platform extends PureComponent {
     constructor(props) {
         super(props);
         let collapsed = false;
@@ -49,7 +51,7 @@ class Index extends PureComponent {
         this.state = {
             collapsed: collapsed,
             theme: 'light',
-            menuTheme: 'dark'
+            menuTheme: 'dark',
         };
     };
     componentDidMount() {
@@ -158,6 +160,7 @@ class Index extends PureComponent {
                 {params => (
                     <Context.Provider value={this.getContext(params)}>
                         <div className={classNames(styles.screen, params)}>{layout}</div>
+                        <StartedModal />
                     </Context.Provider>
                 )}
             </ContainerQuery>
@@ -171,4 +174,15 @@ function mapStateToProps({ global, menu, loading }) {
         loading: loading.global
     };
 }
-export default connect(mapStateToProps)(Index);
+export default connect(mapStateToProps)(Platform);
+Platform.propTypes = {
+    children: PropTypes.element.isRequired,
+    //用户信息
+    userInfo: PropTypes.object,
+    //菜单数据
+    menusData: PropTypes.arrayOf(PropTypes.object),
+    //有路由权限菜单一维数组
+    flattenMenuData: PropTypes.arrayOf(PropTypes.object),
+    //无路由权限菜单一维数组
+    diffMenuData: PropTypes.arrayOf(PropTypes.object),
+};

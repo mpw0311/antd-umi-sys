@@ -1,7 +1,7 @@
 
 /**
  * @author M
- * @E-mail mpw0311@163.com
+ * @email mpw0311@163.com
  * @version  1.0.0
  * @description  菜单栏model
  */

@@ -1,11 +1,11 @@
 /**
  * @author M
- * @E-mail mpw0311@163.com
+ * @email mpw0311@163.com
  * @version  1.0.0
  * @description  
  */
 import * as api from './service';
-import { routerRedux } from 'dva/router';
+import { routerRedux } from 'umi';
 import { encrypt } from '@utils/CryptoJS';
 
 export default {

@@ -1,11 +1,11 @@
 /**
  * @author M
- * @E-mail mpw0311@163.com
+ * @email mpw0311@163.com
  * @version  1.0.0
  * @description  用户注册组件
  */
 import { Component } from 'react';
-import { Link } from 'dva/router';
+import { Link } from 'umi';
 import { formatMessage } from 'umi/locale';
 import { Form, Input, Button, Select, Row, Col, Popover, Progress } from 'antd';
 import styles from "./index.less";

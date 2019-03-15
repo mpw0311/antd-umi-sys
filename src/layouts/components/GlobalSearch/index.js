@@ -1,11 +1,11 @@
 /**
  * @author M
- * @E-mail mpw0311@163.com
+ * @email mpw0311@163.com
  * @version  1.0.0
  * @description  全局菜单搜索组件
  */
 import React, { PureComponent } from 'react';
-import { routerRedux } from 'dva/router';
+import { routerRedux } from 'umi';
 import { connect } from 'dva';
 import { HeaderSearch, Consumer } from '@components';
 import memoizeOne from 'memoize-one';
