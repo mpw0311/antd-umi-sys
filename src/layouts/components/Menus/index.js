@@ -6,7 +6,7 @@
  */
 import React, { PureComponent } from 'react';
 import { Menu } from 'antd';
-import { Link } from 'dva/router';
+import { Link } from 'umi';
 import { connect } from 'dva';
 import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';

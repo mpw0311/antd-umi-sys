@@ -5,7 +5,7 @@
 ***Please give me a Star if you like this project.Thank you so much.***
 
 ## 简介
-    企业管理平台。
+    企业系统，数据可视化平台。
     推荐浏览器：Google Chrome
     
 ![antd-umi-sys](src/assets/demo_login.png)
