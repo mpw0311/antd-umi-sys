@@ -1,5 +1,6 @@
 import { PureComponent, Fragment } from 'react';
 import { Col, Row, Statistic, Card, Avatar, Divider } from 'antd';
+import { formatMessage } from 'umi/locale';
 import { connect } from 'dva';
 import Account from './account';
 
@@ -39,8 +40,7 @@ class Index extends PureComponent {
                     <Col  {...layout} >
                         <Card style={{ minHeight: 140 }}>
                             <Statistic
-                                title="公开仓库数"
-                                // title="repositories"
+                                title={formatMessage({ id: 'gitDataV.repositories' })}
                                 value={public_repos}
                             // suffix={'个'}
                             //   prefix={<Icon type="like" />}
@@ -50,8 +50,7 @@ class Index extends PureComponent {
                     <Col  {...layout} >
                         <Card style={{ minHeight: 140 }}>
                             <Statistic
-                                title="粉丝"
-                                // title="followers"
+                                title={formatMessage({ id: 'gitDataV.followers' })}
                                 value={followers}
                             // suffix="人"
                             />
@@ -60,8 +59,7 @@ class Index extends PureComponent {
                     <Col  {...layout} >
                         <Card style={{ minHeight: 140 }}>
                             <Statistic
-                                title="跟随"
-                                // title="following"
+                                title={formatMessage({ id: 'gitDataV.following' })}
                                 value={following}
                             // suffix="人"
                             />

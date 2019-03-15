@@ -6,7 +6,6 @@
  */
 export default (props) => {
     const { source } = props;
-    console.log(JSON.stringify(source, null, 2));
     return {
         source
     };
