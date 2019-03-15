@@ -5,7 +5,7 @@
  * @description  异常处理页面403、404、500
  */
 import React, { PureComponent } from 'react';
-import { Link } from 'dva/router';
+import { Link } from 'umi';
 import { Button } from 'antd';
 import PropTypes from 'prop-types';
 import config from './typeConfig';

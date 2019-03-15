@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Link } from 'dva/router';
+import { Link } from 'umi';
 import { Table, Pagination, Popconfirm, Button } from 'antd';
 import { Page } from '@components';
 import styles from './index.css';

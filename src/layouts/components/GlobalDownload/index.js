@@ -5,7 +5,7 @@
  * @description  
  */
 import { Icon } from 'antd';
-import { Link } from 'dva/router';
+import { Link } from 'umi';
 import { Consumer } from '@components';
 
 const themeConfig = {

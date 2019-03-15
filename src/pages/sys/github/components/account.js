@@ -1,5 +1,6 @@
 import { PureComponent } from 'react';
 import { Form, Icon, Input, Button } from 'antd';
+import { formatMessage } from 'umi/locale';
 
 class Index extends PureComponent {
     handleSubmit = (e) => {
@@ -38,7 +39,7 @@ class Index extends PureComponent {
                         type="primary"
                         htmlType="submit"
                     >
-                        查询
+                        {formatMessage({ id: 'gitDataV.submit' })}
                     </Button>
                 </Form.Item>
             </Form>

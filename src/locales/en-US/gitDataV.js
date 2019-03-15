@@ -3,5 +3,8 @@ export default {
     'gitDataV.repositories': 'repositories',
     'gitDataV.followers': 'followers',
     'gitDataV.following': 'following',
+    'gitDataV.submit': 'submit',
+    'gitDataV.repos.overview': 'GitHub repositories overview',
+    'gitDataV.repos.list': 'GitHub repositories list',
 
 }

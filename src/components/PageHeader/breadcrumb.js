@@ -1,6 +1,6 @@
 import { PureComponent } from 'react';
 import { Breadcrumb } from 'antd';
-import { Link } from 'dva/router';
+import { Link } from 'umi';
 import isEqual from 'lodash/isEqual';
 import { Icon } from '@components';
 import styles from './index.less';

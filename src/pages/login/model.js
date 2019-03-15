@@ -5,7 +5,7 @@
  * @description  
  */
 import * as api from './service';
-import { routerRedux } from 'dva/router';
+import { routerRedux } from 'umi';
 import { encrypt } from '@utils/CryptoJS';
 
 export default {

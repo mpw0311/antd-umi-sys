@@ -1,8 +1,9 @@
 import { Fragment } from 'react';
 import { Card } from 'antd';
-import { Link } from 'dva/router';
+import { Link } from 'umi';
 import { Bar } from '@components/Echarts';
 import { DataTable } from '@components';
+import { formatMessage } from 'umi/locale';
 
 export default ({ repos, account }) => {
     const data = {
@@ -103,7 +104,7 @@ export default ({ repos, account }) => {
     return (
         <Fragment>
             <Card
-                title="仓库概览"
+                title={formatMessage({ id: "gitDataV.repos.overview" })}
                 style={{ marginTop: 20 }}
             >
                 <Bar
@@ -116,7 +117,7 @@ export default ({ repos, account }) => {
                 />
             </Card>
             <Card
-                title="仓库列表"
+                 title={formatMessage({ id: "gitDataV.repos.list" })}
                 style={{ marginTop: 20 }}
             >
                 <DataTable

@@ -7,7 +7,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Input, Icon, AutoComplete } from 'antd';
-import { Link } from 'dva/router';
+import { Link } from 'umi';
 import classNames from 'classnames';
 // import Debounce from 'lodash-decorators/debounce';
 // import Bind from 'lodash-decorators/bind';
