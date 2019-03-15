@@ -23,14 +23,13 @@ class Index extends PureComponent {
     }
     render() {
         const { location: { query: { _n: name } }, repos } = this.props;
-        const pro = repos.filter(item => item.name === name);
-        const { description } = pro[0] || {};
-        const t = (<span>{name}</span>)
+        const [pro = {}] = repos.filter(item => item.name === name);
+        const { description } = pro;
         return (
             <Page
                 loading={false}
                 pathtitles={[{ title: 'gitDataV', link: '/sys/github', icon: 'github' }, name]}
-                title={t}
+                title={name}
                 description={description}
             >
                 <div className={styles.normal}>
