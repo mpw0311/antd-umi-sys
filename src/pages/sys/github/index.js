@@ -31,10 +31,11 @@ class Index extends PureComponent {
 }
 
 export default connect(({ github, loading }) => {
-    const { repos, account } = github
+    const { repos, account, received_events } = github
     return {
         repos,
         account,
+        received_events,
         loading: loading.models.github
     };
 })(Index);

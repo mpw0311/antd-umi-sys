@@ -149,5 +149,18 @@
             ],
             "pages": []
         }
+    },
+    {
+        "version": "v1.2.2",
+        "date": "2019-03-15",
+        "detail": {
+            "framework": [
+                "修改首页配置",
+                "echarts组件库开发"
+            ],
+            "pages": [
+                "新增githubDataV数据可视化页面"
+            ]
+        }
     }
 ]

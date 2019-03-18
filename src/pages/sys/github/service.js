@@ -8,3 +8,7 @@ export const getData = async function ({ url }) {
     return await fetch(url)
         .then(response => response.json());
 }
+
+// export const getUrl = async function ({ url }) {
+//     return await fetch(url, { mode: "no-cors", }).then(res => res.text());
+// }
