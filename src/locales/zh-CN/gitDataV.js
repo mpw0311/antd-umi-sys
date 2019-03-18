@@ -3,7 +3,8 @@ export default {
     'gitDataV.repositories': '公开仓库数',
     'gitDataV.followers': '粉丝',
     'gitDataV.following': '跟随',
+    'gitDataV.news': '最新消息',
     'gitDataV.submit': '查询',
-    'gitDataV.repos.overview': 'GitHub仓库概览',
+    'gitDataV.repos.overview': 'GitHub仓库Top 10概览',
     'gitDataV.repos.list': 'GitHub仓库列表',
 }
