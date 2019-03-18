@@ -132,7 +132,8 @@ export default ({ repos, account, received_events }) => {
                 >
                     <Card
                         title={formatMessage({ id: "gitDataV.news" })}
-                        extra={<a href={`https://github.com/${account}`} target="_blank">More</a>}
+                        /* eslint-disable-next-line */
+                        extra={<a href={`https://github.com/${account}`} target="_blank">{formatMessage({ id: "gitDataV.more" })}</a>}
                         style={{ marginTop: 20, height: 510, overflow: 'hidden' }}
                     >
                         <List
@@ -145,6 +146,7 @@ export default ({ repos, account, received_events }) => {
                                     <List.Item>
                                         <List.Item.Meta
                                             avatar={<Avatar src={avatar_url} />}
+                                            /* eslint-disable-next-line */
                                             title={<a href={`https://github.com/${login}`} target="_blank">{login}</a>}
                                             description={`[${moment(created_at).fromNow()}] ${_action} ${name}`}
                                         />

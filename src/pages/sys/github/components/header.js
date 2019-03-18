@@ -3,6 +3,7 @@ import { Col, Row, Statistic, Card, Avatar, Divider } from 'antd';
 import { formatMessage } from 'umi/locale';
 import { connect } from 'dva';
 import Account from './account';
+import styles from '../index.less';
 
 const { Meta } = Card;
 class Index extends PureComponent {
@@ -16,7 +17,8 @@ class Index extends PureComponent {
     }
     render() {
         const { account, accountInfo: { avatar_url, name, bio, public_repos, followers, following } } = this.props;
-        const title = (<Fragment><a href={`https://github.com/${account}`} target="_blank">{name}</a><span style={{ paddingLeft: '10px', fontSize: '12px' }}>({account})</span></Fragment>)
+        /* eslint-disable-next-line */
+        const title = (<Fragment><a className={styles.a} href={`https://github.com/${account}`} target="_blank">{name}</a><span style={{ paddingLeft: '10px', fontSize: '12px' }}>({account})</span></Fragment>)
         const layout = {
             sm: 24,
             md: 12,
@@ -42,7 +44,7 @@ class Index extends PureComponent {
                             <Statistic
                                 title={formatMessage({ id: 'gitDataV.repositories' })}
                                 value={public_repos}
-                            // suffix={'个'}
+                            //   suffix={'个'}
                             //   prefix={<Icon type="like" />}
                             />
                         </Card>
