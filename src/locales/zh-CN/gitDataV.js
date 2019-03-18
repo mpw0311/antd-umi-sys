@@ -4,6 +4,7 @@ export default {
     'gitDataV.followers': '粉丝',
     'gitDataV.following': '跟随',
     'gitDataV.news': '最新消息',
+    'gitDataV.more': '更多',
     'gitDataV.submit': '查询',
     'gitDataV.repos.overview': 'GitHub仓库Top 10概览',
     'gitDataV.repos.list': 'GitHub仓库列表',
