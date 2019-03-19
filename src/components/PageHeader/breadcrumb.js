@@ -32,11 +32,11 @@ class BreadcrumbView extends PureComponent {
         const { breadcrumbList } = this.props;
         const len = breadcrumbList.length - 1;
         return breadcrumbList.map((item, i) => {
-            const { title, icon, link, query } = typeof item === 'object' ? item : {};
+            const { title, icon, link, query, state } = typeof item === 'object' ? item : {};
             return (
                 <Breadcrumb.Item key={`breadcrumb_${i}`}>
                     {icon && <Icon type={icon} />}
-                    {link && i !== len ? <Link to={{ pathname: link, query }}>{title}</Link> : <span>{title || item}</span>}
+                    {link && i !== len ? <Link to={{ pathname: link, query, state }}>{title}</Link> : <span>{title || item}</span>}
                 </Breadcrumb.Item>
             );
         });

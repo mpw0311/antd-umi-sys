@@ -6,13 +6,14 @@ export default {
         account: undefined,
         accountInfo: {},
         repos: [],
-        received_events: []
+        received_events: [],
+        stargazers: []
     },
     subscriptions: {
         setupHistory({ dispatch, history }) {
-            history.listen(({ pathname, query = {} }) => {
+            history.listen(({ pathname, state = {} }) => {
                 if (/^\/sys\/github$/.test(pathname)) {
-                    const { account } = query
+                    const { account } = state
                     dispatch({
                         type: 'getAccountInfo',
                         payload: {
@@ -43,6 +44,17 @@ export default {
                 });
             }
         },
+        *getStargazers({ payload }, { call, put }) {
+            if (payload && payload.url) {
+                const stargazers = yield call(api.getData, payload);
+                yield put({
+                    type: 'save',
+                    payload: {
+                        stargazers
+                    },
+                });
+            }
+        }
         // *getUrl({ payload }, { call, put, select }) {
         //     const chart = yield call(api.getUrl, payload);
         //     yield put({
