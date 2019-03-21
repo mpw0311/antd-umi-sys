@@ -7,7 +7,8 @@ export default {
         accountInfo: {},
         repos: [],
         received_events: [],
-        stargazers: []
+        stargazers: [],
+        stargazersInfo: []
     },
     subscriptions: {
         setupHistory({ dispatch, history }) {
@@ -31,39 +32,55 @@ export default {
             if (preAccount !== account) {
                 const accountInfo = yield call(api.getAccountInfo, payload);
                 const { repos_url, received_events_url } = accountInfo;
-                const repos = yield call(api.getData, { url: repos_url });
                 const received_events = yield call(api.getData, { url: received_events_url });
                 yield put({
                     type: 'save',
                     payload: {
                         accountInfo,
                         account,
-                        repos,
                         received_events
                     },
                 });
+                yield put({
+                    type: 'getRepos',
+                    payload: {
+                        repos_url
+                    }
+                });
             }
         },
-        *getStargazers({ payload }, { call, put }) {
-            if (payload && payload.url) {
+        *getRepos({ payload }, { call, put, select }) {
+            let { repos_url } = yield select(({ github }) => github.accountInfo);
+            const { current = 1, pageSize = 10 } = payload;
+            const repos = yield call(api.getData, { url: repos_url + `?page=${current}&per_page=${pageSize}` });
+            yield put({
+                type: 'save',
+                payload: {
+                    repos,
+                },
+            });
+        },
+        *getStargazers({ payload }, { call, put, select }) {
+            let stargazers_url = yield select(({ github }) => github.stargazers_url);
+            if (payload && payload.url && payload.url !== stargazers_url) {
                 const stargazers = yield call(api.getData, payload);
+                let stargazersInfo = [];
+                if (stargazers && Array.isArray(stargazers)) {
+                    stargazersInfo = yield stargazers.map(item => {
+                        const { url } = item;
+                        return call(api.getData, { url });
+                    });
+                }
                 yield put({
                     type: 'save',
                     payload: {
-                        stargazers
+                        stargazers,
+                        stargazersInfo,
+                        stargazers_url: payload.url
                     },
                 });
             }
         }
-        // *getUrl({ payload }, { call, put, select }) {
-        //     const chart = yield call(api.getUrl, payload);
-        //     yield put({
-        //         type: 'save',
-        //         payload: {
-        //             chart
-        //         },
-        //     });
-        // }
     },
 
     reducers: {

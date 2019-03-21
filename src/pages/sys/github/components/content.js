@@ -3,9 +3,10 @@ import { Card, Row, Col, List, Avatar } from 'antd';
 import { Link } from 'umi';
 import moment from 'moment';
 import { Bar } from '@components/Echarts';
-import { DataTable } from '@components';
+import Table from './Table';
 import { formatMessage } from 'umi/locale';
-export default ({ repos, account, received_events }) => {
+export default (props) => {
+    const { loading, repos, account, accountInfo: { public_repos }, received_events, handleChange } = props;
     const data = {
         columns: [
             {
@@ -102,7 +103,6 @@ export default ({ repos, account, received_events }) => {
             };
         }).sort((a, b) => b.stargazers_count - a.stargazers_count)
     };
-
     return (
         <Fragment>
             <Row gutter={20}>
@@ -161,10 +161,16 @@ export default ({ repos, account, received_events }) => {
                 title={formatMessage({ id: "gitDataV.repos.list" })}
                 style={{ marginTop: 20 }}
             >
-                <DataTable
+                <Table
+                    data={dataTable}
+                    total={public_repos}
+                    onChange={handleChange}
+                    loading={loading}
+                />
+                {/* <DataTable
                     data={dataTable}
                     searchProps={{ show: true }}
-                />
+                /> */}
             </Card>
         </Fragment>
     );

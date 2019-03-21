@@ -56,7 +56,8 @@ class Page extends PureComponent {
                                 ...childStyle,
                                 ...style
                             }}>
-                            {loading ? <Loader spinning /> : children}
+                            {loading && <Loader spinning />}
+                            {children}
                         </div>
                     </div>
                 )}
