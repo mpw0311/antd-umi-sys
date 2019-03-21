@@ -14,7 +14,7 @@ export default {
         setupHistory({ dispatch, history }) {
             history.listen(({ pathname, state = {} }) => {
                 if (/^\/sys\/github$/.test(pathname)) {
-                    const { account } = state
+                    const { account } = state;
                     dispatch({
                         type: 'getAccountInfo',
                         payload: {

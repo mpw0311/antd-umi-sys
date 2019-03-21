@@ -25,13 +25,10 @@ class Index extends PureComponent {
                     title: 'gitDataV',
                     icon: 'github'
                 }]}
-                style={{
-                    backgroundColor: 'transparent'
-                }}
+                style={{ backgroundColor: 'transparent' }}
                 title={'GitDataV'}
                 description={formatMessage({ id: 'gitDataV.desc' })}
             >
-
                 <Header />
                 <Content {...this.props} handleChange={this.onTableChange} />
             </Page>
@@ -40,7 +37,7 @@ class Index extends PureComponent {
 }
 
 export default connect(({ github, loading }) => {
-    const { repos, account, accountInfo, received_events } = github
+    const { repos, account, accountInfo, received_events } = github;
     return {
         repos,
         account,
