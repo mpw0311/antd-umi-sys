@@ -1,7 +1,9 @@
 import { PureComponent } from 'react';
 import { connect } from 'dva';
+import { Avatar } from 'antd';
 import { Page } from '@components';
 import pathToRegexp from 'path-to-regexp';
+import RepoContent from '../components/repoContent';
 import styles from './index.css';
 
 class Index extends PureComponent {
@@ -34,43 +36,86 @@ class Index extends PureComponent {
                     account,
                 }
             });
+        } else {
+            const { repos } = this.props;
+            const { reposName } = this.state;
+            const [pro = {}] = repos.filter(item => item.name === reposName);
+            const { stargazers_url } = pro;
+            if (stargazers_url) {
+                this.getStargazers(stargazers_url);
+            }
         }
     }
-    getStargazers = (stargazers_url) => {
+    componentDidUpdate(nextProps, nextState) {
+        const { repos, stargazers } = nextProps;
+        const { reposName } = nextState;
+        const [pro = {}] = repos.filter(item => item.name === reposName);
+        const { stargazers_url } = pro;
+        if (stargazers_url && stargazers.length === 0) {
+            this.getStargazers(stargazers_url);
+        }
+    }
+    getStargazers = (stargazers_url, current = 1, pageSize = 10) => {
         this.props.dispatch({
             type: 'github/getStargazers',
             payload: {
-                url: stargazers_url
+                url: stargazers_url + `?page=${current}&per_page=${pageSize}`,
             }
         });
     }
     render() {
-        const { repos } = this.props;
+        const { repos,  stargazers, stargazersInfo, loading } = this.props;
         const { account, reposName } = this.state;
         const [pro = {}] = repos.filter(item => item.name === reposName);
-        const { description } = pro;
-
+        const { description, stargazers_count, stargazers_url } = pro;
+        const handleChange = (pagination) => {
+            const { current, pageSize } = pagination;
+            this.getStargazers(stargazers_url, current, pageSize);
+        }
         return (
             <Page
                 loading={false}
-                pathtitles={[{ title: 'gitDataV', link: '/sys/github', icon: 'github', state: { account } }, reposName]}
+                pathtitles={[
+                    {
+                        title: 'gitDataV',
+                        link: '/sys/github',
+                        icon: 'github',
+                        state: { account }
+                    },
+                    reposName
+                ]}
                 title={reposName}
                 description={description}
             >
                 <div className={styles.normal}>
                     <h1>{reposName}</h1>
-                    {JSON.stringify(pro, null, 4)}
+                    {/* {
+                        stargazers.map(item => {
+                            const { avatar_url } = item;
+                            return <Avatar src={avatar_url} />;
+                        })
+                    } */}
+                    <RepoContent
+                        stargazersInfo={stargazersInfo}
+                        stargazers_count={stargazers_count}
+                        onChange={handleChange}
+                        loading={loading}
+                    />
+
                 </div>
             </Page>
         );
     }
 }
 
-export default connect(({ github }) => {
-    const { account, accountInfo, repos } = github
+export default connect(({ github, loading }) => {
+    const { account, accountInfo, repos, stargazers, stargazersInfo } = github
     return {
         account,
         accountInfo,
-        repos
+        repos,
+        stargazers,
+        stargazersInfo,
+        loading: loading.models.github
     };
 })(Index);
