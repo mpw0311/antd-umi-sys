@@ -106,17 +106,14 @@ export default (props) => {
     return (
         <Fragment>
             <Row gutter={20}>
-                <Col
-                    md={24}
-                    lg={24}
-                    xl={17}
-                >
+                <Col md={24} lg={24} xl={17} >
                     <Card
                         title={formatMessage({ id: "gitDataV.repos.overview" })}
                         style={{ marginTop: 20, height: 510 }}
                     >
                         <Bar
                             data={data}
+                            loading={loading}
                             grid={{ bottom: 80, left: 80, right: 20 }}
                             seriesLayoutBy={'column'}
                             height={400}
@@ -125,11 +122,7 @@ export default (props) => {
                         />
                     </Card>
                 </Col>
-                <Col
-                    md={24}
-                    lg={24}
-                    xl={7}
-                >
+                <Col md={24} lg={24} xl={7} >
                     <Card
                         title={formatMessage({ id: "gitDataV.news" })}
                         /* eslint-disable-next-line */
@@ -139,6 +132,7 @@ export default (props) => {
                         <List
                             size='small'
                             dataSource={received_events.slice(0, 6)}
+                            loading={loading}
                             renderItem={item => {
                                 const { type, payload: { action }, actor: { login, avatar_url }, repo: { name }, created_at } = item;
                                 const _action = type === 'ForkEvent' ? type : action;
@@ -167,10 +161,6 @@ export default (props) => {
                     onChange={handleChange}
                     loading={loading}
                 />
-                {/* <DataTable
-                    data={dataTable}
-                    searchProps={{ show: true }}
-                /> */}
             </Card>
         </Fragment>
     );
