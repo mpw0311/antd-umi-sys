@@ -1,6 +1,5 @@
 import { PureComponent } from 'react';
 import { connect } from 'dva';
-import { Avatar } from 'antd';
 import { Page } from '@components';
 import pathToRegexp from 'path-to-regexp';
 import RepoContent from '../components/repoContent';
