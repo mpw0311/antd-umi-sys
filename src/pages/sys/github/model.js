@@ -33,14 +33,16 @@ export default {
                 const accountInfo = yield call(api.getAccountInfo, payload);
                 const { repos_url, received_events_url } = accountInfo;
                 const received_events = yield call(api.getData, { url: received_events_url });
-                yield put({
-                    type: 'save',
-                    payload: {
-                        accountInfo,
-                        account,
-                        received_events
-                    },
-                });
+                if (Array.isArray(received_events)) {
+                    yield put({
+                        type: 'save',
+                        payload: {
+                            accountInfo,
+                            account,
+                            received_events
+                        },
+                    });
+                }
                 yield put({
                     type: 'getRepos',
                     payload: {
@@ -53,12 +55,14 @@ export default {
             let { repos_url } = yield select(({ github }) => github.accountInfo);
             const { current = 1, pageSize = 10 } = payload;
             const repos = yield call(api.getData, { url: repos_url + `?page=${current}&per_page=${pageSize}` });
-            yield put({
-                type: 'save',
-                payload: {
-                    repos,
-                },
-            });
+            if (Array.isArray(repos)) {
+                yield put({
+                    type: 'save',
+                    payload: {
+                        repos,
+                    },
+                });
+            }
         },
         *getStargazers({ payload }, { call, put, select }) {
             let stargazers_url = yield select(({ github }) => github.stargazers_url);
