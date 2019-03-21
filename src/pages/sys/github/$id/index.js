@@ -63,7 +63,7 @@ class Index extends PureComponent {
         });
     }
     render() {
-        const { repos,  stargazers, stargazersInfo, loading } = this.props;
+        const { repos, stargazersInfo, loading } = this.props;
         const { account, reposName } = this.state;
         const [pro = {}] = repos.filter(item => item.name === reposName);
         const { description, stargazers_count, stargazers_url } = pro;
@@ -88,12 +88,6 @@ class Index extends PureComponent {
             >
                 <div className={styles.normal}>
                     <h1>{reposName}</h1>
-                    {/* {
-                        stargazers.map(item => {
-                            const { avatar_url } = item;
-                            return <Avatar src={avatar_url} />;
-                        })
-                    } */}
                     <RepoContent
                         stargazersInfo={stargazersInfo}
                         stargazers_count={stargazers_count}
