@@ -8,6 +8,7 @@ export default {
     'gitDataV.submit': '查询',
     'gitDataV.repos.overview': 'GitHub仓库Top 10概览',
     'gitDataV.repos.list': 'GitHub仓库列表',
-    'gitDataV.repos.stargazersInfo': 'Top 20',
+    'gitDataV.stargazers.info': 'Top 20',
+    'gitDataV.stargazers.list': 'Stargazers list',
 
 }

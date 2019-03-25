@@ -8,5 +8,6 @@ export default {
     'gitDataV.submit': 'submit',
     'gitDataV.repos.overview': 'Top 10',
     'gitDataV.repos.list': 'GitHub repositories list',
-    'gitDataV.repos.stargazersInfo': 'Top 20',
+    'gitDataV.stargazers.info': 'Top 20',
+    'gitDataV.stargazers.list': 'Stargazers list',
 }

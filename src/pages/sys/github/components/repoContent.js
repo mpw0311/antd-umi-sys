@@ -17,14 +17,24 @@ export default ({ stargazersInfo, stargazers_count, onChange, loading }) => {
             {
                 "field": "login",
                 "name": "login",
-                "type": "number",
+                "type": "string",
                 colSpan: 0,
                 render: text => (<Link to={{ pathname: '/sys/github', state: { account: text } }} >{text}</Link>)
             },
             {
                 "field": "name",
                 "name": "name",
-                "type": "number",
+                "type": "string",
+            },
+            {
+                "field": "location",
+                "name": "location",
+                "type": "string",
+            },
+            {
+                "field": "company",
+                "name": "company",
+                "type": "string",
             },
             {
                 "field": "followers",
@@ -58,6 +68,8 @@ export default ({ stargazersInfo, stargazers_count, onChange, loading }) => {
                 avatar_url,
                 login,
                 name,
+                location,
+                company,
                 followers,
                 following,
                 public_repos,
@@ -69,6 +81,8 @@ export default ({ stargazersInfo, stargazers_count, onChange, loading }) => {
                 avatar_url,
                 login,
                 name,
+                location,
+                company,
                 followers,
                 following,
                 public_repos,
@@ -84,7 +98,7 @@ export default ({ stargazersInfo, stargazers_count, onChange, loading }) => {
     return (
         <Fragment>
             <Card
-                title={formatMessage({ id: "gitDataV.repos.list" })}
+                title={formatMessage({ id: "gitDataV.stargazers.list" })}
                 style={{ marginTop: 20 }}
             >
                 <Table
