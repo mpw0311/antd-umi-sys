@@ -7,19 +7,20 @@
  */
 export default (props) => {
     const { dataZoom, showDataZoom } = props;
-
-    return dataZoom || [
-        {
-            show: showDataZoom,
-            realtime: true,
-            start: 0,
-            end: 100
-        },
-        {
-            type: 'inside',
-            realtime: true,
-            start: 0,
-            end: 100
-        }
-    ];
+    if (showDataZoom) {
+        return dataZoom || [
+            {
+                show: true,
+                realtime: true,
+                start: 0,
+                end: 100
+            },
+            {
+                type: 'inside',
+                realtime: true,
+                start: 0,
+                end: 100
+            }
+        ];
+    }
 };
