@@ -132,13 +132,25 @@ BasicChart.propTypes = {
     //图例列表的布局朝向。
     legendOrient: PropTypes.oneOf(['horizontal', 'vertical']),
     //图例组件离容器左侧的距离。
-    legendLeft: PropTypes.oneOf(['left', 'right', 'center']),
+    legendLeft: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.oneOf(['left', 'right', 'center']),
+    ]),
     //图例组件离容器右侧的距离。
-    legendRight: PropTypes.oneOf(['left', 'right', 'center']),
+    legendRight: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.oneOf(['left', 'right', 'center']),
+    ]),
     //图例组件离容器上侧的距离。
-    legendTop: PropTypes.oneOf(['top', 'bottom', 'middle']),
+    legendTop: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.oneOf(['top', 'bottom', 'middle']),
+    ]),
     //图例组件离容器底侧的距离。
-    legendBottom: PropTypes.oneOf(['top', 'bottom', 'middle']),
+    legendBottom: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.oneOf(['top', 'bottom', 'middle']),
+    ]),
     //直角坐标系内绘图网格配置
     grid: PropTypes.object,
     //x轴配置
