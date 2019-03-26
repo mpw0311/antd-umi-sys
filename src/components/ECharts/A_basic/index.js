@@ -56,7 +56,6 @@ class BasicChart extends PureComponent {
     }
     render() {
         const { data, loading, height, style, onChartReady, onEvents } = this.props;
-        const source = _toDataset(data);
         if (!_isData(data)) {
             return (
                 <div style={{
@@ -73,6 +72,7 @@ class BasicChart extends PureComponent {
                 </div>
             );
         }
+        const source = _toDataset(data);
         const option = {
             title: getTitle(this.props),
             tooltip: getTooltip(this.props),
