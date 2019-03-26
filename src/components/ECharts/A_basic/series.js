@@ -9,7 +9,7 @@ export default (props) => {
     const { series, source, type, seriesLayoutBy, seriesSettings, showY2, Y2Series, stack, showLabel, labelPosition } = props;
     const _geySeries = () => {
         const _series = [];
-        const len = seriesSettings === 'row' ? source.length - 1 : source[0].length - 1;
+        const len = seriesLayoutBy === 'row' ? source.length - 1 : source[0].length - 1;
         for (let i = 0; i < len; i++) {
             _series.push({
                 type: getType(type),
