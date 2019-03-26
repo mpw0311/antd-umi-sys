@@ -17,6 +17,7 @@ import getYAxis from './yAxis';
 import getSeries from './series';
 import getGrid from './grid';
 import getTitle from './title';
+import getDataZoom from './dataZoom';
 import { _toDataset } from '../methods';
 class BasicChart extends PureComponent {
     static defaultProps = {
@@ -30,7 +31,7 @@ class BasicChart extends PureComponent {
         axisPointer: 'shadow',
         showLegend: true,
         legendOrient: 'horizontal',
-        legendLeft:'center',
+        legendLeft: 'center',
         seriesLayoutBy: 'row',
         seriesSettings: {},
         showY2: false,
@@ -50,11 +51,11 @@ class BasicChart extends PureComponent {
         showToolboxSaveAsImage: false,
         stack: false,
         showLabel: false,
-        labelPosition: 'insideTop'
+        labelPosition: 'insideTop',
+        showDataZoom: false
     }
     render() {
         const { data, loading, height, style, onChartReady, onEvents } = this.props;
-        const source = _toDataset(data);
         if (!_isData(data)) {
             return (
                 <div style={{
@@ -71,10 +72,12 @@ class BasicChart extends PureComponent {
                 </div>
             );
         }
+        const source = _toDataset(data);
         const option = {
             title: getTitle(this.props),
             tooltip: getTooltip(this.props),
             toolbox: getToolbox(this.props),
+            dataZoom: getDataZoom(this.props),
             legend: getLegend(this.props),
             dataset: getDataset({ source, ...this.props }),
             xAxis: getXAxis(this.props),
@@ -112,9 +115,10 @@ BasicChart.propTypes = {
     }),
     //echart组件div样式
     style: PropTypes.object,
-
     //是否显示正在加载中
     loading: PropTypes.bool,
+    //是否显示dataZoom 组件
+    showDataZoom: PropTypes.bool,
     //可以传入tooltip配置，校验
     tooltip: PropTypes.object,
     //是否显示tootip

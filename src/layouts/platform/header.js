@@ -4,7 +4,7 @@
  * @version  1.0.0
  * @description  header组件
  */
-import { routerRedux } from 'umi';
+import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { PureComponent } from 'react';
 import GlobalHeader from '../components/GlobalHeader';

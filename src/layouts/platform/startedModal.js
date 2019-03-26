@@ -10,9 +10,12 @@ export default class Started extends PureComponent {
     testStarted = () => {
         const started = localStorage.getItem('started');
         if (started !== 'true') {
-            this.setState({
-                visible: true
-            });
+            clearTimeout(this.timer);
+            this.timer = setTimeout(() => {
+                this.setState({
+                    visible: true
+                });
+            }, 6000)
         }
     }
     giveStar = () => {
@@ -20,7 +23,7 @@ export default class Started extends PureComponent {
         this.setState({
             visible: false
         });
-        window.location.href = 'https://github.com/mpw0311/antd-umi-sys';
+        window.location.href = 'https://github.com/mpw0311/antd-umi-pro';
     }
     handleCancel = () => {
         this.setState({
@@ -35,10 +38,11 @@ export default class Started extends PureComponent {
                 visible={visible}
                 onOk={this.giveStar}
                 onCancel={this.handleCancel}
+                style={{ marginTop: 140 }}
             >
                 {/* eslint-disable-next-line */}
                 <p>如果你喜欢这个项目请给一个⭐，谢谢!</p>
-                <p>Please&nbsp;give&nbsp;me a Star if you like this&nbsp;project.Thank you so much.</p>
+                <p>Please give me a Star if you like this project.Thank you so much.</p>
             </Modal>
         );
     }

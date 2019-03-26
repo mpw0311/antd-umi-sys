@@ -23,7 +23,7 @@ const FooterView = () => (
         {
           key: 'github',
           title: <Icon type="github" />,
-          href: 'https://github.com/mpw0311/antd-umi-sys',
+          href: 'https://github.com/mpw0311/antd-umi-pro',
           blankTarget: true,
         },
         {

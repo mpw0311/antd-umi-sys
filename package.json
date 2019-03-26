@@ -8,7 +8,7 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "antd": "^3.12.1",
+    "antd": "^3.13.0",
     "crypto-js": "^3.1.9-1",
     "d3": "^5.9.1",
     "d3-sankey": "^0.10.4",
