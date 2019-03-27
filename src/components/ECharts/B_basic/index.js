@@ -1,7 +1,7 @@
 /**
  * @author M
  * @email mpw0311@163.com
- * @version  1.0.0
+ * @version  1.0.1
  * @description 
  */
 import { PureComponent } from 'react';
@@ -14,7 +14,6 @@ import getLegend from './legend';
 import getDataset from './dataset';
 import getSeries from './series';
 import getTitle from './title';
-import { _toDataset } from '../methods';
 class BasicChart extends PureComponent {
     static defaultProps = {
         height: '100%',
@@ -37,7 +36,6 @@ class BasicChart extends PureComponent {
     }
     render() {
         const { data, dataType, loading, style, height, onChartReady, onEvents } = this.props;
-        const source = _toDataset(data);
         if (!_isData(data, dataType)) {
             return (
                 <div style={{
@@ -59,8 +57,8 @@ class BasicChart extends PureComponent {
             tooltip: getTooltip(this.props),
             toolbox: getToolbox(this.props),
             legend: getLegend(this.props),
-            dataset: getDataset({ source, ...this.props }),
-            series: getSeries({ source, ...this.props })
+            dataset: getDataset({ ...this.props }),
+            series: getSeries({ ...this.props })
         };
         return (
             <Chart
