@@ -104,7 +104,7 @@ export default [
     },
     {
         title: "请给star",
-        url: "https://github.com/mpw0311/antd-umi-pro",
+        url: "https://github.com/mpw0311/antd-umi-sys",
         key: "github",
         icon: "star"
     },

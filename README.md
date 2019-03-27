@@ -1,4 +1,4 @@
-# antd-umi-pro
+# antd-umi-sys
 
 ***如果你喜欢这个项目请给一个⭐，谢谢!***
 
@@ -8,11 +8,11 @@
     企业系统，数据可视化平台。
     推荐浏览器：Google Chrome
     
-![antd-umi-pro](src/assets/demo_login.png)
-![antd-umi-pro](src/assets/demo.png)
-![antd-umi-pro](src/assets/regionalAnalysis.png)
-![antd-umi-pro](src/assets/vew1.png)
-![antd-umi-pro](src/assets/d3tree.png)
+![antd-umi-sys](src/assets/demo_login.png)
+![antd-umi-sys](src/assets/demo.png)
+![antd-umi-sys](src/assets/regionalAnalysis.png)
+![antd-umi-sys](src/assets/vew1.png)
+![antd-umi-sys](src/assets/d3tree.png)
 
 ## 技术栈
 + 前端框架：React、umi
@@ -42,7 +42,7 @@
         $ umi -v
         2.0.0
     3.git地址下载脚手架代码：
-        https://github.com/mpw0311/antd-umi-pro.git
+        https://github.com/mpw0311/antd-umi-sys.git
     4.安装依赖模块：
         npm install
     5.启动本地开发：

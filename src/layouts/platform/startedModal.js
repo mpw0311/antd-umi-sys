@@ -23,7 +23,7 @@ export default class Started extends PureComponent {
         this.setState({
             visible: false
         });
-        window.location.href = 'https://github.com/mpw0311/antd-umi-pro';
+        window.location.href = 'https://github.com/mpw0311/antd-umi-sys';
     }
     handleCancel = () => {
         this.setState({
