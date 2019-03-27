@@ -8,6 +8,8 @@ body {
   height: 100%;
 }
 .hideScrollbar {
+  /*火狐下隐藏滚动条*/
+  scrollbar-width: none;
   /*隐藏滚动条，当IE下溢出，仍然可以滚动*/
   -ms-overflow-style: none;
   /*火狐下隐藏滚动条*/
@@ -18,6 +20,10 @@ body {
   width: 0px;
   /*高宽分别对应横竖滚动条的尺寸*/
   height: 0px;
+}
+.progressbar {
+  /*火狐下隐藏滚动条*/
+  scrollbar-width: none;
 }
 .progressbar::-webkit-scrollbar {
   /*滚动条整体样式*/
