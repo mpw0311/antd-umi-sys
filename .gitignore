@@ -6,7 +6,8 @@
 /yarn-error.log
 /yarn.lock
 /package-lock.json
-
+# 测试页
+/src/pages/test.js
 # production
 /dist
 

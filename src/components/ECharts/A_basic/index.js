@@ -38,6 +38,7 @@ class BasicChart extends PureComponent {
         Y2Series: [
             {
                 type: 'line',
+                // index第一个索引从0开始
                 index: 1
             }
         ],
