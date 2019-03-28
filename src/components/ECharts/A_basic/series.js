@@ -5,7 +5,6 @@
  * @description 
  */
 import getType from './type';
-import { message } from 'antd';
 export default (props) => {
     const { series, source, type, seriesLayoutBy, seriesSettings, showY2, Y2Series, stack, showLabel, labelPosition } = props;
     /**
@@ -28,7 +27,7 @@ export default (props) => {
             if (seriesLayoutBy === 'row') {
                 const index = source.findIndex(curr => curr[0] === item.name) - 1;
                 if (index < 0) {
-                    message.warning('未找到要匹配的Y2值');
+                    console.warn('echarts-series:未找到要匹配的Y2值');
                 }
                 return {
                     ...item,
@@ -37,14 +36,15 @@ export default (props) => {
             } else {
                 const index = source[0].indexOf(item.name) - 1;
                 if (index < 0) {
-                    message.warning('未找到要匹配的Y2值');
+                    console.warn('echarts-series:未找到要匹配的Y2值');
                 }
                 return {
                     ...item,
                     index: index
                 };
             }
-        });
+        })
+            .filter(item => item.index > -1);
     };
     const _getSeries = () => {
         const _series = [];
