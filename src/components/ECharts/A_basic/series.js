@@ -27,7 +27,7 @@ export default (props) => {
             if (seriesLayoutBy === 'row') {
                 const index = source.findIndex(curr => curr[0] === item.name) - 1;
                 if (index < 0) {
-                    console.warn('echarts-series:未找到要匹配的Y2值');
+                    console.warn(`echarts-series:未找到要匹配的Y2值(${item.name})`);
                 }
                 return {
                     ...item,
@@ -36,7 +36,7 @@ export default (props) => {
             } else {
                 const index = source[0].indexOf(item.name) - 1;
                 if (index < 0) {
-                    console.warn('echarts-series:未找到要匹配的Y2值');
+                    console.warn(`echarts-series:未找到要匹配的Y2值(${item.name})`);
                 }
                 return {
                     ...item,
