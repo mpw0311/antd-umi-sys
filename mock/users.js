@@ -34,7 +34,7 @@ module.exports = {
     [`PATCH /api/users/:id`](req, res) {
         res.setHeader('Access-Control-Allow-Origin', '*');
         const { params: { id }, query, body } = req;
-        console.log(id, query, body);
+        console.log(id, query);
         // db.data = db.data.map(item => item.id === id ? user : item);
         res.status(200).json(db);
     },

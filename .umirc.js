@@ -23,7 +23,7 @@ export default {
         webpackChunkName: true,
         loadingComponent: './components/PageLoading/index.js'
       },
-      title: 'antd-umi-2.5',
+      title: 'antd-umi-2.6',
       dll: true,
       locale: {
         enable: true,
