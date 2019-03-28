@@ -57,8 +57,8 @@ class BasicChart extends PureComponent {
             tooltip: getTooltip(this.props),
             toolbox: getToolbox(this.props),
             legend: getLegend(this.props),
-            dataset: getDataset({ ...this.props }),
-            series: getSeries({ ...this.props })
+            dataset: getDataset(this.props),
+            series: getSeries(this.props)
         };
         return (
             <Chart
