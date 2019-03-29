@@ -27,12 +27,6 @@ class MyTabs extends Component {
                 display: 'none'
             }
         };
-        this.handleSizeChange = this.handleSizeChange.bind(this);
-        this.callback = this.callback.bind(this);
-        this.handleContextmenu = this.handleContextmenu.bind(this);
-        this.onEventClick = this.onEventClick.bind(this);
-        this.onPageClick = this.onPageClick.bind(this);
-        this.handleClose = this.handleClose.bind(this);
     }
     componentDidMount() {
         const _self = this;
@@ -54,7 +48,7 @@ class MyTabs extends Component {
         //     });
         // };
     }
-    onEventClick(value) {
+    onEventClick = (value) => {
         const { handleClick } = this.props;
         const { nodes } = this.state;
         handleClick({
@@ -67,7 +61,7 @@ class MyTabs extends Component {
             }
         });
     }
-    onPageClick(value) {
+    onPageClick = (value) => {
         const { handleClick } = this.props;
         const { nodes } = this.state;
         handleClick({
@@ -80,7 +74,7 @@ class MyTabs extends Component {
             }
         });
     }
-    handleSizeChange(e) {
+    handleSizeChange = (e) => {
         const { chartStyles } = this.state;
         const radioValue = e.target.value;
         let h = chartStyles.height;
@@ -106,12 +100,12 @@ class MyTabs extends Component {
             },
         });
     }
-    callback() {
+    callback = () => {
         this.setState({
             chartStyles: initStyles
         });
     }
-    handleContextmenu(params, e) {
+    handleContextmenu = (params, e) => {
         const { data } = params;
         const x = e.offsetX;
         const y = e.offsetY;
@@ -125,7 +119,7 @@ class MyTabs extends Component {
             }
         });
     }
-    handleClose() {
+    handleClose = () => {
         this.setState({
             popStyle: {
                 display: 'none'

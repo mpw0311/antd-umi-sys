@@ -13,15 +13,13 @@ class Index extends PureComponent {
         this.state = {
             date: initTime
         };
-        this.onChange = this.onChange.bind(this);
-        this.submit = this.submit.bind(this);
     }
-    onChange(v) {
+    onChange = (v) => {
         this.setState({
             date: v
         });
     }
-    submit() {
+    submit = () => {
         const { handleSubmit = () => { } } = this.props;
         const { date } = this.state;
         const times = date.map(time => moment(time).format(dateFormat));

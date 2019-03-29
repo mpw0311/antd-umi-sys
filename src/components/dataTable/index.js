@@ -22,8 +22,6 @@ export default class DataTable extends PureComponent {
                 showSizeChanger: true, // 是否显示可以设置几条一页的选项
             }
         };
-        this.handleSearch = this.handleSearch.bind(this);
-        this.handlePageChange = this.handlePageChange.bind(this);
     }
 
     static defaultProps = {
@@ -45,7 +43,7 @@ export default class DataTable extends PureComponent {
             pagination
         });
     };
-    handleSearch(searchKey) {
+    handleSearch = (searchKey) => {
         this.setState({
             searchKey
         });
