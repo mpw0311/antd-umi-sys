@@ -4,12 +4,7 @@ import { DataTable } from '@components';
 
 const { TabPane } = Tabs;
 class Card4 extends Component {
-    constructor(props) {
-        super(props);
-        this.handleChange1 = this.handleChange1.bind(this);
-        this.handleChange2 = this.handleChange2.bind(this);
-    }
-    handleChange1(current, pageSize) {// eslint-disable-line
+    handleChange1 = (current, pageSize) => {// eslint-disable-line
         const { dispatch } = this.props;
         dispatch({
             type: 'matchAnalysis/fechTable1',
@@ -19,7 +14,7 @@ class Card4 extends Component {
             },
         });
     }
-    handleChange2(current, pageSize) {// eslint-disable-line
+    handleChange2 = (current, pageSize) => {// eslint-disable-line
         const { dispatch } = this.props;
         dispatch({
             type: 'matchAnalysis/fechTable2',

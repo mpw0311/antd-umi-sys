@@ -13,9 +13,8 @@ class GlobalDrawer extends Component {
         this.state = {
             visible: visible
         };
-        this.onClose = this.onClose.bind(this);
     }
-    onClose() {
+    onClose = () => {
         const { visible } = this.state;
         this.setState({
             visible: !visible

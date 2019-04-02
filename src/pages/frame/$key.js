@@ -25,7 +25,6 @@ class Index extends Component {
         this.state = {
             loading: true
         };
-        this.onload = this.onload.bind(this);
     }
     componentDidUpdate(nextProps) {
         const { location: nextLocation } = nextProps;
@@ -40,7 +39,7 @@ class Index extends Component {
             });
         }
     }
-    onload() {
+    onload = () => {
         const { loading } = this.state;
         if (loading) {
             this.setState({

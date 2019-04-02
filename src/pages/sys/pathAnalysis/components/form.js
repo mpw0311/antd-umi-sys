@@ -14,9 +14,8 @@ class MyForm extends Component {
             hide: "1",
             timetype: 'day'
         };
-        this.handleSizeChange = this.handleSizeChange.bind(this);
     }
-    handleSizeChange(e) {
+    handleSizeChange = (e) => {
         const { handleGetDict = () => { } } = this.props;
         const radioValue = e.target.value;
         handleGetDict(radioValue);
