@@ -14,15 +14,8 @@
 ![antd-umi-sys](src/assets/vew1.png)
 ![antd-umi-sys](src/assets/d3tree.png)
 
-## 技术栈
-+ 前端框架：React、umi
-+ 前端组件库：antd
-+ 前端数据可视化：echarts、d3.js
-+ 前端数据流管理：redux、dva
-+ 语法：es6/7
-+ 前端样式：less
-+ 前后端通信：fetch
-+ 项目打包：webpack
+## 前端技术栈 
+   前端技术栈：react+umi+dva+antd+less
 ## 特性
 + 单页面应用；
 + 模块化、组件化开发；

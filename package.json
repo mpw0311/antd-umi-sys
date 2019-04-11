@@ -5,7 +5,8 @@
     "build": "umi build",
     "test": "umi test",
     "lint": "eslint --ext .js src mock tests",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "add-page": "umi block add https://github.com/mpw0311/umi-blocks/tree/master/newPage"
   },
   "dependencies": {
     "antd": "^3.15.0",
