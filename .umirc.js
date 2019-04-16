@@ -14,6 +14,7 @@ export default {
   externals: {//配置不打包模块
     // echarts: 'echarts',
   },
+  exportStatic: true,
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
