@@ -5,10 +5,29 @@
  * @description 
  */
 export default (props) => {
-    const { title, titleText } = props;
+    const {
+        title,
+        titleText,
+        titleFontSize = 20,
+        titleColor = "#333",
+        titleFontWeight = 'normal',
+        titleTop,
+        titleBottom,
+        titleLeft,
+        titleRight
+    } = props;
 
     return {
         text: titleText,
+        textStyle: {
+            color: titleColor,
+            fontSize: titleFontSize,
+            fontWeight: titleFontWeight,
+        },
+        top: titleTop,
+        bottom: titleBottom,
+        left: titleLeft,
+        right: titleRight,
         ...title
     };
 };

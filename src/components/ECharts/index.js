@@ -19,7 +19,9 @@ const YBar = getComponent(React.lazy(() => import('./charts/Bar-y')));
 const Line = getComponent(React.lazy(() => import('./charts/Line')));
 const Funnel = getComponent(React.lazy(() => import('./charts/Funnel')));
 const Pie = getComponent(React.lazy(() => import('./charts/Pie')));
+const PieDoughnut = getComponent(React.lazy(() => import('./charts/Pie-doughnut')));
 const Sankey = getComponent(React.lazy(() => import('./charts/Sankey')));
+const Radar = getComponent(React.lazy(() => import('./charts/Radar')));
 
 export {
     Area,
@@ -29,11 +31,11 @@ export {
     Line,
     Funnel,
     Pie,
+    PieDoughnut,
     // Map,
-    // Pie,
     // PieCustom,
     // PieNest,
-    // Radar,
+    Radar,
     Sankey,
     // Scatter
 };

@@ -12,20 +12,14 @@ export default [
         icon: "idcard"
     },
     {
-        title: "用户分析",
-        link: "/sys/users",
-        key: "users",
-        icon: "user"
-    },
-    {
         title: "用户行为",
         key: "yonghuxingwei",
         icon: "contacts",
         children: [
             {
                 title: "路径分析",
-                link: "/sys/pathAnalysis",
-                key: "pathAnalysis",
+                link: "/sys/linkAnalysis",
+                key: "linkAnalysis",
                 icon: "link"
             },
             {
@@ -49,16 +43,58 @@ export default [
         ]
     },
     {
-        title: "404",
-        link: "/404",
-        key: "404",
-        icon: "frown"
-    },
-    {
-        title: "echarts组件",
-        link: "/sys/echarts",
-        key: "echarts",
-        icon: "line-chart"
+        title: 'Echarts',
+        key: 'echarts',
+        icon: 'icon-visual',
+        children: [
+            {
+                link: '/sys/echarts/bar',
+                key: 'Bar',
+                icon: 'bar-chart',
+                title: 'Bar'
+            },
+            {
+                link: '/sys/echarts/line',
+                key: 'line',
+                icon: 'line-chart',
+                title: 'Line'
+            },
+            {
+                link: '/sys/echarts/area',
+                key: 'area',
+                icon: 'area-chart',
+                title: 'Area'
+            },
+            {
+                link: '/sys/echarts/yBar',
+                key: 'yBar',
+                icon: 'icon-yBar',
+                title: 'YBar'
+            },
+            {
+                link: '/sys/echarts/funnel',
+                key: 'funnel',
+                icon: 'icon-funnel',
+                title: 'Funnel'
+            },
+            {
+                link: '/sys/echarts/pie',
+                icon: 'pie-chart',
+                title: 'Pie'
+            },
+            {
+                link: '/sys/echarts/pieDoughnut',
+                key: 'pieDoughnut',
+                icon: 'icon-pieDoughnut',
+                title: 'PieDoughnut'
+            },
+            {
+                link: '/sys/echarts/sankey',
+                key: 'sankey',
+                icon: 'icon-sankey',
+                title: 'Sankey'
+            },
+        ]
     },
     {
         title: "d3.js组件",
@@ -78,6 +114,18 @@ export default [
                 icon: "icon-mapsankey"
             },
         ]
+    },
+    {
+        title: "用户分析",
+        link: "/sys/users",
+        key: "users",
+        icon: "user"
+    },
+    {
+        title: "404",
+        link: "/404",
+        key: "404",
+        icon: "frown"
     },
     {
         title: "iframe",

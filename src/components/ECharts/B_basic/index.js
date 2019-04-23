@@ -35,7 +35,17 @@ class BasicChart extends PureComponent {
         sort: 'none',
     }
     render() {
-        const { data, dataType, loading, style, height, onChartReady, onEvents } = this.props;
+        const {
+            type,
+            data,
+            dataType,
+            loading,
+            style,
+            height,
+            onChartReady,
+            onEvents,
+            color
+        } = this.props;
         if (!_isData(data, dataType)) {
             return (
                 <div style={{
@@ -58,8 +68,12 @@ class BasicChart extends PureComponent {
             toolbox: getToolbox(this.props),
             legend: getLegend(this.props),
             dataset: getDataset(this.props),
-            series: getSeries(this.props)
+            series: getSeries(this.props),
+            color
         };
+        if (type === 'radar') {
+            option.radar = this.props.radar;
+        }
         return (
             <Chart
                 height={height}
@@ -79,6 +93,13 @@ BasicChart.propTypes = {
     title: PropTypes.object,
     //组件标题
     titleText: PropTypes.string,
+    titleColor: PropTypes.string,
+    titleFontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    titleFontWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    titleTop: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    titleBottom: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    titleLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    titleRight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     //支持的图形类型
     type: PropTypes.oneOf(['funnel', 'pie', 'sankey']),
     //数据格式校验

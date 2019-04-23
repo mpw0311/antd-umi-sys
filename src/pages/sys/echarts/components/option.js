@@ -1,7 +1,7 @@
 import { PureComponent } from 'react';
 import { Tabs, Icon, Input, message } from 'antd';
 import Form from './form';
-import styles from './tab.less';
+import styles from './option.less';
 
 const { TabPane } = Tabs;
 const { TextArea } = Input;
@@ -46,14 +46,12 @@ export default class MyTabs extends PureComponent {
                 e.preventDefault();
             }
         };
-
-
         return (
             <Tabs defaultActiveKey="1">
-                <TabPane tab={<span><Icon type="setting" />option</span>} key="1">
+                <TabPane tab={<span><Icon type="setting" />OPTION</span>} key="1">
                     <Form onChange={onChange} type={type} />
                 </TabPane>
-                <TabPane tab={<span><Icon type="bar-chart" />数据</span>} key="2">
+                <TabPane tab={<span><Icon type="bar-chart" />DATA</span>} key="2">
                     <TextArea rows={rows} defaultValue={JSON.stringify(data, null, 4)} onBlur={handleBlur} onKeyDown={tab} className={`${styles.TextArea} scrollbar`} spellCheck="false" {...rest} />
                 </TabPane>
             </Tabs>
