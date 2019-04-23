@@ -5,8 +5,8 @@
  * @description 
  */
 export default (props) => {
-    const { source } = props;
+    const { dataSource } = props;
     return {
-        source
+        source: dataSource
     };
 };

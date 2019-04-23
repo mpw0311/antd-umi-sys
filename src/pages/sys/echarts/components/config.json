@@ -3,7 +3,7 @@
         {
             "name": "height",
             "component": "Input",
-            "type": "string",
+            "type": "text",
             "value": "300px",
             "des": "高度"
         },
@@ -16,19 +16,92 @@
         },
         {
             "name": "color",
-            "component": "//",
+            "component": "Select",
+            "mode": "tags",
             "type": "array",
-            "value": [],
-            "des": "是否显示正在加载中"
+            "value": [
+                "#2ec7c9",
+                "#b6a2de",
+                "#5ab1ef",
+                "#ffb980",
+                "#d87a80",
+                "#8d98b3",
+                "#e5cf0d",
+                "#97b552",
+                "#95706d",
+                "#dc69aa",
+                "#07a2a4",
+                "#9a7fd1",
+                "#588dd5",
+                "#f5994e",
+                "#c05050",
+                "#59678c",
+                "#c9ab00",
+                "#7eb00a",
+                "#6f5553",
+                "#c14089"
+            ],
+            "des": "调色盘颜色列表。如果系列没有设置颜色，则会依次循环从默认主题中取颜色作为系列颜色"
         }
     ],
     "title": [
         {
             "name": "titleText",
             "component": "Input",
-            "type": "string",
+            "type": "text",
             "value": "",
             "des": "图形标题"
+        },
+        {
+            "name": "titleFontSize",
+            "component": "Input",
+            "type": "number",
+            "value": 20,
+            "des": "标题字号"
+        },
+        {
+            "name": "titleColor",
+            "component": "Input",
+            "type": "text",
+            "value": "#333",
+            "des": "图形标题颜色"
+        },
+        {
+            "name": "titleFontWeight",
+            "component": "Select",
+            "type": "array",
+            "value": [
+                "narmal",
+                "bold",
+                "bolder",
+                "lighter",
+                "200",
+                "300",
+                "400"
+            ],
+            "des": "图形标题颜色"
+        },
+        {
+            "name": "titleLeft",
+            "component": "Select",
+            "type": "array",
+            "value": [
+                "left",
+                "right",
+                "center"
+            ],
+            "des": "标题组件离容器左侧的距离"
+        },
+        {
+            "name": "titleTop",
+            "component": "Select",
+            "type": "array",
+            "value": [
+                "top",
+                "middle",
+                "bottom"
+            ],
+            "des": "标题组件离容器上侧的距离"
         }
     ],
     "legend": [
@@ -72,7 +145,36 @@
             "des": "图例组件离容器上侧的距离"
         }
     ],
-    "grid": [],
+    "grid": [
+        {
+            "name": "gridTop",
+            "component": "Input",
+            "type": "number",
+            "value": 40,
+            "des": "网格上边距"
+        },
+        {
+            "name": "gridBottom",
+            "component": "Input",
+            "type": "number",
+            "value": 40,
+            "des": "网格下边距"
+        },
+        {
+            "name": "gridLeft",
+            "component": "Input",
+            "type": "number",
+            "value": 60,
+            "des": "网格左边距"
+        },
+        {
+            "name": "gridRight",
+            "component": "Input",
+            "type": "number",
+            "value": 40,
+            "des": "网格右边距"
+        }
+    ],
     "tooltip": [
         {
             "name": "showTooltip",
@@ -163,7 +265,7 @@
             "component": "Input",
             "type": "text",
             "value": "auto",
-            "des": "强制设置坐标轴分割间隔"
+            "des": "强制坐标轴分割间隔,值：auto 或 0，1，2，3……"
         },
         {
             "name": "xAxisRotate",
@@ -184,17 +286,47 @@
         {
             "name": "YName",
             "component": "Input",
-            "type": "string",
+            "type": "text",
             "value": "",
             "des": "y轴name"
         },
         {
             "name": "YUnit",
             "component": "Input",
-            "type": "string",
+            "type": "text",
             "value": "",
             "des": "y轴单位"
         },
+        {
+            "name": "maxPoint",
+            "component": "Checkbox",
+            "type": "bool",
+            "value": false,
+            "des": "最大值"
+        },
+        {
+            "name": "minPoint",
+            "component": "Checkbox",
+            "type": "bool",
+            "value": false,
+            "des": "最小值"
+        },
+        {
+            "name": "averageLine",
+            "component": "Checkbox",
+            "type": "bool",
+            "value": false,
+            "des": "平均值"
+        },
+        {
+            "name": "stack",
+            "component": "Checkbox",
+            "type": "bool",
+            "value": false,
+            "des": "数据堆叠"
+        }
+    ],
+    "y2Axis": [
         {
             "name": "showY2",
             "component": "Checkbox",
@@ -203,18 +335,56 @@
             "des": "是否显示y2轴"
         },
         {
+            "name": "Y2Type",
+            "component": "Select",
+            "type": "array",
+            "value": [
+                "line",
+                "bar"
+            ],
+            "des": "y2轴图形类型"
+        },
+        {
+            "name": "Y2SeriesIndex",
+            "component": "Select",
+            "type": "array",
+            "mode": "tags",
+            "value": [
+                "0",
+                "1",
+                "2",
+                "3"
+            ],
+            "des": "指定y2轴对应的series数据索引，值为数字，与Y2SeriesName二者选其一"
+        },
+        {
+            "name": "Y2SeriesName",
+            "component": "Select",
+            "type": "array",
+            "mode": "tags",
+            "value": [],
+            "des": "通过属性字段名指定y2轴对应的数据索引，权重高于Y2SeriesIndex"
+        },
+        {
             "name": "Y2Name",
             "component": "Input",
-            "type": "string",
+            "type": "text",
             "value": "",
             "des": "y轴name"
         },
         {
             "name": "Y2Unit",
             "component": "Input",
-            "type": "string",
+            "type": "text",
             "value": "",
             "des": "y2轴单位"
+        },
+        {
+            "name": "showY2SplitLine",
+            "component": "Checkbox",
+            "type": "bool",
+            "value": false,
+            "des": "Y2轴网格线"
         }
     ],
     "series": [

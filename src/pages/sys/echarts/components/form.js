@@ -1,18 +1,8 @@
-import { Form, Checkbox, Button, Collapse, Select, Input } from 'antd';
-import config from './data/config.json';
+import { Form, Checkbox, Collapse, Select, Input } from 'antd';
+import config from './config.json';
 const Panel = Collapse.Panel;
 function MyForm(props) {
-    const { form, onChange, type } = props;
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        props.form.validateFields((err, values) => {
-            if (!err) {
-                console.log('Received values of form: ', values);
-                onChange && onChange(values);
-            }
-        });
-    };
-    const { getFieldDecorator } = form;
+    const { onChange, type } = props;
     const formItemLayout = {
         labelCol: {
             xs: { span: 24 },
@@ -23,8 +13,28 @@ function MyForm(props) {
             sm: { span: 12 },
         },
     };
+    const handleChange = (e) => {
+        const t = e.target;
+        const res = {
+            [t.name]: t.value
+        };
+        onChange && onChange(res);
+    };
+    const checkboxChange = (e) => {
+        const t = e.target;
+        const res = {
+            [t.name]: t.checked
+        };
+        onChange && onChange(res);
+    };
+    const selectChange = (value, name) => {
+        const res = {
+            [name]: value
+        };
+        onChange && onChange(res);
+    };
     const getFormItem = (item, i) => {
-        const { name, component, value, des } = item;
+        const { name, type, component, value, des, mode } = item;
         switch (component) {
             case 'Checkbox':
                 return <Form.Item
@@ -33,12 +43,7 @@ function MyForm(props) {
                     help={des}
                     key={`item${i}`}
                 >
-                    {getFieldDecorator(name, {
-                        valuePropName: 'checked',
-                        initialValue: value,
-                    })(
-                        <Checkbox > {name} </Checkbox>
-                    )}
+                    <Checkbox name={name} defaultChecked={value} onChange={checkboxChange}> {name} </Checkbox>
                 </Form.Item>;
             case "Input":
                 return <Form.Item
@@ -47,12 +52,8 @@ function MyForm(props) {
                     help={des}
                     key={`item${i}`}
                 >
-                    {getFieldDecorator(name, {
-                        initialValue: value,
-                        rules: [{ message: 'Please input your username!' }],
-                    })(
-                        <Input placeholder={name} />
-                    )}
+
+                    <Input type={type} name={name} placeholder={name} defaultValue={value} onChange={handleChange} />
                 </Form.Item>;
             case "Select":
                 return <Form.Item
@@ -61,13 +62,14 @@ function MyForm(props) {
                     help={des}
                     key={`item${i}`}
                 >
-                    {getFieldDecorator(name, {
-                        initialValue: value[0],
-                    })(
-                        <Select>
-                            {value.map((item, i) => <Select.Option key={i} value={item}>{item}</Select.Option>)}
-                        </Select>
-                    )}
+
+                    <Select mode={mode} onChange={(value) => { selectChange(value, name); }}>
+                        {
+                            value.map(
+                                (item, i) => <Select.Option key={i} value={item}>{item}</Select.Option>
+                            )
+                        }
+                    </Select>
                 </Form.Item>;
             default:
                 return null;
@@ -83,6 +85,7 @@ function MyForm(props) {
             'toolbox',
             'xAxis',
             'yAxis',
+            'y2Axis',
             'series'
         ],
         "B": [
@@ -92,13 +95,14 @@ function MyForm(props) {
             'tooltip',
             'toolbox',
             'series'
-        ]
+        ],
     };
+    const list = Array.isArray(type) ? type : type_dict[type || 'A'];
     return (
-        <Form onSubmit={handleSubmit} style={{ textAlign: 'left' }}>
+        <Form style={{ textAlign: 'left' }}>
             <Collapse accordion>
                 {
-                    type_dict[type || 'A'].map(name => {
+                    list.map(name => {
                         return (
                             <Panel header={name} key={name}>
                                 {
@@ -111,12 +115,7 @@ function MyForm(props) {
                     })
                 }
             </Collapse>
-            <Form.Item
-                wrapperCol={{ span: 12, offset: 5 }}
-            >
-                <Button type="primary" htmlType="submit"> Submit </Button>
-            </Form.Item>
         </Form>
     );
 }
-export default Form.create()(MyForm);
+export default MyForm;

@@ -2,12 +2,10 @@ import { PureComponent, cloneElement } from 'react';
 import Option from './option';
 import { Row, Col } from 'antd';
 
-export default class PageMenu extends PureComponent {
+export default class extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = {
-
-        };
+        this.state = {};
     }
     static getDerivedStateFromProps(nextProps, prevState) {
         const { children: { props: { data } } } = nextProps;
@@ -34,10 +32,10 @@ export default class PageMenu extends PureComponent {
         };
         return (
             <Row gutter={16}>
-                <Col span={10}>
+                <Col xs={{ span: 24, order: 2 }} lg={10}>
                     <Option type={type} data={data} onBlur={handleBlur} onChange={handleChange} />
                 </Col>
-                <Col span={14}>
+                <Col xs={{ span: 24, order: 1 }} lg={14}>
                     {cloneElement(children, { ...this.state })}
                 </Col>
             </Row>

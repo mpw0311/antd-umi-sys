@@ -37,17 +37,51 @@ const menuData = [
     {
         title: "echarts组件",
         key: "echarts",
-    },
-    {
-        title: "d3.js组件",
-        key: "d3Chart",
         children: [
             {
-                title: "树图",
-                key: "treePage",
+                key: 'Bar',
+                title: 'Bar'
+            },
+            {
+                key: 'line',
+                title: 'Line'
+            },
+            {
+                key: 'area',
+                title: 'Area'
+            },
+            {
+                key: 'yBar',
+                title: 'YBar'
+            },
+            {
+                key: 'funnel',
+                title: 'Funnel'
+            },
+            {
+                key: 'pie',
+                title: 'Pie'
+            },
+            {
+                key: 'pieDoughnut',
+                title: 'PieDoughnut'
+            },
+            {
+                key: 'sankey',
+                title: 'Sankey'
             },
         ]
     },
+    // {
+    //     title: "d3.js组件",
+    //     key: "d3Chart",
+    //     children: [
+    //         {
+    //             title: "树图",
+    //             key: "treePage",
+    //         },
+    //     ]
+    // },
     {
         title: "iframe",
         key: "iframe",
