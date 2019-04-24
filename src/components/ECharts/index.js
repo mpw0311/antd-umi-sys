@@ -22,6 +22,7 @@ const Pie = getComponent(React.lazy(() => import('./charts/Pie')));
 const PieDoughnut = getComponent(React.lazy(() => import('./charts/Pie-doughnut')));
 const Sankey = getComponent(React.lazy(() => import('./charts/Sankey')));
 const Radar = getComponent(React.lazy(() => import('./charts/Radar')));
+const ChinaMap = getComponent(React.lazy(() => import('./charts/chinaMap')));
 
 export {
     Area,
@@ -37,5 +38,6 @@ export {
     // PieNest,
     Radar,
     Sankey,
+    ChinaMap,
     // Scatter
 };
