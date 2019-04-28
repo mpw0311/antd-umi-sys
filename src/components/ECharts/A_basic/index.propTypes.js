@@ -1,21 +1,18 @@
 import PropTypes from 'prop-types';
+import titlePropTypes from '../components/title.propTypes';
+import legendPropTypes from '../components/legend.propTypes';
+import toolboxPropTypes from '../components/toolbox.propTypes';
+import gridPropTypes from '../components/grid.propTypes';
 
 export default {
-    //组件标题配置项
-    title: PropTypes.object,
-    //组件标题
-    titleText: PropTypes.string,
-    titleColor: PropTypes.string,
-    titleFontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    titleFontWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    titleTop: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    titleBottom: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    titleLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    titleRight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    ...titlePropTypes,
+    ...legendPropTypes,
+    ...toolboxPropTypes,
+    ...gridPropTypes,
     //调色盘颜色列表
     color: PropTypes.array,
     //支持的图形类型
-    type: PropTypes.oneOf(['line', 'area', 'bar', 'bar-y']),
+    type: PropTypes.oneOf(['line', 'area', 'bar', 'bar-y', 'k']),
     //数据格式校验
     data: PropTypes.shape({
         columns: PropTypes.array,
@@ -33,38 +30,6 @@ export default {
     showTooltip: PropTypes.bool,
     //axisPointer类型
     axisPointer: PropTypes.oneOf(['shadow', 'cross', undefined]),
-    //图形图例配置项
-    legend: PropTypes.object,
-    //是否显示图例
-    showLegend: PropTypes.bool,
-    //图例列表的布局朝向。
-    legendOrient: PropTypes.oneOf(['horizontal', 'vertical']),
-    //图例组件离容器左侧的距离。
-    legendLeft: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.oneOf(['left', 'right', 'center']),
-    ]),
-    //图例组件离容器右侧的距离。
-    legendRight: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.oneOf(['left', 'right', 'center']),
-    ]),
-    //图例组件离容器上侧的距离。
-    legendTop: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.oneOf(['top', 'bottom', 'middle']),
-    ]),
-    //图例组件离容器底侧的距离。
-    legendBottom: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.oneOf(['top', 'bottom', 'middle']),
-    ]),
-    //直角坐标系内绘图网格配置
-    grid: PropTypes.object,
-    gridTop: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    gridBottom: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    gridLeft: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    gridRight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     //x轴配置
     xAxis: PropTypes.object,
     //坐标轴刻度标签的显示间隔，在类目轴中有效。
@@ -103,7 +68,6 @@ export default {
     YUnit: PropTypes.string,
     //是否显示y2轴
     showY2: PropTypes.bool,
-
     //Y2Series，Y2SeriesName,Y2SeriesIndex和Y2Type都用来指定y2轴绑定的数据，选其一
     //y2轴映射数据索引及类型，权重：3
     Y2Series: PropTypes.arrayOf(PropTypes.object),
@@ -113,25 +77,8 @@ export default {
     Y2SeriesName: PropTypes.array,
     //y2轴图形索引，权重1
     Y2SeriesIndex: PropTypes.array,
-
     //y2轴单位
     Y2Unit: PropTypes.string,
-    //工具栏配置项
-    toolbox: PropTypes.object,
-    //是否显示工具栏
-    showToolbox: PropTypes.bool,
-    //区域缩放
-    showToolboxDataZoom: PropTypes.bool,
-    //数据视图
-    showToolboxDataView: PropTypes.bool,
-    //是否图形切换
-    showToolboxMagicType: PropTypes.bool,
-    //图形切换类型['stack', 'tiled']或['line','bar']或['line','bar','stack', 'tiled']
-    toolboxMagicType: PropTypes.array,
-    //刷新还原
-    showToolboxRestore: PropTypes.bool,
-    //保存为图片
-    showToolboxSaveAsImage: PropTypes.bool,
     //系列列表堆叠
     stack: PropTypes.bool,
     //系列列表文本标签

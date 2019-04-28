@@ -6,7 +6,8 @@
  */
 import { PureComponent } from 'react';
 import Chart from '../../B_basic';
-class Index extends PureComponent {
+
+export default class extends PureComponent {
   static defaultProps = {
     data: {},
     type: 'funnel',
@@ -56,4 +57,3 @@ class Index extends PureComponent {
     );
   }
 }
-export default Index;

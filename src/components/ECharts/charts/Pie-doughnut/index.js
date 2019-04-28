@@ -6,7 +6,8 @@
  */
 import { PureComponent } from 'react';
 import Chart from '../../B_basic';
-class Index extends PureComponent {
+
+export default class extends PureComponent {
   static defaultProps = {
     data: {},
     type: 'pie',
@@ -14,8 +15,8 @@ class Index extends PureComponent {
     showLegend: false,
     tooltip: {},
     seriesSettings: {
-        radius: ['50%', '70%'],
-        center: ['40%', '50%'],
+      radius: ['50%', '70%'],
+      center: ['40%', '50%'],
     }
   }
   render() {
@@ -27,4 +28,3 @@ class Index extends PureComponent {
     );
   }
 }
-export default Index;

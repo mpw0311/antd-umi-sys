@@ -6,12 +6,13 @@
  */
 import { PureComponent } from 'react';
 import Chart from '../../A_basic';
-class Index extends PureComponent {
+
+export default class extends PureComponent {
     static defaultProps = {
         data: {},
         type: 'line',
         loading: false,
-        stack:true,
+        stack: true,
         seriesSettings: {
             areaStyle: {},
         },
@@ -25,4 +26,3 @@ class Index extends PureComponent {
         );
     }
 }
-export default Index;

@@ -1,10 +1,10 @@
 import { connect } from 'dva';
 import { List, Checkbox, Select } from 'antd';
-import { Page, Charts } from '@components';
+import { Page } from '@components';
+import { ChinaMap } from '@components/Echarts';
 import { methods } from '@utils';
 import styles from './index.less';
 
-const { ChinaMap } = Charts;
 const { formatNumer } = methods;
 const Option = Select.Option;
 function Index(props) {
