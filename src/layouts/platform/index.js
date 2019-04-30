@@ -1,7 +1,7 @@
 /**
  * @author M
  * @email mpw0311@163.com
- * @version  1.0.0
+ * @version  1.1.0
  * @description  Platform Layout
  */
 import { PureComponent } from 'react';
@@ -49,8 +49,7 @@ class Platform extends PureComponent {
         };
     };
     componentDidMount() {
-        const { dispatch } = this.props;
-        const { isMobile } = this.props;
+        const { dispatch, isMobile } = this.props;
         const { collapsed } = this.state;
         if (isMobile !== collapsed) {
             this.setState({ collapsed: isMobile });
