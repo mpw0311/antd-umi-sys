@@ -10,6 +10,7 @@ import { ContainerQuery } from 'react-container-query';
 import { Layout, BackTop, Icon } from 'antd';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import Media from 'react-media';
 import { Exception } from '@components';
 import Context from '@context';
 import Menus from '../components/Menus';
@@ -41,22 +42,19 @@ const Exception403 = <Exception
 class Platform extends PureComponent {
     constructor(props) {
         super(props);
-        let collapsed = false;
-        const winWidth = document.documentElement.clientWidth;
-        if (winWidth <= 1400) {
-            collapsed = true;
-        } else if (winWidth > 1400) {
-            collapsed = false;
-        }
         this.state = {
-            collapsed: collapsed,
+            collapsed: false,
             theme: 'light',
             menuTheme: 'dark',
         };
     };
     componentDidMount() {
         const { dispatch } = this.props;
-        this.resize();
+        const { isMobile } = this.props;
+        const { collapsed } = this.state;
+        if (isMobile !== collapsed) {
+            this.setState({ collapsed: isMobile });
+        }
         dispatch({
             type: 'global/getSysInfo',
         });
@@ -66,6 +64,13 @@ class Platform extends PureComponent {
         dispatch({
             type: 'menu/getMenuData',
         });
+    }
+    componentWillReceiveProps(nextProps) {
+        const { isMobile } = nextProps;
+        if (isMobile !== this.props.isMobile && isMobile !== this.state.collapsed) {
+            this.setState({ collapsed: isMobile });
+        }
+
     }
     componentWillUnmount() {
         const { dispatch } = this.props;
@@ -79,21 +84,6 @@ class Platform extends PureComponent {
     toggle = () => {
         this.setState({
             collapsed: !this.state.collapsed,
-        });
-    }
-    resize() {
-        window.addEventListener('resize', () => {
-            const winWidth = document.documentElement.clientWidth;
-            const { collapsed } = this.state;
-            if (winWidth <= 1400 && collapsed === false) {
-                this.setState({
-                    collapsed: true
-                });
-            } else if (winWidth > 1400 && collapsed === true) {
-                this.setState({
-                    collapsed: false
-                });
-            }
         });
     }
     getContext(screen) {
@@ -174,7 +164,11 @@ function mapStateToProps({ global, menu, loading }) {
         loading: loading.global
     };
 }
-export default connect(mapStateToProps)(Platform);
+export default connect(mapStateToProps)(props =>
+    <Media query="(max-width: 1200px)">
+        {isMobile => <Platform {...props} isMobile={isMobile} />}
+    </Media>
+);
 Platform.propTypes = {
     children: PropTypes.element.isRequired,
     //用户信息
