@@ -20,7 +20,8 @@
     "path-to-regexp": "^3.0.0",
     "react": "^16.7.0",
     "react-container-query": "^0.11.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "react-media": "^1.9.2"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
