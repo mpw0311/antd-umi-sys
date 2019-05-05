@@ -12,6 +12,12 @@ import { loginName } from '@config';
 import logo from '../../assets/logo_blue_1024.png';
 import styles from './index.less';
 
+@connect(
+  ({ login, loading }) => ({
+    ...login,
+    loading: loading.global,
+  })
+)
 class Index extends PureComponent {
   componentDidMount() {
     const { location: { query = {} } } = this.props;
@@ -48,12 +54,4 @@ class Index extends PureComponent {
     );
   }
 }
-
-function mapStateToProps({ login, loading }) {
-  return {
-    ...login,
-    loading: loading.global,
-  };
-}
-
-export default connect(mapStateToProps)(Index);
+export default Index;
