@@ -4,7 +4,7 @@ console.log(decrypt);
 module.exports = {
     [`POST /login`](req, res) {
         const { body } = req;
-        const { password, username, googleToken } = JSON.parse(body);
+        const { password, username } = body;
         const pwd = decrypt(password)
         if (pwd === 'admin' && username === 'admin') {
             res.status(200).json({

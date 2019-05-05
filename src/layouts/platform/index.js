@@ -6,6 +6,7 @@
  */
 import { PureComponent } from 'react';
 import { connect } from 'dva';
+import router from 'umi/router';
 import { ContainerQuery } from 'react-container-query';
 import { Layout, BackTop, Icon } from 'antd';
 import classNames from 'classnames';
@@ -51,6 +52,11 @@ class Platform extends PureComponent {
     componentDidMount() {
         const { dispatch, isMobile } = this.props;
         const { collapsed } = this.state;
+        const isLogin = sessionStorage.getItem('isLogin');
+        if (isLogin === 'false') {
+            router.push('/login?status=1');
+            return;
+        }
         if (isMobile !== collapsed) {
             this.setState({ collapsed: isMobile });
         }
@@ -64,6 +70,11 @@ class Platform extends PureComponent {
             type: 'menu/getMenuData',
         });
     }
+    // componentDidUpdate(prevProps) {
+    //     if (this.props.location !== prevProps.location) {
+    //         window.scrollTo(0, 0);
+    //     }
+    // }
     componentWillReceiveProps(nextProps) {
         const { isMobile } = nextProps;
         if (isMobile !== this.props.isMobile && isMobile !== this.state.collapsed) {
@@ -136,8 +147,6 @@ class Platform extends PureComponent {
                     </Header>
                     <Content className={styles.content} >
                         <Authorized noMatch={Exception403} {...this.props} />
-                        {/* {children} */}
-                        {/* </Authorized> */}
                     </Content>
                     <Footer />
                 </Layout>
