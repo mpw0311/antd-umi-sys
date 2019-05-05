@@ -4,18 +4,15 @@
  * @version  1.0.0
  * @description  用户登录组件
  */
-import { Component } from 'react';
-import { Form, Icon, Input, Button, Row, Col, Checkbox } from 'antd';
+import { PureComponent } from 'react';
+import { connect } from 'dva';
+import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { formatMessage } from 'umi/locale';
 import styles from "./index.less";
 
 const FormItem = Form.Item;
-class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
-    }
+@connect(({ login }) => ({ isError: login.isError }))
+class Login extends PureComponent {
     handleSubmit = (e) => {
         e.preventDefault();
         const { form, onSubmit } = this.props;
@@ -23,15 +20,31 @@ class Login extends Component {
             onSubmit(errors, values);
         });
     }
+    handleChange = () => {
+        if (this.props.isError === true) {
+            this.props.dispatch({
+                type: 'login/save',
+                payload: {
+                    isError: false
+                }
+            });
+        }
+    }
     render() {
-        const { loading, form } = this.props;
+        const { loading, form, isError } = this.props;
         const {
             getFieldDecorator: fd,
         } = form;
+        const error = isError ? {
+            validateStatus: "error",
+            help: "用户名或密码错误"
+        } : {};
         return (
             <div className={styles.login_form}>
                 <Form onSubmit={this.handleSubmit}>
-                    <FormItem>
+                    <FormItem
+                        {...error}
+                    >
                         {fd('username', {
                             initialValue: 'admin',
                             rules: [{
@@ -39,32 +52,28 @@ class Login extends Component {
                                 message: '请输入用户名!'
                             }]
                         })(
-                            <Input prefix={<Icon type="user" className={styles.color} />} placeholder={formatMessage({ id: 'login.userName' })} />
+                            <Input
+                                prefix={<Icon type="user" className={styles.color} />}
+                                onChange={this.handleChange}
+                                placeholder={formatMessage({ id: 'login.userName' })}
+                            />
                         )}
                     </FormItem>
-                    <Row gutter={8}>
-                        <Col span={16}>
-                            <FormItem>
-                                {fd('password', {
-                                    initialValue: 'admin',
-                                    rules: [{ required: true, message: '请输入密码!' }],
-                                })(
-                                    <Input prefix={<Icon type="lock" className={styles.color} />} type="password" placeholder={formatMessage({ id: 'login.password' })} />
-                                )}
-                            </FormItem>
-                        </Col>
-                        <Col span={8}>
-                            <FormItem>
-                                {fd("googleToken", {
-                                    initialValue: '123',
-                                    rules: [{ required: true, message: '请输入口令!' }]
-                                })(
-                                    <Input prefix={<Icon type="mobile" className={styles.color} />} placeholder="口令" />
-                                )}
-                            </FormItem>
-                        </Col>
-                    </Row>
-
+                    <FormItem
+                        {...error}
+                    >
+                        {fd('password', {
+                            initialValue: 'admin',
+                            rules: [{ required: true, message: '请输入密码!' }],
+                        })(
+                            <Input
+                                prefix={<Icon type="lock" className={styles.color} />}
+                                type="password"
+                                onChange={this.handleChange}
+                                placeholder={formatMessage({ id: 'login.password' })}
+                            />
+                        )}
+                    </FormItem>
                     <FormItem>
                         {fd('rememberMe', {
                             valuePropName: 'checked',
@@ -79,7 +88,7 @@ class Login extends Component {
                         <a href="/#register">   {formatMessage({ id: 'login.signup' })}!</a>
                     </FormItem>
                 </Form>
-            </div>
+            </div >
         );
     }
 }

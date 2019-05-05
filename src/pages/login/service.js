@@ -3,11 +3,8 @@ import { request } from '@utils';
 export function login(payload) {
   return request('/login', {
     method: 'POST',
-    body: JSON.stringify({
+    data: {
       ...payload,
-    }),
-    setting: {
-      STATUS: 0
     }
   });
 }

@@ -1,5 +1,4 @@
 import * as Charts from './Charts';
-import Login from './Login';
 import Register from './Register';
 import Icon from './Icon';
 import DataTable from './DataTable';
@@ -14,7 +13,6 @@ import HeaderSearch from './HeaderSearch';
 import Consumer from './Consumer';
 
 export {
-    Login,
     Icon,
     Charts,
     DataTable,
