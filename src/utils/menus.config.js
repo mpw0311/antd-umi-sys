@@ -151,6 +151,12 @@ export default [
             },]
     },
     {
+        title: "图形组件demo",
+        url: "https://mpw0311.github.io/react-charts",
+        key: "react-charts",
+        icon: "bar-chart"
+    },
+    {
         title: "请给star",
         url: "https://github.com/mpw0311/antd-umi-sys",
         key: "github",
