@@ -93,6 +93,10 @@ const menuData = [
         ]
     },
     {
+        title: "图形组件",
+        key: "react-charts",
+    },
+    {
         title: "请给star",
         key: "github",
     },
