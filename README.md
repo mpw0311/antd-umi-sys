@@ -42,7 +42,8 @@
         npm start
     6.打包发布：
         npm run build
-
+## 支持区块开发
+    npm run add-page 快速添加一个页面模板,详细请看https://umijs.org/zh/guide/block.html
 ## 目录结构
 
 ```js
