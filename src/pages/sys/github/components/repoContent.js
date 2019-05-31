@@ -4,7 +4,7 @@ import { Card, Avatar } from 'antd';
 import { formatMessage } from 'umi/locale';
 import Table from './Table';
 
-export default ({ stargazersInfo, stargazers_count, onChange, loading }) => {
+export default ({ stargazersInfo, stargazers_count, current, onChange, loading }) => {
     const dataTable = {
         columns: [
             {
@@ -106,6 +106,7 @@ export default ({ stargazersInfo, stargazers_count, onChange, loading }) => {
                     total={stargazers_count}
                     onChange={handleChange}
                     loading={loading}
+                    current={current}
                 />
             </Card>
         </Fragment>

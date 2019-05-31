@@ -1,5 +1,6 @@
 
 import * as api from './service';
+import pathToRegexp from 'path-to-regexp';
 export default {
     namespace: 'github',
     state: {
@@ -8,11 +9,15 @@ export default {
         repos: [],
         received_events: [],
         stargazers: [],
-        stargazersInfo: []
+        stargazersInfo: [],
+        //repo
+        stars: {},//stars趋势图
+        currentRepoName: '',
+        currentRepo: [],
     },
     subscriptions: {
         setupHistory({ dispatch, history }) {
-            history.listen(({ pathname, state = {} }) => {
+            history.listen(({ pathname, state = {}, query }) => {
                 if (/^\/sys\/github$/.test(pathname)) {
                     const { account } = state;
                     dispatch({
@@ -22,14 +27,25 @@ export default {
                         }
                     });
                 }
+                if (/^\/sys\/github\//.test(pathname)) {
+                    const [, name] = pathToRegexp('/sys/github/:id').exec(pathname);
+                    const { _n } = query;
+                    dispatch({
+                        type: "save",
+                        payload: {
+                            currentRepoName: _n,
+                            account: name
+                        }
+                    });
+                }
             });
         },
     },
     effects: {
         *getAccountInfo({ payload }, { call, put, select }) {
             const { account } = payload;
-            let preAccount = yield select(({ github }) => github.account);
-            if (preAccount !== account) {
+            const preAccountInfo = yield select(({ github }) => github.accountInfo);
+            if (account !== preAccountInfo.login) {
                 const accountInfo = yield call(api.getAccountInfo, payload);
                 const { repos_url, received_events_url } = accountInfo;
                 const received_events = yield call(api.getData, { url: received_events_url });
@@ -82,6 +98,34 @@ export default {
                         stargazersInfo,
                         stargazers_url: payload.url
                     },
+                });
+            }
+        },
+        *getReposStars({ payload }, { call, put, select }) {
+            const { account: preAccount } = yield select(({ github }) => github.stars);
+            const { account, repoName } = payload;
+            if (!account || preAccount === account) return;
+            const rows = yield call(api.getReposStargazers, { gitname: `${account}/${repoName}` });
+            if (rows) {
+                yield put({
+                    type: "save",
+                    payload: {
+                        stars: {
+                            account,
+                            columns: [
+                                {
+                                    "field": "date",
+                                    "name": "日期",
+                                    "type": "string"
+                                }, {
+                                    "field": "starNum",
+                                    "name": "starNum",
+                                    "type": "number"
+                                }
+                            ],
+                            rows: rows
+                        }
+                    }
                 });
             }
         }

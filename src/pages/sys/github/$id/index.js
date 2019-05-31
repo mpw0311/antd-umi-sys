@@ -1,76 +1,49 @@
 import { PureComponent } from 'react';
 import { connect } from 'dva';
+import { Card } from 'antd';
 import { Page } from '@components';
-import pathToRegexp from 'path-to-regexp';
-import RepoContent from '../components/repoContent';
-import styles from './index.css';
-
-class Index extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            account: undefined,
-            reposName: undefined
-        }
+import { Line } from '@components/Echarts';
+import RepoStargazers from '../components/repoStargazers';
+@connect(({ github, loading }) => {
+    const {
+        account,
+        stars,
+        currentRepoName,
+        description
+    } = github
+    return {
+        account,
+        stars,
+        currentRepoName,
+        description,
+        loading: loading.models.github
     }
-    static getDerivedStateFromProps(nextProps, prevState) {
-        const { location: { pathname, query: { _n: reposName } } } = nextProps;
-        const [, account] = pathToRegexp('/sys/github/:id').exec(pathname);
-        if ((prevState.account === undefined || prevState.reposName === undefined) && account && reposName) {
-            return {
-                account,
-                reposName
-            };
-        } else {
-            return prevState;
-        }
-    }
+})
+class Repo extends PureComponent {
     componentDidMount() {
-        const { dispatch, repos } = this.props;
-        if (repos && repos.length === 0) {
-            const { account } = this.state;
-            dispatch({
-                type: 'github/getAccountInfo',
-                payload: {
-                    account,
-                }
-            });
-        } else {
-            const { repos } = this.props;
-            const { reposName } = this.state;
-            const [pro = {}] = repos.filter(item => item.name === reposName);
-            const { stargazers_url } = pro;
-            if (stargazers_url) {
-                this.getStargazers(stargazers_url);
-            }
-        }
+        const { account, currentRepoName, repos } = this.props;
+        this.getRepoStars(account, currentRepoName);
     }
     componentDidUpdate(nextProps, nextState) {
-        const { repos, stargazers } = nextProps;
-        const { reposName } = nextState;
-        const [pro = {}] = repos.filter(item => item.name === reposName);
-        const { stargazers_url } = pro;
-        if (stargazers_url && stargazers.length === 0) {
-            this.getStargazers(stargazers_url);
+        const { account, currentRepoName } = nextProps;
+        if (account !== this.props.account || currentRepoName !== this.props.currentRepoName) {
+            this.getRepoStars(account, currentRepoName);
         }
     }
-    getStargazers = (stargazers_url, current = 1, pageSize = 10) => {
+    /**
+     * 数据请求
+     */
+    getRepoStars = (account, repoName) => {
         this.props.dispatch({
-            type: 'github/getStargazers',
+            type: 'github/getReposStars',
             payload: {
-                url: stargazers_url + `?page=${current}&per_page=${pageSize}`,
+                account,
+                repoName
             }
         });
     }
     render() {
-        const { repos, stargazersInfo, loading } = this.props;
-        const { account, reposName } = this.state;
-        const [pro = {}] = repos.filter(item => item.name === reposName);
-        const { description, stargazers_count, stargazers_url } = pro;
-        const handleChange = (pagination) => {
-            const { current, pageSize } = pagination;
-            this.getStargazers(stargazers_url, current, pageSize);
-        }
+        const { account, currentRepoName, description, stars } = this.props;
         return (
             <Page
                 loading={false}
@@ -81,34 +54,19 @@ class Index extends PureComponent {
                         icon: 'github',
                         state: { account }
                     },
-                    reposName
+                    currentRepoName
                 ]}
-                title={reposName}
+                title={currentRepoName}
                 description={description}
             >
-                <div className={styles.normal}>
-                    <h1>{reposName}</h1>
-                    <RepoContent
-                        stargazersInfo={stargazersInfo}
-                        stargazers_count={stargazers_count}
-                        onChange={handleChange}
-                        loading={loading}
-                    />
-
-                </div>
+                <Card
+                    title="stargazers Analysis"
+                >
+                    <Line data={stars} seriesLayoutBy={"column"} height={400} />
+                </Card>
+                <RepoStargazers />
             </Page>
         );
     }
 }
-
-export default connect(({ github, loading }) => {
-    const { account, accountInfo, repos, stargazers, stargazersInfo } = github
-    return {
-        account,
-        accountInfo,
-        repos,
-        stargazers,
-        stargazersInfo,
-        loading: loading.models.github
-    };
-})(Index);
+export default Repo;
