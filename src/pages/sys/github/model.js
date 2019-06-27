@@ -9,7 +9,6 @@ export default {
     received_events: [],
     stargazers: [],
     stargazersInfo: {},
-    //repo
     stars: {}, //stars趋势图
     currentRepoName: '',
   },
@@ -107,8 +106,10 @@ export default {
     *getReposStars({ payload }, { call, put, select }) {
       const { account: preAccount } = yield select(({ github }) => github.stars);
       const { account, repoName } = payload;
+      debugger
       if (!account || preAccount === account) return;
       const rows = yield call(api.getReposStargazers, { gitname: `${account}/${repoName}` });
+      debugger
       if (rows) {
         yield put({
           type: 'save',

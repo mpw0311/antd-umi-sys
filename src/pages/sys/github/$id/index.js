@@ -22,6 +22,7 @@ class Repo extends PureComponent {
   }
   componentDidUpdate(nextProps, nextState) {
     const { account, currentRepoName } = nextProps;
+    debugger
     if (account !== this.props.account || currentRepoName !== this.props.currentRepoName) {
       //stargazers Analysis
       this.getRepoStars(account, currentRepoName);
