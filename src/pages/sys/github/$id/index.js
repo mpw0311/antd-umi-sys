@@ -22,7 +22,6 @@ class Repo extends PureComponent {
   }
   componentDidUpdate(nextProps, nextState) {
     const { account, currentRepoName } = nextProps;
-    debugger
     if (account !== this.props.account || currentRepoName !== this.props.currentRepoName) {
       //stargazers Analysis
       this.getRepoStars(account, currentRepoName);
@@ -57,10 +56,10 @@ class Repo extends PureComponent {
         title={currentRepoName}
         description={description}
       >
-        <Card title="stargazers Analysis">
+        {/* <Card title="stargazers Analysis">
           <Line data={stars} seriesLayoutBy={'column'} height={400} loading={loading} />
         </Card>
-        <RepoStargazers location={location} />
+        <RepoStargazers location={location} /> */}
       </Page>
     );
   }
