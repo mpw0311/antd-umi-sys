@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'antd';
 import { sysName } from '@config';
 import styles from './index.less';
-import logo from '../../assets/jianlc.png';
+import logo from '../../assets/logo.png';
 class Index extends PureComponent {
     render() {
         const { collapsed } = this.props;

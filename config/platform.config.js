@@ -1,8 +1,9 @@
+
 module.exports = {
     apiPrefix: document.head.dataset.api || '',
     iframePrefix: document.head.dataset.iframe || '',
     loginLogo: 'logo_blue_1024.png',
-    sysLogo: 'jianlc.png',
+    sysLogo: 'logo.png',
     loginName: '数据平台',
     sysName: 'TEST-Pro',
     copyright: "2019 mpw0311@163.com.",
