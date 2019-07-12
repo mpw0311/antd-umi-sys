@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
 import { _isData } from '../../methods';
-import Chart from '../../core';
-import { maxBy } from 'lodash';
-import { registerMap, getMap } from "echarts";
+import { maxBy, isEqual } from 'lodash';
+// eslint-disable-next-line
+import { bind, clear } from 'size-sensor';
+import { registerMap, getMap, init, getInstanceByDom, dispose } from "echarts";
 import chinaData from '../../mapData/china.json';
 const log = function (msg) {
     if (typeof console !== 'undefined') {
@@ -22,11 +23,52 @@ const replace = (rows, target) => {
 //倒序排序
 const sort = (rows, target) => rows.sort(function (a, b) { return b[target] - a[target]; });
 export default class extends PureComponent {
-
+    static defaultProps = {
+        style: {
+            width: "100%",
+            height: "100%"
+        }
+    }
+    constructor(props) {
+        super(props);
+        this.echartsElement = null;
+        this.echartObj = null;
+    }
     componentWillMount() {
         this.registerChinaMap();
     }
+    componentDidMount() {
+        const element = this.echartsElement;
+        const opts = this.getOption()
+        this.rerender(element, opts);
+    }
+    componentDidUpdate(prevProps) {
+        // 以下属性修改的时候，需要 dispose 之后再新建
+        // 1. 切换 theme 的时候
+        // 2. 修改 opts 的时候
+        // 3. 修改 onEvents 的时候，这样可以取消所以之前绑定的事件 issue #151
+        if (
+            prevProps.theme !== this.props.theme ||
+            !isEqual(prevProps.data, this.props.data) ||
+            !isEqual(prevProps.onEvents, this.props.onEvents)
+        ) {
+            this.dispose();
 
+            this.rerender(); // 重建
+            return;
+        }
+        // 样式修改的时候，可能会导致大小变化，所以触发一下 resize
+        if (!isEqual(prevProps.style, this.props.style) || !isEqual(prevProps.className, this.props.className)) {
+            try {
+                this.echartObj && this.echartObj.resize();
+            } catch (e) {
+                console.warn(e);
+            }
+        }
+    }
+    componentWillUnmount() {
+        this.dispose();
+    }
     registerChinaMap = () => {
         if (registerMap && getMap) {
             const map = getMap("china");
@@ -37,11 +79,29 @@ export default class extends PureComponent {
             log('ECharts is not Loaded');
         }
     }
-    render() {
+    rerender = (element, option) => {
+        const myChart = init(element);
+        myChart.setOption(option);
+        this.echartObj = getInstanceByDom(element);
+        this.echartObj.resize();
+    }
+
+    // dispose echarts and clear size-sensor
+    dispose = () => {
+        if (this.echartsElement) {
+            try {
+                clear(this.echartsElement);
+            } catch (e) {
+                console.warn(e);
+            }
+            // dispose echarts instance
+            dispose(this.echartsElement);
+        }
+    };
+    getOption = () => {
         const {
             data = {},
             height,
-            loading,
             style,
             target,
             title,
@@ -222,12 +282,23 @@ export default class extends PureComponent {
             }
             ]
         };
+        return option;
+    }
+    render() {
+
         return (
-            <Chart
-                option={option}
-                style={style}
-                showLoading={loading}
+            <div
+                className={`echarts-for-react`}
+                style={this.props.style}
+                ref={el => {
+                    this.echartsElement = el;
+                }}
             />
+            // <Chart
+            //     option={option}
+            //     style={style}
+            //     showLoading={loading}
+            // />
         );
     };
 };

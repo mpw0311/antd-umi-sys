@@ -2,16 +2,15 @@ import { PureComponent } from 'react';
 import { connect } from 'dva';
 import { formatMessage } from 'umi/locale';
 import { Page } from '@components';
-import Header from './components/header';
-import Content from './components/content';
+import AccountAnay from './components/AccountAnay';
+import AccountContent from './components/accountContent';
 
 class Index extends PureComponent {
     onTableChange = (pagination) => {
         const { dispatch, accountInfo: { repos_url } } = this.props;
         const { current, pageSize } = pagination;
         dispatch({
-            // 获取table数据
-            type: 'github/getRepos',
+            type: 'githubPro/getRepos',
             payload: {
                 url: repos_url,
                 current,
@@ -30,21 +29,20 @@ class Index extends PureComponent {
                 title={'GitDataV'}
                 description={formatMessage({ id: 'gitDataV.desc' })}
             >
-                <Header />
-                <Content {...this.props} handleChange={this.onTableChange} />
+                <AccountAnay />
+                <AccountContent {...this.props} handleChange={this.onTableChange} />
             </Page>
         );
     }
 }
 
-export default connect(({ github, loading }) => {
-    const { repos, account, accountInfo, received_events, pagination } = github;
+export default connect(({ githubPro, loading }) => {
+    const { reposInfo, account, accountInfo, received_events } = githubPro;
     return {
-        repos,
+        reposInfo,
         account,
         accountInfo,
         received_events,
-        pagination,
         loading: loading.models.github
     };
 })(Index);

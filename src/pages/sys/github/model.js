@@ -11,6 +11,9 @@ export default {
     stargazersInfo: {},
     stars: {}, //stars趋势图
     currentRepoName: '',
+    pagination: {
+      current: 1
+    }
   },
   subscriptions: {
     setupHistory({ dispatch, history }) {
@@ -39,6 +42,12 @@ export default {
     },
   },
   effects: {
+    /**
+     * 请求账户信息
+     *  accountInfo:{
+     *    login:账户名
+     * }
+     */
     *getAccountInfo({ payload }, { call, put, select }) {
       const { account } = payload;
       const preAccountInfo = yield select(({ github }) => github.accountInfo);
@@ -64,6 +73,7 @@ export default {
         });
       }
     },
+    // 获取table数据
     *getRepos({ payload }, { call, put, select }) {
       let { repos_url } = yield select(({ github }) => github.accountInfo);
       const { current = 1, pageSize = 10 } = payload;
@@ -75,6 +85,7 @@ export default {
           type: 'save',
           payload: {
             repos,
+            pagination: { current }
           },
         });
       }
@@ -103,13 +114,12 @@ export default {
         },
       });
     },
+    //star 趋势图数据
     *getReposStars({ payload }, { call, put, select }) {
       const { account: preAccount } = yield select(({ github }) => github.stars);
       const { account, repoName } = payload;
-      debugger
-      if (!account || preAccount === account) return;
+      // if (!account || preAccount === account) return;
       const rows = yield call(api.getReposStargazers, { gitname: `${account}/${repoName}` });
-      debugger
       if (rows) {
         yield put({
           type: 'save',

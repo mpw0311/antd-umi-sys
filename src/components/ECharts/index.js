@@ -6,7 +6,6 @@
  */
 import React, { Suspense } from 'react';
 import { Skeleton } from 'antd';
-
 const getComponent = Component => props => (
     <Suspense fallback={<Skeleton title={false} active />}>
         <Component {...props} />

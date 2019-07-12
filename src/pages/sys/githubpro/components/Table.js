@@ -27,7 +27,7 @@ export default class DataTable extends PureComponent {
             <Table
                 dataSource={dataSource}
                 columns={columns}
-                pagination={{ total, ...this.state.pagination, current }}
+                pagination={{ total, current, ...this.state.pagination }}
                 onChange={this.handleTableChange}
                 {...rest}
             />

@@ -6,7 +6,7 @@ import { Bar } from '@components/Echarts';
 import Table from './Table';
 import { formatMessage } from 'umi/locale';
 export default (props) => {
-    const { loading, repos, account, accountInfo: { public_repos }, received_events, handleChange, pagination } = props;
+    const { loading, reposInfo, account, accountInfo: { public_repos }, received_events, handleChange } = props;
     const data = {
         columns: [
             {
@@ -25,7 +25,7 @@ export default (props) => {
                 "type": "number"
             }
         ],
-        rows: repos.map(item => {
+        rows: reposInfo.map(item => {
             const { name, stargazers_count, forks_count } = item;
             return {
                 name,
@@ -80,7 +80,7 @@ export default (props) => {
                 "type": "number"
             }
         ],
-        rows: repos.map(item => {
+        rows: reposInfo.map(item => {
             const {
                 name,
                 stargazers_count,
@@ -158,7 +158,6 @@ export default (props) => {
                 <Table
                     data={dataTable}
                     total={public_repos}
-                    current={pagination.current}
                     onChange={handleChange}
                     loading={loading}
                 />

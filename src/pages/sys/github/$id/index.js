@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { Card } from 'antd';
 import { Page } from '@components';
 import { Line } from '@components/Echarts';
-import RepoStargazers from '../components/repoStargazers';
+// import RepoStargazers from '../components/repoStargazers';
 @connect(({ github, loading }) => {
   const { account, stars, currentRepoName, description } = github;
   return {
@@ -16,13 +16,13 @@ import RepoStargazers from '../components/repoStargazers';
 })
 class Repo extends PureComponent {
   componentDidMount() {
+    // eslint-disable-next-line
     const { account, currentRepoName, repos } = this.props;
     //stargazers Analysis
     this.getRepoStars(account, currentRepoName);
   }
   componentDidUpdate(nextProps, nextState) {
     const { account, currentRepoName } = nextProps;
-    debugger
     if (account !== this.props.account || currentRepoName !== this.props.currentRepoName) {
       //stargazers Analysis
       this.getRepoStars(account, currentRepoName);
@@ -60,7 +60,7 @@ class Repo extends PureComponent {
         <Card title="stargazers Analysis">
           <Line data={stars} seriesLayoutBy={'column'} height={400} loading={loading} />
         </Card>
-        <RepoStargazers location={location} />
+        {/* <RepoStargazers location={location} /> */}
       </Page>
     );
   }

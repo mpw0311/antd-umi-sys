@@ -1,4 +1,9 @@
 import Redirect from 'umi/redirect';
-import { sysDefultPage } from '@config';
 // export default () => <Redirect to={`/sys/${pathname}`} />;
-export default () => <Redirect to={{...sysDefultPage}} />;
+export default () => <Redirect to={{
+    pathname: '/sys/github',
+    state: {
+        key: 'gitDataV',
+        pathtitles: [{ title: 'gitDataV', icon: 'github' }],
+    }
+}} />;

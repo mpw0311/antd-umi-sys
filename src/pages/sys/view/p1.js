@@ -17,7 +17,8 @@ class Index extends PureComponent {
         };
         return (
             <Page title={'view1'} loading={loading}>
-                <View data={p1} handleSubmit={onSubmit} loading={loading} />
+
+                <View data={p1} showY2={true} Y2SeriesIndex={[1]} Y2Name={"万"} YName={"万"} handleSubmit={onSubmit} loading={loading} />
             </Page>
         );
     }

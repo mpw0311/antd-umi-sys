@@ -70,7 +70,7 @@ function Index(props) {
     );
     return (
         <Page loading={false} title={'地域性分析'} flex>
-            <div style={{ width: '100%', minHeight: 700/* height: 'calc(100vh - 240px)' */ }}>
+            <div style={{ width: '100%', minHeight: '70vh'/* height: 'calc(100vh - 240px)' */ }}>
                 <ChinaMap
                     title={'地域分析'}
                     seriesName={'地域分析'}
