@@ -6,7 +6,7 @@ import { Bar } from '@components/Echarts';
 import Table from './Table';
 import { formatMessage } from 'umi/locale';
 export default (props) => {
-    const { loading, repos, account, accountInfo: { public_repos }, received_events, handleChange } = props;
+    const { loading, repos, account, accountInfo: { public_repos }, received_events, handleChange, pagination } = props;
     const data = {
         columns: [
             {
@@ -158,6 +158,7 @@ export default (props) => {
                 <Table
                     data={dataTable}
                     total={public_repos}
+                    current={pagination.current}
                     onChange={handleChange}
                     loading={loading}
                 />
