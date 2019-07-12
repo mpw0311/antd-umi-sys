@@ -102,7 +102,6 @@ export default class extends PureComponent {
         const {
             data = {},
             height,
-            loading,
             style,
             target,
             title,
