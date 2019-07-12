@@ -18,14 +18,8 @@ export default [
         children: [
             {
                 title: "路径分析",
-                link: "/sys/linkAnalysis",
-                key: "linkAnalysis",
-                icon: "link"
-            },
-            {
-                title: "匹配额度分析",
-                link: "/sys/matchAnalysis",
-                key: "matchAnalysis",
+                link: "/sys/pathAnalysis",
+                key: "pathAnalysis",
                 icon: "link"
             },
             {
@@ -80,6 +74,7 @@ export default [
             {
                 link: '/sys/echarts/pie',
                 icon: 'pie-chart',
+                key: "pie",
                 title: 'Pie'
             },
             {

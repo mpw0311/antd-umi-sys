@@ -1,10 +1,10 @@
 import { Fragment, PureComponent } from 'react';
-import { DataTable, Charts } from '@components';
+import { DataTable } from '@components';
+import { Line } from '@components/Echarts';
 import { Row, Col, DatePicker, Button, Card } from 'antd';
 import moment from 'moment';
 
 const { RangePicker } = DatePicker;
-const { LineBar } = Charts;
 const dateFormat = 'YYYY/MM/DD';
 const initTime = [moment().subtract(7, 'days'), moment().subtract(1, 'days')];
 class Index extends PureComponent {
@@ -26,7 +26,7 @@ class Index extends PureComponent {
         handleSubmit(times);
     }
     render() {
-        const { data, Y2Show, YUnit, Y2Unit, loading,
+        const { data, showY2, Y2Name, YName, loading,
             handleClick = () => {
                 console.log("download");
             }
@@ -49,7 +49,7 @@ class Index extends PureComponent {
                     // title="Card title"
                     style={{ marginTop: 15 }}
                 >
-                    <LineBar data={data} Y2Show={Y2Show} Y2Index={1} YUnit={YUnit} Y2Unit={Y2Unit} loading={loading} />
+                    <Line seriesLayoutBy={"column"} data={data} showY2={showY2} Y2SeriesIndex={[1]} YName={YName} Y2Name={Y2Name} loading={loading} />
                 </Card>
                 <DataTable
                     loading={loading}

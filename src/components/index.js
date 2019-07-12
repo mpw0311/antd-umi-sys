@@ -1,4 +1,3 @@
-import * as Charts from './Charts';
 import Register from './Register';
 import Icon from './Icon';
 import DataTable from './DataTable';
@@ -14,7 +13,6 @@ import Consumer from './Consumer';
 
 export {
     Icon,
-    Charts,
     DataTable,
     Breadcrumb,
     Announcement,

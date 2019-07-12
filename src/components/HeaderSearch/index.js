@@ -99,6 +99,9 @@ class HeaderSearch extends PureComponent {
                     {...restProps}
                     dataSource={dataSource.map((item) => {
                         const { title, key, link, ...restState } = item;
+                        if (key === undefined || link === undefined || title === undefined) {
+                            console.error('The key or link is not defined:', item)
+                        }
                         return (
                             <Option
                                 key={key}

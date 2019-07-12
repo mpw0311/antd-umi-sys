@@ -39,7 +39,7 @@ class Index extends Component {
             });
         }
     }
-    onload = () => {
+    handlerLoad = () => {
         const { loading } = this.state;
         if (loading) {
             this.setState({
@@ -62,9 +62,7 @@ class Index extends Component {
                     name="myFrame"
                     src={url}
                     style={{ flex: 'auto', border: 0, marginBottom: '-10px', minHeight: h ? parseInt(h) : undefined }}
-                    ref={(dom) => {
-                        this.onload(dom);
-                    }}
+                    onLoad={this.handlerLoad}
                 />
             </Page>
         );

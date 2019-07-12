@@ -1,4 +1,12 @@
 
+// 菜单权限：true(开启) false(关闭)
+// let GLOBAL_MENU_PERMISSION;
+// if (process && process.env.NODE_ENV === 'development') {
+//     GLOBAL_MENU_PERMISSION = false;
+// } else {
+//     GLOBAL_MENU_PERMISSION = true;
+// }
+
 module.exports = {
     apiPrefix: document.head.dataset.api || '',
     iframePrefix: document.head.dataset.iframe || '',
@@ -9,10 +17,7 @@ module.exports = {
     copyright: "2019 mpw0311@163.com.",
     menuPermission: true,
     pageSize: 10,
-    indexDefultPage: {
-        pathname: '/login',
-        state: {}
-    },
+    iconUrl: '//at.alicdn.com/t/font_1030595_depmdbpf3yc.js',
     sysDefultPage: {
         pathname: '/sys/github',
         state: {
@@ -20,8 +25,4 @@ module.exports = {
             pathtitles: [{ title: 'gitDataV', icon: 'github' }],
         }
     },
-    frameDefultPage: {
-        pathname: '/frame/baidu',
-    },
-    iconUrl: '//at.alicdn.com/t/font_1030595_depmdbpf3yc.js'
 };

@@ -10,7 +10,7 @@ export default (WrappedComponent) => {
     return class extends PureComponent {
         render() {
             return (
-                <Context.Consumer>
+                <Context.Consumer >
                     {({ theme, location }) => (
                         < WrappedComponent theme={theme} location={location} {...this.props} />
                     )}

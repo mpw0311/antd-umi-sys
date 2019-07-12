@@ -2,34 +2,20 @@
 import { resolve } from "path";
 // ref: https://umijs.org/config/
 
-// 数据请求api
-let GLOBAL_API_PREFIX;
-// 菜单权限：true(开启) false(关闭)
-let GLOBAL_MENU_PERMISSION;
-if (process && process.env.NODE_ENV === 'development') {
-  GLOBAL_API_PREFIX = 'dev_api_prefix';
-  GLOBAL_MENU_PERMISSION = false;
-} else {
-  GLOBAL_API_PREFIX = 'pro_api_prefix';
-  GLOBAL_MENU_PERMISSION = true;
-}
+
 export default {
   base: '/',
   treeShaking: true,//用于描述移除 JavaScript 上下文中的未引用代码
   history: 'hash',//hash路由
   hash: true,//生成hash文件名
-//   disableRedirectHoist: true,//禁用 redirect 上提。
+  //   disableRedirectHoist: true,//禁用 redirect 上提。
   // devtool: 'source-map',//生成map文件
   targets: {//兼容浏览器版本
     // ie: 11,
   },
-  define: {
-    GLOBAL_API_PREFIX,
-    GLOBAL_MENU_PERMISSION,
-  },
   // 配置模块不打入代码
   externals: {
-    echarts: 'window.echarts',
+    // echarts: 'window.echarts',
     d3: 'window.d3',
   },
   plugins: [
@@ -58,7 +44,7 @@ export default {
       },
       // cdn
       scripts: [
-        { src: 'https://cdn.bootcss.com/echarts/4.2.1/echarts.min.js' },
+        // { src: 'https://cdn.bootcss.com/echarts/4.2.1-rc.3/echarts.min.js' },
         { src: 'https://cdn.bootcss.com/d3/5.9.2/d3.min.js' },
       ],
     }],
@@ -72,11 +58,11 @@ export default {
     '@services': resolve(__dirname, "../src/services"),
     '@models': resolve(__dirname, "../src/models"),
   },
-  "proxy": {
+  proxy: {
     "/api": {
-      "target": "",
-      "changeOrigin": true,
-      "pathRewrite": { "^/api": "" }
+      target: "",
+      changeOrigin: true,
+      pathRewrite: { "^/api": "" }
     }
   },
 }

@@ -72,16 +72,16 @@ const menuData = [
             },
         ]
     },
-    // {
-    //     title: "d3.js组件",
-    //     key: "d3Chart",
-    //     children: [
-    //         {
-    //             title: "树图",
-    //             key: "treePage",
-    //         },
-    //     ]
-    // },
+    {
+        title: "d3.js组件",
+        key: "d3Chart",
+        children: [
+            {
+                title: "树图",
+                key: "treePage",
+            },
+        ]
+    },
     {
         title: "iframe",
         key: "iframe",

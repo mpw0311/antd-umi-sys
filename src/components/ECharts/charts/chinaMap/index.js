@@ -2,7 +2,13 @@ import React, { PureComponent } from 'react';
 import { _isData } from '../../methods';
 import Chart from '../../core';
 import { maxBy } from 'lodash';
-import '../../mapData/china';
+import { registerMap, getMap } from "echarts";
+import chinaData from '../../mapData/china.json';
+const log = function (msg) {
+    if (typeof console !== 'undefined') {
+        console && console.error && console.error(msg);
+    }
+};
 //替换值
 const replace = (rows, target) => {
     return rows.map((item, i) => {
@@ -17,6 +23,20 @@ const replace = (rows, target) => {
 const sort = (rows, target) => rows.sort(function (a, b) { return b[target] - a[target]; });
 export default class extends PureComponent {
 
+    componentWillMount() {
+        this.registerChinaMap();
+    }
+
+    registerChinaMap = () => {
+        if (registerMap && getMap) {
+            const map = getMap("china");
+            if (!map) {
+                registerMap('china', chinaData);
+            }
+        } else {
+            log('ECharts is not Loaded');
+        }
+    }
     render() {
         const {
             data = {},
