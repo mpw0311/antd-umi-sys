@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { _isData } from '../../methods';
-import { maxBy } from 'lodash';
+import { maxBy, isEqual } from 'lodash';
 // eslint-disable-next-line
 import { bind, clear } from 'size-sensor';
 import { registerMap, getMap, init, getInstanceByDom, dispose } from "echarts";
@@ -31,7 +31,8 @@ export default class extends PureComponent {
     }
     constructor(props) {
         super(props);
-        this.echartsElement = null
+        this.echartsElement = null;
+        this.echartObj = null;
     }
     componentWillMount() {
         this.registerChinaMap();
@@ -41,10 +42,29 @@ export default class extends PureComponent {
         const opts = this.getOption()
         this.rerender(element, opts);
     }
-    componentDidUpdate() {
-        const element = this.echartsElement;
-        const echartObj = getInstanceByDom(element);
-        echartObj.resize();
+    componentDidUpdate(prevProps) {
+        // 以下属性修改的时候，需要 dispose 之后再新建
+        // 1. 切换 theme 的时候
+        // 2. 修改 opts 的时候
+        // 3. 修改 onEvents 的时候，这样可以取消所以之前绑定的事件 issue #151
+        if (
+            prevProps.theme !== this.props.theme ||
+            !isEqual(prevProps.data, this.props.data) ||
+            !isEqual(prevProps.onEvents, this.props.onEvents)
+        ) {
+            this.dispose();
+
+            this.rerender(); // 重建
+            return;
+        }
+        // 样式修改的时候，可能会导致大小变化，所以触发一下 resize
+        if (!isEqual(prevProps.style, this.props.style) || !isEqual(prevProps.className, this.props.className)) {
+            try {
+                this.echartObj && this.echartObj.resize();
+            } catch (e) {
+                console.warn(e);
+            }
+        }
     }
     componentWillUnmount() {
         this.dispose();
@@ -62,8 +82,8 @@ export default class extends PureComponent {
     rerender = (element, option) => {
         const myChart = init(element);
         myChart.setOption(option);
-        const echartObj = getInstanceByDom(element);
-        echartObj.resize();
+        this.echartObj = getInstanceByDom(element);
+        this.echartObj.resize();
     }
 
     // dispose echarts and clear size-sensor
