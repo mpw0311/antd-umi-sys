@@ -15,7 +15,7 @@ export default {
   },
   // 配置模块不打入代码
   externals: {
-    // echarts: 'window.echarts',
+    echarts: 'window.echarts',
     d3: 'window.d3',
   },
   plugins: [
@@ -44,7 +44,9 @@ export default {
       },
       // cdn
       scripts: [
-        // { src: 'https://cdn.bootcss.com/echarts/4.2.1-rc.3/echarts.min.js' },
+        { src: 'https://cdn.bootcss.com/echarts/4.2.1/echarts.min.js' },
+        // { src: 'https://gallery.echartsjs.com/dep/echarts/map/js/china.js' },
+        
         { src: 'https://cdn.bootcss.com/d3/5.9.2/d3.min.js' },
       ],
     }],
