@@ -129,7 +129,6 @@ class Platform extends PureComponent {
                         location={location}
                         menusData={menusData}
                         defaultKey={defaultKey}
-                        collapsed={collapsed}
                     />
                 </Sider>
                 <Layout id="backTop" className={styles.contianer} style={{ marginLeft: collapsed ? 80 : 200 }}>
