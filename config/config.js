@@ -1,6 +1,7 @@
 
-import { resolve } from "path";
 // ref: https://umijs.org/config/
+import { resolve } from "path";
+import theme from "./theme.config"
 
 
 export default {
@@ -45,7 +46,7 @@ export default {
       // cdn
       scripts: [
         // { src: 'https://cdn.bootcss.com/echarts/4.2.1/echarts.min.js' },
-        
+
         { src: 'https://cdn.bootcss.com/d3/5.9.2/d3.min.js' },
       ],
     }],
@@ -59,6 +60,7 @@ export default {
     '@services': resolve(__dirname, "../src/services"),
     '@models': resolve(__dirname, "../src/models"),
   },
+  theme,
   proxy: {
     "/api": {
       target: "",

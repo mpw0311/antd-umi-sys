@@ -1,5 +1,6 @@
 @import "./vars.less";
 
+/***滚动条美化 Start***/
 .hideScrollbar() {
     /*火狐下隐藏滚动条*/
     scrollbar-width: none;
@@ -41,6 +42,16 @@
     }
 }
 
+/***滚动条美化 End***/
+/***文字超出隐藏 Start***/
+.text-overflow {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/***文字超出隐藏 End***/
+/***注册滚动条全局样式***/
 :global(.scrollbar) {
     .scrollbar();
 }
