@@ -10,10 +10,17 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import PageHeader from '../PageHeader';
 import Context from '@context';
-import Loader from '../Loader';
+// import Loader from '../Loader';
 import styles from './index.less';
 
-class Page extends PureComponent {
+@connect(({ menu }) => {
+    const { flattenMenuData, breadcrumbList } = menu;
+    return {
+        flattenMenuData,
+        breadcrumbList
+    };
+})
+class PageWrapper extends PureComponent {
     static defaultProps = {
         loading: false,
         showHeader: true,
@@ -32,7 +39,6 @@ class Page extends PureComponent {
             flattenMenuData,
             style
         } = this.props;
-        const childStyle = flex === true ? { display: 'flex' } : {};
         return (
             <Context.Consumer>
                 {({ location }) => (
@@ -52,11 +58,10 @@ class Page extends PureComponent {
                         <div
                             className={styles.children}
                             style={{
-                                display: flex && 'flex',
-                                ...childStyle,
+                                display: flex === true ? 'flex' : "block",
                                 ...style
                             }}>
-                            {loading && <Loader spinning />}
+                            {/* {loading && <Loader spinning />} */}
                             {children}
                         </div>
                     </div>
@@ -66,9 +71,9 @@ class Page extends PureComponent {
     }
 }
 
-export default connect(({ menu: { flattenMenuData, breadcrumbList } }) =>
-    ({ flattenMenuData, breadcrumbList }))(Page);
-Page.propTypes = {
+export default PageWrapper;
+
+PageWrapper.propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
     loading: PropTypes.bool,

@@ -73,7 +73,7 @@ class MainMenu extends PureComponent {
     });
   }
   render() {
-    const { location, defaultKey, menuTheme, menusData, mode, collapsed } = this.props;
+    const { location, defaultKey, menuTheme, menusData, mode } = this.props;
     const { pathname, state: pathState } = location;
     const menus = this.renderMenu(menusData);
     const { key } = pathState || queryKeysByPath(pathname, menusData);
@@ -84,7 +84,6 @@ class MainMenu extends PureComponent {
         theme={menuTheme}
         style={{ overflowY: 'auto', height: "calc(100vh - 70px)" }}
         className="progressbar"
-        inlineCollapsed={collapsed}
       >
         {menus}
       </Menu>

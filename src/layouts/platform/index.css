@@ -17,7 +17,7 @@
   /*滚动条里面小方块*/
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
-  background-color: rgba(152, 152, 152, 0.5);
+  background-color: rgba(152, 152, 152, 0.4);
 }
 :global(.scrollbar)::-webkit-scrollbar-track {
   /*滚动条里面轨道*/
@@ -35,7 +35,7 @@
   /*滚动条里面小方块*/
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
-  background-color: rgba(152, 152, 152, 0.5);
+  background-color: rgba(152, 152, 152, 0.4);
 }
 :global(.ant-select-dropdown>div>ul)::-webkit-scrollbar-track {
   /*滚动条里面轨道*/
@@ -43,27 +43,33 @@
   border-radius: 10px;
   background: #EDEDED;
 }
-.screen,
-.warapper {
-  height: 100%;
+.wrap {
+  min-height: 100vh;
+  /***侧边栏***/
+  /***系统主体部分***/
 }
-.contianer {
-  overflow: auto;
-  /*隐藏滚动条，当IE下溢出，仍然可以滚动*/
-  -ms-overflow-style: none;
-  /*火狐下隐藏滚动条*/
+.wrap .sider {
+  height: 100vh;
+  position: fixed;
+  left: 0;
 }
-.contianer::-webkit-scrollbar {
-  display: none;
-  /*滚动条整体样式*/
-  width: 0px;
-  /*高宽分别对应横竖滚动条的尺寸*/
-  height: 0px;
+.wrap .container {
+  display: flex;
+  flex-direction: column;
+  /***系统头部***/
+  /***系统内容区域***/
 }
-.content {
-  flex: 1 0 auto;
+.wrap .container .contentHeader {
+  background: #fff;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.wrap .container .content {
+  flex: auto;
   margin: 10px 16px;
   margin-bottom: 0;
+  display: flex;
 }
 .trigger {
   font-size: 18px;
@@ -74,11 +80,6 @@
 }
 .trigger:hover {
   color: #1890ff;
-}
-.sider {
-  height: 100vh;
-  position: fixed;
-  left: 0;
 }
 .logo {
   height: 64px;

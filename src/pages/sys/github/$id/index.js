@@ -41,7 +41,7 @@ class Repo extends PureComponent {
     });
   };
   render() {
-    const { account, currentRepoName, description, stars, location, loading } = this.props;
+    const { account, currentRepoName, description, stars, loading } = this.props;
     return (
       <Page
         loading={false}
