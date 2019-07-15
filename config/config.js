@@ -1,6 +1,7 @@
 
-import { resolve } from "path";
 // ref: https://umijs.org/config/
+import { resolve } from "path";
+import theme from "./theme.config"
 
 
 export default {
@@ -45,20 +46,29 @@ export default {
       // cdn
       scripts: [
         // { src: 'https://cdn.bootcss.com/echarts/4.2.1/echarts.min.js' },
-        
+
         { src: 'https://cdn.bootcss.com/d3/5.9.2/d3.min.js' },
       ],
     }],
   ],
   alias: {
     "@": resolve(__dirname, "../src"),
-    '@components': resolve(__dirname, "../src/components"),
     '@utils': resolve(__dirname, "../src/utils"),
-    '@config': resolve(__dirname, "./platform.config"),
     '@context': resolve(__dirname, "../src/layouts/Context"),
+    // 组件库
+    '@components': resolve(__dirname, "../src/components"),
+    // 系统配置
+    '@platformConfig': resolve(__dirname, "./platform.config"),
+    // 全局services
     '@services': resolve(__dirname, "../src/services"),
+    // 全局models
     '@models': resolve(__dirname, "../src/models"),
+    //菜单配置项
+    "@menuConfig": resolve(__dirname, "./menu.config.js"),
+    // 版本日志管理
+    "@versionsConfig": resolve(__dirname, './versions.config.json')
   },
+  theme,
   proxy: {
     "/api": {
       target: "",

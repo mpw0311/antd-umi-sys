@@ -9,7 +9,7 @@ import { Icon } from 'antd';
 import Breadcrumb from './breadcrumb';
 import isEqual from 'lodash/isEqual';
 import classnames from 'classnames';
-import { sysDefultPage } from '@config';
+import { sysDefultPage } from '@platformConfig';
 import styles from './index.less';
 /*eslint-disable-next-line*/
 const unique = (origin) => origin.filter(function (item, index, array) {

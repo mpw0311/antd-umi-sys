@@ -8,7 +8,7 @@ import { Timeline } from 'antd';
 import { Page } from '@components';
 import Version from './components/version';
 import styles from './index.less';
-import data from '@utils/versions.config.json';
+import data from '@versionsConfig';
 function Index() {
     return (
         <Page inner pathtitles={['更新日志']} title={'更新日志'}>
