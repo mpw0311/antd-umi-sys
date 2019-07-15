@@ -1,19 +1,39 @@
 @import '../../themes/index.less';
-.screen,
-.warapper {
-    height: 100%;
+
+.wrap {
+    min-height: 100vh;
+
+    /***侧边栏***/
+    .sider {
+        height: 100vh;
+        position: fixed;
+        left: 0;
+    }
+
+    /***系统主体部分***/
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        /***系统头部***/
+        .contentHeader {
+            background: #fff;
+            padding: 0;
+            display: flex;
+            justify-content: space-between
+        }
+
+        /***系统内容区域***/
+        .content {
+            flex: auto;
+            margin: 10px 16px;
+            margin-bottom: 0;
+            display: flex;
+        }
+    }
 }
 
-.contianer {
-    overflow: auto;
-    .hideScrollbar();
-}
 
-.content {
-    flex: 1 0 auto;
-    margin: 10px 16px;
-    margin-bottom: 0;
-}
 
 .trigger {
     font-size: 18px;
@@ -27,11 +47,7 @@
     color: #1890ff;
 }
 
-.sider {
-    height: 100vh;
-    position: fixed;
-    left: 0;
-}
+
 
 .logo {
     height: 64px;
@@ -44,10 +60,12 @@
         opacity: 0;
         /*初始状态 透明度为0*/
     }
+
     50% {
         opacity: 0.5;
         /*中间状态 透明度为0*/
     }
+
     100% {
         opacity: 1;
         /*结尾状态 透明度为1*/
@@ -59,10 +77,12 @@
         opacity: 0;
         /*初始状态 透明度为0*/
     }
+
     50% {
         opacity: 0.5;
         /*中间状态 透明度为0*/
     }
+
     100% {
         opacity: 1;
         /*结尾状态 透明度为1*/

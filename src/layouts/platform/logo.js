@@ -14,10 +14,11 @@ class Index extends PureComponent {
     render() {
         const { collapsed } = this.props;
         const imgLogo = <img src={logo} alt="pro" style={{ height: '44px' }} />;
+        let logoPage;
         if (collapsed) {
-            return imgLogo;
+            logoPage = imgLogo;
         } else {
-            return (
+            logoPage = (
                 <Row>
                     <Col span={7}>
                         {imgLogo}
@@ -30,6 +31,9 @@ class Index extends PureComponent {
                 </Row>
             );
         }
+        return <div className={styles.logoPage}>
+            {logoPage}
+        </div>
     }
 }
 

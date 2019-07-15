@@ -116,7 +116,7 @@ export default {
     },
     //star 趋势图数据
     *getReposStars({ payload }, { call, put, select }) {
-      const { account: preAccount } = yield select(({ github }) => github.stars);
+      // const { account: preAccount } = yield select(({ github }) => github.stars);
       const { account, repoName } = payload;
       // if (!account || preAccount === account) return;
       const rows = yield call(api.getReposStargazers, { gitname: `${account}/${repoName}` });

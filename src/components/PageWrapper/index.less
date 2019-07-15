@@ -1,9 +1,8 @@
 @import "../../themes/vars.less";
+
 .contentInner {
-    width: 100%;
     padding: 0;
     box-shadow: @shadow-1;
-    min-height: @content-height;
     flex: auto;
     display: flex;
     flex-direction: column;
@@ -15,19 +14,8 @@
     background-color: #fff;
     padding: 10px;
     position: relative;
-    width: 100%;
 }
 
 .loading {
     overflow: 'hidden'
 }
-
-// @media (max-width: 767px) {
-//     .contentInner {
-//         padding: 0;
-//         min-height: ~"calc(100vh - 130px)";
-//         display: flex;
-//         flex-direction: column;
-//         width: 100%;
-//     }
-// }
