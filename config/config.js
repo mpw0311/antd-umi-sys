@@ -53,12 +53,20 @@ export default {
   ],
   alias: {
     "@": resolve(__dirname, "../src"),
-    '@components': resolve(__dirname, "../src/components"),
     '@utils': resolve(__dirname, "../src/utils"),
-    '@config': resolve(__dirname, "./platform.config"),
     '@context': resolve(__dirname, "../src/layouts/Context"),
+    // 组件库
+    '@components': resolve(__dirname, "../src/components"),
+    // 系统配置
+    '@platformConfig': resolve(__dirname, "./platform.config"),
+    // 全局services
     '@services': resolve(__dirname, "../src/services"),
+    // 全局models
     '@models': resolve(__dirname, "../src/models"),
+    //菜单配置项
+    "@menuConfig": resolve(__dirname, "./menu.config.js"),
+    // 版本日志管理
+    "@versionsConfig": resolve(__dirname, './versions.config.json')
   },
   theme,
   proxy: {

@@ -7,7 +7,7 @@
 import fetch from 'dva/fetch';
 import { message, notification } from 'antd';
 import router from 'umi/router';
-import { apiPrefix } from '@config';
+import { apiPrefix } from '@platformConfig';
 const logout = () => {
     // @HACK
     /* eslint-disable no-underscore-dangle */

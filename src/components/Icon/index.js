@@ -6,7 +6,7 @@
  * @link https://www.iconfont.cn
  */
 import { Icon } from 'antd';
-import { iconUrl } from '@config';
+import { iconUrl } from '@platformConfig';
 import PropTypes from 'prop-types';
 function Index(props) {
     const { type = "bars", style = {}, spin = false } = props;

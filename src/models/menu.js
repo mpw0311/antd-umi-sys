@@ -6,9 +6,9 @@
  * @description  菜单栏model
  */
 import * as api from '../services';
-import orginalData from '@utils/menus.config';
+import orginalData from '@menuConfig';
 import { munesFilter, flattenMenu } from '@utils/_';
-import { menuPermission } from '@config';
+import { menuPermission } from '@platformConfig';
 export default {
     namespace: 'menu',
     state: {

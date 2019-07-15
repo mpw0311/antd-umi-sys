@@ -7,7 +7,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'antd';
-import { sysName } from '@config';
+import { sysName } from '@platformConfig';
 import styles from './index.less';
 import logo from '../../assets/logo.png';
 class Index extends PureComponent {

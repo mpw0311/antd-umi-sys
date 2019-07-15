@@ -8,7 +8,7 @@ import { PureComponent } from 'react';
 import { connect } from 'dva';
 import Login from './components/Login';
 import { message, Row, Col } from 'antd';
-import { loginName } from '@config';
+import { loginName } from '@platformConfig';
 import logo from '../../assets/logo_blue_1024.png';
 import styles from './index.less';
 

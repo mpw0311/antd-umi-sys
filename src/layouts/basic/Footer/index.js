@@ -4,7 +4,7 @@
  * @version  1.0.0
  * @description  
  */
-import { copyright } from '@config';
+import { copyright } from '@platformConfig';
 import React, { Fragment } from 'react';
 import { Layout, Icon } from 'antd';
 import GlobalFooter from '../../components/GlobalFooter';
