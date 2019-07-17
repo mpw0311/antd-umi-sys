@@ -1,9 +1,4 @@
 import Redirect from 'umi/redirect';
+import {sysDefultPage} from '@platformConfig'
 // export default () => <Redirect to={`/sys/${pathname}`} />;
-export default () => <Redirect to={{
-    pathname: '/sys/github',
-    state: {
-        key: 'gitDataV',
-        pathtitles: [{ title: 'gitDataV', icon: 'github' }],
-    }
-}} />;
+export default () => <Redirect to={sysDefultPage} />;
