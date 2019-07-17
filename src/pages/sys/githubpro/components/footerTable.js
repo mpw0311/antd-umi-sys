@@ -5,9 +5,8 @@ import { connect } from 'dva'
 import Table from './dataTable';
 import { formatMessage } from 'umi/locale';
 @connect(({ githubPro, loading }) => {
-    const { account, reposInfo, received_events, accountInfo, pagination } = githubPro;
+    const { reposInfo, received_events, accountInfo, pagination } = githubPro;
     return {
-        account,
         reposInfo,
         received_events,
         accountInfo,
@@ -31,14 +30,14 @@ class FooterTable extends PureComponent {
     }
     //获取柱状图数据
     getTableData = () => {
-        const { account, reposInfo } = this.props;
+        const { accountInfo: { login: account }, reposInfo } = this.props;
         return {
             columns: [
                 {
                     "field": "name",
                     "name": "repos",
                     "type": "number",
-                    render: text => <Link to={{ pathname: `/sys/github/${account}`, query: { _n: text } }}>{text}</Link>,
+                    render: text => <Link to={{ pathname: `/sys/githubpro/${account}`, query: { _n: text } }}>{text}</Link>,
                 },
                 {
                     "field": "stargazers_count",

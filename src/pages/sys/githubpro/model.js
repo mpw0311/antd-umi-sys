@@ -12,18 +12,20 @@ export default {
     // 分页信息
     pagination: {
       pageSize: 10
-    }
+    },
+    // starHistory
+    stars: {}
   },
   subscriptions: {
     setupHistory({ dispatch, history, }) {
       // 监听路由变化
-      history.listen(({ pathname, state, query }) => {
+      history.listen(({ pathname, state = {}, query }) => {
         //在githubpro页面获取账户基本信息、获取公开库动态日志
         if (/^\/sys\/githubpro$/.test(pathname)) {
           dispatch({
             type: 'getAccountInfo',
             payload: {
-              account: "mpw0311",
+              account: state.account || "mpw0311",
             },
           });
         }
@@ -100,6 +102,36 @@ export default {
           },
         });
       }
+    },
+    //获取历史stars趋势图数据
+    *getReposStars({ payload }, { call, put, select }) {
+      const { account: preAccount, repoName: preRepoName } = yield select(({ githubPro }) => githubPro.stars);
+      const { account, repoName } = payload;
+      // 判断用户名项目名不能为空并且不相等
+      if (!account || !repoName || (preAccount === account && repoName === preRepoName)) return;
+      const rows = yield call(api.getReposStargazers, { gitname: `${account}/${repoName}` });
+      yield put({
+        type: 'save',
+        payload: {
+          stars: {
+            account,
+            repoName,
+            columns: [
+              {
+                field: 'date',
+                name: '日期',
+                type: 'string',
+              },
+              {
+                field: 'starNum',
+                name: 'starNum',
+                type: 'number',
+              },
+            ],
+            rows: rows || [],
+          },
+        },
+      });
     },
   },
   reducers: {
