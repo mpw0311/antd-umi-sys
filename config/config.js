@@ -66,7 +66,9 @@ export default {
     //菜单配置项
     "@menuConfig": resolve(__dirname, "./menu.config.js"),
     // 版本日志管理
-    "@versionsConfig": resolve(__dirname, './versions.config.json')
+    "@versionsConfig": resolve(__dirname, './versions.config.json'),
+    // request请求
+    "@http": resolve(__dirname, '../src/utils/request.js')
   },
   theme,
   proxy: {

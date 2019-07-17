@@ -56,57 +56,34 @@ const checkStatus = response => {
     error.response = response;
     throw error;
 };
-export default async (url, options) => {
-    checkIsLogin(url);
-    const defaultOptions = {
-        //发送cookies
-        credentials: 'include',
-        //cors跨域
-        mode: "cors",//no-cors
-    };
-    const newOptions = { ...defaultOptions, ...options };
-    const { method, headers, body } = newOptions;
+export const request = async (url, options = {}) => {
+
+    const { method, headers, body } = options;
     if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
         if (!(body instanceof FormData)) {
-            newOptions.headers = {
+            options.headers = {
                 Accept: 'application/json',
                 'Content-Type': 'application/json; charset=utf-8',
                 ...headers,
             };
-            newOptions.body = JSON.stringify(newOptions.body);
+            options.body = JSON.stringify(options.body);
         } else {
             // newOptions.body is FormData
-            newOptions.headers = {
+            options.headers = {
                 Accept: 'application/json',
                 ...headers,
             };
         }
     }
-    const response = await fetch(apiPrefix + url, newOptions)
+    const response = await fetch(apiPrefix + url, options)
         .then(checkStatus)
         .then(response => {
             // DELETE and 204 do not return data by default
             // using .json will report an error.
-            if (newOptions.method === 'DELETE' || response.status === 204) {
+            if (options.method === 'DELETE' || response.status === 204) {
                 return response.text();
             }
             return response.json();
-        })
-        .then(response => {
-            if (!(newOptions.method === 'DELETE' || response.status === 204)) {
-                const { data: { alertDesc }, status } = response;
-                if (status !== 0) {
-                    message.error(alertDesc || "无权限！");
-                    const { hash } = window.location;
-                    if (hash !== '#/login') {
-                        setTimeout(() => {
-                            logout();
-                            // window.location.href= window.location.origin;
-                        }, 1500);
-                    }
-                }
-            }
-            return response;
         })
         .catch(e => {
             const { name: status } = e;
@@ -134,5 +111,30 @@ export default async (url, options) => {
                 }, 1500);
             }
         });
+    return response;
+}
+export default async (url, options) => {
+    checkIsLogin(url);
+    const defaultOptions = {
+        //发送cookies
+        credentials: 'include',
+        //cors跨域
+        mode: "cors",//no-cors
+    };
+    const newOptions = { ...defaultOptions, ...options };
+    const response = await request(url, newOptions).then(response => {
+        const { data: { alertDesc }, status } = response;
+        if (status !== 0) {
+            message.error(alertDesc || "无权限！");
+            const { hash } = window.location;
+            if (hash !== '#/login') {
+                setTimeout(() => {
+                    logout();
+                    // window.location.href= window.location.origin;
+                }, 1500);
+            }
+        }
+        return response;
+    });
     return response;
 }

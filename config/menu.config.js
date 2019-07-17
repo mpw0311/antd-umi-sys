@@ -1,7 +1,7 @@
 export default [
     {
         title: "gitDataV",
-        link: "/sys/github",
+        link: "/sys/githubpro",
         key: "gitDataV",
         icon: "github"
     },

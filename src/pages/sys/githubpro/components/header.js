@@ -16,12 +16,12 @@ class Index extends PureComponent {
         });
     }
     render() {
-        const { account, accountInfo: { avatar_url, name, bio, public_repos, followers, following } } = this.props;
+        const { accountInfo: { login, avatar_url, name, bio, public_repos, followers, following } } = this.props;
         const title = (
             <Fragment>
                 {/* eslint-disable-next-line  */}
-                <a className={styles.a} href={`https://github.com/${account}`} target="_blank">{name}</a>
-                <span style={{ paddingLeft: '10px', fontSize: '12px' }}>({account})</span>
+                <a className={styles.a} href={`https://github.com/${login}`} target="_blank">{name}</a>
+                <span style={{ paddingLeft: '10px', fontSize: '12px' }}>({login})</span>
             </Fragment>
         );
         const layout = {
@@ -32,7 +32,7 @@ class Index extends PureComponent {
         };
         return (
             <Card>
-                <Account value={account} onSubmit={this.handleSubmit} />
+                <Account value={login} onSubmit={this.handleSubmit} />
                 <Divider />
                 <Row type={'flex'} justify={'space-between'} style={{ textAlign: 'center', padding: '10px 20px', }}>
                     <Col {...layout} xl={7}>
