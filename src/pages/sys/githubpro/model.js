@@ -14,7 +14,7 @@ export default {
       pageSize: 10
     },
     // starHistory
-    stars: {}
+    starHistory: {}
   },
   subscriptions: {
     setupHistory({ dispatch, history, }) {
@@ -105,7 +105,7 @@ export default {
     },
     //获取历史stars趋势图数据
     *getReposStars({ payload }, { call, put, select }) {
-      const { account: preAccount, repoName: preRepoName } = yield select(({ githubPro }) => githubPro.stars);
+      const { account: preAccount, repoName: preRepoName } = yield select(({ githubPro }) => githubPro.starHistory);
       const { account, repoName } = payload;
       // 判断用户名项目名不能为空并且不相等
       if (!account || !repoName || (preAccount === account && repoName === preRepoName)) return;
@@ -113,7 +113,7 @@ export default {
       yield put({
         type: 'save',
         payload: {
-          stars: {
+          starHistory: {
             account,
             repoName,
             columns: [

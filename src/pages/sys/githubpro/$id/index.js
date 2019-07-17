@@ -5,10 +5,10 @@ import pathToRegexp from 'path-to-regexp';
 import { Page } from '@components';
 import { Line } from '@components/Echarts';
 @connect(({ githubPro, loading }) => {
-  const { accountInfo, stars, description } = githubPro;
+  const { accountInfo, starHistory, description } = githubPro;
   return {
     accountInfo,
-    stars,
+    starHistory,
     description,
     loading: loading.models.githubPro,
   };
@@ -49,7 +49,7 @@ class Repo extends PureComponent {
     });
   };
   render() {
-    const { stars, loading, description } = this.props;
+    const { starHistory, loading, description } = this.props;
     const { account, reposName } = this.getInfo();
     return (
       <Page
@@ -67,7 +67,7 @@ class Repo extends PureComponent {
         description={description}
       >
         <Card title="stargazers Analysis">
-          <Line data={stars} seriesLayoutBy={'column'} height={400} loading={loading} />
+          <Line data={starHistory} seriesLayoutBy={'column'} height={400} loading={loading} />
         </Card>
       </Page>
     );
