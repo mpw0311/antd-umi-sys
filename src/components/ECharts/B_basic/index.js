@@ -80,7 +80,7 @@ class BasicChart extends PureComponent {
                 height={height}
                 style={style}
                 option={option}
-                showLoading={!loading}
+                showLoading={loading}
                 onChartReady={onChartReady}
                 onEvents={onEvents}
             />
