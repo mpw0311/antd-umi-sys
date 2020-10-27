@@ -27,23 +27,21 @@
 + mock模拟数据请求
 ---
 ## 环境准备
-    1.首先安装 node，并确保 node 版本是 8 或以上。（mac 下推荐使用 nvm 来管理 node 版本）
-        $ node -v
-        8.x
-    2.然后全局安装 umi，并确保版本是 2.0.0 或以上。
-        $ npm install -g umi (或yarn global add umi)
-        $ umi -v
-        2.0.0
-    3.git地址下载脚手架代码：
-        https://github.com/mpw0311/antd-umi-sys.git
-    4.安装依赖模块：
-        npm install
-    5.启动本地开发：
-        npm start
-    6.打包发布：
-        npm run build
+1. 首先安装 node，并确保 node 版本是 8 或以上。（mac 下推荐使用 nvm 来管理 node 版本）
+        `node -v`
+2. 然后全局安装 umi，并确保版本是 2.0.0 或以上。
+    - `npm install -g umi (或yarn global add umi)`
+    - `umi -v`
+3. git地址下载脚手架代码：[antd-umi-sys](https://github.com/mpw0311/antd-umi-sys.git)
+    
+4. 安装依赖模块：
+    `npm install`
+5. 启动本地开发：
+    `npm start`
+6. 打包发布：
+    `npm run build`
 ## 支持区块开发
-    npm run add-page 快速添加一个页面模板,详细请看https://umijs.org/zh/guide/block.html
+`npm run add-page` 快速添加一个页面模板,详细请看[block.html](https://umijs.org/zh/guide/block.html)
 ## 目录结构
 
 ```js
@@ -88,3 +86,5 @@
 ├── .env                                // 环境变量
 └── package.json
 ```
+## 请关注公众号，会有不定时福利分享（视频资源、优惠券、技术文章等）
+![公众号](src/assets/qrcode_for_wechat.jpg)
