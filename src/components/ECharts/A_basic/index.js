@@ -75,7 +75,7 @@ class BasicChart extends PureComponent {
                     alignItems: 'center',
                     ...style
                 }}>
-                    <span >无数据</span>
+                    <span >{loading ? '数据加载中...' : "无数据"}</span>
                 </div>
             );
         }
