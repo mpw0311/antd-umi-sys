@@ -12,6 +12,10 @@
 ![antd-umi-sys](src/assets/demo.png)
 ![antd-umi-sys](src/assets/regionalAnalysis.png)
 ![antd-umi-sys](src/assets/vew1.png)
+
+> 图形配置在线编辑
+
+![antd-umi-sys](src/assets/view3.png)
 ![antd-umi-sys](src/assets/d3tree.png)
 
 ## 前端技术栈 
