@@ -93,6 +93,10 @@ const menuData = [
         ]
     },
     {
+        title: "水印",
+        key: "watermark",
+    },
+    {
         title: "图形组件",
         key: "react-charts",
     },
