@@ -146,6 +146,12 @@ export default [
             },]
     },
     {
+        title: "watermark",
+        url: "https://mpw0311.github.io/watermark",
+        key: "watermark",
+        icon: "bar-chart"
+    },
+    {
         title: "图形组件demo",
         url: "https://mpw0311.github.io/react-charts",
         key: "react-charts",
