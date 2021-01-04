@@ -1,6 +1,6 @@
 export default {
     'login.userName': '用户名',
-    'login.password': '密码',
+    'login.password': '扫描二维码关注公众号获取密码',
     'login.remember-me': '自动登录',
     'login.forgot-password': '忘记密码',
     'login.signup': '注册账户',
