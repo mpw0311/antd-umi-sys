@@ -6,7 +6,7 @@ module.exports = {
         const { body } = req;
         const { password, username } = body;
         const pwd = decrypt(password)
-        if (pwd === 'admin' && username === 'admin') {
+        if (pwd === 'admin123' && username === 'admin') {
             res.status(200).json({
                 data: {
                     alertDesc: '登录成功！'

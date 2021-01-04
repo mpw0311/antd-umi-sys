@@ -1,7 +1,5 @@
 import { PureComponent } from 'react';
 import { Modal } from 'antd';
-import imgUrl from '../../assets/qrcode_for_wechat.jpg'
-
 export default class Started extends PureComponent {
     state = {
         visible: false
@@ -45,11 +43,6 @@ export default class Started extends PureComponent {
                 {/* eslint-disable-next-line */}
                 <p>如果你喜欢这个项目请给一个⭐，谢谢!</p>
                 <p>Please give me a Star if you like this project.Thank you so much.</p>
-                <br/>
-                <div style={{ textAlign: "center" }}>
-                    <img src={imgUrl} alt="公众号" width={100}/>
-                </div>
-                <p style={{ textAlign: "center" }}>关注公众号有福利</p>
             </Modal>
         );
     }
